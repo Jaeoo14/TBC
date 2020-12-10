@@ -26,10 +26,12 @@ class Discover extends Component {
 
     render() {
         return (
-            
+             
             <div className="first">
             <div class="wrap">
                 <div class="row">
+
+                    {/* 카테고리메뉴 */}
                     <div class="dropdown">
                         <a
                             id="dLabel"
@@ -79,6 +81,7 @@ class Discover extends Component {
                         </ul>
                     </div>
 
+                {/* 프로젝트 분류 */}
                 <div class="btn-group show-on-hover">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                         상태 <span class="caret"></span>
@@ -91,6 +94,7 @@ class Discover extends Component {
                     </ul>
                 </div>
 
+                {/* 달성률 분류 */}
                 <div class="btn-group show-on-hover">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                         달성률 <span class="caret"></span>
@@ -104,6 +108,7 @@ class Discover extends Component {
                     </ul>
                 </div>
 
+                {/* 금액별 분류 */}
                 <div class="btn-group show-on-hover">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                         모인 금액 <span class="caret"></span>
@@ -117,6 +122,7 @@ class Discover extends Component {
                     </ul>
                 </div>
 
+                {/* 필터초기화 */}
                 <div className="button">
                 <Button variant="outlined"><CachedIcon color="disabled"/> 필터 초기화</Button>
                 </div>
