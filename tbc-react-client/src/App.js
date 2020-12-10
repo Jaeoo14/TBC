@@ -1,7 +1,7 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header2 from './Nav/Header2';
-import Discover from './Discover/Discover';
+// import Discover from './Discover/Discover';
 
 function App() {
   return (
