@@ -6,8 +6,7 @@ import SearchIcon from '@material-ui/icons/Search';
 
 const Header2 = () => {
     return(
-
-        <div>
+        <div className="myStyle">
         <ul>
             <li><a href="#"><MenuIcon/> 프로젝트 둘러보기</a></li>
             <li><a href="#">프로젝트 올리기</a></li>
