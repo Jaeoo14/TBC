@@ -1,14 +1,29 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import {Component} from 'react';
 import './Discover.css'
 import jquery from 'jquery'
-import { Button } from '@material-ui/core';
+import { Box, Button, Typography } from '@material-ui/core';
 import CachedIcon from '@material-ui/icons/Cached';
+import ScheduleIcon from '@material-ui/icons/Schedule';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+
+
 
 class Discover extends Component {
 
     componentDidMount() {
         window.$ = window.jQuery = jquery;
     }
+
+    
+
+    constructor(props) {
+        super(props);
+        
+        this.state = {
+        };
+    }
+
 
     // handleChange = (newValue: any, actionMeta: any) => {
     //     console.group('Value Changed');
@@ -81,7 +96,7 @@ class Discover extends Component {
                         </ul>
                     </div>
 
-                {/* 프로젝트 분류 */}
+                {/* 상태 분류 */}
                 <div class="btn-group show-on-hover">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                         상태 <span class="caret"></span>
@@ -126,17 +141,154 @@ class Discover extends Component {
                 <div className="button">
                 <Button variant="outlined"><CachedIcon color="disabled"/> 필터 초기화</Button>
                 </div>
-
-
-
-
                 </div>
             </div>
             <hr />
+
+{/* ***************************************************************************** */}
+                            {/* 위로는 필터 구성
+                        아래로는 프로젝트 화면 구성 */}
+{/* ***************************************************************************** */}
+
+
+<div className="wrapper">
+<div className="row">
+<div class="col-md-12" style={{textAlign:"left"}}>
+
+    <span style={{color:"#ff4646"}}>nn,nnn</span>개의 프로젝트가 있습니다.
+
+        <select id="filter" name="filter">
+            <option value="">인기순 ▼</option>
+            <option value="">최신순 ▼</option>
+            <option value="">최다 후원순 ▼</option>
+            <option value="">최다 금액순 ▼</option>
+            <option value="">마감 임박순 ▼</option>
+        </select>
+        
+                        </div>
+</div>
+
+{/* 프로젝트 구성 페이지 */}
+    <div class="row">
+        <div class="col-md-6 col-lg-4 g-mb-30">
+            <div style={{float:"right"}}>
+                <FavoriteIcon color="secondary"/>
             </div>
+
+            <img 
+                class="d-inline-block img-fluid mb-4" 
+                src="http://ipsumimage.appspot.com/620x465" 
+                alt="Image Description"
+                />
+            <Box
+                fontSize="h5.fontSize"
+                align="left"
+                fontWeight="fontWeightBold"
+                onClick={"/*프로젝트 올리기 페이지 입력*/"}>
+                텀블벅 프로젝트 제목은 대체로 기다란 편</Box>
+            <Typography
+                variant="body2"
+                color="textSecondary"
+                align="left">
+                카테고리 | 창작자 </Typography>
+            <Typography
+                variant="body1"
+                align="left"
+                onClick={"/*프로젝트 올리기 페이지 입력*/"}>
+                텀블벅 프로젝트 설명입니다.텀블벅 프로젝트 설명입니다.텀블벅 프로젝트 설명입니다. </Typography>
+            <Box
+                fontSize={18}
+                align="left"> 
+                nn,nnn,nnn원 
+            <span style={{color:"#ff4646", fontSize:15}}> nnn%</span>
+            <span style={{color:"#bbbbbb", fontSize:15, float:"right"}}> 
+                <ScheduleIcon color="disabled" /> nn일 남음 </span>
+                </Box>
+        </div>
+
+        <div class="col-md-6 col-lg-4 g-mb-30">
+            <div style={{float:"right"}}>
+                    <FavoriteIcon color="secondary"/>
+                </div>
+            <img class="d-inline-block img-fluid mb-4" src="http://ipsumimage.appspot.com/620x465" alt="Image Description" />
+            <Box
+                fontSize="h5.fontSize"
+                align="left"
+                fontWeight="fontWeightBold"
+                onClick={"/*프로젝트 올리기 페이지 입력*/"}>
+                텀블벅 프로젝트 제목은 대체로 기다란 편</Box>
+            <Typography
+                variant="body2"
+                color="textSecondary"
+                align="left">
+                카테고리 | 창작자 </Typography>
+            <Typography
+                variant="body1"
+                align="left"
+                onClick={"/*프로젝트 올리기 페이지 입력*/"}>
+                텀블벅 프로젝트 설명입니다.텀블벅 프로젝트 설명입니다.텀블벅 프로젝트 설명입니다. </Typography>
+            <Box
+                fontSize={18}
+                align="left"> 
+                nn,nnn,nnn원 
+            <span style={{color:"#ff4646", fontSize:15}}> nnn%</span>
+            <span style={{color:"#bbbbbb", fontSize:15, float:"right"}}> 
+                <ScheduleIcon color="disabled" /> nn일 남음 </span>
+                </Box>
+        </div>
+
+        <div class="col-md-6 col-lg-4 g-mb-30">
+            <div style={{float:"right"}}>
+                    <FavoriteIcon color="secondary"/>
+            </div>
+            <img 
+                class="d-inline-block img-fluid mb-4" 
+                src="http://ipsumimage.appspot.com/620x465" 
+                alt="Image Description" />
+                
+            <Box
+                fontSize="h5.fontSize"
+                align="left"
+                fontWeight="fontWeightBold"
+                onClick={"/*프로젝트 올리기 페이지 입력*/"}>
+                텀블벅 프로젝트 제목은 대체로 기다란 편</Box>
+            <Typography
+                variant="body2"
+                color="textSecondary"
+                align="left">
+                카테고리 | 창작자 </Typography>
+            <Typography
+                variant="body1"
+                align="left"
+                onClick={"/*프로젝트 올리기 페이지 입력*/"}>
+                텀블벅 프로젝트 설명입니다.텀블벅 프로젝트 설명입니다.텀블벅 프로젝트 설명입니다. </Typography>
+            <Box
+                fontSize={18}
+                align="left"> 
+                nn,nnn,nnn원 
+            <span style={{color:"#ff4646", fontSize:15}}> nnn%</span>
+            <span style={{color:"#bbbbbb", fontSize:15, float:"right"}}> 
+                <ScheduleIcon color="disabled" /> nn일 남음 </span>
+                </Box>
+        </div>
+        
+       
+        
+
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
 
         );
     }
 }
+
 
 export default Discover;

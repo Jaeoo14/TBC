@@ -1,17 +1,133 @@
 
-
-.wrap { 
+.wrap {
     width: 100%; 
     position: relative;
-    padding-left: 5rem; 
+    padding-left: 7rem; 
+    padding-right: 5rem; 
 }
 
-div.button {
-
+.wrapper { 
+    width: 100%; 
+    position: relative;
     margin-left: auto;
-    padding-right: 5rem;
-
+    margin-right: auto;
+    /* padding-left: 7rem; */
+    /* padding-right: 7rem; */
 }
+@media screen and (max-width: 1920px) {
+    .wrapper {
+        padding-left: 15rem;
+        padding-right: 15rem;
+        /* background-color: violet; */
+    }
+}
+
+@media screen and (max-width: 1800px) {
+    .wrapper {
+        padding-left: 15rem;
+        padding-right: 15rem;
+        /* background-color: violet; */
+    }
+}
+
+@media screen and (max-width: 1500px) {
+    .wrapper {
+        padding-left: 7rem;
+        padding-right: 7rem;
+        /* background-color: skyblue; */
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .wrapper {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        /* background-color: lightgreen */
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    .wrapper {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        /* background-color: sandybrown; */
+    }
+  }
+
+/* 필터 초기화처럼 오른쪽에 냅다 갖다꽂아넣을 때 참고할만한 CSS */
+div.button {
+    margin-left: auto;
+    padding-right: 3rem;
+}
+
+
+/* div class=row 사용시 구역안 크기는 그대로 두는 CSS!! */
+div.row {
+    margin-top: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding-left: auto;
+    padding-right: auto;
+}
+
+img {
+    width: 620px;
+    height: 465px;
+    object-fit: cover;
+  }
+
+  div.projectCount {
+    text-align: left;
+    padding-left: auto;
+    margin-left: 5rem;
+    font-size: 0.94286rem;
+}
+
+
+
+select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+
+    float: right;
+
+    width: 8em;
+    
+    font-family: "Noto Sansf KR", sans-serif;
+    font-size: 0.8rem;
+    font-weight: 400;
+    line-height: 1.5;
+    
+    color: #444;
+    background-color: #fff;
+    
+    padding: .6rem .001rem .5rem 0.8rem;
+    
+    border: 0px solid #aaa;
+    border-radius: .5em;
+  }
+  
+  select:hover {
+    border-color: #888;
+  }
+  
+  select:focus {
+    border-color: #aaa;
+    box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
+    box-shadow: 0 0 0 3px -moz-mac-focusring;
+    color: #222;
+    outline: none;
+  }
+  
+  select:disabled {
+    opacity: 0.5;
+  }
+
+  option {
+    text-align: right;
+
+  }
 
 .dropdown-submenu {
     position: relative;
@@ -64,3 +180,66 @@ div.button {
 .show-on-hover:hover > ul.dropdown-menu {
     display: block;    
 }
+
+body{
+    margin-top:20px;
+    /* background-color: #fafafa !important; */
+}
+@media (min-width: 0) {
+    .g-mb-30 {
+        margin-bottom: 2.14286rem !important;
+   
+    }
+}
+
+@media (min-width: 0) {
+    .g-py-40 {
+        padding-top: 2.85714rem !important;
+        padding-bottom: 2.85714rem !important;
+    }
+}
+
+@media (min-width: 0) {
+    .g-px-20 {
+        padding-left: 1.42857rem !important;
+        padding-right: 1.42857rem !important;
+    }
+}
+@media (min-width: 0){
+    .g-mb-5 {
+        margin-bottom: 0.35714rem !important;
+    }
+}
+/* 
+.g-bg-white {
+    background-color: #fff !important;
+}
+
+.u-shadow-v18 {
+    box-shadow: 0 5px 10px -6px rgba(0, 0, 0, 0.15);
+}
+
+.g-color-primary {
+    color: #72c02c !important;
+}
+
+.g-font-size-16 {
+    font-size: 1.14286rem !important;
+}
+
+.g-mb-10 {
+    margin-bottom: 0.71429rem !important;
+}
+
+.g-mb-10 {
+    margin-bottom: 0.71429rem !important;
+}
+
+.g-color-black {
+    color: #000 !important;
+}
+
+.g-font-weight-600 {
+    font-weight: 600 !important;
+} */
+  
