@@ -11,6 +11,8 @@ import SelectProjectCategory from './SelectProjectCategory';
 import InputTags from './InputTags';
 import SetProjectURL from './SetProjectURL';
 import UploadProjectImage from './UploadProjectImage';
+import CustomFile from './CustomFile';
+import InputCreatorName from './InputCreatorName';
 
 const ProjectDescription = () => {
 
@@ -55,13 +57,22 @@ const ProjectDescription = () => {
 			창작자 정보
 			<ListGroup>
 				<ListGroup.Item action variant='light'>
-					프로필 이미지
+					<CustomFile
+						title='프로필 이미지'
+						desc='창작자님 개인이나 팀의 사진을 올려주세요. 얼굴이 나온 사진을 넣으면 프로젝트의 신뢰성 향상에 도움이 됩니다.
+						파일 형식은 jpg, png 또는 gif로, 사이즈는 가로 200px, 세로 200px 이상으로 올려주세요.'
+					/>
 				</ListGroup.Item>
 				<ListGroup.Item action variant='light'>
-					창작자 이름
+					<InputCreatorName />
 				</ListGroup.Item>
 				<ListGroup.Item action variant='light'>
-					창작자 소개
+					<CustomTextArea
+						title='창작자 소개'
+						desc='창작자님의 이력과 간단한 소개를 써 주세요.'
+						placeholder='창작자 소개를 입력해주세요.'
+						minlen='10'
+						maxlen='300' />
 				</ListGroup.Item>
 				<ListGroup.Item action variant='light'>
 					<Container>
