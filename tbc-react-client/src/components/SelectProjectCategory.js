@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Row, Button } from 'react-bootstrap';
+import { Form, Row, Button, Container } from 'react-bootstrap';
 import CheckIcon from '@material-ui/icons/Check';
 import CloseIcon from '@material-ui/icons/Close';
 
@@ -9,7 +9,7 @@ const SelectProjectCategory = ({ title, desc, placeholder }) => {
     const handleSave = () => { alert(category) }
 
     return (
-        <Form>
+        <Container>
             <Row>
                 <Form.Group controlId="select-project-category">
                     <Form.Label column='sm' style={{ fontWeight: 'bolder', color: 'black' }}>{title}</Form.Label>
@@ -29,7 +29,7 @@ const SelectProjectCategory = ({ title, desc, placeholder }) => {
                 <Button variant='secondary mr-1' size='sm'><CloseIcon />취소하기</Button>
                 <Button variant='primary' size='sm' disabled={category === ''} onClick={handleSave}><CheckIcon />저장하기</Button>
             </Row>
-        </Form>
+        </Container>
     );
 };
 
