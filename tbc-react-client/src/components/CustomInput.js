@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FormGroup, FormControl, FormLabel, FormText } from 'react-bootstrap';
 
-const CustomInput = ({ desc, title, placeholder, maxlen, width, changeText }) => {
+const CustomInput = ({ title, desc, placeholder, maxlen, width, handleText }) => {
 	const [remain, setRemain] = useState(maxlen);
 	const [text, setText] = useState('');
 
@@ -11,11 +11,11 @@ const CustomInput = ({ desc, title, placeholder, maxlen, width, changeText }) =>
 
 		setRemain(maxlen - e.target.value.length);
 		setText(e.target.value);
-		changeText(e.target.value);
+		handleText(e.target.value);
 	};
 
 	return (
-		<FormGroup controlId='formBasicEmail'>
+		<FormGroup>
 			<FormLabel  column='sm' style={{fontWeight:'bolder', color:'black'}}>{title}</FormLabel>
 			<FormLabel  column='sm' >{desc}</FormLabel>
 			<FormControl style={{width:width}} type='text' placeholder={placeholder} size='sm' onChange={handleChange} value={text}/>
