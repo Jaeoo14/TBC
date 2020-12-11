@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { FormGroup, FormControl, FormLabel, FormText } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 
-const CustomInput = ({ title, desc, placeholder, maxlen, width, handleText }) => {
+const CustomInput = ({ title, desc, placeholder, minlen, maxlen, width, handleText }) => {
 	const [remain, setRemain] = useState(maxlen);
 	const [text, setText] = useState('');
 
@@ -15,12 +15,14 @@ const CustomInput = ({ title, desc, placeholder, maxlen, width, handleText }) =>
 	};
 
 	return (
-		<FormGroup>
-			<FormLabel  column='sm' style={{fontWeight:'bolder', color:'black'}}>{title}</FormLabel>
-			<FormLabel  column='sm' >{desc}</FormLabel>
-			<FormControl style={{width:width}} type='text' placeholder={placeholder} size='sm' onChange={handleChange} value={text}/>
-			<FormText className='text-muted'>{remain}자 남았습니다.</FormText>
-		</FormGroup>
+		<Form.Group>
+			<Form.Label column='sm' style={{ fontWeight: 'bolder', color: 'black' }}>{title}</Form.Label>
+			<Form.Label column='sm' >{desc}</Form.Label>
+			<Form.Control style={{ width: width }} type='text' placeholder={placeholder} size='sm' onChange={handleChange} value={text} />
+			<Form.Text className='text-muted'>
+				{(minlen !== '' && text.length < minlen) && `최소${minlen} / `} {remain}자 남았습니다.
+			</Form.Text>
+		</Form.Group>
 	);
 };
 
