@@ -9,6 +9,8 @@ import CustomTextArea from './CustomTextArea';
 import InputProjectTitle from './InputProjectTitle';
 import SelectProjectCategory from './SelectProjectCategory';
 import InputTags from './InputTags';
+import SetProjectURL from './SetProjectURL';
+import UploadProjectImage from './UploadProjectImage';
 
 const ProjectDescription = () => {
 
@@ -18,46 +20,32 @@ const ProjectDescription = () => {
 
 	return (
 		<Container fluid='md' style={{ textAlign: 'left' }}>
-			프로젝트 개요
+			<p></p>
 			<ListGroup>
 				<ListGroup.Item action variant='light'>
 					<InputProjectTitle />
 				</ListGroup.Item>
 				<ListGroup.Item action variant='light'>
-					<Container>
-						<Row>
-							<Form.Group>
-								<Form.Label column='sm' style={{ fontWeight: 'bolder', color: 'black' }}>프로젝트 대표 이미지</Form.Label>
-								<Form.File id="exampleFormControlFile1" label="" />
-							</Form.Group>
-						</Row>
-						<Row style={{ justifyContent: 'flex-end' }}>
-							<Button variant='primary' size='sm'>
-								<CheckIcon />
-								닫기
-							</Button>
-						</Row>
-					</Container>
+					<UploadProjectImage />
 				</ListGroup.Item>
 				<ListGroup.Item action variant='light'>
-					<CustomTextArea 
-						title='프로젝트 요약' 
-						desc='후원자 분들에게 본 프로젝트를 간략하게 소개해 봅시다' 
-						placeholder='프로젝트 요약을 입력해주세요' 
-						minlen='10' 
+					<CustomTextArea
+						title='프로젝트 요약'
+						desc='후원자 분들에게 본 프로젝트를 간략하게 소개해 봅시다'
+						placeholder='프로젝트 요약을 입력해주세요'
+						minlen='10'
 						maxlen='50' />
 				</ListGroup.Item>
 				<ListGroup.Item action variant='light'>
-					<SelectProjectCategory 
+					<SelectProjectCategory
 						title='프로젝트 카테고리'
 						desc='프로젝트의 성격에 맞는 카테고리를 선택해 주세요.
 						(프로젝트 성격과 맞지 않는 카테고리를 선택하실 시 후원자가 해당 프로젝트를 찾기 어려워지기에 에디터에 의해 조정될 수 있습니다.)'
 						placeholder='프로젝트 카테고리를 정해주세요.'
-						 />
+					/>
 				</ListGroup.Item>
 				<ListGroup.Item action variant='light'>
-					프로젝트 페이지 주소<br></br>
-					https://tumblbug.com/ <input type='text' />
+					<SetProjectURL />
 				</ListGroup.Item>
 				<ListGroup.Item action variant='light'>
 					<InputTags />
@@ -80,6 +68,7 @@ const ProjectDescription = () => {
 						<Row>
 							<Col>
 								<CustomInput
+									header=''
 									width='50%'
 									desc='창작자님은 주로 어느 지역에서 활동하시나요? 활동 지역을 구체적으로 기입해주시면 프로젝트의 신뢰를 높이는 데 도움이 됩니다.'
 									title='창작자 활동 지역'
