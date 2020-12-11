@@ -7,6 +7,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import CustomInput from './CustomInput';
 import CustomTextArea from './CustomTextArea';
 import InputProjectTitle from './InputProjectTitle';
+import SelectProjectCategory from './SelectProjectCategory';
 
 const ProjectDescription = () => {
 
@@ -46,10 +47,12 @@ const ProjectDescription = () => {
 						maxlen='50' />
 				</ListGroup.Item>
 				<ListGroup.Item action variant='light'>
-					프로젝트 카테고리<br></br>
-					<select>
-						<option value='1'>1</option>
-					</select>
+					<SelectProjectCategory 
+						title='프로젝트 카테고리'
+						desc='프로젝트의 성격에 맞는 카테고리를 선택해 주세요.
+						(프로젝트 성격과 맞지 않는 카테고리를 선택하실 시 후원자가 해당 프로젝트를 찾기 어려워지기에 에디터에 의해 조정될 수 있습니다.)'
+						placeholder='프로젝트 카테고리를 정해주세요.'
+						 />
 				</ListGroup.Item>
 				<ListGroup.Item action variant='light'>
 					프로젝트 페이지 주소<br></br>
