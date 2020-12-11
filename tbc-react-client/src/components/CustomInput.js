@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Form } from 'react-bootstrap';
+import { Form, InputGroup } from 'react-bootstrap';
 
-const CustomInput = ({ title, desc, placeholder, minlen, maxlen, width, handleText }) => {
+const CustomInput = ({ title, desc, placeholder, minlen, maxlen, width, header, handleText }) => {
 	const [remain, setRemain] = useState(maxlen);
 	const [text, setText] = useState('');
 
@@ -17,11 +17,18 @@ const CustomInput = ({ title, desc, placeholder, minlen, maxlen, width, handleTe
 	return (
 		<Form.Group>
 			<Form.Label column='sm' style={{ fontWeight: 'bolder', color: 'black' }}>{title}</Form.Label>
-			<Form.Label column='sm' >{desc}</Form.Label>
-			<Form.Control style={{ width: width }} type='text' placeholder={placeholder} size='sm' onChange={handleChange} value={text} />
+			{desc !== '' && <Form.Label column='sm' >{desc}</Form.Label>}
+			{header !== '' ?
+			<InputGroup size='sm'>
+				<InputGroup.Prepend>
+					<InputGroup.Text id="basic-addon3" style={{ backgroundColor: 'skyblue' }}>{header}</InputGroup.Text>
+				</InputGroup.Prepend>
+				<Form.Control style={{ width: width }} type='text' placeholder={placeholder} size='sm' onChange={handleChange} value={text} />
+			</InputGroup>:
+			<Form.Control style={{ width: width }} type='text' placeholder={placeholder} size='sm' onChange={handleChange} value={text} />}
 			<Form.Text className='text-muted'>
 				{(minlen !== '' && text.length < minlen) && `최소${minlen} / `} {remain}자 남았습니다.
-			</Form.Text>
+					</Form.Text>
 		</Form.Group>
 	);
 };
