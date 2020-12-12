@@ -6,22 +6,22 @@ import lombok.Data;
 
 @Data
 public class ProjectVO {
-	int id;
-	int userId;
-	String longTitle;
-	String shortTitle;
-	byte[] mainImg;
-	String content;
-	int category;
-	String url;
-	String tags;
-	int fundingGoalAmount;
-	LocalDateTime fundingStart;
-	LocalDateTime fundingEnd;
-	String rewards;
-	int favoriteCount;
-	int fundedAmount;
-	int sponsor;
-	LocalDateTime createdDate;
-	LocalDateTime updatedDate;
+	private Long id;
+	private Long creatorId;
+	private String longTitle;
+	private String shortTitle;
+	private byte[] mainImg;
+	private String content;
+	private Long category;
+	private String url;
+	private String tags;
+	private Long fundingGoalAmount;
+	private LocalDateTime fundingStart;
+	private LocalDateTime fundingEnd;
+	private String rewards;
+	private Long favoriteCount;
+	private Long fundedAmount;
+	private Long sponsorCount;
+	private LocalDateTime createdDate;
+	private LocalDateTime updatedDate;
 }
