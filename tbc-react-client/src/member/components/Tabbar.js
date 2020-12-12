@@ -132,6 +132,7 @@ export default function SimpleTabs() {
           <AntTab label="배송지" />
           <AntTab label="알림" />
         </AntTabs>
+
         <TabPanel value={value} index={0}>
           <Profile />
         </TabPanel>

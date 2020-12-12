@@ -2,6 +2,7 @@ import { Component } from "react";
 import Grid from "@material-ui/core/Grid";
 import "../../style/Setting.css";
 import Paper from "@material-ui/core/Paper";
+import { Avatar, Button } from "@material-ui/core";
 
 class Profile extends Component {
   render() {
@@ -11,16 +12,18 @@ class Profile extends Component {
           <div id="div1">
             프로필 사진
             <span>
-              <a href="#"></a> <a href="#">변경</a>
+              <button>변경</button>
             </span>
           </div>
           <br />
-          <div>썸네일</div>
+          <div>
+            <Avatar>H</Avatar>
+          </div>
           <hr />
           <div id="div1">
             이름
             <span>
-              <a href="#">변경</a>
+              <button>변경</button>
             </span>
           </div>
           <br />
@@ -29,7 +32,7 @@ class Profile extends Component {
           <div id="div1">
             사용자 이름(URL)
             <span>
-              <a href="#">변경</a>
+              <button>변경</button>
             </span>
           </div>
           <br />
@@ -38,7 +41,7 @@ class Profile extends Component {
           <div id="div1">
             소개
             <span>
-              <a href="#">변경</a>
+              <button>변경</button>
             </span>
           </div>
           <br />
@@ -47,7 +50,7 @@ class Profile extends Component {
           <div id="div1">
             웹사이트
             <span>
-              <a href="#">변경</a>
+              <button>변경</button>
             </span>
           </div>
           <br />
@@ -56,7 +59,7 @@ class Profile extends Component {
           <div id="div1">
             프라이버시
             <span>
-              <a href="#">변경</a>
+              <button>변경</button>
             </span>
           </div>
           <br />

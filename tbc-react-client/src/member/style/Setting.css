@@ -34,3 +34,14 @@ div {
 #paper {
   margin-left: 10px;
 }
+
+button {
+  background: transparent;
+  border: 0px;
+  padding: 0px;
+  cursor: pointer;
+  color: rgb(39, 163, 255);
+  font-weight: bolder;
+  text-decoration: none;
+  outline: 0;
+}
