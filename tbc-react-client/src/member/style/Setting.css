@@ -1,0 +1,36 @@
+div > span {
+  text-align: right;
+  float: right;
+  font-size: smaller;
+}
+
+div {
+  color: gray;
+  text-align: left;
+  font-size: x-small;
+}
+#div1 {
+  color: black;
+  font-size: small;
+  font-weight: bold;
+}
+.bold {
+  font-weight: bold;
+}
+.p1 {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 15px;
+  font-size: small;
+  font-weight: bold;
+}
+.p2 {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 15px;
+  font-size: x-small;
+  color: rgb(160, 158, 158);
+}
+#paper {
+  margin-left: 10px;
+}
