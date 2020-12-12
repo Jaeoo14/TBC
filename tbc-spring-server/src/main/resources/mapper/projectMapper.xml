@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTDMapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.team2.tbcserver.mapper.ProjectMapper">
+	<select id="fetch" resultType="com.team2.tbcserver.vo.ProjectVO">
+		SELECT	id,
+				creatorId,
+				longTitle,
+				shortTitle,
+				mainImg,
+				content,
+				category,
+				url,
+				tags,
+				fundingGoalAmount,
+				fundingStart,
+				fundingEnd,
+				rewards,
+				favoriteCount,
+				fundedAmount,
+				sponsorCount,
+				createdDate,
+				updatedDate
+		FROM 	project
+	   ORDER BY id
+	</select>
+
+	<select id="fecthBy" parameterType="Long" resultType="com.team2.tbcserver.vo.ProjectVO">
+		SELECT 	id,
+				creatorId,
+				longTitle,
+				shortTitle,
+				mainImg,
+				content,
+				category,
+				url,
+				tags,
+				fundingGoalAmount,
+				fundingStart,
+				fundingEnd,
+				rewards,
+				favoriteCount,
+				fundedAmount,
+				sponsorCount,
+				createdDate,
+				updatedDate
+		FROM 	project
+		WHERE   id = #{id}
+	</select>
+	
+	<insert id="insert" parameterType="com.team2.tbcserver.vo.ProjectVO" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+		INSERT INTO project ( 
+					creatorId,
+					longTitle,
+					shortTitle,
+					mainImg,
+					content,
+					category,
+					url,
+					tags,
+					fundingGoalAmount,
+					fundingStart,
+					fundingEnd,
+					rewards,
+					favoriteCount,
+					fundedAmount,
+					sponsorCount,
+					createdDate,
+					updatedDate )
+		VALUES ( 
+					#{creatorId},
+					#{longTitle},
+					#{shortTitle},
+					#{mainImg},
+					#{content},
+					#{category},
+					#{url},
+					#{tags},
+					#{fundingGoalAmount},
+					#{fundingStart},
+					#{fundingEnd},
+					#{rewards},
+					#{favoriteCount},
+					#{fundedAmount},
+					#{sponsorCount},
+					#{createdDate},
+					#{updatedDate} )
+	</insert>
+	
+	<update id="update" parameterType="com.team2.tbcserver.vo.ProjectVO">
+		UPDATE project
+			SET		
+				longTitle = #{longTitle},
+				shortTitle = #{shortTitle},
+				mainImg = #{mainImg},
+				content = #{content},
+				category = #{category},
+				url = #{url},
+				tags = #{tags},
+				fundingGoalAmount = #{fundingGoalAmount},
+				fundingStart = #{fundingStart},
+				fundingEnd = #{fundingEnd},
+				rewards = #{rewards},
+				favoriteCount = #{favoriteCount},
+				fundedAmount = #{fundedAmount},
+				sponsorCount = #{sponsorCount},
+				updatedDate = #{updatedDate}
+			WHERE id = #{id}
+	</update>
+	
+ 	<delete id="deleteBy" parameterType="Long">
+		DELETE FROM project WHERE id = #{id}
+	</delete>
+	
+</mapper>
