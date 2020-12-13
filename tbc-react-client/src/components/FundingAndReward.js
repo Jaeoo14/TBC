@@ -1,6 +1,6 @@
 import React from 'react';
 
-const FundingAndReward = () => {
+const FundingAndReward = ({pId}) => {
   return (
     <div>
       펀딩와 선물 구성입니다.

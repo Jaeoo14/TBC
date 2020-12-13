@@ -14,8 +14,8 @@ const SelectProjectCategory = ({ title, desc, placeholder }) => {
                 <Form.Group controlId="select-project-category">
                     <Form.Label column='sm' style={{ fontWeight: 'bolder', color: 'black' }}>{title}</Form.Label>
                     <Form.Label column='sm' >{desc}</Form.Label>
-                    <Form.Control as="select" size='sm' style={{ width: '30%' }} custom onChange={e => setCategory(e.target.value)}>
-                        <option value="" selected disabled>{placeholder}</option>
+                    <Form.Control as="select" value="" size='sm' style={{ width: '30%' }} custom onChange={e => setCategory(e.target.value)}>
+                        <option value="" disabled>{placeholder}</option>
                         <option value="dog">Dog</option>
                         <option value="cat">Cat</option>
                         <option value="hamster">Hamster</option>
