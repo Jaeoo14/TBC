@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTDMapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.team2.tbcserver.mapper.FileMapper">
+	<select id="fetch" resultType="com.team2.tbcserver.vo.FileVO">
+		SELECT	id,
+				name,
+				type,
+				data,
+				createdAt,
+				updatedAt
+		FROM 	file
+	   ORDER BY id
+	</select>
+
+	<select id="fetchBy" parameterType="Long" resultType="com.team2.tbcserver.vo.FileVO">
+		SELECT	id,
+				name,
+				type,
+				data,
+				createdAt,
+				updatedAt
+		FROM 	file
+		WHERE   id = #{id}
+	</select>
+	
+	<insert id="insert" parameterType="com.team2.tbcserver.vo.FileVO" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+		INSERT INTO file ( 
+				name,
+				type,
+				data,
+				createdAt,
+				updatedAt
+		)
+		VALUES ( 
+				#{name},
+				#{type},
+				#{data},
+				#{createdAt},
+				#{updatedAt} 
+		)
+	</insert>
+	
+	<update id="update" parameterType="com.team2.tbcserver.vo.ProjectVO">
+		UPDATE file
+			SET		
+				name= #{name},
+				type= #{type},
+				data= #{data},
+				createdAt= #{createdAt},
+				updatedAt= #{updatedAt}
+			WHERE id = #{id}
+	</update>
+	
+ 	<delete id="deleteBy" parameterType="Long">
+		DELETE FROM file WHERE id = #{id}
+	</delete>
+	
+</mapper>
