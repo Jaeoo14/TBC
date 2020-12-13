@@ -35,7 +35,7 @@ export default class UploadProjectImage extends Component {
 						<Form.Label column='sm' style={{ fontWeight: 'bolder', color: 'black' }}>
 							프로젝트 대표 이미지
 						</Form.Label>
-						<Form.File id='project-image' label='' onChange={this.selectFile} formEncType='multipart/form-data' />
+						<Form.File id='project-image' label='' onChange={this.selectFile} />
 					</Form.Group>
 				</Row>
 				<Row style={{ justifyContent: 'flex-end' }}>
