@@ -3,18 +3,18 @@ import React, { Component } from 'react';
 // import { Button, Col, Container, ListGroup, Row } from 'react-bootstrap';
 import { Container, ListGroup } from 'react-bootstrap';
 
-// import CheckIcon from '@material-ui/icons/Check';
-// import CloseIcon from '@material-ui/icons/Close';
-
+import InputProjectTitle from './InputProjectTitle';
+import UploadProjectImage from './UploadProjectImage';
 // import CustomInput from './CustomInput';
 // import CustomTextArea from './CustomTextArea';
-import InputProjectTitle from './InputProjectTitle';
 // import SelectProjectCategory from './SelectProjectCategory';
 // import InputTags from './InputTags';
 // import SetProjectURL from './SetProjectURL';
-// import UploadProjectImage from './UploadProjectImage';
 // import CustomFile from './CustomFile';
 // import InputCreatorName from './InputCreatorName';
+
+// import CheckIcon from '@material-ui/icons/Check';
+// import CloseIcon from '@material-ui/icons/Close';
 
 import Pas from '../ProjectApiService';
 
@@ -89,10 +89,10 @@ class ProjectDescription extends Component {
 					<ListGroup.Item as='div' action variant='light'>
 						<InputProjectTitle longTitle={longTitle} shortTitle={shortTitle} handleSave={this.handleUpdateTitles} />
 					</ListGroup.Item>
-					{/* <ListGroup.Item as='div' action variant='light'>
+					<ListGroup.Item as='div' action variant='light'>
 						<UploadProjectImage />
 					</ListGroup.Item>
-					<ListGroup.Item as='div' action variant='light'>
+					{/* <ListGroup.Item as='div' action variant='light'>
 						<CustomTextArea
 							title='프로젝트 요약'
 							desc='후원자 분들에게 본 프로젝트를 간략하게 소개해 봅시다'
