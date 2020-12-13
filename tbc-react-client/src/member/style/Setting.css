@@ -41,7 +41,7 @@ button {
   padding: 0px;
   cursor: pointer;
   color: rgb(39, 163, 255);
-  font-weight: bolder;
+  font-weight: normal;
   text-decoration: none;
   outline: 0;
 }
