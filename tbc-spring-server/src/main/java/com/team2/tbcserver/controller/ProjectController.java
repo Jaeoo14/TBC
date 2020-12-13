@@ -25,15 +25,15 @@ public class ProjectController {
 	ProjectMapper mapper;
 
 	@GetMapping
-	public List<ProjectVO> fecth() {
+	public List<ProjectVO> fetch() {
 		System.out.println(mapper.fetch());
 		return mapper.fetch();
 	}
 	
 	@GetMapping("/{id}")
 	public ProjectVO fetchBy(@PathVariable Long id) {
-		System.out.println(id + " : " + mapper.fecthBy(id));
-		return mapper.fecthBy(id);
+		System.out.println(id + " : " + mapper.fetchBy(id));
+		return mapper.fetchBy(id);
 	}
 	
 	@PostMapping
