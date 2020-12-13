@@ -1,0 +1,33 @@
+input {
+  margin-top: 10px;
+  margin: 5px;
+  font-size: x-small;
+}
+input:focus {
+  animation-name: border-focus;
+  outline-color: red;
+}
+input::placeholder {
+  font-size: x-small;
+  color: #9b9b9b;
+}
+input::text {
+  font-size: x-small;
+}
+.div1 {
+  margin-bottom: 15px;
+}
+.text1 {
+  color: #9b9b9b;
+}
+.text2 {
+  padding: 0.5rem;
+  text-align: center;
+}
+.text3 {
+  padding: 0.8em;
+  text-align: center;
+}
+.a1 {
+  color: red;
+}

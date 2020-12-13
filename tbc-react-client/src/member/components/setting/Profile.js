@@ -2,7 +2,7 @@ import { Component } from "react";
 import Grid from "@material-ui/core/Grid";
 import "../../style/Setting.css";
 import Paper from "@material-ui/core/Paper";
-import { Avatar, Button } from "@material-ui/core";
+import { Avatar } from "@material-ui/core";
 
 class Profile extends Component {
   render() {

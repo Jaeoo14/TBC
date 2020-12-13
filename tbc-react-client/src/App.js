@@ -7,12 +7,11 @@ import Routers from "./Routers";
 function App() {
   return (
     <div className="App">
-      <Container maxWidth="xl" fixed>
-        <Header2 />
-        {/* 라우터 만들었는데 제대로 했는 지는 모르겠네요 */}
-        {/* 헤더 푸터는 라우터 밖에 빼고 나머지는 라우터에서 거는걸로..? */}
-        <Routers />
-      </Container>
+      <Header2 />
+      <hr />
+      {/* 라우터 만들었는데 제대로 했는 지는 모르겠네요 */}
+      {/* 헤더 푸터는 라우터 밖에 빼고 나머지는 라우터에서 거는걸로..? */}
+      <Routers />
       <hr />
     </div>
   );

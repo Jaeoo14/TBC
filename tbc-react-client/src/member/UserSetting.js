@@ -1,9 +1,8 @@
 import { Component } from "react";
 import Tabbar from "./components/Tabbar";
-import "./style/UserSetting.css";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
-
+import "./style/UserSetting.css";
 {
   /* member에서 데이터 불러와야 함 */
 }
