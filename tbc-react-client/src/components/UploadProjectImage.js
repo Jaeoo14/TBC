@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { Form, Button, Container, Row } from 'react-bootstrap';
 import CheckIcon from '@material-ui/icons/Check';
-// import CloseIcon from '@material-ui/icons/Close';
+import CloseIcon from '@material-ui/icons/Close';
 
 import Pas from '../ProjectApiService';
 
@@ -12,23 +12,42 @@ export default class UploadProjectImage extends Component {
 		info: undefined,
 	};
 
-	componentDidMount() {}
+	componentDidMount() {
+		console.log('UploadProjectImage.componentDidMount', this.props.mainImg);
+		if (typeof this.props.mainImg === 'undefined') return;
+		Pas.getFile(this.props.mainImg)
+			.then(res => this.setState({ info: res.data }, () => console.log('UploadProjectImage', this.state)))
+			.catch(err => console.log(err));
+	}
 
-	componentDidUpdate(prevProps, prevState) {}
+	componentDidUpdate(prevProps, prevState) {
+		if (prevProps.mainImg === this.props.mainImg) return;
+
+		Pas.getFile(this.props.mainImg)
+			.then(res => this.setState({ info: res.data }, () => console.log('UploadProjectImage', this.state)))
+			.catch(err => console.log(err));
+	}
 
 	selectFile = e => {
 		this.setState({ file: e.target.files[0] }, () => console.log(this.state));
 	};
 
 	uploadFile = () => {
-		Pas.upload(this.state.file)
-			.then(res => Pas.getFile(res.data))
-			.then(res => this.setState({ info: res.data }, ()=>console.log('UploadProjectImage', this.state)))
-			.catch(err => console.log(err));
+		if (typeof this.state.info !== 'undefined') {
+			Pas.updateFile(this.state.file, this.state.info.id)
+				.then(res => Pas.getFile(this.state.info.id))
+				.then(res => this.setState({ info: res.data }, () => console.log('UploadProjectImage', this.state)))
+				.catch(err => console.log(err));
+		} else {
+			Pas.upload(this.state.file)
+				.then(res => Pas.getFile(res.data))
+				.then(res => this.setState({ info: res.data }, () => console.log('UploadProjectImage', this.state)))
+				.catch(err => console.log(err));
+		}
 	};
 
 	render() {
-		const imgSrc = (typeof this.state.info !== 'undefined') ? `data:image/png;base64,${this.state.info.data}`: '';
+		const imgSrc = typeof this.state.info !== 'undefined' ? `data:image/png;base64,${this.state.info.data}` : '';
 		return (
 			<Container>
 				<Row>
@@ -37,13 +56,18 @@ export default class UploadProjectImage extends Component {
 							프로젝트 대표 이미지
 						</Form.Label>
 						<Form.File id='project-image' label='' onChange={this.selectFile} />
-						<div>
-						<img src={imgSrc} alt='' width="50%" />
-						</div>
+						<p>
+							현재 이미지 {this.state.info && this.state.info.id}:{this.state.info && this.state.info.name}
+						</p>
+						<img src={imgSrc} alt='' width='100px' />
 					</Form.Group>
 				</Row>
 				<Row style={{ justifyContent: 'flex-end' }}>
-					<Button variant='primary' size='sm' onClick={this.uploadFile}>
+					<Button variant='secondary' size='sm'>
+						<CloseIcon />
+						취소하기
+					</Button>
+					<Button variant='primary' size='sm' onClick={this.uploadFile} disabled={typeof this.state.file === 'undefined'}>
 						<CheckIcon />
 						저장하기
 					</Button>
