@@ -13,6 +13,7 @@ class Discover extends Component {
 
     componentDidMount() {
         window.$ = window.jQuery = jquery;
+        this.viewProjectList();
     }
 
     
@@ -21,7 +22,19 @@ class Discover extends Component {
         super(props);
         
         this.state = {
+            lists : [],
         };
+    }
+
+    viewProjectList = () => {
+
+        ProjectApiService.projectList()
+        .then(res=>{
+            this.setState({ lists : res.data });
+        })
+        .catch(err => {
+            console.error('Discover.js의 viewProjectList() 에러!', err);
+        })
     }
 
 
@@ -172,6 +185,9 @@ class Discover extends Component {
 
 {/* 프로젝트 구성 페이지 */}
     <div class="row">
+       
+        {this.state.lists.map(list => 
+            
         <div class="col-md-6 col-lg-4 g-mb-30">
             <div style={{float:"right"}}>
                 <FavoriteIcon color="secondary"/>
@@ -179,7 +195,7 @@ class Discover extends Component {
 
             <img 
                 class="d-inline-block img-fluid mb-4" 
-                src="http://ipsumimage.appspot.com/620x465" 
+                src={this.mainImg}
                 alt="Image Description"
                 />
             <Box
@@ -187,100 +203,29 @@ class Discover extends Component {
                 align="left"
                 fontWeight="fontWeightBold"
                 onClick={"/*프로젝트 올리기 페이지 입력*/"}>
-                텀블벅 프로젝트 제목은 대체로 기다란 편</Box>
+                {this.longTitle} </Box>
             <Typography
                 variant="body2"
                 color="textSecondary"
                 align="left">
-                카테고리 | 창작자 </Typography>
+                {this.category} | {this.creatorId} </Typography>
             <Typography
                 variant="body1"
                 align="left"
                 onClick={"/*프로젝트 올리기 페이지 입력*/"}>
-                텀블벅 프로젝트 설명입니다.텀블벅 프로젝트 설명입니다.텀블벅 프로젝트 설명입니다. </Typography>
+                {this.content} </Typography>
             <Box
                 fontSize={18}
                 align="left"> 
-                nn,nnn,nnn원 
+                {this.fundedAmount}원
             <span style={{color:"#ff4646", fontSize:15}}> nnn%</span>
             <span style={{color:"#bbbbbb", fontSize:15, float:"right"}}> 
                 <ScheduleIcon color="disabled" /> nn일 남음 </span>
                 </Box>
         </div>
-
-        <div class="col-md-6 col-lg-4 g-mb-30">
-            <div style={{float:"right"}}>
-                    <FavoriteIcon color="secondary"/>
-                </div>
-            <img class="d-inline-block img-fluid mb-4" src="http://ipsumimage.appspot.com/620x465" alt="Image Description" />
-            <Box
-                fontSize="h5.fontSize"
-                align="left"
-                fontWeight="fontWeightBold"
-                onClick={"/*프로젝트 올리기 페이지 입력*/"}>
-                텀블벅 프로젝트 제목은 대체로 기다란 편</Box>
-            <Typography
-                variant="body2"
-                color="textSecondary"
-                align="left">
-                카테고리 | 창작자 </Typography>
-            <Typography
-                variant="body1"
-                align="left"
-                onClick={"/*프로젝트 올리기 페이지 입력*/"}>
-                텀블벅 프로젝트 설명입니다.텀블벅 프로젝트 설명입니다.텀블벅 프로젝트 설명입니다. </Typography>
-            <Box
-                fontSize={18}
-                align="left"> 
-                nn,nnn,nnn원 
-            <span style={{color:"#ff4646", fontSize:15}}> nnn%</span>
-            <span style={{color:"#bbbbbb", fontSize:15, float:"right"}}> 
-                <ScheduleIcon color="disabled" /> nn일 남음 </span>
-                </Box>
-        </div>
-
-        <div class="col-md-6 col-lg-4 g-mb-30">
-            <div style={{float:"right"}}>
-                    <FavoriteIcon color="secondary"/>
-            </div>
-            <img 
-                class="d-inline-block img-fluid mb-4" 
-                src="http://ipsumimage.appspot.com/620x465" 
-                alt="Image Description" />
-                
-            <Box
-                fontSize="h5.fontSize"
-                align="left"
-                fontWeight="fontWeightBold"
-                onClick={"/*프로젝트 올리기 페이지 입력*/"}>
-                텀블벅 프로젝트 제목은 대체로 기다란 편</Box>
-            <Typography
-                variant="body2"
-                color="textSecondary"
-                align="left">
-                카테고리 | 창작자 </Typography>
-            <Typography
-                variant="body1"
-                align="left"
-                onClick={"/*프로젝트 올리기 페이지 입력*/"}>
-                텀블벅 프로젝트 설명입니다.텀블벅 프로젝트 설명입니다.텀블벅 프로젝트 설명입니다. </Typography>
-            <Box
-                fontSize={18}
-                align="left"> 
-                nn,nnn,nnn원 
-            <span style={{color:"#ff4646", fontSize:15}}> nnn%</span>
-            <span style={{color:"#bbbbbb", fontSize:15, float:"right"}}> 
-                <ScheduleIcon color="disabled" /> nn일 남음 </span>
-                </Box>
-        </div>
-        
-       
-        
-
-
-
-
-
+)}
+{/* this.state.lists.map괄호 */}
+ 
     </div>
   </div>
 </div>

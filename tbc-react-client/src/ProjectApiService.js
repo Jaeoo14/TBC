@@ -7,6 +7,7 @@ import { Component } from 'react';
 
 // spring boot back-end url.
 const URL = 'http://localhost:8090/project'; // https는 따로 알아보자.
+const URL2 = 'http://localhost:8090/Discover'; // https는 따로 알아보자.
 
 class ProjectApiService extends Component {
 	// http://localhost:8090/project
@@ -67,6 +68,12 @@ class ProjectApiService extends Component {
 
 	getCategory(id) {
 		console.log('getCategory.id=', id);
+	}
+
+
+	//여기서부터 Discover에서 쓰는 것들//
+	projectList() {
+		return Axios.get(URL2);
 	}
 }
 
