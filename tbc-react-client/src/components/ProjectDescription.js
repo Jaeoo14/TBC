@@ -5,8 +5,8 @@ import { Container, ListGroup } from 'react-bootstrap';
 
 import InputProjectTitle from './InputProjectTitle';
 import UploadProjectImage from './UploadProjectImage';
+import CustomTextArea from './CustomTextArea';
 // import CustomInput from './CustomInput';
-// import CustomTextArea from './CustomTextArea';
 // import SelectProjectCategory from './SelectProjectCategory';
 // import InputTags from './InputTags';
 // import SetProjectURL from './SetProjectURL';
@@ -66,11 +66,25 @@ class ProjectDescription extends Component {
 		this.setState({project:temp}, ()=>this.updateTitles());
 	}
 
+	handleUpdateContent = (text)=>{
+		let temp = {...this.state.project};
+		temp.content = text;
+		this.setState({project:temp}, ()=>this.updateContent());
+	}
+
 	updateTitles = ()=>{
 		Pas.update(this.state.project)
 		.then(res=>{
 			console.log('Update project title to DB.', res.data);
 			this.props.showTitle(this.state.project.longTitle);
+		})
+		.catch(err=>console.log(err));
+	}
+
+	updateContent = ()=>{
+		Pas.update(this.state.project)
+		.then(res=>{
+			console.log('Update project content to DB.', res.data);
 		})
 		.catch(err=>console.log(err));
 	}
@@ -92,15 +106,17 @@ class ProjectDescription extends Component {
 					<ListGroup.Item as='div' action variant='light'>
 						<UploadProjectImage mainImg={this.state.project.mainImg} />
 					</ListGroup.Item>
-					{/* <ListGroup.Item as='div' action variant='light'>
+					<ListGroup.Item as='div' action variant='light'>
 						<CustomTextArea
 							title='프로젝트 요약'
 							desc='후원자 분들에게 본 프로젝트를 간략하게 소개해 봅시다'
 							placeholder='프로젝트 요약을 입력해주세요'
 							minlen='10'
-							maxlen='50' />
+							maxlen='50'
+							value={this.state.project.content} 
+							handleText={this.handleUpdateContent}/>
 					</ListGroup.Item>
-					<ListGroup.Item as='div' action variant='light'>
+					{/* <ListGroup.Item as='div' action variant='light'>
 						<SelectProjectCategory
 							title='프로젝트 카테고리'
 							desc='프로젝트의 성격에 맞는 카테고리를 선택해 주세요.
