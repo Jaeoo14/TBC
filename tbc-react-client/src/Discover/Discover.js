@@ -6,6 +6,7 @@ import { Box, Button, Typography } from '@material-ui/core';
 import CachedIcon from '@material-ui/icons/Cached';
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import ProjectApiService from '../ProjectApiService';
 
 
 
@@ -195,7 +196,7 @@ class Discover extends Component {
 
             <img 
                 class="d-inline-block img-fluid mb-4" 
-                src={this.mainImg}
+                src={list.mainImg}
                 alt="Image Description"
                 />
             <Box
@@ -203,21 +204,21 @@ class Discover extends Component {
                 align="left"
                 fontWeight="fontWeightBold"
                 onClick={"/*프로젝트 올리기 페이지 입력*/"}>
-                {this.longTitle} </Box>
+                {list.longTitle} </Box>
             <Typography
                 variant="body2"
                 color="textSecondary"
                 align="left">
-                {this.category} | {this.creatorId} </Typography>
+                {list.category} | {list.creatorId} </Typography>
             <Typography
                 variant="body1"
                 align="left"
                 onClick={"/*프로젝트 올리기 페이지 입력*/"}>
-                {this.content} </Typography>
+                {list.content} </Typography>
             <Box
                 fontSize={18}
                 align="left"> 
-                {this.fundedAmount}원
+                {list.fundedAmount}원
             <span style={{color:"#ff4646", fontSize:15}}> nnn%</span>
             <span style={{color:"#bbbbbb", fontSize:15, float:"right"}}> 
                 <ScheduleIcon color="disabled" /> nn일 남음 </span>
