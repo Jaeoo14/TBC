@@ -41,13 +41,12 @@
 		)
 	</insert>
 	
-	<update id="update" parameterType="com.team2.tbcserver.vo.ProjectVO">
+	<update id="update" parameterType="com.team2.tbcserver.vo.FileVO">
 		UPDATE file
 			SET		
 				name= #{name},
 				type= #{type},
 				data= #{data},
-				createdAt= #{createdAt},
 				updatedAt= #{updatedAt}
 			WHERE id = #{id}
 	</update>
