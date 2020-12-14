@@ -57,7 +57,7 @@ class SelectProjectCategory extends Component {
 								{placeholder}
 							</option>
 							{this.state.categories.map(category => (
-								<option value={category.id}>{category.text}</option>
+								<option key={category.id} value={category.id}>{category.text}</option>
 							))}
 						</Form.Control>
 					</Form.Group>
