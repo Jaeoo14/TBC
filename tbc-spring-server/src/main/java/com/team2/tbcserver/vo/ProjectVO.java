@@ -10,7 +10,7 @@ public class ProjectVO {
 	private Long creatorId;
 	private String longTitle;
 	private String shortTitle;
-	private byte[] mainImg;
+	private Long mainImg;
 	private String content;
 	private Long category;
 	private String url;

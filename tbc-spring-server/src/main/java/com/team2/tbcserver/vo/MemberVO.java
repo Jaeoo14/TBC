@@ -13,7 +13,7 @@ public class MemberVO {
 	private String nickname;
 	private LocalDateTime signUpDate;
 	private String intro;
-	private byte[] profileImg;
+	private Long profileImg;
 	private String tel;
 	private String address;
 	private String myProjects; // 내가 만든 프로젝트 목록
