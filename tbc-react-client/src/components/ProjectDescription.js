@@ -76,7 +76,7 @@ class ProjectDescription extends Component {
 	}
 
 	render() {
-		// console.log('ProjectDescription.render project=', this.state.project);
+		console.log('ProjectDescription.render project=', this.state.project);
 		const {longTitle, shortTitle} = this.state.project;
 		// const longTitle = this.state.project.longTitle;
 		// const shortTitle = this.state.project.shortTitle;
@@ -90,7 +90,7 @@ class ProjectDescription extends Component {
 						<InputProjectTitle longTitle={longTitle} shortTitle={shortTitle} handleSave={this.handleUpdateTitles} />
 					</ListGroup.Item>
 					<ListGroup.Item as='div' action variant='light'>
-						<UploadProjectImage />
+						<UploadProjectImage mainImg={this.state.project.mainImg} />
 					</ListGroup.Item>
 					{/* <ListGroup.Item as='div' action variant='light'>
 						<CustomTextArea
