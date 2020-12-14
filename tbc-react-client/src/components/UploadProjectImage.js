@@ -53,8 +53,9 @@ export default class UploadProjectImage extends Component {
 				<Row>
 					<Form.Group>
 						<Form.Label column='sm' style={{ fontWeight: 'bolder', color: 'black' }}>
-							프로젝트 대표 이미지
+							{this.props.title}
 						</Form.Label>
+						<Form.Text className='text-muted'>{this.props.desc}</Form.Text>
 						<Form.File id='project-image' label='' onChange={this.selectFile} />
 						<p>
 							현재 이미지 {this.state.info && this.state.info.id}:{this.state.info && this.state.info.name}
