@@ -34,7 +34,7 @@ class CustomInput extends Component {
 	};
 
 	render() {
-		const { title, desc, placeholder, minlen, width, header } = this.props;
+		const { title, desc, placeholder, minlen, maxlen, width, header } = this.props;
 
 		return (
 			<Form.Group>
@@ -68,9 +68,10 @@ class CustomInput extends Component {
 						value={this.state.text}
 					/>
 				)}
+				{minlen && maxlen && 
 				<Form.Text className='text-muted'>
 					{minlen !== '' && this.state.text.length < minlen && `최소${minlen} / `} {this.state.remain}자 남았습니다.
-				</Form.Text>
+				</Form.Text>}
 			</Form.Group>
 		);
 	}
