@@ -126,10 +126,10 @@ class ProjectDescription extends Component {
 						/>
 					</ListGroup.Item>
 					<ListGroup.Item  as='div' action variant='light'>
-						<SetProjectURL value={this.state.project.url} minlen='3' maxlen='28' handleProject={this.handleProject}/>
+						<SetProjectURL value={this.state.project.url} minlen='3' maxlen='28' handleProject={this.handleProject} />
 					</ListGroup.Item>
 					<ListGroup.Item  as='div' action variant='light'>
-						<InputTags />
+						<InputTags  value={this.state.project.tags} minlen='2' maxlen='125' handleProject={this.handleProject} />
 					</ListGroup.Item>
 				</ListGroup>
 				{/* <p></p>
