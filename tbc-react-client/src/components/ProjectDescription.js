@@ -7,10 +7,10 @@ import InputProjectTitle from './InputProjectTitle';
 import UploadProjectImage from './UploadProjectImage';
 import CustomTextArea from './CustomTextArea';
 import SelectProjectCategory from './SelectProjectCategory';
+import SetProjectURL from './SetProjectURL';
+import InputTags from './InputTags';
 
 // import CustomInput from './CustomInput';
-// import InputTags from './InputTags';
-// import SetProjectURL from './SetProjectURL';
 // import CustomFile from './CustomFile';
 // import InputCreatorName from './InputCreatorName';
 
@@ -59,23 +59,16 @@ class ProjectDescription extends Component {
 		console.log(text);
 	}
 
-	handleUpdateTitles = (longTitle, shortTitle) => {
-		// console.log('ProjectDescription.updateTitles', longTitle, shortTitle, this.state.project);
+	handleTitles = (longTitle, shortTitle) => {
 		let temp = {...this.state.project};
 		temp.longTitle = longTitle;
 		temp.shortTitle = shortTitle;
 		this.setState({project:temp}, ()=>this.updateTitles());
 	}
 
-	handleUpdateContent = (text)=>{
+	handleProject = (column, value) => {
 		let temp = {...this.state.project};
-		temp.content = text;
-		this.setState({project:temp}, ()=>this.updateProject());
-	}
-
-	handleCategory = (category) => {
-		let temp = {...this.state.project};
-		temp.category = category;
+		temp[column] = value;
 		this.setState({project:temp}, ()=>this.updateProject());
 	}
 
@@ -99,8 +92,6 @@ class ProjectDescription extends Component {
 	render() {
 		console.log('ProjectDescription.render project=', this.state.project);
 		const {longTitle, shortTitle} = this.state.project;
-		// const longTitle = this.state.project.longTitle;
-		// const shortTitle = this.state.project.shortTitle;
 		console.log('long, short', longTitle, shortTitle);
 
 		return (
@@ -108,7 +99,7 @@ class ProjectDescription extends Component {
 				<p></p>
 				<ListGroup>
 					<ListGroup.Item as='div' action variant='light'>
-						<InputProjectTitle longTitle={longTitle} shortTitle={shortTitle} handleSave={this.handleUpdateTitles} />
+						<InputProjectTitle longTitle={longTitle} shortTitle={shortTitle} handleTitles={this.handleTitles} />
 					</ListGroup.Item>
 					<ListGroup.Item as='div' action variant='light'>
 						<UploadProjectImage mainImg={this.state.project.mainImg} />
@@ -121,7 +112,9 @@ class ProjectDescription extends Component {
 							minlen='10'
 							maxlen='100'
 							value={this.state.project.content} 
-							handleText={this.handleUpdateContent}/>
+							handleProject={this.handleProject}
+							columnName='content'
+							/>
 					</ListGroup.Item>
 					<ListGroup.Item as='div' action variant='light'>
 						<SelectProjectCategory
@@ -129,17 +122,17 @@ class ProjectDescription extends Component {
 							desc='프로젝트의 성격에 맞는 카테고리를 선택해 주세요. (프로젝트 성격과 맞지 않는 카테고리를 선택하실 시 후원자가 해당 프로젝트를 찾기 어려워지기에 에디터에 의해 조정될 수 있습니다.)'
 							placeholder='프로젝트 카테고리를 정해주세요.'
 							value = {this.state.project.category}
-							handleChange={this.handleCategory}
+							handleProject={this.handleProject}
 						/>
 					</ListGroup.Item>
-					{/* <ListGroup.Item  as='div' action variant='light'>
-						<SetProjectURL />
+					<ListGroup.Item  as='div' action variant='light'>
+						<SetProjectURL value={this.state.project.url} minlen='3' maxlen='28' handleProject={this.handleProject}/>
 					</ListGroup.Item>
 					<ListGroup.Item  as='div' action variant='light'>
 						<InputTags />
 					</ListGroup.Item>
 				</ListGroup>
-				<p></p>
+				{/* <p></p>
 				창작자 정보
 				<ListGroup>
 					<ListGroup.Item  as='div' action variant='light'>
@@ -158,7 +151,9 @@ class ProjectDescription extends Component {
 							desc='창작자님의 이력과 간단한 소개를 써 주세요.'
 							placeholder='창작자 소개를 입력해주세요.'
 							minlen='10'
-							maxlen='300' />
+							maxlen='300'
+							columnName='intro'
+							 />
 					</ListGroup.Item>
 					<ListGroup.Item  as='div' action variant='light'>
 						<Container>
@@ -186,8 +181,8 @@ class ProjectDescription extends Component {
 								</Button>
 							</Row>
 						</Container>
-					</ListGroup.Item> */}
-				</ListGroup>
+					</ListGroup.Item>
+				</ListGroup> */}
 			</Container>
 		);
 	}
