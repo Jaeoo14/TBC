@@ -51,7 +51,7 @@ class CustomInput extends Component {
 						</InputGroup.Prepend>
 						<Form.Control
 							style={{ width: width }}
-							type='text'
+							type={this.props.type}
 							placeholder={placeholder}
 							size='sm'
 							onChange={this.handleChange}
@@ -61,7 +61,7 @@ class CustomInput extends Component {
 				) : (
 					<Form.Control
 						style={{ width: width }}
-						type='text'
+						type={this.props.type}
 						placeholder={placeholder}
 						size='sm'
 						onChange={this.handleChange}
@@ -79,6 +79,7 @@ class CustomInput extends Component {
 
 CustomInput.defaultProps = {
 	value: '',
+	type:'text',
 };
 
 export default CustomInput;
