@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTDMapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.team2.tbcserver.mapper.RewardMapper">
+	<select id="fetch" resultType="com.team2.tbcserver.vo.RewardVO">
+		SELECT 	id,
+			    minFundAmount,
+			    items,
+			    description,
+			    orderNo,
+			    deliveryDate,
+			    isLimited,
+			    quantity,
+			    stock
+		FROM 	reward
+	   ORDER BY id
+	</select>
+
+	<select id="fetchBy" parameterType="Long" resultType="com.team2.tbcserver.vo.RewardVO">
+		SELECT 	id,
+			    minFundAmount,
+			    items,
+			    description,
+			    orderNo,
+			    deliveryDate,
+			    isLimited,
+			    quantity,
+			    stock
+		FROM 	reward
+		WHERE   id = #{id}
+	</select>
+	
+	<insert id="insert" parameterType="com.team2.tbcserver.vo.RewardVO" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+		INSERT INTO reward (
+				minFundAmount,
+				items,
+				description,
+				orderNo,
+				deliveryDate,
+				isLimited,
+				quantity,
+				stock
+			)
+			VALUES (
+				#{minFundAmount},
+				#{items},
+				#{description},
+				#{orderNo},
+				#{deliveryDate},
+				#{isLimited},
+				#{quantity},
+				#{stock}
+			)
+	</insert>
+	
+	<update id="update" parameterType="com.team2.tbcserver.vo.RewardVO">
+		UPDATE 	reward
+		SET		minFundAmount = #{minFundAmount},
+				items = #{items},
+				description = #{description},
+				orderNo = #{orderNo},
+				deliveryDate = #{deliveryDate},
+				isLimited = #{isLimited},
+				quantity = #{quantity},
+				stock = #{stock}
+		WHERE 	id = #{id}
+	</update>
+	
+ 	<delete id="deleteBy" parameterType="Long">
+		DELETE FROM reward WHERE id = #{id}
+	</delete>
+	
+</mapper>
