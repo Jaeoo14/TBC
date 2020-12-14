@@ -39,7 +39,7 @@ class SelectProjectCategory extends Component {
 	};
 
 	handleSave = () => {
-		this.props.handleChange(this.state.selected);
+		this.props.handleProject('category', this.state.selected);
 	};
 
 	render() {
