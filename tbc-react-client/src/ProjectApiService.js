@@ -10,6 +10,10 @@ const URL = 'http://localhost:8090/project'; // https는 따로 알아보자.
 const URL2 = 'http://localhost:8090/Discover'; // https는 따로 알아보자.
 
 class ProjectApiService extends Component {
+
+	/////////////////////////////////////////
+	// Project table
+
 	// http://localhost:8090/project
 	// 전체 프로젝트들 가져오기
 	fetch() {
@@ -37,6 +41,9 @@ class ProjectApiService extends Component {
 		return Axios.delete(URL + '/' + id);
 	}
 
+	/////////////////////////////////////////
+	// File table
+
 	// upload project image file.
 	upload(file) {
 		console.log('upload...', file);
@@ -62,15 +69,19 @@ class ProjectApiService extends Component {
 		});
 	}
 
+	/////////////////////////////////////////
+	// Category table
 	getCategories() {
 		console.log('getCategories...');
+		Axios.get(URL + '/category');
 	}
 
 	getCategory(id) {
 		console.log('getCategory.id=', id);
+		Axios.get(URL + '/category/' + id);
 	}
 
-
+	/////////////////////////////////////////
 	//여기서부터 Discover에서 쓰는 것들//
 	projectList() {
 		return Axios.get(URL2);
