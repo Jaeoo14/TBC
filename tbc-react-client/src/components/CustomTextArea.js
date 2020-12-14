@@ -10,7 +10,6 @@ class CustomTextArea extends Component {
     };
     
 	componentDidMount() {
-		// console.log('CustomInput.componentDidMount', this.props, this.state);
 		this.setState({
 			remain: this.props.maxlen - this.props.value.length,
 			text: this.props.value,
@@ -18,9 +17,6 @@ class CustomTextArea extends Component {
 	}
 
 	componentDidUpdate(prevProps, prevState) {
-		// console.log('CustomInput.componentDidUpdate prev', prevProps, prevState);
-		// console.log('CustomInput.componentDidUpdate now', this.props, this.state);
-
 		if (prevProps.value !== this.props.value)
 			this.setState({
 				remain: this.props.maxlen - this.props.value.length,
@@ -29,8 +25,6 @@ class CustomTextArea extends Component {
 	}
 
 	handleChange = e => {
-		// console.log('CustomInput.handleChange', this.state);
-
 		if (this.props.maxlen - e.target.value.length < 0)
 			return;
 
@@ -38,12 +32,10 @@ class CustomTextArea extends Component {
 			remain: this.props.maxlen - e.target.value.length,
 			text: e.target.value,
 		});
-
-		this.props.handleText(e.target.value);
 	};
 
 	handleSave = () => {
-		alert(this.state.text);
+		this.props.handleProject(this.props.columnName, this.state.text);
 	};
 
 	render() {
