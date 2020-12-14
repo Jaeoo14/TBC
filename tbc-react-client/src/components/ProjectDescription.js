@@ -51,9 +51,7 @@ class ProjectDescription extends Component {
 		}
 	}
 
-	// componentDidUpdate(prevProps, prevState) {
-	// 	console.log('ProjectDescription.componentDidUpdate', prevProps, prevState);
-	// }
+	componentDidUpdate(prevProps, prevState) {}
 
 	handleCreatorRegion(text) {
 		console.log(text);
@@ -66,12 +64,6 @@ class ProjectDescription extends Component {
 		this.setState({ project: temp }, () => this.updateTitles());
 	};
 
-	handleProject = (column, value) => {
-		let temp = { ...this.state.project };
-		temp[column] = value;
-		this.setState({ project: temp }, () => this.updateProject());
-	};
-
 	updateTitles = () => {
 		Pas.update(this.state.project)
 			.then(res => {
@@ -79,6 +71,12 @@ class ProjectDescription extends Component {
 				this.props.showTitle(this.state.project.longTitle);
 			})
 			.catch(err => console.log(err));
+	};
+
+	handleProject = (column, value) => {
+		let temp = { ...this.state.project };
+		temp[column] = value;
+		this.setState({ project: temp }, () => this.updateProject());
 	};
 
 	updateProject = () => {
