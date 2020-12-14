@@ -1,5 +1,5 @@
 import Axios from 'axios';
-import Http from './HttpCommon';
+import FileDB from './HttpCommon';
 import { Component } from 'react';
 
 // front-end : port 3000
@@ -36,31 +36,37 @@ class ProjectApiService extends Component {
 		return Axios.delete(URL + '/' + id);
 	}
 
-  // upload project image file.
+	// upload project image file.
 	upload(file) {
 		console.log('upload...', file);
 		let formData = new FormData();
 		formData.append('file', file);
-		console.log('formData', formData);
-		return Http.post('', formData, {
+		return FileDB.post('', formData, {
 			headers: { 'Content-Type': 'multipart/form-data' },
 		});
 	}
 
-  // download project image file.
+	// download project image file.
 	getFile(fileId) {
 		console.log('getFile...', fileId);
-		return Http.get('/' + fileId);
+		return FileDB.get('/' + fileId);
 	}
 
 	updateFile(file, id) {
 		console.log('update...', file, id);
 		let formData = new FormData();
 		formData.append('file', file);
-		console.log('formData', formData);
-		return Http.put('/'+id, formData, {
+		return FileDB.put('/' + id, formData, {
 			headers: { 'Content-Type': 'multipart/form-data' },
 		});
+	}
+
+	getCategories() {
+		console.log('getCategories...');
+	}
+
+	getCategory(id) {
+		console.log('getCategory.id=', id);
 	}
 }
 
