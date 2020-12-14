@@ -6,8 +6,9 @@ import { Container, ListGroup } from 'react-bootstrap';
 import InputProjectTitle from './InputProjectTitle';
 import UploadProjectImage from './UploadProjectImage';
 import CustomTextArea from './CustomTextArea';
+import SelectProjectCategory from './SelectProjectCategory';
+
 // import CustomInput from './CustomInput';
-// import SelectProjectCategory from './SelectProjectCategory';
 // import InputTags from './InputTags';
 // import SetProjectURL from './SetProjectURL';
 // import CustomFile from './CustomFile';
@@ -112,19 +113,18 @@ class ProjectDescription extends Component {
 							desc='후원자 분들에게 본 프로젝트를 간략하게 소개해 봅시다'
 							placeholder='프로젝트 요약을 입력해주세요'
 							minlen='10'
-							maxlen='50'
+							maxlen='100'
 							value={this.state.project.content} 
 							handleText={this.handleUpdateContent}/>
 					</ListGroup.Item>
-					{/* <ListGroup.Item as='div' action variant='light'>
+					<ListGroup.Item as='div' action variant='light'>
 						<SelectProjectCategory
 							title='프로젝트 카테고리'
-							desc='프로젝트의 성격에 맞는 카테고리를 선택해 주세요.
-							(프로젝트 성격과 맞지 않는 카테고리를 선택하실 시 후원자가 해당 프로젝트를 찾기 어려워지기에 에디터에 의해 조정될 수 있습니다.)'
+							desc='프로젝트의 성격에 맞는 카테고리를 선택해 주세요. (프로젝트 성격과 맞지 않는 카테고리를 선택하실 시 후원자가 해당 프로젝트를 찾기 어려워지기에 에디터에 의해 조정될 수 있습니다.)'
 							placeholder='프로젝트 카테고리를 정해주세요.'
 						/>
 					</ListGroup.Item>
-					<ListGroup.Item  as='div' action variant='light'>
+					{/* <ListGroup.Item  as='div' action variant='light'>
 						<SetProjectURL />
 					</ListGroup.Item>
 					<ListGroup.Item  as='div' action variant='light'>
