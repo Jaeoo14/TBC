@@ -52,6 +52,16 @@ class ProjectApiService extends Component {
 		console.log('getFile...', fileId);
 		return Http.get('/' + fileId);
 	}
+
+	updateFile(file, id) {
+		console.log('update...', file, id);
+		let formData = new FormData();
+		formData.append('file', file);
+		console.log('formData', formData);
+		return Http.put('/'+id, formData, {
+			headers: { 'Content-Type': 'multipart/form-data' },
+		});
+	}
 }
 
 export default new ProjectApiService();
