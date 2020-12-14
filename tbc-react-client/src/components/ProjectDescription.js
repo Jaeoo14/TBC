@@ -70,7 +70,13 @@ class ProjectDescription extends Component {
 	handleUpdateContent = (text)=>{
 		let temp = {...this.state.project};
 		temp.content = text;
-		this.setState({project:temp}, ()=>this.updateContent());
+		this.setState({project:temp}, ()=>this.updateProject());
+	}
+
+	handleCategory = (category) => {
+		let temp = {...this.state.project};
+		temp.category = category;
+		this.setState({project:temp}, ()=>this.updateProject());
 	}
 
 	updateTitles = ()=>{
@@ -82,14 +88,14 @@ class ProjectDescription extends Component {
 		.catch(err=>console.log(err));
 	}
 
-	updateContent = ()=>{
+	updateProject = ()=>{
 		Pas.update(this.state.project)
 		.then(res=>{
 			console.log('Update project content to DB.', res.data);
 		})
 		.catch(err=>console.log(err));
 	}
-
+	
 	render() {
 		console.log('ProjectDescription.render project=', this.state.project);
 		const {longTitle, shortTitle} = this.state.project;
@@ -122,6 +128,8 @@ class ProjectDescription extends Component {
 							title='프로젝트 카테고리'
 							desc='프로젝트의 성격에 맞는 카테고리를 선택해 주세요. (프로젝트 성격과 맞지 않는 카테고리를 선택하실 시 후원자가 해당 프로젝트를 찾기 어려워지기에 에디터에 의해 조정될 수 있습니다.)'
 							placeholder='프로젝트 카테고리를 정해주세요.'
+							value = {this.state.project.category}
+							handleChange={this.handleCategory}
 						/>
 					</ListGroup.Item>
 					{/* <ListGroup.Item  as='div' action variant='light'>
