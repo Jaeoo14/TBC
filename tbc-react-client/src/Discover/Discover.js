@@ -153,9 +153,11 @@ class Discover extends Component {
 
 <div className="wrapper">
 <div className="row">
-<div class="col-md-12" style={{textAlign:"left"}}>
+<div class="col-md-12">
 
+<span className="countProject" style={{float:"left"}}>
     <span style={{color:"#ff4646"}}>nn,nnn</span>개의 프로젝트가 있습니다.
+    </span>    
 
         <select id="filter" name="filter">
             <option value="">인기순 ▼</option>
@@ -164,8 +166,8 @@ class Discover extends Component {
             <option value="">최다 금액순 ▼</option>
             <option value="">마감 임박순 ▼</option>
         </select>
-        
-                        </div>
+   
+      </div>
 </div>
 
 {/* 프로젝트 구성 페이지 */}

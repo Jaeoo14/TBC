@@ -60,6 +60,11 @@ div.button {
     padding-right: 3rem;
 }
 
+span.countProject {
+    font-size: 16px;
+    text-align: left;
+}
+
 
 /* div class=row 사용시 구역안 크기는 그대로 두는 CSS!! */
 div.row {
@@ -75,15 +80,6 @@ img {
     height: 465px;
     object-fit: cover;
   }
-
-  div.projectCount {
-    text-align: left;
-    padding-left: auto;
-    margin-left: 5rem;
-    font-size: 0.94286rem;
-}
-
-
 
 select {
     -moz-appearance: none;

@@ -8,7 +8,7 @@ const Header2 = () => {
     <div className="myStyle">
       <ul>
         <li>
-          <a href="#">
+          <a href="/Discover">
             <MenuIcon /> 프로젝트 둘러보기
           </a>
         </li>
@@ -21,7 +21,7 @@ const Header2 = () => {
           alt="logo"
         />
         <li className="login">
-          <a href="#"> 로그인/회원가입</a>
+          <a href="/login"> 로그인/회원가입</a>
         </li>
         <li className="search">
           <a href="#">
