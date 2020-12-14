@@ -6,6 +6,9 @@ import FundingAndReward from './FundingAndReward';
 
 import './EditProject.css';
 
+// pId : project.id
+// cId : project.creatorId
+
 class EditProject extends Component {
 	state = {
 		projectTitle: '제목미정',
