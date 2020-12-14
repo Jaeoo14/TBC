@@ -35,8 +35,7 @@ class InputProjectTitle extends Component {
 				<h6>프로젝트 제목</h6>
 				<Form.Group>
 					<Form.Text className='text-muted'>
-						프로젝트에 멋진 제목을 붙여주세요. 감정에 호소하는 제목보다는 만드시려는 창작물, 작품명, 혹은 프로젝트의 주제가 드러나게 써주시는 것이
-						좋습니다. 공간이 부족한 곳에 쓰일 7자 이내의 짧은 제목도 정해주세요.
+						프로젝트에 멋진 제목을 붙여주세요. 공간이 부족한 곳에 쓰일 7자 이내의 짧은 제목도 정해주세요.
 					</Form.Text>
 				</Form.Group>
 				<Row>
@@ -46,6 +45,7 @@ class InputProjectTitle extends Component {
 							title='프로젝트 제목'
 							desc=''
 							placeholder='제목을 입력해 주세요.'
+							minlen='0'
 							maxlen='32'
 							handleText={this.handleProjectLongTitle}
 							value={this.state.longTitle}
@@ -57,6 +57,7 @@ class InputProjectTitle extends Component {
 							title='프로젝트 짧은 제목'
 							desc=''
 							placeholder='짧은 제목을 입력해 주세요.'
+							minlen='0'
 							maxlen='7'
 							handleText={this.handleProjectShortTitle}
 							value={this.state.shortTitle}
