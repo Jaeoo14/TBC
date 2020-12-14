@@ -1,12 +1,10 @@
 package com.team2.tbcserver.controller;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,7 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+//import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -77,9 +75,30 @@ public class FileController {
 		return result;
 	}
 
-	@PutMapping("/{id}")
-	public void update(@RequestBody FileVO project, @PathVariable Long id) {
-		mapper.update(project);
+	@PutMapping(value = "/{id}", consumes = { MediaType.ALL_VALUE })
+	public void update(@RequestParam("file") MultipartFile file, @PathVariable Long id) {
+		System.out.println("FileController.update");
+		
+		try {
+			byte[] data = file.getBytes();
+			String contentType = file.getContentType();
+			String fileName = file.getOriginalFilename();
+			
+			FileVO item = new FileVO();
+			item.setId(id);
+			item.setName(fileName);
+			item.setType(contentType);
+			item.setData(data);
+			item.setUpdatedAt(LocalDateTime.now());
+			
+			// SELECT OCTET_LENGTH(data) FROM file WHERE id = 2;
+			mapper.update(item);
+		
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+				
+		//mapper.update(file, id);
 	}
 
 	@DeleteMapping("/{id}")
