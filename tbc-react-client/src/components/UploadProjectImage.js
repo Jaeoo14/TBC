@@ -28,6 +28,7 @@ export default class UploadProjectImage extends Component {
 	};
 
 	render() {
+		const imgSrc = (typeof this.state.info !== 'undefined') ? `data:image/png;base64,${this.state.info.data}`: '';
 		return (
 			<Container>
 				<Row>
@@ -36,6 +37,9 @@ export default class UploadProjectImage extends Component {
 							프로젝트 대표 이미지
 						</Form.Label>
 						<Form.File id='project-image' label='' onChange={this.selectFile} />
+						<div>
+						<img src={imgSrc} alt='' width="50%" />
+						</div>
 					</Form.Group>
 				</Row>
 				<Row style={{ justifyContent: 'flex-end' }}>
