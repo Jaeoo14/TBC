@@ -1,5 +1,6 @@
 package com.team2.tbcserver.controller;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,15 +39,15 @@ public class ProjectController {
 	
 	@PostMapping
 	public Long insert(@RequestBody ProjectVO project) {
-		System.out.println("insert");
-		System.out.println(project);
 		mapper.insert(project);
-		System.out.println(project);
+//		System.out.println("insert: " + project.toString());
 		return project.getId();
 	}
 	
 	@PutMapping("/{id}")
 	public void update(@RequestBody ProjectVO project, @PathVariable Long id) {
+//		System.out.println("update: " + project.toString());
+		project.setUpdatedDate(LocalDateTime.now());
 		mapper.update(project);
 	}
 	
