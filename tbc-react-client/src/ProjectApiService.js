@@ -73,12 +73,12 @@ class ProjectApiService extends Component {
 	// Category table
 	getCategories() {
 		console.log('getCategories...');
-		Axios.get(URL + '/category');
+		return Axios.get(URL + '/category');
 	}
 
 	getCategory(id) {
 		console.log('getCategory.id=', id);
-		Axios.get(URL + '/category/' + id);
+		return Axios.get(URL + '/category/' + id);
 	}
 
 	/////////////////////////////////////////
