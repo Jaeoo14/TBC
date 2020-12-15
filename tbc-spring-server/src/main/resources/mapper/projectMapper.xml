@@ -112,4 +112,20 @@
 		DELETE FROM project WHERE id = #{id}
 	</delete>
 	
+	<select id="fetchColumn" parameterType="String" resultType="HashMap">
+		SELECT
+				id,
+				${columnName}
+		FROM 	project
+	ORDER BY 	id	
+	</select>
+	
+	<select id="fetchColumnBy" resultType="HashMap">
+		SELECT
+				id,
+				${columnName}
+		FROM 	project
+		WHERE   id = #{id}
+	</select>
+	
 </mapper>

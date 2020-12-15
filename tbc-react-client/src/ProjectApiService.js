@@ -43,6 +43,16 @@ class ProjectApiService extends Component {
 		return Axios.delete(URL + '/' + id);
 	}
 
+	// project 테이블에서 columnName 값들을 구한다.
+	getColumn(columnName) {
+		return Axios.get(URL + '/col/' + columnName);
+	}
+
+	// project 테이블에서 columnName 값들을 구한다.
+	getColumnBy(columnName, id) {
+		return Axios.get(URL + '/col/' + columnName + '/'+id);
+	}
+
 	/////////////////////////////////////////
 	// File table
 
@@ -81,6 +91,28 @@ class ProjectApiService extends Component {
 	getCategory(id) {
 		console.log('getCategory.id=', id);
 		return Axios.get(URL + '/category/' + id);
+	}
+
+	/////////////////////////////////////////
+	// Item table
+	getItems() {
+		console.log('getItems...');
+		return Axios.get(URL + '/item');
+	}
+
+	getItem(id) {
+		console.log('getItem.id=', id);
+		return Axios.get(URL + '/item/' + id);
+	}
+
+	/////////////////////////////////////////
+	// test table
+	getData(table) {
+		return Axios.get(URL + '/'+ table);
+	}
+
+	getDataBy(table, id) {
+		return Axios.get(`${URL}/${table}/${id}`);
 	}
 
 	/////////////////////////////////////////
