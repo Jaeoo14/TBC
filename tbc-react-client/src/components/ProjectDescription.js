@@ -114,7 +114,7 @@ class ProjectDescription extends Component {
 							minlen='10'
 							maxlen='100'
 							value={this.state.project.content}
-							handleProject={this.handleProject}
+							handleText={this.handleProject}
 							columnName='content'
 						/>
 					</ListGroup.Item>
