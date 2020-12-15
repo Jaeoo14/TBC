@@ -46,10 +46,11 @@ class CustomTextArea extends Component {
 			<Container>
 				<Row>
 					<Form.Group controlId='project-description'>
+						{title !== '' && 
 						<Form.Label column='sm' style={{ fontWeight: 'bolder', color: 'black' }}>
 							{title}
-						</Form.Label>
-						<Form.Label column='sm'>{desc}</Form.Label>
+						</Form.Label>}
+						{desc !== '' && <Form.Label column='sm'>{desc}</Form.Label>}
 						<Form.Control as='textarea' placeholder={placeholder} cols={200} rows={3} value={text} onChange={this.handleChange} />
 						<Form.Text className='text-muted'>
 							{text.length < minlen && `최소${minlen} / `} {remain}자 남았습니다.
