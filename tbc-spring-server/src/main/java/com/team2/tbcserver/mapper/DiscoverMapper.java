@@ -6,6 +6,8 @@ import com.team2.tbcserver.vo.ProjectVO;
 @Mapper
 public interface DiscoverMapper {
 	List<ProjectVO> projectList();
+	Long remainDate();
+	Long countProject();
 
 
 }

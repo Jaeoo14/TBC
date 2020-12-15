@@ -9,6 +9,8 @@ import { Component } from 'react';
 const URL = 'http://localhost:8090/project'; // https는 따로 알아보자.
 const URL2 = 'http://localhost:8090/Discover'; // https는 따로 알아보자.
 
+const URL3 = 'http://localhost:8090/discover/count'; 
+
 class ProjectApiService extends Component {
 	// http://localhost:8090/project
 	// 전체 프로젝트들 가져오기
@@ -75,6 +77,12 @@ class ProjectApiService extends Component {
 	projectList() {
 		return Axios.get(URL2);
 	}
+
+	countProject() {
+		return Axios.get(URL3);
+	}
+
+
 }
 
 export default new ProjectApiService();

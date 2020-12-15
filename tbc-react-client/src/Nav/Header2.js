@@ -8,7 +8,7 @@ const Header2 = () => {
     <div className="myStyle">
       <ul>
         <li>
-          <a href="/Discover">
+          <a href="/discover">
             <MenuIcon /> 프로젝트 둘러보기
           </a>
         </li>
@@ -24,11 +24,12 @@ const Header2 = () => {
           </a>
         </li>
       
-        <img
+        <a href="/login">
+          {/* 로고에 링크 걸릴지 테스트로 걸어놓았습니다 나중에 메인으로 수정할게요 */}
+          <img
           className="logo"
           src="logo.png"
-          alt="logo"
-        />
+          alt="logo"/></a>
         
       </ul>
     </div>

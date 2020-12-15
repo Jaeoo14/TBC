@@ -16,6 +16,7 @@ import org.springframework.context.annotation.Configuration;
 public class CORSFilter implements Filter {
 
 	@Override
+	
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		System.out.println("CORSFilter, filtering...");

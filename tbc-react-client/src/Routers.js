@@ -17,6 +17,7 @@ class Routers extends React.Component {
           <Route path="/Login" component={Login} exact />
           <Route path="/u" component={UserSetting} />
           <Route path="/EditProject" component={EditProject} />
+          <Route path="/discover" component={Discover} />
           <Route path="/Discover" component={Discover} />
         </Switch>
       </Router>

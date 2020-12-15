@@ -15,6 +15,8 @@ class Discover extends Component {
     componentDidMount() {
         window.$ = window.jQuery = jquery;
         this.viewProjectList();
+        // this.viewRemainDate();
+        this.viewCountProject();
     }
 
     
@@ -24,19 +26,47 @@ class Discover extends Component {
         
         this.state = {
             lists : [],
+            count : 0,
         };
     }
 
+    viewCountProject = () => {
+
+        ProjectApiService.countProject()
+        .then(res => {
+            this.setState({ count : res.data });
+            console.log('viewCountProject의 값', res.data)
+        })
+        .catch(err => {
+            console.error('Discover.js의 viewCountProject() 에러!', err);
+        })
+    }
+
+
+ 
     viewProjectList = () => {
 
         ProjectApiService.projectList()
-        .then(res=>{
+        .then(res => {
             this.setState({ lists : res.data });
+            console.log('projectList 값', res.data)
+
         })
         .catch(err => {
             console.error('Discover.js의 viewProjectList() 에러!', err);
         })
     }
+
+    // viewRemainDate = () => {
+    //     ProjectApiService.remainDate()
+    //     .then(res => {
+    //         this.setState({ date : res.data });
+    //     })
+    //     .catch(err => {
+    //         console.err('Discover.js의 viewRemainDate() 에러!', err);
+    //     })
+    // }
+
 
 
     // handleChange = (newValue: any, actionMeta: any) => {
@@ -54,6 +84,8 @@ class Discover extends Component {
 
 
     render() {
+
+
         return (
              
             <div className="first">
@@ -168,8 +200,8 @@ class Discover extends Component {
 <div className="wrapper">
 <div className="row">
 <div class="col-md-12">
-
 <span className="countProject" style={{float:"left"}}>
+    <span style={{color:"#ff4646"}}>{this.state.count}</span>개의 프로젝트가 있습니다.
     <span style={{color:"#ff4646"}}>nn,nnn</span>개의 프로젝트가 있습니다.
     </span>    
 
@@ -220,8 +252,10 @@ class Discover extends Component {
                 align="left"> 
                 {list.fundedAmount}원
             <span style={{color:"#ff4646", fontSize:15}}> nnn%</span>
+            <span style={{color:"#ff4646", fontSize:15}}> {list.fundingGoalAmount / list.fundedAmount * 100}%</span>
             <span style={{color:"#bbbbbb", fontSize:15, float:"right"}}> 
                 <ScheduleIcon color="disabled" /> nn일 남음 </span>
+                <ScheduleIcon color="disabled" /> NNN일 </span>
                 </Box>
         </div>
 )}

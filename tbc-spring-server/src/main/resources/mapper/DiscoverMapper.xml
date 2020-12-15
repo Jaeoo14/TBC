@@ -26,5 +26,15 @@
 		FROM 	project
 	   ORDER BY fundedAmount
 	</select>
+	
+	<select id="remainDate" parameterType="Long" resultType="Long">
+	SELECT DATEDiff(fundingEnd, now())
+	FROM project
+	</select>
+	
+	<select id="countProject" parameterType="Long" resultType="Long">
+	SELECT COUNT(id)
+	FROM project
+	</select>
 
 </mapper>
