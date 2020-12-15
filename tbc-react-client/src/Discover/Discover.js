@@ -1,13 +1,17 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
-import { Component } from "react";
-import "./Discover.css";
-import jquery from "jquery";
-import { Box, Button, Typography } from "@material-ui/core";
-import CachedIcon from "@material-ui/icons/Cached";
-import ScheduleIcon from "@material-ui/icons/Schedule";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import NotFavoriteIcon from "@material-ui/icons/FavoriteBorderOutlined";
-import ProjectApiService from "../ProjectApiService";
+import {Component} from 'react';
+import './Discover.css'
+import jquery from 'jquery'
+import Moment from 'react-moment'
+import 'moment/locale/ko';
+import { Box, Button, Typography } from '@material-ui/core';
+import CachedIcon from '@material-ui/icons/Cached';
+import ScheduleIcon from '@material-ui/icons/Schedule';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import NotFavoriteIcon from '@material-ui/icons/FavoriteBorderOutlined';
+import ProjectApiService from '../ProjectApiService';
+
+
 
 class Discover extends Component {
   componentDidMount() {
@@ -18,8 +22,41 @@ class Discover extends Component {
     // this.viewProjectId();
   }
 
-  constructor(props) {
-    super(props);
+    componentDidMount() {
+        window.$ = window.jQuery = jquery;
+        this.viewProjectList();
+        this.viewRemainDate();
+        this.viewCountProject();
+        // this.viewProjectId();
+    }
+
+    
+
+    constructor(props) {
+        super(props);
+        
+        this.state = {
+            lists : [],
+            count : Number,
+            id : Number,
+            dates : [],
+            date : '',
+            liked : false,
+        };
+    }
+
+    viewCountProject = () => {
+
+        ProjectApiService.countProject()
+        .then(res => {
+            this.setState({ count : res.data });
+            console.log('viewCountProject의 값', res.data)
+        })
+        .catch(err => {
+            console.error('Discover.js의 viewCountProject() 에러!', err);
+        })
+    }
+
 
     this.state = {
       lists: [],
@@ -30,16 +67,39 @@ class Discover extends Component {
     };
   }
 
-  viewCountProject = () => {
-    ProjectApiService.countProject()
-      .then((res) => {
-        this.setState({ count: res.data });
-        console.log("viewCountProject의 값", res.data);
-      })
-      .catch((err) => {
-        console.error("Discover.js의 viewCountProject() 에러!", err);
-      });
-  };
+        ProjectApiService.projectList()
+        .then(res => {
+            this.setState({ lists : res.data });
+            console.log('projectList 값', res.data)
+        })
+        .catch(err => {
+            console.error('Discover.js의 viewProjectList() 에러!', err);
+        })
+    }
+ 
+    viewRemainDate = () => {
+        ProjectApiService.getColumn('fundingEnd')
+        .then(res => {
+            this.setState({ dates : res.data.map(day=>day.fundingEnd) });
+            
+            var newDate = new Date();
+            console.log('date의값', newDate);
+            newDate = newDate.getFullYear()+"-"+(newDate.getMonth()+1)+"-"+newDate.getDate();
+            console.log('재지정한 date의값', newDate);
+ 
+ 
+            console.log('받아온 fundingEnd값', this.state.dates);
+            console.log('받아온 fundingEnd값의 개별값', this.state.dates[0]);
+
+               
+            
+            // newDate.setDate(newDate.getDate()-this.state.date);
+            // console.log('나오나?', newDate)
+        })
+        .catch(err => {
+            console.error('Discover.js의 viewProjectList() 에러!', err);
+        })
+    }
 
   viewProjectList = () => {
     ProjectApiService.projectList()
@@ -279,29 +339,49 @@ class Discover extends Component {
               <div class="col-md-6 col-lg-4 g-mb-30">
                 <Typography value={list.id}>[{list.id}]</Typography>
 
-                <div
-                  style={{ float: "right" }}
-                  onClick={() => this.toggleLike(list.id)}
-                >
-                  {this.state.liked === false ? (
-                    <NotFavoriteIcon />
-                  ) : (
-                    <FavoriteIcon color="secondary" />
-                  )}
-                </div>
+{/* 프로젝트 구성 페이지 */}
+    <div class="row">
+        {this.state.lists.map(list => 
+            
+        <div class="col-md-6 col-lg-4 g-mb-30">
+            <Typography value={list.id}>[{list.id}]</Typography>
+        
+            <div style={{float:"right"}} onClick={() => this.toggleLike()}>
+                {this.state.liked === false ? <NotFavoriteIcon /> : <FavoriteIcon color="secondary" />} 
+            </div>
 
                 <img
                   class="d-inline-block img-fluid mb-4"
                   src={list.mainImg}
                   alt="Image Description"
                 />
-                <Box
-                  fontSize="h5.fontSize"
-                  align="left"
-                  fontWeight="fontWeightBold"
-                  onClick={"/*프로젝트 올리기 페이지 입력*/"}
-                >
-                  {list.longTitle}{" "}
+            <Box
+                fontSize="h5.fontSize"
+                align="left"
+                fontWeight="fontWeightBold"
+                onClick={"/*프로젝트 올리기 페이지 입력*/"}>
+                {list.longTitle} </Box>
+            <Typography
+                variant="body2"
+                color="textSecondary"
+                align="left">
+                {list.category} | {list.creatorId} </Typography>
+            <Typography
+                variant="body1"
+                align="left"
+                onClick={"/*프로젝트 올리기 페이지 입력*/"}>
+                {list.content} </Typography>
+            <Box
+                fontSize={18}
+                align="left"> 
+                {list.fundedAmount}원
+            <span style={{color:"#ff4646", fontSize:15}}> {list.fundedAmount * 100 / list.fundingGoalAmount}%</span>
+            <span style={{color:"#bbbbbb", fontSize:15, float:"right"}}> 
+                <ScheduleIcon color="disabled" /> 
+                <Moment fromNow ago>
+                    {list.fundingEnd}
+                </Moment>전 
+            </span>
                 </Box>
                 <Typography variant="body2" color="textSecondary" align="left">
                   {list.category} | {list.creatorId}{" "}
