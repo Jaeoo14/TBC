@@ -5,6 +5,8 @@ import { Component } from 'react';
 // front-end : port 3000
 // back-end : port 8090 로 설정.
 
+const ITEM = 'http://localhost:8090/item';
+
 // spring boot back-end url.
 const URL = 'http://localhost:8090/project'; // https는 따로 알아보자.
 const URL2 = 'http://localhost:8090/discover'; // https는 따로 알아보자.
@@ -96,13 +98,23 @@ class ProjectApiService extends Component {
 	/////////////////////////////////////////
 	// Item table
 	getItems() {
-		console.log('getItems...');
-		return Axios.get(URL + '/item');
+		return Axios.get(ITEM);
 	}
 
 	getItem(id) {
-		console.log('getItem.id=', id);
-		return Axios.get(URL + '/item/' + id);
+		return Axios.get(ITEM + '/' + id);
+	}
+
+	postItem(item) {
+		return Axios.post(ITEM, item);
+	}
+
+	putItem(item) {
+		return Axios.put(ITEM + '/' + item.id, item);
+	}
+
+	deleteItem(id) {
+		return Axios.delete(ITEM + '/' + id);
 	}
 
 	/////////////////////////////////////////

@@ -18,7 +18,7 @@ import com.team2.tbcserver.vo.ItemVO;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/project/item")
+@RequestMapping("/item")
 public class ItemController {
 
 	@Autowired
