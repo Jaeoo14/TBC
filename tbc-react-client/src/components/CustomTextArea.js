@@ -31,15 +31,18 @@ class CustomTextArea extends Component {
 		this.setState({
 			remain: this.props.maxlen - e.target.value.length,
 			text: e.target.value,
-		});
+		}, ()=>{ if (this.props.noButtons) this.handleSave(); });
 	};
 
 	handleSave = () => {
-		this.props.handleProject(this.props.columnName, this.state.text);
+		if (this.props.columnName)
+			this.props.handleText(this.props.columnName, this.state.text);
+		else
+			this.props.handleText(this.state.text);
 	};
 
 	render() {
-        const { title, desc, placeholder, minlen } = this.props;
+        const { title, desc, placeholder, minlen, cols, rows } = this.props;
         const { remain, text } = this.state;
 
 		return (
@@ -51,12 +54,13 @@ class CustomTextArea extends Component {
 							{title}
 						</Form.Label>}
 						{desc !== '' && <Form.Label column='sm'>{desc}</Form.Label>}
-						<Form.Control as='textarea' placeholder={placeholder} cols={200} rows={3} value={text} onChange={this.handleChange} />
+						<Form.Control as='textarea' placeholder={placeholder} cols={cols} rows={rows} value={text} onChange={this.handleChange} />
 						<Form.Text className='text-muted'>
 							{text.length < minlen && `최소${minlen} / `} {remain}자 남았습니다.
 						</Form.Text>
 					</Form.Group>
 				</Row>
+				{ !this.props.noButtons && 
 				<Row style={{ justifyContent: 'flex-end' }}>
 					<Button variant='secondary mr-1' size='sm'>
 						<CloseIcon />
@@ -66,7 +70,7 @@ class CustomTextArea extends Component {
 						<CheckIcon />
 						저장하기
 					</Button>
-				</Row>
+				</Row>}
 			</Container>
 		);
 	}
@@ -74,6 +78,12 @@ class CustomTextArea extends Component {
 
 CustomTextArea.defaultProps = {
 	value: '',
+	minlen: 0,
+	title: '',
+	desc: '',
+	cols: 200,
+	rows: 3,
+	noButtons: false,
 };
 
 export default CustomTextArea;
