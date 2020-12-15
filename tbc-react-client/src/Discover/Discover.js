@@ -2,6 +2,8 @@
 import {Component} from 'react';
 import './Discover.css'
 import jquery from 'jquery'
+import Moment from 'react-moment'
+import 'moment/locale/ko';
 import { Box, Button, Typography } from '@material-ui/core';
 import CachedIcon from '@material-ui/icons/Cached';
 import ScheduleIcon from '@material-ui/icons/Schedule';
@@ -30,6 +32,7 @@ class Discover extends Component {
             lists : [],
             count : Number,
             id : Number,
+            dates : [],
             date : '',
             liked : false,
         };
@@ -64,12 +67,21 @@ class Discover extends Component {
     viewRemainDate = () => {
         ProjectApiService.getColumn('fundingEnd')
         .then(res => {
-            this.setState({ date : res.data.map(date=>date.fundingEnd) });
+            this.setState({ dates : res.data.map(day=>day.fundingEnd) });
+            
             var newDate = new Date();
-            console.log('받아온 date값', this.state.date);
             console.log('date의값', newDate);
-            newDate.setDate(newDate.getDate()-this.state.date);
-            console.log('나오나?', newDate)
+            newDate = newDate.getFullYear()+"-"+(newDate.getMonth()+1)+"-"+newDate.getDate();
+            console.log('재지정한 date의값', newDate);
+ 
+ 
+            console.log('받아온 fundingEnd값', this.state.dates);
+            console.log('받아온 fundingEnd값의 개별값', this.state.dates[0]);
+
+               
+            
+            // newDate.setDate(newDate.getDate()-this.state.date);
+            // console.log('나오나?', newDate)
         })
         .catch(err => {
             console.error('Discover.js의 viewProjectList() 에러!', err);
@@ -231,7 +243,7 @@ class Discover extends Component {
         <div class="col-md-6 col-lg-4 g-mb-30">
             <Typography value={list.id}>[{list.id}]</Typography>
         
-            <div style={{float:"right"}} onClick={() => this.toggleLike(list.id)}>
+            <div style={{float:"right"}} onClick={() => this.toggleLike()}>
                 {this.state.liked === false ? <NotFavoriteIcon /> : <FavoriteIcon color="secondary" />} 
             </div>
 
@@ -262,7 +274,11 @@ class Discover extends Component {
                 {list.fundedAmount}원
             <span style={{color:"#ff4646", fontSize:15}}> {list.fundedAmount * 100 / list.fundingGoalAmount}%</span>
             <span style={{color:"#bbbbbb", fontSize:15, float:"right"}}> 
-                <ScheduleIcon color="disabled" /> {list.fundingEnd} </span>
+                <ScheduleIcon color="disabled" /> 
+                <Moment fromNow ago>
+                    {list.fundingEnd}
+                </Moment>전 
+            </span>
                 </Box>
         </div>
 )}
