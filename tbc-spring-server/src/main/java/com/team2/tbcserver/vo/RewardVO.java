@@ -10,7 +10,7 @@ public class RewardVO {
 	private Long minFundAmount; // 이 보상을 받기 위한 최소 후원금액
 	private String items;
 	private String description;
-	private Long order; // 선물 카드 정렬 순서
+	private Long orderNo; // 선물 카드 정렬 순서
 	private LocalDateTime deliveryDate;
 	private boolean isLimited; // 선물 개수 제한 여부
 	private Long quantity; // 선물 제한 개수

@@ -6,7 +6,7 @@ import CloseIcon from '@material-ui/icons/Close';
 
 import Pas from '../ProjectApiService';
 
-export default class UploadProjectImage extends Component {
+export default class UploadImage extends Component {
 	state = {
 		file: undefined,
 		info: undefined,

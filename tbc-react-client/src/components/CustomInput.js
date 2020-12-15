@@ -2,18 +2,12 @@ import React, { Component } from 'react';
 import { Form, InputGroup } from 'react-bootstrap';
 
 class CustomInput extends Component {
-	constructor(props) {
-		// console.log('CustomInput.constructor');
-		super(props);
-
-		this.state = {
-			remain: this.props.maxlen,
-			text: this.props.value,
-		};
-	}
+	state = {
+		remain: this.props.maxlen,
+		text: this.props.value,
+	};
 
 	componentDidMount() {
-		// console.log('CustomInput.componentDidMount', this.props, this.state);
 		this.setState({
 			remain: this.props.maxlen - this.props.value.length,
 			text: this.props.value,
@@ -21,9 +15,6 @@ class CustomInput extends Component {
 	}
 
 	componentDidUpdate(prevProps, prevState) {
-		// console.log('CustomInput.componentDidUpdate prev', prevProps, prevState);
-		// console.log('CustomInput.componentDidUpdate now', this.props, this.state);
-
 		if (prevProps.value !== this.props.value)
 			this.setState({
 				remain: this.props.maxlen - this.props.value.length,
@@ -32,10 +23,7 @@ class CustomInput extends Component {
 	}
 
 	handleChange = e => {
-		// console.log('CustomInput.handleChange', this.state);
-
-		if (this.props.maxlen - e.target.value.length < 0)
-			return;
+		if (this.props.maxlen - e.target.value.length < 0) return;
 
 		this.setState({
 			remain: this.props.maxlen - e.target.value.length,
@@ -46,8 +34,7 @@ class CustomInput extends Component {
 	};
 
 	render() {
-		// console.log('CustomInput.render', this.props, this.state);
-		const { title, desc, placeholder, minlen, width, header } = this.props;
+		const { title, desc, placeholder, minlen, maxlen, width, header } = this.props;
 
 		return (
 			<Form.Group>
@@ -64,7 +51,7 @@ class CustomInput extends Component {
 						</InputGroup.Prepend>
 						<Form.Control
 							style={{ width: width }}
-							type='text'
+							type={this.props.type}
 							placeholder={placeholder}
 							size='sm'
 							onChange={this.handleChange}
@@ -74,16 +61,17 @@ class CustomInput extends Component {
 				) : (
 					<Form.Control
 						style={{ width: width }}
-						type='text'
+						type={this.props.type}
 						placeholder={placeholder}
 						size='sm'
 						onChange={this.handleChange}
 						value={this.state.text}
 					/>
 				)}
+				{minlen && maxlen && 
 				<Form.Text className='text-muted'>
 					{minlen !== '' && this.state.text.length < minlen && `최소${minlen} / `} {this.state.remain}자 남았습니다.
-				</Form.Text>
+				</Form.Text>}
 			</Form.Group>
 		);
 	}
@@ -91,6 +79,7 @@ class CustomInput extends Component {
 
 CustomInput.defaultProps = {
 	value: '',
+	type:'text',
 };
 
 export default CustomInput;
