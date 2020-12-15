@@ -7,7 +7,7 @@ import { Component } from 'react';
 
 // spring boot back-end url.
 const URL = 'http://localhost:8090/project'; // https는 따로 알아보자.
-const URL2 = 'http://localhost:8090/Discover'; // https는 따로 알아보자.
+const URL2 = 'http://localhost:8090/discover'; // https는 따로 알아보자.
 
 const URL3 = 'http://localhost:8090/discover/count'; 
 

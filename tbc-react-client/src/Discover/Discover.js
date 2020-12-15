@@ -6,6 +6,7 @@ import { Box, Button, Typography } from '@material-ui/core';
 import CachedIcon from '@material-ui/icons/Cached';
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import NotFavoriteIcon from '@material-ui/icons/FavoriteBorderOutlined';
 import ProjectApiService from '../ProjectApiService';
 
 
@@ -15,8 +16,9 @@ class Discover extends Component {
     componentDidMount() {
         window.$ = window.jQuery = jquery;
         this.viewProjectList();
-        // this.viewRemainDate();
+        this.viewRemainDate();
         this.viewCountProject();
+        // this.viewProjectId();
     }
 
     
@@ -26,7 +28,10 @@ class Discover extends Component {
         
         this.state = {
             lists : [],
-            count : 0,
+            count : Number,
+            id : Number,
+            date : '',
+            liked : false,
         };
     }
 
@@ -50,44 +55,48 @@ class Discover extends Component {
         .then(res => {
             this.setState({ lists : res.data });
             console.log('projectList 값', res.data)
-
+        })
+        .catch(err => {
+            console.error('Discover.js의 viewProjectList() 에러!', err);
+        })
+    }
+ 
+    viewRemainDate = () => {
+        ProjectApiService.getColumn('fundingEnd')
+        .then(res => {
+            this.setState({ date : res.data.map(date=>date.fundingEnd) });
+            var newDate = new Date();
+            console.log('받아온 date값', this.state.date);
+            console.log('date의값', newDate);
+            newDate.setDate(newDate.getDate()-this.state.date);
+            console.log('나오나?', newDate)
         })
         .catch(err => {
             console.error('Discover.js의 viewProjectList() 에러!', err);
         })
     }
 
-    // viewRemainDate = () => {
-    //     ProjectApiService.remainDate()
+        // viewProjectId = () => {
+    //     ProjectApiService.getColumn('id') 
     //     .then(res => {
-    //         this.setState({ date : res.data });
+    //         this.setState({ id : res.data.map(pId=>pId.id) });
+    //         console.log('getColumn id 값', res.data)
+    //         console.log('getColumn id 값만 뺌', res.data.map(pId=>pId.id))
     //     })
     //     .catch(err => {
-    //         console.err('Discover.js의 viewRemainDate() 에러!', err);
+    //         console.error('Discover.js의 getColumn() 에러!', err);
     //     })
     // }
 
-
-
-    // handleChange = (newValue: any, actionMeta: any) => {
-    //     console.group('Value Changed');
-    //     console.log(newValue);
-    //     console.log(`action: ${actionMeta.action}`);
-    //     console.groupEnd();
-    //   };
-    //   handleInputChange = (inputValue: any, actionMeta: any) => {
-    //     console.group('Input Changed');
-    //     console.log(inputValue);
-    //     console.log(`action: ${actionMeta.action}`);
-    //     console.groupEnd();
-    //   };
+    toggleLike = (id) => {
+        console.log(`id = > ${id}`);
+        const localLiked = !this.state.liked;        
+        this.setState({ liked : localLiked });
+    };
 
 
     render() {
-
-
-        return (
-             
+        return (   
             <div className="first">
             <div class="wrap">
                 <div class="row">
@@ -202,7 +211,6 @@ class Discover extends Component {
 <div class="col-md-12">
 <span className="countProject" style={{float:"left"}}>
     <span style={{color:"#ff4646"}}>{this.state.count}</span>개의 프로젝트가 있습니다.
-    <span style={{color:"#ff4646"}}>nn,nnn</span>개의 프로젝트가 있습니다.
     </span>    
 
         <select id="filter" name="filter">
@@ -218,12 +226,13 @@ class Discover extends Component {
 
 {/* 프로젝트 구성 페이지 */}
     <div class="row">
-       
         {this.state.lists.map(list => 
             
         <div class="col-md-6 col-lg-4 g-mb-30">
-            <div style={{float:"right"}}>
-                <FavoriteIcon color="secondary"/>
+            <Typography value={list.id}>[{list.id}]</Typography>
+        
+            <div style={{float:"right"}} onClick={() => this.toggleLike(list.id)}>
+                {this.state.liked === false ? <NotFavoriteIcon /> : <FavoriteIcon color="secondary" />} 
             </div>
 
             <img 
@@ -251,11 +260,9 @@ class Discover extends Component {
                 fontSize={18}
                 align="left"> 
                 {list.fundedAmount}원
-            <span style={{color:"#ff4646", fontSize:15}}> nnn%</span>
-            <span style={{color:"#ff4646", fontSize:15}}> {list.fundingGoalAmount / list.fundedAmount * 100}%</span>
+            <span style={{color:"#ff4646", fontSize:15}}> {list.fundedAmount * 100 / list.fundingGoalAmount}%</span>
             <span style={{color:"#bbbbbb", fontSize:15, float:"right"}}> 
-                <ScheduleIcon color="disabled" /> nn일 남음 </span>
-                <ScheduleIcon color="disabled" /> NNN일 </span>
+                <ScheduleIcon color="disabled" /> {list.fundingEnd} </span>
                 </Box>
         </div>
 )}
@@ -264,10 +271,6 @@ class Discover extends Component {
     </div>
   </div>
 </div>
-
-
-
-
         );
     }
 }

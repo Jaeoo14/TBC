@@ -8,8 +8,6 @@ public interface DiscoverMapper {
 	List<ProjectVO> projectList();
 	Long remainDate();
 	Long countProject();
-
-
 }
 
 

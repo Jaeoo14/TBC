@@ -5,6 +5,7 @@ import Login from "./member/Login";
 import UserSetting from "./member/UserSetting";
 import EditProject from "./components/EditProject";
 import Discover from "./Discover/Discover";
+import Card from "./Main/Card";
 
 class Routers extends React.Component {
   constructor(props) {
@@ -19,6 +20,9 @@ class Routers extends React.Component {
           <Route path="/EditProject" component={EditProject} />
           <Route path="/discover" component={Discover} />
           <Route path="/Discover" component={Discover} />
+          <Route path="/card" component={Card} />
+          
+
         </Switch>
       </Router>
     );
