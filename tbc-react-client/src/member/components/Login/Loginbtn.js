@@ -1,8 +1,6 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
-import DeleteIcon from "@material-ui/icons/Delete";
-// import "./../../style/Login.css";
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -29,7 +27,7 @@ export default function LoginButton() {
 
   return (
     <div>
-      <Button variant="contained" className={classes.button}>
+      <Button variant="contained" className={classes.button} type="submit">
         로그인
       </Button>
     </div>

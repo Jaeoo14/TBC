@@ -23,14 +23,11 @@ const Header2 = () => {
             <SearchIcon />
           </a>
         </li>
-      
+
         <a href="/card">
           {/* 로고에 링크 걸릴지 테스트로 걸어놓았습니다 나중에 메인으로 수정할게요 */}
-          <img
-          className="logo"
-          src="logo.png"
-          alt="logo"/></a>
-        
+          <img className="logo" src="logo.png" alt="logo" />
+        </a>
       </ul>
     </div>
   );

@@ -5,6 +5,9 @@ import Paper from "@material-ui/core/Paper";
 import { Avatar } from "@material-ui/core";
 
 class Profile extends Component {
+  if (localStorage != null){
+    
+  }
   render() {
     return (
       <Grid container spacing={3}>
@@ -17,7 +20,7 @@ class Profile extends Component {
           </div>
           <br />
           <div>
-            <Avatar>H</Avatar>
+            <Avatar>D</Avatar>
           </div>
           <hr />
           <div id="div1">
