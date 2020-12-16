@@ -22,40 +22,23 @@ import Pas from '../ProjectApiService';
 
 class ProjectDescription extends Component {
 	state = {
-		project: {},
+		project: undefined,
 	};
 
 	componentDidMount() {
 		const { pId, cId } = this.props;
 
-		if (typeof pId === 'undefined') {
-			Pas.insert({ creatorId: cId }) // 빈 프로젝트를 DB에 추가
-				.then(res => {
-					this.setState(
-						{
-							project: {
-								id: res.data, // 새로 만든 프로젝트 id.
-								creatorId: cId,
-							},
-						},
-						() => console.log('make new project. id=', this.state.project.id),
-					);
-				})
-				.catch(err => console.log(err));
-		} else {
-			Pas.fetchBy(pId)
-				.then(res => {
-					this.setState({ project: res.data }, () => this.props.showTitle(this.state.project.longTitle));
-				})
-				.catch(err => console.log(err));
-		}
+		Pas.fetchBy(pId)
+			.then(res =>
+				this.setState({ project: res.data }, () => {
+					this.props.showTitle(this.state.project.longTitle);
+					console.log('ProjectDescription.componentDidMount', this.state, this.props);
+				}),
+			)
+			.catch(err => console.log(err));
 	}
 
 	componentDidUpdate(prevProps, prevState) {}
-
-	handleCreatorRegion(text) {
-		console.log(text);
-	}
 
 	handleTitles = (longTitle, shortTitle) => {
 		let temp = { ...this.state.project };
@@ -88,25 +71,26 @@ class ProjectDescription extends Component {
 	};
 
 	render() {
+		if (this.state.project === undefined) return null;
+
 		console.log('ProjectDescription.render project=', this.state.project);
 		const { longTitle, shortTitle } = this.state.project;
-		console.log('long, short', longTitle, shortTitle);
 
 		return (
 			<Container fluid='md' style={{ textAlign: 'left' }}>
-				<p></p>
+				<h6>프로젝트 개요</h6>
 				<ListGroup>
-					<ListGroup.Item as='div' action variant='light'>
+					<ListGroup.Item as='div' action>
 						<InputProjectTitle longTitle={longTitle} shortTitle={shortTitle} handleTitles={this.handleTitles} />
 					</ListGroup.Item>
-					<ListGroup.Item as='div' action variant='light'>
+					<ListGroup.Item as='div' action>
 						<UploadProjectImage
 							title='프로젝트 대표 이미지'
 							desc='대표 이미지는 프로젝트의 가장 중요한 시각적 요소입니다. 후원자들이 프로젝트의 내용을 쉽게 파악하고 좋은 인상을 받을 수 있게 하기 위해 다음 가이드라인에 따라 디자인해 주세요.'
 							mainImg={this.state.project.mainImg}
 						/>
 					</ListGroup.Item>
-					<ListGroup.Item as='div' action variant='light'>
+					<ListGroup.Item as='div' action>
 						<CustomTextArea
 							title='프로젝트 요약'
 							desc='후원자 분들에게 본 프로젝트를 간략하게 소개해 봅시다'
@@ -118,7 +102,7 @@ class ProjectDescription extends Component {
 							columnName='content'
 						/>
 					</ListGroup.Item>
-					<ListGroup.Item as='div' action variant='light'>
+					<ListGroup.Item as='div' action>
 						<SelectProjectCategory
 							title='프로젝트 카테고리'
 							desc='프로젝트의 성격에 맞는 카테고리를 선택해 주세요. (프로젝트 성격과 맞지 않는 카테고리를 선택하실 시 후원자가 해당 프로젝트를 찾기 어려워지기에 에디터에 의해 조정될 수 있습니다.)'
@@ -127,17 +111,22 @@ class ProjectDescription extends Component {
 							handleProject={this.handleProject}
 						/>
 					</ListGroup.Item>
-					<ListGroup.Item as='div' action variant='light'>
+					<ListGroup.Item as='div' action>
 						<SetProjectURL value={this.state.project.url} minlen='3' maxlen='28' handleProject={this.handleProject} />
 					</ListGroup.Item>
-					<ListGroup.Item as='div' action variant='light'>
+					<ListGroup.Item as='div' action>
 						<InputTags value={this.state.project.tags} minlen='2' maxlen='125' handleProject={this.handleProject} />
 					</ListGroup.Item>
 				</ListGroup>
-				<p></p>
-				창작자 정보
+				<h6>창작자 정보</h6>
 				<ListGroup>
-					{/*<ListGroup.Item as='div' action variant='light'>
+					<ListGroup.Item as='div' action>
+						테스트 1
+					</ListGroup.Item>
+					<ListGroup.Item as='div' action>
+						테스트 2
+					</ListGroup.Item>
+					{/*<ListGroup.Item as='div' action>
 						<UploadImage
 							title='프로필 이미지'
 							desc='창작자님 개인이나 팀의 사진을 올려주세요. 얼굴이 나온 사진을 넣으면 프로젝트의 신뢰성 향상에 도움이 됩니다.
@@ -145,10 +134,10 @@ class ProjectDescription extends Component {
 							cId={this.state.project.creatorId}
 						/>
 					</ListGroup.Item>
-					 	<ListGroup.Item  as='div' action variant='light'>
+					 	<ListGroup.Item  as='div' action>
 						<InputCreatorName />
 					</ListGroup.Item>
-					<ListGroup.Item  as='div' action variant='light'>
+					<ListGroup.Item  as='div' action>
 						<CustomTextArea
 							title='창작자 소개'
 							desc='창작자님의 이력과 간단한 소개를 써 주세요.'
@@ -158,7 +147,7 @@ class ProjectDescription extends Component {
 							columnName='intro'
 							 />
 					</ListGroup.Item>
-					<ListGroup.Item  as='div' action variant='light'>
+					<ListGroup.Item  as='div' action>
 						<Container>
 							<Row>
 								<Col>
@@ -186,6 +175,7 @@ class ProjectDescription extends Component {
 						</Container>
 					</ListGroup.Item> */}
 				</ListGroup>
+				<p></p>
 			</Container>
 		);
 	}
