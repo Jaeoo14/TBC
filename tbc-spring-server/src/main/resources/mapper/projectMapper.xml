@@ -48,7 +48,7 @@
 		WHERE   id = #{id}
 	</select>
 	
-	<insert id="insert" parameterType="com.team2.tbcserver.vo.ProjectVO" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+<!-- <insert id="insert" parameterType="com.team2.tbcserver.vo.ProjectVO" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
 		INSERT INTO project ( 
 					creatorId,
 					longTitle,
@@ -85,7 +85,13 @@
 					#{sponsorCount},
 					#{createdDate},
 					#{updatedDate} )
-	</insert>
+	</insert>-->
+
+	<insert id="insert" parameterType="com.team2.tbcserver.vo.ProjectVO" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+		INSERT INTO project 
+				(creatorId)
+		VALUES 	(#{creatorId})
+	</insert>	
 	
 	<update id="update" parameterType="com.team2.tbcserver.vo.ProjectVO">
 		UPDATE project
