@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import Pas from '../ProjectApiService';
 
+// props
+//  pId : 프로젝트 id.
+//  width : 화면에 그릴 이미지의 너비.
 class DisplayImage extends Component {
 	state = {
-		file: {},
+		file: {}, // 이미지 파일 데이타. file 테이블 참조.
 	};
 
 	componentDidMount = () => {
