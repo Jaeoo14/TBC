@@ -11,4 +11,5 @@ public interface FileMapper {
 	void insert(FileVO item);
 	void update(FileVO item);
 	void deleteBy(Long id);
+	FileVO getFileOfProject(Long projectId);
 }

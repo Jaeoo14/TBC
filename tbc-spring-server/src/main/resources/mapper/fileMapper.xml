@@ -55,4 +55,11 @@
 		DELETE FROM file WHERE id = #{id}
 	</delete>
 	
+	<select id="getFileOfProject" parameterType="Long" resultType="com.team2.tbcserver.vo.FileVO">
+		SELECT 	 p.id as pId, f.* 
+		FROM 	 project p, file f 
+		WHERE 	 f.id = p.mainImg
+			AND  p.id = #{pId} 
+ 	</select>
+	
 </mapper>

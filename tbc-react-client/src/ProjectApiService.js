@@ -73,6 +73,12 @@ class ProjectApiService extends Component {
     return FileDB.get("/" + fileId);
   }
 
+  // download project image file.
+	getFileOfProject(projectId) {
+		console.log('getFileOfProject...', projectId);
+		return FileDB.get('/project/' + projectId);
+	}
+
   updateFile(file, id) {
     console.log("update...", file, id);
     let formData = new FormData();

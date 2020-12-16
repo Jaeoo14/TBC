@@ -23,7 +23,7 @@ import com.team2.tbcserver.vo.FileVO;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/project/file")
+@RequestMapping("/file")
 public class FileController {
 
 	@Autowired
@@ -105,6 +105,12 @@ public class FileController {
 	public void deleteBy(@PathVariable Long id) {
 		mapper.deleteBy(id);
 		System.out.println("id: " + id + " removeUser OK!");
+	}
+	
+	@GetMapping("/project/{pId}")
+	public FileVO getFileOfProject(@PathVariable Long pId) {
+		System.out.println("project.id=" + pId + ":" + mapper.getFileOfProject(pId));
+		return mapper.getFileOfProject(pId);
 	}
 
 }
