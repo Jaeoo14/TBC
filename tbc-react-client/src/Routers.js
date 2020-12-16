@@ -6,6 +6,7 @@ import Login from "./member/Login";
 // import Adduser from "./member/Adduser";
 import UserSetting from "./member/UserSetting";
 import Detail from "./Detail/Detail";
+import Start from "./components/Start";
 import EditProject from "./components/EditProject";
 import Discover from "./Discover/Discover";
 import Card from "./Main/Cards";
@@ -24,7 +25,8 @@ class Routers extends React.Component {
           <Route path="/setting" component={UserSetting} />
           <Route path="/Detail" component={Detail} />
           <Route path="/discover" component={Discover} />
-          <Route path="/editProject" component={EditProject} />
+          <Route path="/start" component={Start} />
+          <Route path="/editproject" component={EditProject} />
           <Route path="/card" component={Card} />
         </Switch>
       </Router>
