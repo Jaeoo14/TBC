@@ -58,25 +58,7 @@ class Discover extends Component {
     }
 
 
-    this.state = {
-      lists: [],
-      count: Number,
-      id: Number,
-      date: "",
-      liked: false,
-    };
-  }
-
-        ProjectApiService.projectList()
-        .then(res => {
-            this.setState({ lists : res.data });
-            console.log('projectList 값', res.data)
-        })
-        .catch(err => {
-            console.error('Discover.js의 viewProjectList() 에러!', err);
-        })
-    }
- 
+   
     viewRemainDate = () => {
         ProjectApiService.getColumn('fundingEnd')
         .then(res => {

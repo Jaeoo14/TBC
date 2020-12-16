@@ -27,9 +27,11 @@ export default function LoginButton() {
 
   return (
     <div>
-      <Button variant="contained" className={classes.button} type="submit">
-        로그인
-      </Button>
+      <Button
+        variant="contained"
+        className={classes.button}
+        type="submit"
+      ></Button>
     </div>
   );
 }

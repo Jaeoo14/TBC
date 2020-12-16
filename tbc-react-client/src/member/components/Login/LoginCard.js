@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
 import { Paper, Grid } from "@material-ui/core/";
@@ -40,7 +40,6 @@ const useStyles = makeStyles((theme) => ({
 
 function SimplePaper(props) {
   const classes = useStyles();
-  const myStorage = window.localStorage;
 
   const [values, setValues] = useState({ userId: "", pwd: "" });
   const [errors, setErrors] = useState({});
@@ -66,7 +65,7 @@ function SimplePaper(props) {
           .then((res) => {
             if (values.pwd === res.data.pwd) {
               console.log("login 값", res.data);
-              window.localStorage.setItem(myStorage, JSON.stringify(res.data));
+              localStorage.setItem("myStorage", JSON.stringify(res.data));
               props.history.push("/setting");
             } else {
               console.error("비밀번호 오류!");
@@ -131,7 +130,10 @@ function SimplePaper(props) {
           {errors.pwd && <span>{errors.pwd}</span>}
         </div>
         <div className="text1 text2">
-          아직 계정이 없으신가요? <a className="a1">텀블벅 가입하기</a>
+          아직 계정이 없으신가요?{" "}
+          <Link to={"/join"} className="a1">
+            텀블벅 가입하기
+          </Link>
         </div>
         <hr />
         <div className="text3">

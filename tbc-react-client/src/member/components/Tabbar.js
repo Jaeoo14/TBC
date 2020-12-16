@@ -56,19 +56,6 @@ const AntTab = withStyles((theme) => ({
   selected: {},
 }))((props) => <Tab disableRipple {...props} />);
 
-// const StyledTabs = withStyles({
-//   indicator: {
-//     display: "flex",
-//     justifyContent: "center",
-//     backgroundColor: "transparent",
-//     "& > span": {
-//       maxWidth: 40,
-//       width: "100%",
-//       backgroundColor: "#635ee7",
-//     },
-//   },
-// })((props) => <Tabs {...props} TabIndicatorProps={{ children: <span /> }} />);
-
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -94,13 +81,6 @@ TabPanel.propTypes = {
   index: PropTypes.any.isRequired,
   value: PropTypes.any.isRequired,
 };
-
-// function a11yProps(index) {
-//   return {
-//     id: `simple-tab-${index}`,
-//     "aria-controls": `simple-tabpanel-${index}`,
-//   };
-// }
 
 const useStyles = makeStyles((theme) => ({
   root: {

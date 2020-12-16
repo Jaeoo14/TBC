@@ -6,8 +6,9 @@ import com.team2.tbcserver.vo.MemberVO;
 @Mapper
 public interface MemberMapper {
 	MemberVO login(String userId);
-//	void join(MemberVO item);
+	void join(MemberVO member);
 //	void update(MemberVO item);
+
 }
 
 

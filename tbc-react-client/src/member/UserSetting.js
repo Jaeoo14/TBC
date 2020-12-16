@@ -10,9 +10,10 @@ class UserSetting extends Component {
   render() {
     return (
       <Container maxWidth="md">
-        <Grid container direction="row" justify="center" alignItems="center">
-          <Grid item xs={12}>
+        <Grid container direction="row">
+          <Grid item>
             <div id="title"> 설정 </div>
+
             <Tabbar></Tabbar>
           </Grid>
         </Grid>

@@ -5,9 +5,32 @@ import Paper from "@material-ui/core/Paper";
 import { Avatar } from "@material-ui/core";
 
 class Profile extends Component {
-  if (localStorage != null){
-    
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      id: "",
+      userId: "",
+      pwd: "",
+      name: "",
+      nickname: "",
+      intro: "",
+      tel: "",
+    };
   }
+  componentDidMount() {
+    const user = JSON.parse(localStorage.getItem("myStorage"));
+    this.setState({
+      id: user.id,
+      userId: user.userId,
+      pwd: user.pwd,
+      name: user.name,
+      nickname: user.nickname,
+      intro: user.intro,
+      tel: user.tel,
+    });
+  }
+
   render() {
     return (
       <Grid container spacing={3}>
@@ -23,6 +46,7 @@ class Profile extends Component {
             <Avatar>D</Avatar>
           </div>
           <hr />
+
           <div id="div1">
             이름
             <span>
@@ -30,17 +54,9 @@ class Profile extends Component {
             </span>
           </div>
           <br />
-          <div>닉네임</div>
+          <div>{this.state.name}</div>
           <hr />
-          <div id="div1">
-            사용자 이름(URL)
-            <span>
-              <button>변경</button>
-            </span>
-          </div>
-          <br />
-          <div>사용자 이름(URL)</div>
-          <hr />
+
           <div id="div1">
             소개
             <span>
@@ -48,26 +64,17 @@ class Profile extends Component {
             </span>
           </div>
           <br />
-          <div>소개</div>
+          <div>{this.state.intro}</div>
           <hr />
+
           <div id="div1">
-            웹사이트
+            유저URL
             <span>
               <button>변경</button>
             </span>
           </div>
           <br />
-          <div>웹사이트</div>
-          <hr />
-          <div id="div1">
-            프라이버시
-            <span>
-              <button>변경</button>
-            </span>
-          </div>
-          <br />
-          <div>웹사이트</div>
-          <hr />
+          <div>u/{this.state.userId}</div>
         </Grid>
         <Grid item xs={4} sm={4}>
           <Paper id="paper" variant="outlined">

@@ -8,11 +8,14 @@ import org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConf
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.team2.tbcserver.mapper.MemberMapper;
 import com.team2.tbcserver.vo.MemberVO;
+import com.team2.tbcserver.vo.ProjectVO;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -27,5 +30,10 @@ public class MemberController {
 	
 		System.out.println("회원 정보" + Mmapper.login(userId));
 		return Mmapper.login(userId);
+	}
+	@PostMapping
+	public Long join(@RequestBody MemberVO Member) {
+		Mmapper.join(Member);
+		return Member.getId();
 	}
 }

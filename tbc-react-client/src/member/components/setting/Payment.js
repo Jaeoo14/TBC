@@ -2,7 +2,7 @@ import { Component } from "react";
 
 class Payment extends Component {
   render() {
-    return <div></div>;
+    return <div>미구현입니다.</div>;
   }
 }
 

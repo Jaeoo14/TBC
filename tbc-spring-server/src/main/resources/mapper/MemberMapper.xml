@@ -24,5 +24,16 @@
 		   FROM member
 		  where userId = #{userId};
 	</select>
-	
+	<insert id="join" parameterType="com.team2.tbcserver.vo.MemberVO" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+			INSERT INTO member(
+						name,
+						userId,
+						pwd)
+			VALUES(
+						#{name},
+						#{userId},
+						#{pwd})
+				    
+	</insert>
+		
 </mapper>

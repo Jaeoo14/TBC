@@ -11,7 +11,7 @@ const ITEM = "http://localhost:8090/item";
 const URL = "http://localhost:8090/project"; // https는 따로 알아보자.
 const URL2 = "http://localhost:8090/discover"; // https는 따로 알아보자.
 const URL3 = "http://localhost:8090/discover/count";
-const URL4 = "http://localhost:8090/login";
+const URL4 = "http://localhost:8090";
 
 class ProjectApiService extends Component {
   /////////////////////////////////////////
@@ -74,10 +74,10 @@ class ProjectApiService extends Component {
   }
 
   // download project image file.
-	getFileOfProject(projectId) {
-		console.log('getFileOfProject...', projectId);
-		return FileDB.get('/project/' + projectId);
-	}
+  getFileOfProject(projectId) {
+    console.log("getFileOfProject...", projectId);
+    return FileDB.get("/project/" + projectId);
+  }
 
   updateFile(file, id) {
     console.log("update...", file, id);
@@ -142,9 +142,13 @@ class ProjectApiService extends Component {
     return Axios.get(URL3);
   }
   /////////////////////////////////////////
-  //여기서부터 Discover에서 쓰는 것들//
+  //여기서부터 Member에서 쓰는 것들//
   login(userId) {
-    return Axios.get(URL4 + "/" + userId);
+    return Axios.get(URL4 + "/login/" + userId);
+  }
+
+  getUser(userId) {
+    return Axios.get(URL4 + "/setting/" + userId);
   }
 }
 

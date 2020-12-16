@@ -1,6 +1,7 @@
 input {
   margin-top: 10px;
-  margin: 5px;
+  margin: 2px;
+  margin-right: 10px;
   font-size: x-small;
 }
 input:focus {
@@ -28,6 +29,13 @@ input::text {
   padding: 0.8em;
   text-align: center;
 }
+.text3 {
+  padding: 0.4em;
+  text-align: center;
+}
 .a1 {
   color: red;
+}
+.mar {
+  margin-top: 20px;
 }
