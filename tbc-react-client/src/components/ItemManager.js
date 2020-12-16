@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Container, ListGroup, Modal, Row, Table } from 'react-bootstrap';
+import { Button, Container, ListGroup, Modal, Row, Col, Table } from 'react-bootstrap';
 
 import Pas from '../ProjectApiService';
 
@@ -16,10 +16,9 @@ class ItemManager extends Component {
 	state = {
 		show: false,
 		items: [],
-		newItem: {},
-		temp1: '',
-		temp2: '',
+
 		showMakeItem: false,
+		updateItem: undefined,
 	};
 
 	readItemList = () => {
@@ -31,8 +30,7 @@ class ItemManager extends Component {
 	};
 
 	handleClose = () => {
-		console.log('ImageManager:handleClose', this.state);
-		this.setState({ show: false });
+		this.setState({ show: false, showMakeItem:false, updateItem:undefined }, ()=>console.log('ImageManager:handleClose', this.state));
 	};
 
 	handleShow = () => {
@@ -45,8 +43,12 @@ class ItemManager extends Component {
 		this.setState({showMakeItem : true});
 	};
 
+	handleUpdateItem = (item)  => {
+		this.setState({showMakeItem : true, updateItem:item});
+	};
+
 	handleMakeItemClose = () => {
-		this.setState({showMakeItem : false});
+		this.setState({showMakeItem : false, updateItem:undefined});
 		this.readItemList();
 	}
 
@@ -77,29 +79,14 @@ class ItemManager extends Component {
 		this.handleNewItem('opt', e.target.value);
 	};
 
-	handleDeleteItem = id =>
+	handleDeleteItem = id => {
+		if (!window.confirm('아이템을 삭제하시겠습니까?'))
+			return;
+		
 		Pas.deleteItem(id)
 			.then(res => Pas.getItems())
 			.then(res => this.setState({ items: res.data, newItem: {}, temp1: '', temp2: '' }, () => console.log(this.state)))
-			.catch(err => console.log(err));
-
-	handleUpdateItem = item =>
-		Pas.putItem(item)
-			.then(res => Pas.getItems())
-			.then(res => this.setState({ items: res.data, newItem: {}, temp1: '', temp2: '' }, () => console.log(this.state)))
-			.catch(err => console.log(err));
-
-	handleSave = () => {
-		let msg = '';
-		if (this.state.newItem.opt === '1') msg = this.state.temp1;
-		else if (this.state.newItem.opt === '2') msg = this.state.temp2;
-
-		this.handleNewItem('message', msg);
-
-		Pas.postItem(this.state.newItem)
-			.then(res => Pas.getItems())
-			.then(res => this.setState({ items: res.data, newItem: {}, temp1: '', temp2: '' }, () => console.log(this.state)))
-			.catch(err => console.log(err));
+			.catch(err => console.log(err))
 	};
 
 	render() {
@@ -116,21 +103,23 @@ class ItemManager extends Component {
 					<Modal.Body>
 						{!this.state.showMakeItem && <ListGroup id='addItem-1'>
 							<ListGroup.Item as='div' action>
-								<Row>
-									<strong>아이템 만들기</strong>
-									<sub>선물 구성에 추가할 아이템을 만듭니다.</sub>
+								<Row style={{textAlign:'center'}}>
+									<Col>
+									<strong>아이템 만들기</strong><br/>
+									<sup>선물 구성에 추가할 아이템을 만듭니다.</sup>
+									</Col>
 								</Row>
-								<Row className='mt-1'>
+								<Row className='mt-1'  style={{textAlign:'center'}}>
+									<Col>
 									<Button variant='outline-danger' size='sm' onClick={this.handleAddItem}>
-										<AddCircleOutlineIcon />
-										아이템 추가하기
-									</Button>
+										<AddCircleOutlineIcon />아이템 추가하기</Button>
+									</Col>
 								</Row>
 							</ListGroup.Item>
 						</ListGroup>}
 						{this.state.showMakeItem && <ListGroup id='addItem-2'>
 							<ListGroup.Item as='div' action>
-								<MakeItem handleClose={this.handleMakeItemClose} />
+								<MakeItem updateItem={this.state.updateItem} handleClose={this.handleMakeItemClose} />
 							</ListGroup.Item>
 						</ListGroup>}
 						<hr></hr>

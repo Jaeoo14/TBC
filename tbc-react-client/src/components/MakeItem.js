@@ -10,39 +10,75 @@ import CloseIcon from '@material-ui/icons/Close';
 
 class MakeItem extends Component {
 	state = {
-    name: '',
-    opt: '0',
+		name: '',
+		opt: '0',
 		opt1Msg: '',
-    opt2Msg: '',
-  };
+		opt2Msg: '',
+	};
 
-  handleClose = () => {
-    this.props.handleClose();
-  }
+	componentDidMount = () => {
+		console.log('MakeItem.componentDidMount item=', this.props);
+		const item = this.props.updateItem;
+		if (item === undefined)
+			return;
+
+		this.setState(
+			{
+				name: item.name,
+				opt: String(item.opt),
+			},
+			() => {
+				console.log(this.state, item);
+				if (String(item.opt) === '1') this.setState({ opt1Msg: item.message }, ()=>console.log(this.state));
+				else if (String(item.opt) === '2') this.setState({ opt2Msg: item.message }, ()=>console.log(this.state));
+			},
+		);
+	};
+
+	componentDidUpdate(prevProps, prevState) {
+		if (this.props !== prevProps) {
+			this.componentDidMount();
+		}
+	}
+
+	handleClose = () => {
+		this.props.handleClose();
+	};
 
 	handleSave = () => {
-    let item = {
-      name: this.state.name,
-      opt: this.state.opt,
-      message: '',
-    }
+		let item = {
+			name: this.state.name,
+			opt: this.state.opt,
+			message: '',
+		};
 
 		if (this.state.opt === '1') item.message = this.state.opt1Msg;
 		else if (this.state.opt === '2') item.message = this.state.opt2Msg;
-	
-    Pas.postItem(item)
-      .then(res=>{console.log('item=', item); this.handleClose();})
-      .catch(err => console.log(err));
+
+		if (this.props.updateItem === undefined) {
+			Pas.postItem(item)
+				.then(res => {
+					console.log('item=', item);
+					this.handleClose();
+				})
+				.catch(err => console.log(err));
+		} else {
+			item.id = this.props.updateItem.id;
+			Pas.putItem(item)
+			// .then(res => this.setState({name: '', opt: '0', opt1Msg: '', opt2Msg: ''}, ()=>this.handleClose())
+			.then(res => this.handleClose())
+			.catch(err => console.log(err));
+		}
 	};
 
-  handleName = text => this.setState({ name: text }, console.log(this.state));
-  handleOpt = e => this.setState({ opt: e.target.value }, console.log(this.state));
-	handleOpt1Msg = text => this.setState({ opt1Msg: text }, console.log(this.state));
-  handleOpt2Msg = text => this.setState({ opt2Msg: text }, console.log(this.state));
-  
-  // handleItem = (name, value) => {
-  //   this.setState({[name]:value});
-  // }
+	handleName = text => this.setState({ name: text }, ()=>console.log(this.state));
+	handleOpt = e => this.setState({ opt: e.target.value }, ()=>console.log(this.state));
+	handleOpt1Msg = text => this.setState({ opt1Msg: text }, ()=>console.log(this.state));
+	handleOpt2Msg = text => this.setState({ opt2Msg: text }, ()=>console.log(this.state));
+
+	// handleItem = (name, value) => {
+	//   this.setState({[name]:value});
+	// }
 
 	render() {
 		return (
@@ -64,16 +100,12 @@ class MakeItem extends Component {
 				<fieldset>
 					<Form.Group controlId='item-option'>
 						<Form.Label>옵션조건</Form.Label>
-            <Form.Check 
-              type='radio' 
-              name='option-type' 
-              value='0' 
-              label='옵션이 필요 없는 아이템입니다.' 
-              onChange={this.handleOpt} />
+						<Form.Check type='radio' name='option-type' value='0' checked={this.state.opt === '0'} label='옵션이 필요 없는 아이템입니다.' onChange={this.handleOpt} />
 						<Form.Check
 							type='radio'
 							name='option-type'
 							value='1'
+							checked={this.state.opt === '1'} 
 							label='주관식 옵션이 필요한 아이템입니다. (각인, 메시지 등)'
 							onChange={this.handleOpt}
 						/>
@@ -91,6 +123,7 @@ class MakeItem extends Component {
 							type='radio'
 							name='option-type'
 							value='2'
+							checked={this.state.opt === '2'} 
 							label='객관식 옵션이 필요한 아이템입니다. (사이즈, 색상 등)'
 							onChange={this.handleOpt}
 						/>
@@ -111,9 +144,13 @@ class MakeItem extends Component {
 				</fieldset>
 				<Row style={{ justifyContent: 'flex-end' }}>
 					<Button variant='secondary mr-1' size='sm' onClick={this.handleClose}>
-						<CloseIcon fontSize='small' />취소하기</Button>
+						<CloseIcon fontSize='small' />
+						취소하기
+					</Button>
 					<Button variant='primary' size='sm' onClick={this.handleSave}>
-						<CheckIcon fontSize='small' />저장하기</Button>
+						<CheckIcon fontSize='small' />
+						{(this.props.updateItem === undefined) ? '저장하기' : '수정하기'}
+					</Button>
 				</Row>
 			</Form>
 		);
