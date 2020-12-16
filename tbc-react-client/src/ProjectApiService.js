@@ -146,7 +146,9 @@ class ProjectApiService extends Component {
   login(userId) {
     return Axios.get(URL4 + "/login/" + userId);
   }
-
+  join(member) {
+    return Axios.post(URL4 + "/join", member);
+  }
   getUser(userId) {
     return Axios.get(URL4 + "/setting/" + userId);
   }

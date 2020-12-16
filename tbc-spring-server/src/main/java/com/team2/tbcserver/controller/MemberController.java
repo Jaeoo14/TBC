@@ -31,9 +31,9 @@ public class MemberController {
 		System.out.println("회원 정보" + Mmapper.login(userId));
 		return Mmapper.login(userId);
 	}
-	@PostMapping
-	public Long join(@RequestBody MemberVO Member) {
+	@PostMapping("join")
+	public void join(@RequestBody MemberVO Member) {
 		Mmapper.join(Member);
-		return Member.getId();
+		System.out.println("유저 데이터 저장");
 	}
 }

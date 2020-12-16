@@ -27,11 +27,9 @@ export default function LoginButton() {
 
   return (
     <div>
-      <Button
-        variant="contained"
-        className={classes.button}
-        type="submit"
-      ></Button>
+      <Button variant="contained" className={classes.button} type="submit">
+        회원
+      </Button>
     </div>
   );
 }

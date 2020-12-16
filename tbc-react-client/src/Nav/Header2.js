@@ -13,7 +13,7 @@ const Header2 = () => {
           </a>
         </li>
         <li>
-          <a href="#">프로젝트 올리기</a>
+          <a href="/start">프로젝트 올리기</a>
         </li>
         <li className="login">
           <a href="/login"> 로그인/회원가입</a>
@@ -23,11 +23,14 @@ const Header2 = () => {
             <SearchIcon />
           </a>
         </li>
-
+      
         <a href="/card">
           {/* 로고에 링크 걸릴지 테스트로 걸어놓았습니다 나중에 메인으로 수정할게요 */}
-          <img className="logo" src="logo.png" alt="logo" />
-        </a>
+          <img
+          className="logo"
+          src="logo.png"
+          alt="logo"/></a>
+        
       </ul>
     </div>
   );

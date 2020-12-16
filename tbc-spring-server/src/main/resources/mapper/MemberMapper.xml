@@ -28,11 +28,13 @@
 			INSERT INTO member(
 						name,
 						userId,
-						pwd)
+						pwd,
+						signUpDate)
 			VALUES(
 						#{name},
 						#{userId},
-						#{pwd})
+						#{pwd},
+						SYSDATE())
 				    
 	</insert>
 		

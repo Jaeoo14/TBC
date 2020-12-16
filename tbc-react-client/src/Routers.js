@@ -5,8 +5,9 @@ import Login from "./member/Login";
 import Join from "./member/components/Join";
 import UserSetting from "./member/UserSetting";
 import Detail from "./Detail/Detail";
+import Start from "./components/Start";
 import EditProject from "./components/EditProject";
-// import Discover from "./Discover/Discover";
+import Discover from "./Discover/Discover";
 import Card from "./Main/Cards";
 
 class Routers extends React.Component {
@@ -18,8 +19,9 @@ class Routers extends React.Component {
           <Route path="/join" component={Join} exact />
           <Route path="/setting" component={UserSetting} />
           <Route path="/Detail" component={Detail} />
-          {/* <Route path="/discover" component={Discover} /> */}
-          <Route path="/EditProject" component={EditProject} />
+          <Route path="/discover" component={Discover} />
+          <Route path="/start" component={Start} />
+          <Route path="/editproject" component={EditProject} />
           <Route path="/card" component={Card} />
         </Switch>
       </Router>
