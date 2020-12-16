@@ -52,7 +52,7 @@ class DiscoverItem extends Component {
                 <Box
                     fontSize={18}
                     align="left"> 
-                    {this.props.fundedAmount}원
+                    {Number(this.props.fundedAmount).toLocaleString()}원
                 <span style={{color:"#ff4646", fontSize:15}}> {this.props.fundedAmount * 100 / this.props.fundingGoalAmount}%</span>
                 <span style={{color:"#bbbbbb", fontSize:15, float:"right"}}> 
                     <ScheduleIcon color="disabled" /> 
