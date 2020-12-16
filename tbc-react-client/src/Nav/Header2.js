@@ -13,7 +13,7 @@ const Header2 = () => {
           </a>
         </li>
         <li>
-          <a href="#">프로젝트 올리기</a>
+          <a href="/editProject">프로젝트 올리기</a>
         </li>
         <li className="login">
           <a href="/login"> 로그인/회원가입</a>
