@@ -6,12 +6,32 @@ import FundingAndReward from './FundingAndReward';
 
 import './EditProject.css';
 
-// pId : project.id
-// cId : project.creatorId
-
 class EditProject extends Component {
 	state = {
 		projectTitle: '제목미정',
+
+		id : this.props.location.state.id,
+		creatorId : this.props.location.state.creatorId,
+	}
+
+	componentDidMount() {
+		this.setState({		
+			id : this.props.location.state.id,
+			creatorId : this.props.location.state.creatorId,
+		});
+	}
+
+	componentDidUpdate(prevProps) {
+		// will be true
+		if (this.props.location !== prevProps.location) {
+			this.setState({		
+				id : this.props.location.state.id,
+				creatorId : this.props.location.state.creatorId,
+			});
+		}
+
+    // INCORRECT, will *always* be false because history is mutable.
+    // const locationChanged = this.props.history.location !== prevProps.history.location;
 	}
 
 	showTitle = (title) => {
@@ -19,21 +39,20 @@ class EditProject extends Component {
 	}
 
 	render() {
-		const { pId, cId } = this.props;
-		console.log('EditProject.render', 'pId=', pId, 'cId=', cId);
+		console.log('EditProject.render', this.state);
 
 		return (
 			<div>
-				<h3 id='projectTitle'>
+				<h3 style={{textAlign:'center'}}>
 					<Badge variant='secondary'>준비 중</Badge>
 					{this.state.projectTitle === '' ? '제목미정' : this.state.projectTitle}
 				</h3>
 				<Tabs defaultActiveKey='projectDescription' id='uncontrolled-tab-example' >
 					<Tab eventKey='projectDescription' title='프로젝트 개요'  style={{backgroundColor:'#eee'}}>
-						<ProjectDescription pId={pId} cId={cId} showTitle={this.showTitle}/>
+						<ProjectDescription pId={this.state.id} cId={this.state.creatorId} showTitle={this.showTitle}/>
 					</Tab>
 					<Tab eventKey='FundingAndReward' title='펀딩 및 선물 구성'  style={{backgroundColor:'#eee'}}>
-						<FundingAndReward pId={pId} />
+						<FundingAndReward pId={this.state.id}  cId={this.state.creatorId} />
 					</Tab>
 				</Tabs>
 			</div>
