@@ -5,9 +5,6 @@ import Paper from "@material-ui/core/Paper";
 import { Avatar } from "@material-ui/core";
 
 class Profile extends Component {
-  if (localStorage != null){
-    
-  }
   render() {
     return (
       <Grid container spacing={3}>
