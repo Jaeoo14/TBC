@@ -26,6 +26,8 @@ class InputProjectTitle extends Component {
 		this.props.handleTitles(this.state.longTitle, this.state.shortTitle);
 	};
 
+	handleClose = () => this.props.handleClose();
+
 	handleProjectLongTitle = text => this.setState({ longTitle: text });
 	handleProjectShortTitle = text => this.setState({ shortTitle: text });
 
@@ -65,7 +67,7 @@ class InputProjectTitle extends Component {
 					</Col>
 				</Row>
 				<Row style={{ justifyContent: 'flex-end' }}>
-					<Button variant='secondary mr-1' size='sm'>
+					<Button variant='secondary mr-1' size='sm' onClick={this.handleClose}>
 						<CloseIcon />
 						취소하기
 					</Button>
