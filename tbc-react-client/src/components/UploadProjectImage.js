@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Form, Button, Container, Row } from 'react-bootstrap';
+import { Form, Button, Container, Row, Image } from 'react-bootstrap';
 import CheckIcon from '@material-ui/icons/Check';
 import CloseIcon from '@material-ui/icons/Close';
 
@@ -14,14 +14,14 @@ export default class UploadProjectImage extends Component {
 
 	componentDidMount() {
 		console.log('UploadProjectImage.componentDidMount', this.props.mainImg);
-		if (typeof this.props.mainImg === 'undefined') return;
+		if (typeof this.props.mainImg === 'undefined' || this.props.mainImg === 0) return;
 		Pas.getFile(this.props.mainImg)
 			.then(res => this.setState({ info: res.data }, () => console.log('UploadProjectImage', this.state)))
 			.catch(err => console.log(err));
 	}
 
 	componentDidUpdate(prevProps, prevState) {
-		if (prevProps.mainImg === this.props.mainImg) return;
+		if (prevProps.mainImg === this.props.mainImg || this.props.mainImg === 0) return;
 
 		Pas.getFile(this.props.mainImg)
 			.then(res => this.setState({ info: res.data }, () => console.log('UploadProjectImage', this.state)))
@@ -47,7 +47,8 @@ export default class UploadProjectImage extends Component {
 	};
 
 	render() {
-		const imgSrc = typeof this.state.info !== 'undefined' ? `data:image/png;base64,${this.state.info.data}` : '';
+		console.log('UploadProjectImage.render', this.state)
+		const imgSrc = (typeof this.state.info !== 'undefined') ? `data:image/png;base64,${this.state.info.data}` : '';
 		return (
 			<Container>
 				<Row>
@@ -60,7 +61,7 @@ export default class UploadProjectImage extends Component {
 						<p>
 							현재 이미지 {this.state.info && this.state.info.id}:{this.state.info && this.state.info.name}
 						</p>
-						<img src={imgSrc} alt='' width='100px' />
+						{imgSrc !== '' && <Image src={imgSrc} style={{width:'25%'}} thumbnail />}
 					</Form.Group>
 				</Row>
 				<Row style={{ justifyContent: 'flex-end' }}>
