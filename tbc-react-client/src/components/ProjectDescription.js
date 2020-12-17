@@ -10,6 +10,7 @@ import SetProjectURL from './SetProjectURL';
 import InputTags from './InputTags';
 
 import EditIcon from '@material-ui/icons/Edit';
+import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 
 import Pas from '../ProjectApiService';
 import DisplayImage from './DisplayImage';
@@ -20,6 +21,7 @@ class ProjectDescription extends Component {
 
 		editTitle: false,
 		editMainImg: false,
+		editContent: false,
 	};
 
 	componentDidMount() {
@@ -38,12 +40,17 @@ class ProjectDescription extends Component {
 	componentDidUpdate(prevProps, prevState) {}
 
 	handleClose = () => {
-		this.setState({ editTitle: false, editMainImg: false });
+		this.setState({
+			editTitle: false,
+			editMainImg: false,
+			editContent: false,
+		});
 	};
 
-	handleSaveMainImg = mainImg => {
-		this.setState({ project: { ...this.state.project, mainImg: mainImg}, editTitle: false, editMainImg: false },
-			this.updateProject);
+	handleSaveMainImg = imgFileId => {
+		this.setState({ 
+				project: { ...this.state.project, mainImg: imgFileId },}, 
+				this.updateProject);
 	};
 
 	startEditTitle = e => {
@@ -56,11 +63,16 @@ class ProjectDescription extends Component {
 		this.setState({ editMainImg: true });
 	};
 
+	startEditContent = e => {
+		e.preventDefault();
+		this.setState({ editContent: true });
+	};
+
 	handleTitles = (longTitle, shortTitle) => {
 		let temp = { ...this.state.project };
 		temp.longTitle = longTitle;
 		temp.shortTitle = shortTitle;
-		this.setState({ project: temp, editTitle: false }, () => this.updateTitles());
+		this.setState({ project: temp, editTitle: false }, this.updateTitles);
 	};
 
 	updateTitles = () => {
@@ -75,14 +87,12 @@ class ProjectDescription extends Component {
 	handleProject = (column, value) => {
 		let temp = { ...this.state.project };
 		temp[column] = value;
-		this.setState({ project: temp }, () => this.updateProject());
+		this.setState({ project: temp }, this.updateProject);
 	};
 
 	updateProject = () => {
 		Pas.update(this.state.project)
-			.then(res => {
-				console.log('Update project content to DB.', res.data);
-			})
+			.then(res => this.handleClose())
 			.catch(err => console.log(err));
 	};
 
@@ -99,20 +109,23 @@ class ProjectDescription extends Component {
 					<ListGroup.Item as='div' action>
 						{this.state.editTitle ? (
 							<div>
-								<InputProjectTitle longTitle={longTitle} shortTitle={shortTitle} handleTitles={this.handleTitles} handleClose={this.handleClose} />{' '}
+								<InputProjectTitle 
+									longTitle={longTitle} 
+									shortTitle={shortTitle} 
+									handleTitles={this.handleTitles} 
+									handleClose={this.handleClose} />
 							</div>
 						) : (
 							<div onClick={this.startEditTitle}>
 								<div>
 									<h6>프로젝트 제목</h6>
-									<h6>
-										{longTitle} <Badge variant='danger'>{shortTitle}</Badge>
-									</h6>
+									{
+										(this.state.project.longTitle === '') ? 
+											<div style={{color:'tomato'}}><ArrowRightIcon fontSize='small'/>프로젝트 제목을 입력해 주세요.</div>:
+									 		<h6>{longTitle} <Badge variant='danger'>{shortTitle}</Badge></h6>
+									}
 								</div>
-								<div style={{ textAlign: 'right', color: 'tomato' }}>
-									<EditIcon fontSize='small' />
-									입력하기
-								</div>
+								<div style={{ textAlign: 'right', color: 'tomato' }}><EditIcon fontSize='small' />입력하기</div>
 							</div>
 						)}
 					</ListGroup.Item>
@@ -129,26 +142,42 @@ class ProjectDescription extends Component {
 							<div onClick={this.startEditMainImg}>
 								<div>
 									<h6>프로젝트 대표 이미지</h6>
-									<DisplayImage pId={this.state.project.id} width={100} height={100} />
+									{
+										(this.state.project.mainImg === 0) ? 
+											<div style={{color:'tomato'}}><ArrowRightIcon fontSize='small'/>프로젝트 대표 이미지를 입력해 주세요.</div>:
+											<DisplayImage pId={this.state.project.id} width={100} height={100} />
+									}
 								</div>
-								<div style={{ textAlign: 'right', color: 'tomato' }}>
-									<EditIcon fontSize='small' />
-									입력하기
-								</div>
+								<div style={{ textAlign: 'right', color: 'tomato' }}><EditIcon fontSize='small' />입력하기</div>
 							</div>
 						)}
 					</ListGroup.Item>
 					<ListGroup.Item as='div' action>
-						<CustomTextArea
-							title='프로젝트 요약'
-							desc='후원자 분들에게 본 프로젝트를 간략하게 소개해 봅시다'
-							placeholder='프로젝트 요약을 입력해주세요'
-							minlen='10'
-							maxlen='100'
-							value={this.state.project.content}
-							handleText={this.handleProject}
-							columnName='content'
-						/>
+						{this.state.editContent ? (
+							<CustomTextArea
+								title='프로젝트 요약'
+								desc='후원자 분들에게 본 프로젝트를 간략하게 소개해 봅시다'
+								placeholder='프로젝트 요약을 입력해주세요'
+								minlen='10'
+								maxlen='100'
+								value={this.state.project.content}
+								handleText={this.handleProject}
+								handleClose={this.handleClose}
+								columnName='content'
+							/>
+						) : (
+							<div onClick={this.startEditContent}>
+								<div>
+									<h6>프로젝트 요약</h6>
+									{
+										(this.state.project.content === '') ? 
+											<div style={{color:'tomato'}}><ArrowRightIcon fontSize='small'/>프로젝트 요약을 입력해 주세요.</div>:
+									 		<h6>{this.state.project.content}</h6>
+									}
+								</div>
+								<div style={{ textAlign: 'right', color: 'tomato' }}><EditIcon fontSize='small' />입력하기</div>
+							</div>
+						)}
 					</ListGroup.Item>
 					<ListGroup.Item as='div' action>
 						<SelectProjectCategory
