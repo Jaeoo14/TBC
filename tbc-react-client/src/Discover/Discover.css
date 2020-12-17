@@ -68,6 +68,10 @@ span.countProject {
 
 }
 
+/* 버튼색 */
+.black-background {background-color:#FFFFFF;}
+.white {color:#000000;}
+
 
 /* div class=row 사용시 구역안 크기는 그대로 두는 CSS!! */
 div.row {
