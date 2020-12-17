@@ -6,10 +6,9 @@ import './Start.css';
 
 class Start extends Component {
 	// login 한 사용자만 프로젝트를 만들 수 있다.
-	// login 한 사용자의 id를 알아야 한다.
 	state = {
-		id: undefined,
-		creatorId: 999, // 임시로 cId=999로 설정한다.
+		id: undefined,	// project.id 실제 빈 프로젝트를 DB에 저장한 후 알 수 있는 값이다.
+		creatorId: 999, // login 한 사용자의 id. 임시로 999로 설정한다.
 	};
 
 	componentDidMount() {}
