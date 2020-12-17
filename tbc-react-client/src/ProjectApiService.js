@@ -14,12 +14,22 @@ const URL2 = "http://localhost:8090/discover";
 const URL3 = "http://localhost:8090/discover/count";
 const URL4 = "http://localhost:8090";
 
-//Discvoer에서 쓰는 url
+//Discvoer에서 쓰는 url 
+
+const STATE1 = "http://localhost:8090/discover/stateing";
+const STATE2 = "http://localhost:8090/discover/stateend";
+
 const AMOUNT1 = "http://localhost:8090/discover/amountunder100";
 const AMOUNT2 = "http://localhost:8090/discover/amount100to1000";
 const AMOUNT3 = "http://localhost:8090/discover/amount1000to5000";
 const AMOUNT4 = "http://localhost:8090/discover/amount5000toMillion";
 const AMOUNT5 = "http://localhost:8090/discover/amountOverMillion";
+
+const GOAL1 = "http://localhost:8090/discover/goalunder75";
+const GOAL2 = "http://localhost:8090/discover/goalunder75to100";
+const GOAL3 = "http://localhost:8090/discover/goalover100";
+
+
 
 class ProjectApiService extends Component {
   /////////////////////////////////////////
@@ -148,6 +158,28 @@ class ProjectApiService extends Component {
 
   countProject() {
     return Axios.get(URL3);
+  }
+
+  //상태별 분류
+  stateIng() {
+    return Axios.get(STATE1);
+  }
+  
+  stateEnd() {
+    return Axios.get(STATE2);
+  }
+
+  //달성률별 분류
+  goalUnder75() {
+    return Axios.get(GOAL1);
+  }
+
+  goalUnder75to100() {
+    return Axios.get(GOAL2);
+  }
+
+  goalOver100() {
+    return Axios.get(GOAL3);
   }
 
   //모인 금액별 분류

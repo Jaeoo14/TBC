@@ -35,6 +35,7 @@ class Discover extends Component {
         };
     }
 
+    //프로젝트 갯수
     viewCountProject = () => {
 
         ProjectApiService.countProject()
@@ -46,7 +47,6 @@ class Discover extends Component {
             console.error('Discover.js의 viewCountProject() 에러!', err);
         })
     }
-
 
     //전체 프로젝트 보기
     viewProjectList = () => {
@@ -61,8 +61,70 @@ class Discover extends Component {
         })
     }
 
-    //모인금액별
+    //상태별
+    viewStateIng = () => {
 
+        ProjectApiService.stateIng()
+        .then(res => {
+            this.setState({ lists : res.data });
+            console.log('stateIng 값', res.data)
+        })
+        .catch(err => {
+            console.error('Discover.js의 stateIng() 에러!', err);
+        })
+    }
+
+    viewStateEnd = () => {
+
+        ProjectApiService.stateEnd()
+        .then(res => {
+            this.setState({ lists : res.data });
+            console.log('stateEnd 값', res.data)
+        })
+        .catch(err => {
+            console.error('Discover.js의 stateEnd() 에러!', err);
+        })
+    }
+
+
+    //달성률별
+    viewGoalUnder75 = () => {
+
+        ProjectApiService.goalUnder75()
+        .then(res => {
+            this.setState({ lists : res.data });
+            console.log('goalUnder75 값', res.data)
+        })
+        .catch(err => {
+            console.error('Discover.js의 goalUnder75() 에러!', err);
+        })
+    }
+
+    viewGoalUnder75to100 = () => {
+
+        ProjectApiService.goalUnder75to100()
+        .then(res => {
+            this.setState({ lists : res.data });
+            console.log('goalUnder75to100 값', res.data)
+        })
+        .catch(err => {
+            console.error('Discover.js의 goalUnder75to100() 에러!', err);
+        })
+    }
+
+    viewGoalOver100 = () => {
+
+        ProjectApiService.goalOver100()
+        .then(res => {
+            this.setState({ lists : res.data });
+            console.log('goalOver100 값', res.data)
+        })
+        .catch(err => {
+            console.error('Discover.js의 goalOver100() 에러!', err);
+        })
+    }
+
+    //모인금액별
     viewAmountUnder100 = () => {
        
         ProjectApiService.amountUnder100()
@@ -187,9 +249,9 @@ class Discover extends Component {
                         상태 <span className="caret"></span>
                     </button>
                     <ul className="dropdown-menu" role="menu">
-                        <li><a href="#">전체 프로젝트</a></li>
-                        <li><a href="#">진행중 프로젝트</a></li>
-                        <li><a href="#">성사된 프로젝트</a></li>
+                        <li className="dropdown-item" onClick={this.viewProjectList}>전체 프로젝트</li>
+                        <li className="dropdown-item" onClick={this.viewStateIng}>진행중 프로젝트</li>
+                        <li className="dropdown-item" onClick={this.viewStateEnd}>성사된 프로젝트</li>
                         
                     </ul>
                 </div>
@@ -200,11 +262,10 @@ class Discover extends Component {
                         달성률 <span className="caret"></span>
                     </button>
                     <ul className="dropdown-menu" role="menu">
-                        <li><a href="#">전체보기</a></li>
-                        <li><a href="#">75% 이하</a></li>
-                        <li><a href="#">75%~100%</a></li>
-                        <li><a href="#">100% 이상</a></li>
-                        
+                        <li className="dropdown-item" onClick={this.viewProjectList}>전체보기&emsp;&emsp;</li>
+                        <li className="dropdown-item" onClick={this.viewGoalUnder75}>75% 이하&emsp;&emsp;</li>
+                        <li className="dropdown-item" onClick={this.viewGoalUnder75to100}>75%~100%</li>
+                        <li className="dropdown-item" onClick={this.viewGoalOver100}>100% 이상</li>
                     </ul>
                 </div>
 
@@ -214,11 +275,11 @@ class Discover extends Component {
                         모인 금액 <span className="caret"></span>
                     </button>
                     <ul className="dropdown-menu" role="menu">
-                        <li onClick={this.viewAmountUnder100}>1백만원 이하</li>
-                        <li onClick={this.viewAmount100to10000}>1백만원~1천만원</li>
-                        <li onClick={this.viewAmount1000to5000}>1천만원~5천만원</li>
-                        <li onClick={this.viewAmount5000toMillion}>5천만원~1억원</li>
-                        <li onClick={this.viewAmountOverMillion}>1억원 이상</li>
+                        <li className="dropdown-item" onClick={this.viewAmountUnder100}>1백만원 이하</li>
+                        <li className="dropdown-item" onClick={this.viewAmount100to10000}>1백만원~1천만원</li>
+                        <li className="dropdown-item" onClick={this.viewAmount1000to5000}>1천만원~5천만원</li>
+                        <li className="dropdown-item" onClick={this.viewAmount5000toMillion}>5천만원~1억원</li>
+                        <li className="dropdown-item" onClick={this.viewAmountOverMillion}>1억원 이상</li>
                     </ul>
                 </div>
 
