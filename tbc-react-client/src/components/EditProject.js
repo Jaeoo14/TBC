@@ -48,10 +48,10 @@ class EditProject extends Component {
 					{this.state.projectTitle === '' ? '제목미정' : this.state.projectTitle}
 				</h3>
 				<Tabs defaultActiveKey='projectDescription' id='uncontrolled-tab-example' >
-					<Tab eventKey='projectDescription' title='프로젝트 개요'  style={{backgroundColor:'#eee'}}>
+					<Tab eventKey='projectDescription' title='프로젝트 개요'>
 						<ProjectDescription pId={this.state.id} cId={this.state.creatorId} showTitle={this.showTitle}/>
 					</Tab>
-					<Tab eventKey='FundingAndReward' title='펀딩 및 선물 구성'  style={{backgroundColor:'#eee'}}>
+					<Tab eventKey='FundingAndReward' title='펀딩 및 선물 구성'>
 						<FundingAndReward pId={this.state.id}  cId={this.state.creatorId} />
 					</Tab>
 				</Tabs>
