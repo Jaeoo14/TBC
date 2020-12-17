@@ -62,14 +62,10 @@ class CustomTextArea extends Component {
 				</Row>
 				{ !this.props.noButtons && 
 				<Row style={{ justifyContent: 'flex-end' }}>
-					<Button variant='secondary mr-1' size='sm'>
-						<CloseIcon />
-						취소하기
-					</Button>
+					<Button variant='secondary mr-1' size='sm' onClick={this.props.handleClose}>
+						<CloseIcon fontSize='small'/>취소하기</Button>
 					<Button variant='primary' size='sm' disabled={text.length < minlen} onClick={this.handleSave}>
-						<CheckIcon />
-						저장하기
-					</Button>
+						<CheckIcon fontSize='small'/>저장하기</Button>
 				</Row>}
 			</Container>
 		);
