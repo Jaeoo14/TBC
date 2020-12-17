@@ -22,6 +22,7 @@ class Routers extends React.Component {
           <Route path="/start" component={Start} />
           <Route path="/editproject" component={EditProject} />
           <Route path="/main" component={Main} />
+          <Route path="/" component={Main} />
         </Switch>
       </Router>
     );
