@@ -129,7 +129,7 @@ class ProjectDescription extends Component {
 							<div onClick={this.startEditMainImg}>
 								<div>
 									<h6>프로젝트 대표 이미지</h6>
-									<DisplayImage pId={this.state.project.id} widtd={100} height={100} />
+									<DisplayImage pId={this.state.project.id} width={100} height={100} />
 								</div>
 								<div style={{ textAlign: 'right', color: 'tomato' }}>
 									<EditIcon fontSize='small' />
