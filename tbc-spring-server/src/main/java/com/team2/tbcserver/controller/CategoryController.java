@@ -19,7 +19,7 @@ import com.team2.tbcserver.vo.CategoryVO;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/project/category")
+@RequestMapping("/category")
 public class CategoryController {
 
 	@Autowired
