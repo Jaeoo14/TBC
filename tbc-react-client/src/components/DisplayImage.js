@@ -8,7 +8,7 @@ class DisplayImage extends Component {
 	state = {
 		file: {}, // 이미지 파일 데이타. file 테이블 참조.
 	};
-
+ 
 	componentDidMount = () => {
 		Pas.getFileOfProject(this.props.pId)
 			.then(res => this.setState({ file: res.data }, () => console.log(this.state.file)))
@@ -24,7 +24,7 @@ class DisplayImage extends Component {
 	}
 
 	render() {
-    return (<img src={`data:image/png;base64,${this.state.file.data}`} alt='' width={this.props.width} />);
+    return (<img src={`data:image/png;base64,${this.state.file.data}`} alt='' width={this.props.width} height={this.props.height}/>);
 	}
 }
 

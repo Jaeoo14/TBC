@@ -24,7 +24,7 @@
 				createdDate,
 				updatedDate
 		FROM 	project
-	   ORDER BY fundedAmount
+	   ORDER BY fundedAmount DESC
 	</select>
 	
 	<select id="remainDate" parameterType="Long" resultType="Long">

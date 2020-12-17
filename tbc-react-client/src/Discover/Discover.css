@@ -63,6 +63,9 @@ div.button {
 span.countProject {
     font-size: 16px;
     text-align: left;
+    font-weight: 550;
+    letter-spacing: -0.02rem;
+
 }
 
 
@@ -75,7 +78,7 @@ div.row {
     padding-right: auto;
 }
 
-img {
+div.img {
     width: 620px;
     height: 465px;
     object-fit: cover;

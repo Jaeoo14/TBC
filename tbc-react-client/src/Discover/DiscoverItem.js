@@ -1,10 +1,16 @@
-import { Box, Typography } from "@material-ui/core";
 import { Component } from "react";
+import './Discover.css'
+
+import 'moment/locale/ko';
 import Moment from "react-moment";
 
+import numeral from 'numeral';
+
+import { Box, Typography } from "@material-ui/core";
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import NotFavoriteIcon from '@material-ui/icons/FavoriteBorderOutlined';
+import DisplayImage from "../components/DisplayImage";
 
 
 class DiscoverItem extends Component {
@@ -17,43 +23,74 @@ class DiscoverItem extends Component {
         };
     }
     
+    toggleLike = (id) => {
+        console.log(`id = > ${id}`);
+        const localLiked = !this.state.liked;        
+        this.setState({ liked : localLiked });
+    };
+
+    //숫자 세자리마다 콤마 끊어주는 함수
+    numberFormatComma(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+      }
+    
+    //소수점 두자리씩 끊어주는 함수
+    numberDemicalTwo(x) {
+        return parseFloat(x).toFixed(0);
+    }
 
     render() {
         
         return(
 
             <div className="col-md-6 col-lg-4 g-mb-30">
-                <Typography value={this.props.id}>[{this.props.id}]</Typography>
-            
-                <div style={{float:"right"}} onClick={() => this.toggleLike()}>
-                    {this.state.liked === false ? <NotFavoriteIcon /> : <FavoriteIcon color="secondary" />} 
-                </div>     
-
-                <img 
+                {/* <img 
                     className="d-inline-block img-fluid mb-4" 
                     src={this.props.mainImg}
-                    alt="Image Description"/>
+                alt="Image Description"/> */}
+                <div style={{}} onClick={() => this.toggleLike()}>
+                    {this.state.liked === false ? <NotFavoriteIcon /> : <FavoriteIcon color="secondary" />}                 
+                </div>
+                <DisplayImage pId={this.props.id} width="280px" height="240px" />
                 <Box
-                    fontSize="h5.fontSize"
+                    fontSize="1.3rem"
                     align="left"
                     fontWeight="fontWeightBold"
+                    color="#393e46"
+                    marginTop="0.8rem"
+                    marginBottom="0.8rem"
+                    letterSpacing="-0.04rem"
                     onClick={"/*프로젝트 올리기 페이지 입력*/"}>
-                    {this.props.longTitle} </Box>
+                        {this.props.longTitle} 
+                </Box>
                 <Typography
                     variant="body2"
                     color="textSecondary"
-                    align="left">
+                    align="left"
+                    letterSpacing="-0.03rem"
+                    >
                     {this.props.category} | {this.props.creatorId} </Typography>
+                <Box marginTop="0.8rem" marginBottom="0.8rem" />
                 <Typography
                     variant="body1"
                     align="left"
+                    marginBottom="0.8rem"
                     onClick={"/*프로젝트 올리기 페이지 입력*/"}>
-                    {this.props.content} </Typography>
+                        {this.props.content}
+                    </Typography>
+
                 <Box
                     fontSize={18}
-                    align="left"> 
-                    {Number(this.props.fundedAmount).toLocaleString()}원
-                <span style={{color:"#ff4646", fontSize:15}}> {this.props.fundedAmount * 100 / this.props.fundingGoalAmount}%</span>
+                    align="left"
+                    marginTop="0.8rem"
+                    marginBottom="0.8rem"
+                > 
+                <span style={{float:"left"}}>
+                    {`${this.numberFormatComma(Number(this.props.fundedAmount))}`}원&nbsp;
+                </span>
+                <span style={{color:"#ff4646", fontSize:15, float:"left"}}>
+                    {`${this.numberDemicalTwo(this.props.fundedAmount * 100 / this.props.fundingGoalAmount)}`}%&nbsp;
+                </span>
                 <span style={{color:"#bbbbbb", fontSize:15, float:"right"}}> 
                     <ScheduleIcon color="disabled" /> 
                     <Moment fromNow ago>
