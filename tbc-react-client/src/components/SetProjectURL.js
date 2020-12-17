@@ -29,9 +29,7 @@ class SetProjectURL extends Component {
 		});
 	};
 
-	handleSave = () => {
-		this.props.handleProject('url', this.state.url);
-	};
+	handleSave = () => this.props.handleProject('url', this.state.url);
 
 	render() {
 		const { minlen, maxlen } = this.props;
@@ -46,15 +44,13 @@ class SetProjectURL extends Component {
 						minlen={minlen}
 						maxlen={maxlen}
 						width='50%'
-                        handleText={this.handleChange}
-                        value={this.state.url}
+						handleText={this.handleChange}
+            value={this.state.url}
 					/>
 				</Row>
 				<Row style={{ justifyContent: 'flex-end' }}>
-					<Button variant='secondary mr-1' size='sm'>
-						<CloseIcon />
-						취소하기
-					</Button>
+					<Button variant='secondary mr-1' size='sm' onClick={this.props.handleClose}>
+						<CloseIcon />취소하기</Button>
 					<Button variant='primary' size='sm' disabled={this.state.url.length < minlen} onClick={this.handleSave}>
 						<CheckIcon />
 						저장하기

@@ -25,6 +25,8 @@ class ProjectDescription extends Component {
 		editMainImg: false,
 		editContent: false,
 		editCategory: false,
+		editUrl: false,
+		editTags: false,
 	};
 
 	componentDidMount = () => {
@@ -56,6 +58,8 @@ class ProjectDescription extends Component {
 			editMainImg: false,
 			editContent: false,
 			editCategory: false,
+			editUrl: false,
+			editTags: false,
 		});
 	};
 
@@ -83,6 +87,16 @@ class ProjectDescription extends Component {
 	startEditCategory = e => {
 		e.preventDefault();
 		this.setState({ editCategory: true });
+	};
+
+	startEditUrl = e => {
+		e.preventDefault();
+		this.setState({ editUrl: true });
+	};
+	
+	startEditTags = e => {
+		e.preventDefault();
+		this.setState({ editTags: true });
 	};
 
 	startEdit(e, target) {
@@ -236,13 +250,54 @@ class ProjectDescription extends Component {
 									{this.state.project.category === 0 ? '입력하기':'수정하기'}</div>
 							</div>
 						)}
-
 					</ListGroup.Item>
 					<ListGroup.Item as='div' action>
-						<SetProjectURL value={this.state.project.url} minlen='3' maxlen='28' handleProject={this.handleProject} />
+						{this.state.editUrl ? (
+							<SetProjectURL 
+								value={this.state.project.url} 
+								minlen='3' 
+								maxlen='28' 
+								handleProject={this.handleProject}
+								handleClose={this.handleClose}
+								/>
+						) : (
+							<div onClick={this.startEditUrl}>
+								<div>
+									<h6>프로젝트 페이지 주소</h6>
+									{
+										(this.state.project.url === '') ? 
+											<div style={{color:'tomato'}}><ArrowRightIcon fontSize='small'/>프로젝트 페이지 주소를 입력해주세요.</div>:
+											 <h6>{this.state.project.url}</h6>
+									}
+								</div>
+								<div style={{ textAlign: 'right', color: 'tomato' }}><EditIcon fontSize='small' />
+									{this.state.project.url === '' ? '입력하기':'수정하기'}</div>
+							</div>
+						)}
 					</ListGroup.Item>
 					<ListGroup.Item as='div' action>
-						<InputTags value={this.state.project.tags} minlen='2' maxlen='125' handleProject={this.handleProject} />
+						{this.state.editTags ? (
+						<InputTags 
+							value={this.state.project.tags} 
+							minlen='2' 
+							maxlen='125' 
+							handleProject={this.handleProject}
+							handleClose={this.handleClose}
+						/>
+						) : (
+							<div onClick={this.startEditTags}>
+								<div>
+									<h6>검색용 태그</h6>
+									{
+										(this.state.project.tags === '') ? 
+											<div style={{color:'tomato'}}><ArrowRightIcon fontSize='small'/>예시: 소설,탐정,추리</div>:
+											 <h6>{this.state.project.tags}</h6>
+									}
+								</div>
+								<div style={{ textAlign: 'right', color: 'tomato' }}><EditIcon fontSize='small' />
+									{this.state.project.tags === '' ? '입력하기':'수정하기'}</div>
+							</div>
+						)}							
 					</ListGroup.Item>
 				</ListGroup>
 				<h6>창작자 정보</h6>

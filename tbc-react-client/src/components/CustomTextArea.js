@@ -56,7 +56,7 @@ class CustomTextArea extends Component {
 						{desc !== '' && <Form.Label column='sm'>{desc}</Form.Label>}
 						<Form.Control as='textarea' placeholder={placeholder} cols={cols} rows={rows} value={text} onChange={this.handleChange} />
 						<Form.Text className='text-muted'>
-							{text.length < minlen && `최소${minlen} / `} {remain}자 남았습니다.
+							<span style={{color:'tomato'}}>{minlen !== '' && text.length < minlen && `최소${minlen} / `}</span> {remain}자 남았습니다.
 						</Form.Text>
 					</Form.Group>
 				</Row>
