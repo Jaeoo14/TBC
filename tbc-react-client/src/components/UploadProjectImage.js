@@ -36,15 +36,18 @@ export default class UploadProjectImage extends Component {
 		if (typeof this.state.info !== 'undefined') {
 			Pas.updateFile(this.state.file, this.state.info.id)
 				.then(res => Pas.getFile(this.state.info.id))
-				.then(res => this.setState({ info: res.data }, () => console.log('UploadProjectImage', this.state)))
+				.then(res => this.setState({ info: res.data }, this.handleSaveMainImg))
 				.catch(err => console.log(err));
 		} else {
 			Pas.upload(this.state.file)
 				.then(res => Pas.getFile(res.data))
-				.then(res => this.setState({ info: res.data }, () => console.log('UploadProjectImage', this.state)))
+				.then(res => this.setState({ info: res.data }, this.handleSaveMainImg))
 				.catch(err => console.log(err));
 		}
 	};
+
+	handleClose = () => this.props.handleClose();
+	handleSaveMainImg = () => this.props.handleSaveMainImg(this.state.info.id);
 
 	render() {
 		console.log('UploadProjectImage.render', this.state)
@@ -65,7 +68,7 @@ export default class UploadProjectImage extends Component {
 					</Form.Group>
 				</Row>
 				<Row style={{ justifyContent: 'flex-end' }}>
-					<Button variant='secondary' size='sm'>
+					<Button variant='secondary' size='sm' onClick={this.handleClose}>
 						<CloseIcon />
 						취소하기
 					</Button>
