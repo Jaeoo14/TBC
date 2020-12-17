@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Image } from 'react-bootstrap';
 import Pas from '../ProjectApiService';
 
 // props
@@ -24,7 +25,13 @@ class DisplayImage extends Component {
 	}
 
 	render() {
-    return (<img src={`data:image/png;base64,${this.state.file.data}`} alt='' width={this.props.width} height={this.props.height}/>);
+    // return (<img src={`data:image/png;base64,${this.state.file.data}`} alt='' width={this.props.width} height={this.props.height}/>);
+		return (
+		<Image 
+			src={`data:image/png;base64,${this.state.file.data}`} 
+			alt='image' 
+			style={{width:this.props.width, height:this.props.height}} 
+			thumbnail/>);
 	}
 }
 
