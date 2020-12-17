@@ -4,7 +4,6 @@ import { Container, ListGroup, Row, Col, Button, Table } from 'react-bootstrap';
 import Pas from '../ProjectApiService';
 import FundingGoalAmount from './FundingGoalAmount';
 import FundDateTime from './FundDateTime';
-import RewardManager from './RewardManager_1';
 
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 
