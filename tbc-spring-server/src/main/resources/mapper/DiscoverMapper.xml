@@ -31,6 +31,47 @@
 	SELECT COUNT(id)
 	  FROM project
 	</select>
+	
+	<select id="stateIng" resultType="com.team2.tbcserver.vo.ProjectVO">
+	<![CDATA[ 	
+		SELECT	*
+		  FROM	project
+		 WHERE fundingEnd > sysdate();
+	]]>
+	</select>
+	
+	<select id="stateEnd" resultType="com.team2.tbcserver.vo.ProjectVO">
+	<![CDATA[ 	
+		SELECT	*
+		  FROM	project
+		 WHERE fundingEnd < sysdate();
+	]]>
+	</select>
+	
+	
+	<select id="goalUnder75" resultType="com.team2.tbcserver.vo.ProjectVO">
+	<![CDATA[ 	
+		SELECT	*
+		  FROM	project
+		 WHERE (fundedAmount*100/fundingGoalAmount) <= 75
+	]]>
+	</select>
+	
+	<select id="goalUnder75to100" resultType="com.team2.tbcserver.vo.ProjectVO">
+	<![CDATA[ 	
+		SELECT	*
+		  FROM	project
+		 WHERE (fundedAmount*100/fundingGoalAmount) >= 75 && (fundedAmount*100/fundingGoalAmount) <= 100
+	]]>
+	</select>
+	
+	<select id="goalOver100" resultType="com.team2.tbcserver.vo.ProjectVO">
+	<![CDATA[ 	
+		SELECT	*
+		  FROM	project
+		 WHERE (fundedAmount*100/fundingGoalAmount) >= 100;
+	]]>
+	</select>
 
 	<select id="amountUnder100" resultType="com.team2.tbcserver.vo.ProjectVO">
 	<![CDATA[ 	
@@ -44,7 +85,7 @@
 	<![CDATA[ 	
 		SELECT	*
 		  FROM	project
-	   	 WHERE fundedAmount>1000000 && fundedAmount<10000000;
+	   	 WHERE fundedAmount>1000000 && fundedAmount<10000000
 	]]>
 	</select>
 	
@@ -52,7 +93,7 @@
 	<![CDATA[ 	
 		SELECT	*
 		  FROM	project
-	   	 WHERE fundedAmount>10000000 && fundedAmount<50000000;
+	   	 WHERE fundedAmount>10000000 && fundedAmount<50000000
 	]]>
 	</select>
 	
@@ -60,7 +101,7 @@
 	<![CDATA[ 	
 		SELECT	*
 		  FROM	project
-	   	 WHERE fundedAmount>50000000 && fundedAmount<100000000;
+	   	 WHERE fundedAmount>50000000 && fundedAmount<100000000
 	]]>
 	</select>
 	
@@ -68,7 +109,7 @@
 	<![CDATA[ 	
 		SELECT	*
 		  FROM	project
-	   	 WHERE fundedAmount>100000000;
+	   	 WHERE fundedAmount>100000000
 	]]>
 	</select>
 	

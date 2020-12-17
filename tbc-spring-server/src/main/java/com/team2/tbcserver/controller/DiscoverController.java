@@ -35,6 +35,38 @@ public class DiscoverController {
 		return Dmapper.countProject();
 	}
 	
+	//상태별 분류
+	@GetMapping("/stateing")
+	public List<ProjectVO> stateIng() {
+		System.out.println("진행중인 프로젝트" + Dmapper.stateIng());
+		return Dmapper.stateIng();
+	}
+	
+	@GetMapping("/stateend")
+	public List<ProjectVO> stateEnd() {
+		System.out.println("끝난 프로젝트" + Dmapper.stateEnd());
+		return Dmapper.stateEnd();
+	}
+	
+	//달성률별 분류
+	@GetMapping("/goalunder75")
+	public List<ProjectVO> goalUnder75() {
+		System.out.println("100만원 이하의 프로젝트 리스트" + Dmapper.goalUnder75());
+		return Dmapper.goalUnder75();
+	}
+
+	@GetMapping("/goalunder75to100")
+	public List<ProjectVO> goalUnder75to100() {
+		System.out.println("100만원 이하의 프로젝트 리스트" + Dmapper.goalUnder75to100());
+		return Dmapper.goalUnder75to100();
+	}
+	
+	@GetMapping("/goalover100")
+	public List<ProjectVO> goalOver100() {
+		System.out.println("100만원 이하의 프로젝트 리스트" + Dmapper.goalOver100());
+		return Dmapper.goalOver100();
+	}
+	
 	//모인 금액별 분류
 	@GetMapping("/amountunder100")
 	public List<ProjectVO> amountUnder100() {
