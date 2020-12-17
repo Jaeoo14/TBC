@@ -32,8 +32,8 @@ class DiscoverItem extends Component {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
       }
     
-    //소수점 두자리씩 끊어주는 함수
-    numberDemicalTwo(x) {
+    //소수점 n자리씩 끊어주는 함수
+    numberDemical(x) {
         return parseFloat(x).toFixed(0);
     }
 
@@ -87,7 +87,7 @@ class DiscoverItem extends Component {
                     {`${this.numberFormatComma(Number(this.props.fundedAmount))}`}원&nbsp;
                 </span>
                 <span style={{color:"#ff4646", fontSize:15, float:"left"}}>
-                    {`${this.numberDemicalTwo(this.props.fundedAmount * 100 / this.props.fundingGoalAmount)}`}%&nbsp;
+                    {`${this.numberDemical(this.props.fundedAmount * 100 / this.props.fundingGoalAmount)}`}%&nbsp;
                 </span>
                 <span style={{color:"#bbbbbb", fontSize:15, float:"right"}}> 
                     <ScheduleIcon color="disabled" /> 
