@@ -19,31 +19,43 @@ class ProjectDescription extends Component {
 	state = {
 		project: undefined,
 
+		categoryName: undefined,
+
 		editTitle: false,
 		editMainImg: false,
 		editContent: false,
+		editCategory: false,
 	};
 
-	componentDidMount() {
+	componentDidMount = () => {
+		console.log('PD.componentDidMount', this.state, this.props);
+
 		const { pId, cId } = this.props;
 
 		Pas.fetchBy(pId)
 			.then(res =>
 				this.setState({ project: res.data }, () => {
 					this.props.showTitle(this.state.project.longTitle);
-					console.log('ProjectDescription.componentDidMount', this.state, this.props);
+					this.getCategoryName();
+					console.log('PD.componentDidMount', this.state, this.props);
 				}),
 			)
 			.catch(err => console.log(err));
 	}
 
-	componentDidUpdate(prevProps, prevState) {}
+	componentDidUpdate(prevProps, prevState) {
+		console.log('PD.componentDidUpdate', prevState, this.state);
+		if (prevState.project !== this.state.project) {
+			this.getCategoryName();
+		}
+	}
 
 	handleClose = () => {
 		this.setState({
 			editTitle: false,
 			editMainImg: false,
 			editContent: false,
+			editCategory: false,
 		});
 	};
 
@@ -68,6 +80,16 @@ class ProjectDescription extends Component {
 		this.setState({ editContent: true });
 	};
 
+	startEditCategory = e => {
+		e.preventDefault();
+		this.setState({ editCategory: true });
+	};
+
+	startEdit(e, target) {
+		e.preventDefault();
+		this.setState({ [target]: true });
+	}
+
 	handleTitles = (longTitle, shortTitle) => {
 		let temp = { ...this.state.project };
 		temp.longTitle = longTitle;
@@ -85,21 +107,29 @@ class ProjectDescription extends Component {
 	};
 
 	handleProject = (column, value) => {
+		console.log('PD.handleProject', column, value)
 		let temp = { ...this.state.project };
 		temp[column] = value;
 		this.setState({ project: temp }, this.updateProject);
 	};
 
 	updateProject = () => {
+		console.log('PD.updateProject', this.state.project);
 		Pas.update(this.state.project)
 			.then(res => this.handleClose())
 			.catch(err => console.log(err));
 	};
 
+	getCategoryName = () => {
+		Pas.getCategory(this.state.project.category)
+			.then(res=>this.setState({categoryName:res.data.text}))
+			.catch(err=>console.log(err));
+	}
+
 	render() {
 		if (this.state.project === undefined) return null;
 
-		console.log('ProjectDescription.render project=', this.state.project);
+		console.log('PD.render project=', this.state.project);
 		const { longTitle, shortTitle } = this.state.project;
 
 		return (
@@ -121,11 +151,12 @@ class ProjectDescription extends Component {
 									<h6>프로젝트 제목</h6>
 									{
 										(this.state.project.longTitle === '') ? 
-											<div style={{color:'tomato'}}><ArrowRightIcon fontSize='small'/>프로젝트 제목을 입력해 주세요.</div>:
+											<div style={{color:'tomato'}}><ArrowRightIcon fontSize='small'/>프로젝트 제목을 입력해주세요.</div>:
 									 		<h6>{longTitle} <Badge variant='danger'>{shortTitle}</Badge></h6>
 									}
 								</div>
-								<div style={{ textAlign: 'right', color: 'tomato' }}><EditIcon fontSize='small' />입력하기</div>
+								<div style={{ textAlign: 'right', color: 'tomato' }}><EditIcon fontSize='small' />
+									{(this.state.project.longTitle === '' && this.state.project.shortTitle === '') ? '입력하기':'수정하기'}</div>
 							</div>
 						)}
 					</ListGroup.Item>
@@ -144,11 +175,12 @@ class ProjectDescription extends Component {
 									<h6>프로젝트 대표 이미지</h6>
 									{
 										(this.state.project.mainImg === 0) ? 
-											<div style={{color:'tomato'}}><ArrowRightIcon fontSize='small'/>프로젝트 대표 이미지를 입력해 주세요.</div>:
+											<div style={{color:'tomato'}}><ArrowRightIcon fontSize='small'/>프로젝트 대표 이미지를 입력해주세요.</div>:
 											<DisplayImage pId={this.state.project.id} width={100} height={100} />
 									}
 								</div>
-								<div style={{ textAlign: 'right', color: 'tomato' }}><EditIcon fontSize='small' />입력하기</div>
+								<div style={{ textAlign: 'right', color: 'tomato' }}><EditIcon fontSize='small' />
+									{this.state.project.mainImg === 0 ? '입력하기':'수정하기'}</div>
 							</div>
 						)}
 					</ListGroup.Item>
@@ -171,22 +203,40 @@ class ProjectDescription extends Component {
 									<h6>프로젝트 요약</h6>
 									{
 										(this.state.project.content === '') ? 
-											<div style={{color:'tomato'}}><ArrowRightIcon fontSize='small'/>프로젝트 요약을 입력해 주세요.</div>:
+											<div style={{color:'tomato'}}><ArrowRightIcon fontSize='small'/>프로젝트 요약을 입력해주세요.</div>:
 									 		<h6>{this.state.project.content}</h6>
 									}
 								</div>
-								<div style={{ textAlign: 'right', color: 'tomato' }}><EditIcon fontSize='small' />입력하기</div>
+								<div style={{ textAlign: 'right', color: 'tomato' }}><EditIcon fontSize='small' />
+									{this.state.project.content === '' ? '입력하기':'수정하기'}</div>
 							</div>
 						)}
 					</ListGroup.Item>
 					<ListGroup.Item as='div' action>
-						<SelectProjectCategory
-							title='프로젝트 카테고리'
-							desc='프로젝트의 성격에 맞는 카테고리를 선택해 주세요. (프로젝트 성격과 맞지 않는 카테고리를 선택하실 시 후원자가 해당 프로젝트를 찾기 어려워지기에 에디터에 의해 조정될 수 있습니다.)'
-							placeholder='프로젝트 카테고리를 정해주세요.'
-							value={this.state.project.category}
-							handleProject={this.handleProject}
-						/>
+						{this.state.editCategory ? (
+							<SelectProjectCategory
+								title='프로젝트 카테고리'
+								desc='프로젝트의 성격에 맞는 카테고리를 선택해 주세요. (프로젝트 성격과 맞지 않는 카테고리를 선택하실 시 후원자가 해당 프로젝트를 찾기 어려워지기에 에디터에 의해 조정될 수 있습니다.)'
+								placeholder='프로젝트 카테고리를 정해주세요.'
+								value={this.state.project.category}
+								handleProject={this.handleProject}
+								handleClose={this.handleClose}
+							/>
+						) : (
+							<div onClick={this.startEditCategory}>
+								<div>
+									<h6>프로젝트 카테고리</h6>
+									{
+										(this.state.project.category === 0) ? 
+											<div style={{color:'tomato'}}><ArrowRightIcon fontSize='small'/>프로젝트 카테고리를 입력해주세요.</div>:
+											 <h6>{this.state.categoryName}</h6>
+									}
+								</div>
+								<div style={{ textAlign: 'right', color: 'tomato' }}><EditIcon fontSize='small' />
+									{this.state.project.category === 0 ? '입력하기':'수정하기'}</div>
+							</div>
+						)}
+
 					</ListGroup.Item>
 					<ListGroup.Item as='div' action>
 						<SetProjectURL value={this.state.project.url} minlen='3' maxlen='28' handleProject={this.handleProject} />
