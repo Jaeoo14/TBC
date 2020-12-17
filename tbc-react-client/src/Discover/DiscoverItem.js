@@ -4,8 +4,6 @@ import './Discover.css'
 import 'moment/locale/ko';
 import Moment from "react-moment";
 
-import numeral from 'numeral';
-
 import { Box, Typography } from "@material-ui/core";
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import FavoriteIcon from '@material-ui/icons/Favorite';
