@@ -1,28 +1,25 @@
 import React, { Component } from 'react';
 
-// import { Button, Col, Container, ListGroup, Row } from 'react-bootstrap';
-import { Container, ListGroup } from 'react-bootstrap';
+import { Badge, Container, ListGroup } from 'react-bootstrap';
 
 import InputProjectTitle from './InputProjectTitle';
 import UploadProjectImage from './UploadProjectImage';
-//import UploadImage from './UploadImage';
 import CustomTextArea from './CustomTextArea';
 import SelectProjectCategory from './SelectProjectCategory';
 import SetProjectURL from './SetProjectURL';
 import InputTags from './InputTags';
 
-// import CustomInput from './CustomInput';
-// import CustomFile from './CustomFile';
-// import InputCreatorName from './InputCreatorName';
-
-// import CheckIcon from '@material-ui/icons/Check';
-// import CloseIcon from '@material-ui/icons/Close';
+import EditIcon from '@material-ui/icons/Edit';
 
 import Pas from '../ProjectApiService';
+import DisplayImage from './DisplayImage';
 
 class ProjectDescription extends Component {
 	state = {
 		project: undefined,
+
+		editTitle: false,
+		editMainImg: false,
 	};
 
 	componentDidMount() {
@@ -40,11 +37,30 @@ class ProjectDescription extends Component {
 
 	componentDidUpdate(prevProps, prevState) {}
 
+	handleClose = () => {
+		this.setState({ editTitle: false, editMainImg: false });
+	};
+
+	handleSaveMainImg = mainImg => {
+		this.setState({ project: { ...this.state.project, mainImg: mainImg}, editTitle: false, editMainImg: false },
+			this.updateProject);
+	};
+
+	startEditTitle = e => {
+		e.preventDefault();
+		this.setState({ editTitle: true });
+	};
+
+	startEditMainImg = e => {
+		e.preventDefault();
+		this.setState({ editMainImg: true });
+	};
+
 	handleTitles = (longTitle, shortTitle) => {
 		let temp = { ...this.state.project };
 		temp.longTitle = longTitle;
 		temp.shortTitle = shortTitle;
-		this.setState({ project: temp }, () => this.updateTitles());
+		this.setState({ project: temp, editTitle: false }, () => this.updateTitles());
 	};
 
 	updateTitles = () => {
@@ -81,14 +97,46 @@ class ProjectDescription extends Component {
 				<h6>프로젝트 개요</h6>
 				<ListGroup>
 					<ListGroup.Item as='div' action>
-						<InputProjectTitle longTitle={longTitle} shortTitle={shortTitle} handleTitles={this.handleTitles} />
+						{this.state.editTitle ? (
+							<div>
+								<InputProjectTitle longTitle={longTitle} shortTitle={shortTitle} handleTitles={this.handleTitles} handleClose={this.handleClose} />{' '}
+							</div>
+						) : (
+							<div onClick={this.startEditTitle}>
+								<div>
+									<h6>프로젝트 제목</h6>
+									<h6>
+										{longTitle} <Badge variant='danger'>{shortTitle}</Badge>
+									</h6>
+								</div>
+								<div style={{ textAlign: 'right', color: 'tomato' }}>
+									<EditIcon fontSize='small' />
+									입력하기
+								</div>
+							</div>
+						)}
 					</ListGroup.Item>
 					<ListGroup.Item as='div' action>
-						<UploadProjectImage
-							title='프로젝트 대표 이미지'
-							desc='대표 이미지는 프로젝트의 가장 중요한 시각적 요소입니다. 후원자들이 프로젝트의 내용을 쉽게 파악하고 좋은 인상을 받을 수 있게 하기 위해 다음 가이드라인에 따라 디자인해 주세요.'
-							mainImg={this.state.project.mainImg}
-						/>
+						{this.state.editMainImg ? (
+							<UploadProjectImage
+								title='프로젝트 대표 이미지'
+								desc='대표 이미지는 프로젝트의 가장 중요한 시각적 요소입니다. 후원자들이 프로젝트의 내용을 쉽게 파악하고 좋은 인상을 받을 수 있게 하기 위해 다음 가이드라인에 따라 디자인해 주세요.'
+								mainImg={this.state.project.mainImg}
+								handleClose={this.handleClose}
+								handleSaveMainImg={this.handleSaveMainImg}
+							/>
+						) : (
+							<div onClick={this.startEditMainImg}>
+								<div>
+									<h6>프로젝트 대표 이미지</h6>
+									<DisplayImage pId={this.state.project.id} widtd={100} height={100} />
+								</div>
+								<div style={{ textAlign: 'right', color: 'tomato' }}>
+									<EditIcon fontSize='small' />
+									입력하기
+								</div>
+							</div>
+						)}
 					</ListGroup.Item>
 					<ListGroup.Item as='div' action>
 						<CustomTextArea
