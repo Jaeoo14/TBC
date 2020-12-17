@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
 
 import { Carousel } from 'react-bootstrap';
+import Cards from './Cards';
 
 class Main extends Component {
 
     render() {
         return (
-          <div style={{display: 'inline-flex'}}>
+          <div style={{display:'inline'}}>
+          <div style={{display:'inline-flex'}}>
             <Carousel style={{width: '1500px'}}>
               <Carousel.Item>
                 <a href="#">
@@ -51,6 +53,9 @@ class Main extends Component {
                 </Carousel.Caption>
               </Carousel.Item>
             </Carousel>
+            
+        </div>
+            <Cards />
         </div>
         );
     }

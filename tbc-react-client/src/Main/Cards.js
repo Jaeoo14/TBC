@@ -10,6 +10,7 @@ import Carousel from 'react-elastic-carousel';
 import ReactDOM from "react-dom";
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import NotFavoriteIcon from '@material-ui/icons/FavoriteBorderOutlined';
+//import DisplayImage from '../components/DisplayImage';
 
 const breakPoints = [
     { width: 1, itemsToShow: 1 },
@@ -63,22 +64,22 @@ class Cards extends Component {
             const localLiked = !this.state.liked;        
             this.setState({ liked : localLiked });
         };
-        render() {
-        return (
-            
+            render() {
+            return (
+            <div style={{display: 'inline'}}>
             <div style={{width:1500, display: 'inline-flex', verticalAlign: 'center'}}>
-                <br/>
                  {/* <h4 style={{textAlign:"center"}}>주목할 만한 프로젝트</h4> */}
                  <Carousel breakPoints={breakPoints}>
                    {this.state.lists.map(list => 
                 <div className='Card' >
-                <CardDeck  >
+                    <CardDeck  >
                             {/* //     좋아요기능      */}
                             <Card style={{width: 240}}>
                                  <div style={{float:"right"}} onClick={() => this.toggleLike()}>
                                   {this.state.liked === false ? <NotFavoriteIcon /> : <FavoriteIcon color="secondary" />} 
                               </div>
                             <Card.Img variant="top" src={list.mainImg} style={{ height: 180}} />
+                            {/* <Card.Img><DisplayImage pId={this.props.id} width="280px" height="240px" /></Card.Img> */}
                             <Card.Body>
                               <Card.Subtitle style={{fontSize: 10, textAlign: 'left'}}>
                                     {list.category} | {list.creatorId}
@@ -92,17 +93,49 @@ class Cards extends Component {
                               <small className="text-muted"><span style={{color:"#ff4646", fontSize:15}}> nnn%</span></small>
                             </Card.Footer>
                           </Card>
-                            
-                </CardDeck>
-            </div>
+                    </CardDeck>
+                </div>
                     )}
-                    </Carousel>
-                    <br/>
+                </Carousel>
+                    
                     </div>
-                //  /* <div className="Card">
-                //     <Button style={{backgroundColor: 'whitesmoke', borderRadius: 20, fontSize: 16, paddingLeft: 30, paddingRight: 30}} href="#">???? 프로젝트 더보기</Button>
-                // </div>  */
-                   
+                    
+            <div style={{width:1500, display: 'inline-flex', verticalAlign: 'center'}}>
+                 {/* <h4 style={{textAlign:"center"}}>주목할 만한 프로젝트</h4> */}
+                 <Carousel breakPoints={breakPoints}>
+                   {this.state.lists.map(list => 
+                     <div className='Card' >
+                      <CardDeck  >
+                            {/* //     좋아요기능      */}
+                            <Card style={{width: 240}}>
+                                 <div style={{float:"right"}} onClick={() => this.toggleLike()}>
+                                  {this.state.liked === false ? <NotFavoriteIcon /> : <FavoriteIcon color="secondary" />} 
+                              </div>
+                            <Card.Img variant="top" src={list.mainImg} style={{ height: 180}} />
+                            {/* <Card.Img><DisplayImage pId={this.props.id} width="280px" height="240px" /></Card.Img> */}
+                            <Card.Body>
+                              <Card.Subtitle style={{fontSize: 10, textAlign: 'left'}}>
+                                    {list.category} | {list.creatorId}
+                              </Card.Subtitle>
+                              <Card.Title>{list.shortTitle}</Card.Title>
+                              <Card.Text style={{fontSize: 15}}>
+                                    {list.content}
+                              </Card.Text>
+                            </Card.Body>
+                            <Card.Footer>
+                              <small className="text-muted"><span style={{color:"#ff4646", fontSize:15}}> nnn%</span></small>
+                            </Card.Footer>
+                          </Card>
+                      </CardDeck>
+                     </div>
+                     )}
+                 </Carousel>
+                    
+                    </div>
+                    {/* <div>
+                        <Button style={{backgroundColor: 'whitesmoke', borderRadius: 20, fontSize: 16, paddingLeft: 30, paddingRight: 30}} href="#">???? 프로젝트 더보기</Button>
+                    </div> */}
+                    </div>
         );
     }
 }

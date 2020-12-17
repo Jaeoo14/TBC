@@ -8,8 +8,7 @@ import Detail from "./Detail/Detail";
 import Start from "./components/Start";
 import EditProject from "./components/EditProject";
 import Discover from "./Discover/Discover";
-import Card from "./Main/Cards";
-
+import Main from "./Main/Main";
 class Routers extends React.Component {
   render() {
     return (
@@ -22,7 +21,7 @@ class Routers extends React.Component {
           <Route path="/discover" component={Discover} />
           <Route path="/start" component={Start} />
           <Route path="/editproject" component={EditProject} />
-          <Route path="/card" component={Card} />
+          <Route path="/main" component={Main} />
         </Switch>
       </Router>
     );
