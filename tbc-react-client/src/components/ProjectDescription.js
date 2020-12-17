@@ -21,7 +21,7 @@ class ProjectDescription extends Component {
 
 		categoryName: undefined,
 
-		editTitle: false,
+		editTitles: false,
 		editMainImg: false,
 		editContent: false,
 		editCategory: false,
@@ -54,7 +54,7 @@ class ProjectDescription extends Component {
 
 	handleClose = () => {
 		this.setState({
-			editTitle: false,
+			editTitles: false,
 			editMainImg: false,
 			editContent: false,
 			editCategory: false,
@@ -69,46 +69,23 @@ class ProjectDescription extends Component {
 				this.updateProject);
 	};
 
-	startEditTitle = e => {
+	startEdit = (e, target) => {
 		e.preventDefault();
-		this.setState({ editTitle: true });
-	};
-
-	startEditMainImg = e => {
-		e.preventDefault();
-		this.setState({ editMainImg: true });
-	};
-
-	startEditContent = e => {
-		e.preventDefault();
-		this.setState({ editContent: true });
-	};
-
-	startEditCategory = e => {
-		e.preventDefault();
-		this.setState({ editCategory: true });
-	};
-
-	startEditUrl = e => {
-		e.preventDefault();
-		this.setState({ editUrl: true });
-	};
-	
-	startEditTags = e => {
-		e.preventDefault();
-		this.setState({ editTags: true });
-	};
-
-	startEdit(e, target) {
-		e.preventDefault();
-		this.setState({ [target]: true });
+		this.setState({
+			editTitles: false,
+			editMainImg: false,
+			editContent: false,
+			editCategory: false,
+			editUrl: false,
+			editTags: false,
+		}, ()=>this.setState({ [target]: true }));		
 	}
 
 	handleTitles = (longTitle, shortTitle) => {
 		let temp = { ...this.state.project };
 		temp.longTitle = longTitle;
 		temp.shortTitle = shortTitle;
-		this.setState({ project: temp, editTitle: false }, this.updateTitles);
+		this.setState({ project: temp, editTitles: false }, this.updateTitles);
 	};
 
 	updateTitles = () => {
@@ -151,7 +128,7 @@ class ProjectDescription extends Component {
 				<h6>프로젝트 개요</h6>
 				<ListGroup>
 					<ListGroup.Item as='div' action>
-						{this.state.editTitle ? (
+						{this.state.editTitles ? (
 							<div>
 								<InputProjectTitle 
 									longTitle={longTitle} 
@@ -160,7 +137,7 @@ class ProjectDescription extends Component {
 									handleClose={this.handleClose} />
 							</div>
 						) : (
-							<div onClick={this.startEditTitle}>
+							<div onClick={(e)=>this.startEdit(e, 'editTitles')}>
 								<div>
 									<h6>프로젝트 제목</h6>
 									{
@@ -184,7 +161,7 @@ class ProjectDescription extends Component {
 								handleSaveMainImg={this.handleSaveMainImg}
 							/>
 						) : (
-							<div onClick={this.startEditMainImg}>
+							<div onClick={(e)=>this.startEdit(e, 'editMainImg')}>
 								<div>
 									<h6>프로젝트 대표 이미지</h6>
 									{
@@ -212,7 +189,7 @@ class ProjectDescription extends Component {
 								columnName='content'
 							/>
 						) : (
-							<div onClick={this.startEditContent}>
+							<div onClick={(e)=>this.startEdit(e, 'editContent')}>
 								<div>
 									<h6>프로젝트 요약</h6>
 									{
@@ -237,7 +214,7 @@ class ProjectDescription extends Component {
 								handleClose={this.handleClose}
 							/>
 						) : (
-							<div onClick={this.startEditCategory}>
+							<div onClick={(e)=>this.startEdit(e, 'editCategory')}>
 								<div>
 									<h6>프로젝트 카테고리</h6>
 									{
@@ -261,7 +238,7 @@ class ProjectDescription extends Component {
 								handleClose={this.handleClose}
 								/>
 						) : (
-							<div onClick={this.startEditUrl}>
+							<div onClick={(e)=>this.startEdit(e, 'editUrl')}>
 								<div>
 									<h6>프로젝트 페이지 주소</h6>
 									{
@@ -285,7 +262,7 @@ class ProjectDescription extends Component {
 							handleClose={this.handleClose}
 						/>
 						) : (
-							<div onClick={this.startEditTags}>
+							<div onClick={(e)=>this.startEdit(e, 'editTags')}>
 								<div>
 									<h6>검색용 태그</h6>
 									{
