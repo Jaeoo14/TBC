@@ -27,14 +27,50 @@
 	   ORDER BY fundedAmount DESC
 	</select>
 	
-	<select id="remainDate" parameterType="Long" resultType="Long">
-	SELECT DATEDiff(fundingEnd, now())
-	FROM project
-	</select>
-	
 	<select id="countProject" parameterType="Long" resultType="Long">
 	SELECT COUNT(id)
-	FROM project
+	  FROM project
 	</select>
+
+	<select id="amountUnder100" resultType="com.team2.tbcserver.vo.ProjectVO">
+	<![CDATA[ 	
+		SELECT	*
+		  FROM	project
+		 WHERE fundedAmount<1000000
+	]]>
+	</select>
+	
+	<select id="amount100to1000" resultType="com.team2.tbcserver.vo.ProjectVO">
+	<![CDATA[ 	
+		SELECT	*
+		  FROM	project
+	   	 WHERE fundedAmount>1000000 && fundedAmount<10000000;
+	]]>
+	</select>
+	
+	<select id="amount1000to5000" resultType="com.team2.tbcserver.vo.ProjectVO">
+	<![CDATA[ 	
+		SELECT	*
+		  FROM	project
+	   	 WHERE fundedAmount>10000000 && fundedAmount<50000000;
+	]]>
+	</select>
+	
+	<select id="amount5000toMillion" resultType="com.team2.tbcserver.vo.ProjectVO">
+	<![CDATA[ 	
+		SELECT	*
+		  FROM	project
+	   	 WHERE fundedAmount>50000000 && fundedAmount<100000000;
+	]]>
+	</select>
+	
+	<select id="amountOverMillion" resultType="com.team2.tbcserver.vo.ProjectVO">
+	<![CDATA[ 	
+		SELECT	*
+		  FROM	project
+	   	 WHERE fundedAmount>100000000;
+	]]>
+	</select>
+	
 
 </mapper>

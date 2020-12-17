@@ -10,9 +10,16 @@ const CATEGORY = "http://localhost:8090/category";
 
 // spring boot back-end url.
 const URL = "http://localhost:8090/project"; // https는 따로 알아보자.
-const URL2 = "http://localhost:8090/discover"; // https는 따로 알아보자.
+const URL2 = "http://localhost:8090/discover";
 const URL3 = "http://localhost:8090/discover/count";
 const URL4 = "http://localhost:8090";
+
+//Discvoer에서 쓰는 url
+const AMOUNT1 = "http://localhost:8090/discover/amountunder100";
+const AMOUNT2 = "http://localhost:8090/discover/amount100to1000";
+const AMOUNT3 = "http://localhost:8090/discover/amount1000to5000";
+const AMOUNT4 = "http://localhost:8090/discover/amount5000toMillion";
+const AMOUNT5 = "http://localhost:8090/discover/amountOverMillion";
 
 class ProjectApiService extends Component {
   /////////////////////////////////////////
@@ -142,6 +149,29 @@ class ProjectApiService extends Component {
   countProject() {
     return Axios.get(URL3);
   }
+
+  //모인 금액별 분류
+  amountUnder100() {
+    return Axios.get(AMOUNT1);
+  }
+
+  amount100to1000() {
+    return Axios.get(AMOUNT2);
+  }
+
+  amount1000to5000() {
+    return Axios.get(AMOUNT3);
+  }
+
+  amount5000toMillion() {
+    return Axios.get(AMOUNT4);
+  }
+
+  amountOverMillion() {
+    return Axios.get(AMOUNT5);
+  }
+
+
   /////////////////////////////////////////
   //여기서부터 Member에서 쓰는 것들//
   login(userId) {

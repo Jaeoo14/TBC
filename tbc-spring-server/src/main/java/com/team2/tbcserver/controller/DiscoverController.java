@@ -21,22 +21,50 @@ public class DiscoverController {
 	@Autowired
 	DiscoverMapper Dmapper;
 	
+	//프로젝트 전체 리스트 보기 
 	@GetMapping
 	public List<ProjectVO> projectList() {
 		System.out.println("프로젝트 리스트" + Dmapper.projectList());
 		return Dmapper.projectList();
 	}
 	
+	//프로젝트 갯수
 	@GetMapping("/count")
 	public Long countProject() {
 		System.out.println("프로젝트 갯수" + Dmapper.countProject());
 		return Dmapper.countProject();
 	}
 	
-	@GetMapping("/remain")
-	public Long remainDate() {
-		System.out.println("남은 날짜" + Dmapper.remainDate());
-		return Dmapper.remainDate();
+	//모인 금액별 분류
+	@GetMapping("/amountunder100")
+	public List<ProjectVO> amountUnder100() {
+		System.out.println("100만원 이하의 프로젝트 리스트" + Dmapper.amountUnder100());
+		return Dmapper.amountUnder100();
 	}
-
+	
+	@GetMapping("/amount100to1000")
+	public List<ProjectVO> amount100to1000() {
+		System.out.println("100<모인금액<1000 프로젝트 리스트" + Dmapper.amount100to1000());
+		return Dmapper.amount100to1000();
+	}
+	
+	@GetMapping("/amount1000to5000")
+	public List<ProjectVO> amount1000to5000() {
+		System.out.println("1000<모인금액<5000 프로젝트 리스트" + Dmapper.amount1000to5000());
+		return Dmapper.amount1000to5000();
+	}
+	
+	@GetMapping("/amount5000toMillion")
+	public List<ProjectVO> amount5000toMillion() {
+		System.out.println("5000<모인금액<1억 프로젝트 리스트" + Dmapper.amount5000toMillion());
+		return Dmapper.amount5000toMillion();
+	}
+	
+	@GetMapping("/amountOverMillion")
+	public List<ProjectVO> amountOverMillion() {
+		System.out.println("1억 이상 프로젝트 리스트" + Dmapper.amountOverMillion());
+		return Dmapper.amountOverMillion();
+	}
+	
+	
 }
