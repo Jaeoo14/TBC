@@ -40,10 +40,10 @@ class DiscoverItem extends Component {
 
     getCategoryId = () => {
 
-        ProjectApiService.getCategory(this.props.pId)
+        ProjectApiService.getCategory(this.props.category)
         .then(res => {
             this.setState({ categoryId : res.data.id, categoryText : res.data.text });
-            // console.log('getCategoryId&categoryText 값', res.data.id, res.data.text)
+            console.log('getCategoryId&categoryText 값', this.state.categoryText)
         })
         .catch(err => {
             console.error('DiscoverItem.js의 getCategoryId() 에러!', err);
@@ -67,7 +67,6 @@ class DiscoverItem extends Component {
     }
 
     viewPercentImage(x) {
-
             if (x >= 100)
                 return <img src={per100} style={{width:"20rem", height:"0.2rem"}}/>;
             if (x <= 90 && x > 70)
@@ -87,7 +86,7 @@ class DiscoverItem extends Component {
         
         return(
 
-            <div className="col-md-6 col-lg-4 g-mb-30" style={{paddingLeft:"3.5rem", paddingRight:"3.5rem"}}>
+            <div className="col-md-6 col-lg-4 g-mb-30" style={{paddingLeft:"3.2rem", paddingRight:"3.4rem"}}>
                 {/* <img 
                     className="d-inline-block img-fluid mb-4" 
                     src={this.props.mainImg}
@@ -113,7 +112,8 @@ class DiscoverItem extends Component {
                     align="left"
                     letterSpacing="-0.03rem"
                     >
-                    {this.state.categoryText}&nbsp;
+            {/* !!!!!!!!!!!!!!!!!!!!!!~~~~지금 작업하고 있는 부분~~~~!!!!!!!!!!!!!!!! */}
+                    {this.state.categoryText} &nbsp;
                     | {this.props.creatorId} </Typography>
                 <Box marginTop="0.8rem" marginBottom="0.8rem" />
                 <Typography
@@ -140,7 +140,7 @@ class DiscoverItem extends Component {
                 <span style={{color:"#ff4646", fontSize:14, float:"left", marginTop:"3px"}}>
                     {this.state.amountPercent}%&nbsp;
                 </span>
-                <span style={{color:"#bbbbbb", fontSize:15, float:"right"}}> 
+                <span style={{color:"#bbbbbb", fontSize:14, float:"right"}}> 
                     <ScheduleIcon color="disabled" /> 
                     <Moment fromNow ago>
                         {this.props.fundingEnd}

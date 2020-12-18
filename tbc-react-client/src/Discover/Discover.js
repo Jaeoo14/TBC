@@ -210,7 +210,7 @@ class Discover extends Component {
                             </li>
 
                             <li className="dropdown-submenu">
-                            <Button class="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <Button className="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span style={{float:"left"}}>게임</span>
                                 <Arrow fontSize="small" style={{float:"right"}}/>  
                             </Button>
@@ -227,7 +227,7 @@ class Discover extends Component {
                             </li>
 
                             <li className="dropdown-submenu">
-                            <Button class="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <Button className="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span style={{float:"left"}}>공연</span>
                                 <Arrow fontSize="small" style={{float:"right"}}/>  
                             </Button>
@@ -240,7 +240,7 @@ class Discover extends Component {
                             </li>
                             
                             <li className="dropdown-submenu">
-                            <Button class="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <Button className="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span style={{float:"left"}}>디자인</span>
                                 <Arrow fontSize="small" style={{float:"right"}}/>  
                             </Button>
@@ -254,7 +254,7 @@ class Discover extends Component {
                             </li>
 
                             <li className="dropdown-submenu">
-                            <Button class="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <Button className="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span style={{float:"left"}}>만화</span>
                                 <Arrow fontSize="small" style={{float:"right"}}/>  
                             </Button>
@@ -268,7 +268,7 @@ class Discover extends Component {
                             </li>
 
                             <li className="dropdown-submenu">
-                            <Button class="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <Button className="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span style={{float:"left"}}>게임</span>
                                 <Arrow fontSize="small" style={{float:"right"}}/>  
                             </Button>
@@ -286,7 +286,7 @@ class Discover extends Component {
                             </li>
 
                             <li className="dropdown-submenu">
-                            <Button class="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <Button className="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span style={{float:"left"}}>공예</span>
                                 <Arrow fontSize="small" style={{float:"right"}}/>  
                             </Button>
@@ -300,7 +300,7 @@ class Discover extends Component {
                             </li>
 
                             <li className="dropdown-submenu">
-                            <Button class="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <Button className="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span style={{float:"left"}}>사진</span>
                                 <Arrow fontSize="small" style={{float:"right"}}/>  
                             </Button>
@@ -314,7 +314,7 @@ class Discover extends Component {
                             </li>
 
                             <li className="dropdown-submenu">
-                            <Button class="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <Button className="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span style={{float:"left"}}>영화·비디오</span>
                                 <Arrow fontSize="small" style={{float:"right"}}/>  
                             </Button>
@@ -330,86 +330,99 @@ class Discover extends Component {
                             </li>
 
                             <li className="dropdown-submenu">
-                            <Button class="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <Button className="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span style={{float:"left"}}>푸드</span>
                                 <Arrow fontSize="small" style={{float:"right"}}/>  
                             </Button>
                                 <ul className="dropdown-menu">
-                                <li className="dropdown-item">만화 전체</li>
-                                <li className="dropdown-item">그래픽 노블</li>
-                                <li className="dropdown-item">웹툰</li>
-                                <li className="dropdown-item">만화책</li>
-                                <li className="dropdown-item">만화·웹툰 리스소</li>
+                                <li className="dropdown-item">푸드 전체</li>
+                                <li className="dropdown-item">베이킹·디저트</li>
+                                <li className="dropdown-item">음료</li>
+                                <li className="dropdown-item">간편식</li>
+                                <li className="dropdown-item">요리책</li>
+                                <li className="dropdown-item">펫푸드</li>
+                                <li className="dropdown-item">푸드 페스티벌·행사</li>
                                 </ul>
                             </li>
 
                             <li className="dropdown-submenu">
-                            <Button class="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <Button className="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span style={{float:"left"}}>음악</span>
                                 <Arrow fontSize="small" style={{float:"right"}}/>  
                             </Button>
                                 <ul className="dropdown-menu">
-                                <li className="dropdown-item">만화 전체</li>
-                                <li className="dropdown-item">그래픽 노블</li>
-                                <li className="dropdown-item">웹툰</li>
-                                <li className="dropdown-item">만화책</li>
-                                <li className="dropdown-item">만화·웹툰 리스소</li>
+                                <li className="dropdown-item">음악 전체</li>
+                                <li className="dropdown-item">전자음악</li>
+                                <li className="dropdown-item">포크·어쿠스틱</li>
+                                <li className="dropdown-item">록</li>
+                                <li className="dropdown-item">힙합</li>
+                                <li className="dropdown-item">재즈 음악</li>
+                                <li className="dropdown-item">팝 음악</li>
+                                <li className="dropdown-item">트로트</li>
+                                <li className="dropdown-item">클래식</li>
+                                <li className="dropdown-item">동인·게임</li>
                                 </ul>
                             </li>
 
                             <li className="dropdown-submenu">
-                            <Button class="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <Button className="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span style={{float:"left"}}>출판</span>
                                 <Arrow fontSize="small" style={{float:"right"}}/>  
                             </Button>
                                 <ul className="dropdown-menu">
-                                <li className="dropdown-item">만화 전체</li>
-                                <li className="dropdown-item">그래픽 노블</li>
-                                <li className="dropdown-item">웹툰</li>
-                                <li className="dropdown-item">만화책</li>
-                                <li className="dropdown-item">만화·웹툰 리스소</li>
+                                <li className="dropdown-item">출판 전체</li>
+                                <li className="dropdown-item">잡지</li>
+                                <li className="dropdown-item">아트북·도감</li>
+                                <li className="dropdown-item">문학·에세이</li>
+                                <li className="dropdown-item">그림책</li>
+                                <li className="dropdown-item">실용·취미</li>
                                 </ul>
                             </li>
 
                             <li className="dropdown-submenu">
-                            <Button class="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <Button className="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span style={{float:"left"}}>테크</span>
                                 <Arrow fontSize="small" style={{float:"right"}}/>  
                             </Button>
                                 <ul className="dropdown-menu">
-                                <li className="dropdown-item">만화 전체</li>
-                                <li className="dropdown-item">그래픽 노블</li>
-                                <li className="dropdown-item">웹툰</li>
-                                <li className="dropdown-item">만화책</li>
-                                <li className="dropdown-item">만화·웹툰 리스소</li>
+                                <li className="dropdown-item">테크 전체</li>
+                                <li className="dropdown-item">소프트웨어</li>
+                                <li className="dropdown-item">하드웨어</li>
+                                <li className="dropdown-item">앱</li>
+                                <li className="dropdown-item">웹</li>
+                                <li className="dropdown-item">웨어러블</li>
+                                <li className="dropdown-item">우주·로켓</li>
                                 </ul>
                             </li>
 
                             <li className="dropdown-submenu">
-                            <Button class="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <Button className="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span style={{float:"left"}}>패션</span>
                                 <Arrow fontSize="small" style={{float:"right"}}/>  
                             </Button>
                                 <ul className="dropdown-menu">
-                                <li className="dropdown-item">만화 전체</li>
-                                <li className="dropdown-item">그래픽 노블</li>
-                                <li className="dropdown-item">웹툰</li>
-                                <li className="dropdown-item">만화책</li>
-                                <li className="dropdown-item">만화·웹툰 리스소</li>
+                                <li className="dropdown-item">패션 전체</li>
+                                <li className="dropdown-item">의류</li>
+                                <li className="dropdown-item">잡화</li>
+                                <li className="dropdown-item">쥬얼리</li>
+                                <li className="dropdown-item">액세서리</li>
+                                <li className="dropdown-item">아동복</li>
+                                <li className="dropdown-item">펫스타일</li>
+                                <li className="dropdown-item">뷰티</li>
                                 </ul>
                             </li>
 
                             <li className="dropdown-submenu">
-                            <Button class="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <Button className="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span style={{float:"left"}}>저널리즘</span>
                                 <Arrow fontSize="small" style={{float:"right"}}/>  
                             </Button>
                                 <ul className="dropdown-menu">
-                                <li className="dropdown-item">만화 전체</li>
-                                <li className="dropdown-item">그래픽 노블</li>
-                                <li className="dropdown-item">웹툰</li>
-                                <li className="dropdown-item">만화책</li>
-                                <li className="dropdown-item">만화·웹툰 리스소</li>
+                                <li className="dropdown-item">저널리즘 전체</li>
+                                <li className="dropdown-item">오디오 저널</li>
+                                <li className="dropdown-item">비디오 저널</li>
+                                <li className="dropdown-item">출판 저널</li>
+                                <li className="dropdown-item">웹 저널</li>
                                 </ul>
                             </li>
 
