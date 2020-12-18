@@ -19,8 +19,13 @@ class UserSetting extends Component {
   render() {
     return (
       <div>
-        <hr />
-        <Container maxWidth="md">
+        <Container
+          Width="md"
+          style={{
+            paddingLeft: "5.5rem",
+            paddingRight: "5.5rem",
+          }}
+        >
           <Grid container direction="row">
             <Grid item>
               <div id="title"> 설정 </div>

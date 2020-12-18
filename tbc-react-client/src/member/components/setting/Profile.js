@@ -50,13 +50,13 @@ class Profile extends Component {
           <hr />
 
           <div id="div1">
-            이름
+            닉네임
             <span>
               <button>변경</button>
             </span>
           </div>
           <br />
-          <div>{this.state.name}</div>
+          <div>{this.state.nickname}</div>
           <hr />
 
           <div id="div1">

@@ -6,7 +6,7 @@ import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 
-import Profile from "./setting/Profile";
+import Profile from "./setting/Profile2";
 import Account from "./setting/Account";
 import Address from "./setting/Address";
 import Notification from "./setting/Notification";
@@ -26,8 +26,8 @@ const AntTab = withStyles((theme) => ({
     textTransform: "none",
     minWidth: 40,
     fontWeight: theme.typography.fontWeightRegular,
-    fontSize: theme.typography.pxToRem(14),
-    marginRight: theme.spacing(0),
+    fontSize: theme.typography.pxToRem(18),
+    marginRight: theme.spacing(1),
     fontFamily: [
       "-apple-system",
       "BlinkMacSystemFont",

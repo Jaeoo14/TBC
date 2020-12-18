@@ -74,6 +74,7 @@ function SimplePaper(props) {
           })
           .catch((err) => {
             console.error("로그인 에러!", err);
+            alert("시스템 에러입니다.");
           });
       } else {
         if (errors.userId !== undefined) {

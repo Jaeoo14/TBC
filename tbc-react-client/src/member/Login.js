@@ -9,7 +9,6 @@ class Login extends Component {
   render() {
     return (
       <div>
-        <hr />
         <Grid container justify="center">
           <LoginCard></LoginCard>
         </Grid>
