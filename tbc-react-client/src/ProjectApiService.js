@@ -7,6 +7,7 @@ import { Component } from "react";
 
 const ITEM = "http://localhost:8090/item";
 const CATEGORY = "http://localhost:8090/category";
+const MEMBER = "http://localhost:8090/member";
 
 // spring boot back-end url.
 const URL = "http://localhost:8090/project"; // https는 따로 알아보자.
@@ -237,13 +238,19 @@ class ProjectApiService extends Component {
   /////////////////////////////////////////
   //여기서부터 Member에서 쓰는 것들//
   login(userId) {
-    return Axios.get(URL4 + "/login/" + userId);
+    return Axios.get(MEMBER + "/login/" + userId); // e-mail
   }
+
   join(member) {
-    return Axios.post(URL4 + "/join", member);
+    return Axios.post(MEMBER + "/join", member);
   }
-  getUser(userId) {
-    return Axios.get(URL4 + "/setting/" + userId);
+
+  getUser(id) {
+    return Axios.get(MEMBER + "/" + id); // member.id
+  }
+
+  updateUser(id) {
+    return Axios.put(MEMBER+"/"+id);
   }
 
   ////Detail 부분
