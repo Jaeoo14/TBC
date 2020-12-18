@@ -6,8 +6,14 @@ import Moment from "react-moment";
 
 import { Box, Typography } from "@material-ui/core";
 
-import Star from '@material-ui/icons/Star';
-import Star2 from '@material-ui/icons/StarOutline';
+import per10 from '../images/10per.png';
+import per30 from '../images/30per.png';
+import per50 from '../images/50per.png';
+import per70 from '../images/70per.png';
+import per90 from '../images/90per.png';
+import per100 from '../images/100per.png';
+
+
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import NotFavoriteIcon from '@material-ui/icons/FavoriteBorderOutlined';
@@ -28,6 +34,7 @@ class DiscoverItem extends Component {
             liked : false,
             categoryId : this.props.category,
             categoryText : "",
+            amountPercent : Number(`${this.numberDemical(this.props.fundedAmount * 100 / this.props.fundingGoalAmount)}`),
         };
     }
 
@@ -59,12 +66,28 @@ class DiscoverItem extends Component {
         return parseFloat(x).toFixed(0);
     }
 
+    viewPercentImage(x) {
+
+            if (x >= 100)
+                return <img src={per100} style={{width:"20rem", height:"0.2rem"}}/>;
+            if (x <= 90 && x > 70)
+                return <img src={per90} style={{width:"20rem", height:"0.2rem"}}/>;
+            if (x <= 70 && x > 50)
+                return <img src={per70} style={{width:"20rem", height:"0.2rem"}}/>;
+            if (x <= 50 && x > 30)
+                return <img src={per50} style={{width:"20rem", height:"0.2rem"}}/>;
+            if (x <= 30 && x > 10)
+                return <img src={per30} style={{width:"20rem", height:"0.2rem"}}/>;
+            if (x <= 10)
+                return <img src={per10} style={{width:"20rem", height:"0.2rem"}}/>;
+    }
+
 
     render() {
         
         return(
 
-            <div className="col-md-6 col-lg-4 g-mb-30">
+            <div className="col-md-6 col-lg-4 g-mb-30" style={{paddingLeft:"3.5rem", paddingRight:"3.5rem"}}>
                 {/* <img 
                     className="d-inline-block img-fluid mb-4" 
                     src={this.props.mainImg}
@@ -101,10 +124,8 @@ class DiscoverItem extends Component {
                         {this.props.content}
                     </Typography>
                 <Box>
-                    {`${this.numberDemical(this.props.fundedAmount * 100 / this.props.fundingGoalAmount)}` > 100 
-                        ? (<Star />) : (<Star2 />) }
+                    {this.viewPercentImage(this.state.amountPercent)}
 
-                    
                 </Box>
 
                 <Box
@@ -113,11 +134,11 @@ class DiscoverItem extends Component {
                     marginTop="0.8rem"
                     marginBottom="0.8rem"
                 > 
-                <span style={{float:"left"}}>
+                <span style={{float:"left", fontSize:18}}>
                     {`${this.numberFormatComma(Number(this.props.fundedAmount))}`}원&nbsp;
                 </span>
-                <span style={{color:"#ff4646", fontSize:15, float:"left"}}>
-                    {`${this.numberDemical(this.props.fundedAmount * 100 / this.props.fundingGoalAmount)}`}%&nbsp;
+                <span style={{color:"#ff4646", fontSize:14, float:"left", marginTop:"3px"}}>
+                    {this.state.amountPercent}%&nbsp;
                 </span>
                 <span style={{color:"#bbbbbb", fontSize:15, float:"right"}}> 
                     <ScheduleIcon color="disabled" /> 
