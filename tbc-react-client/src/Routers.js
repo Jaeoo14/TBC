@@ -16,6 +16,7 @@ class Routers extends React.Component {
     return (
       <Router>
         <Header />
+        <hr></hr>
         <Switch>
           <Route exact path="/Login" component={Login} />
           <Route exact path="/join" component={Join} />
@@ -24,8 +25,8 @@ class Routers extends React.Component {
           <Route exact path="/discover" component={Discover} />
           <Route exact path="/start" component={Start} />
           <Route exact path="/editproject" component={EditProject} />
-          <Route path="/main" component={Main} />
-          <Route path="/" component={Main} />
+          <Route exact path="/main" component={Main} />
+          <Route exact path="/" component={Main} />
         </Switch>
       </Router>
     );
