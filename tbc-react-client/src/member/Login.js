@@ -8,9 +8,12 @@ import LoginCard from "./components/Login/LoginCard";
 class Login extends Component {
   render() {
     return (
-      <Grid container direction="row" justify="center" alignItems="center">
-        <LoginCard></LoginCard>
-      </Grid>
+      <div>
+        <hr />
+        <Grid container direction="row" justify="center" alignItems="center">
+          <LoginCard></LoginCard>
+        </Grid>
+      </div>
     );
   }
 }

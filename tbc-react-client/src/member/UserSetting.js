@@ -9,15 +9,18 @@ import "./style/UserSetting.css";
 class UserSetting extends Component {
   render() {
     return (
-      <Container maxWidth="md">
-        <Grid container direction="row">
-          <Grid item>
-            <div id="title"> 설정 </div>
+      <div>
+        <hr />
+        <Container maxWidth="md">
+          <Grid container direction="row">
+            <Grid item>
+              <div id="title"> 설정 </div>
 
-            <Tabbar></Tabbar>
+              <Tabbar></Tabbar>
+            </Grid>
           </Grid>
-        </Grid>
-      </Container>
+        </Container>
+      </div>
     );
   }
 }

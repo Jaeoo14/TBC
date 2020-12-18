@@ -1,0 +1,25 @@
+div.myStyle {
+  margin: 0.5rem;
+  padding: 0.5rem;
+}
+.span1 {
+  margin-right: -5rem;
+}
+
+.link {
+  font-size: 0.9rem;
+  font-weight: bold;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 5px;
+  text-decoration: none;
+}
+
+.logo {
+  width: 130px;
+  height: 40px;
+  object-fit: fill;
+  margin-right: 30px;
+  display: inline;
+}

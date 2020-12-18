@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Header2 from './Nav/Header2';
+import Header from "./Nav/Header";
 
 import Login from "./member/Login";
 import Join from "./member/components/Join";
@@ -15,7 +15,7 @@ class Routers extends React.Component {
   render() {
     return (
       <Router>
-        <Header2 />
+        <Header />
         <Switch>
           <Route exact path="/Login" component={Login} />
           <Route exact path="/join" component={Join} />

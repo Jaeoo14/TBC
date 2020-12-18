@@ -88,91 +88,95 @@ function Join(props) {
   }, [errors]);
 
   return (
-    <Grid container direction="row" justify="center" alignItems="center">
-      <form method="post" onSubmit={handleSubmit} noValidate>
-        <div className={classes.root3}>
-          <Paper elevation={2}>
-            <Grid
-              container
-              direction="row"
-              justify="center"
-              alignItems="center"
-            >
-              <FBButton />
-              <Nbtn />
-              <div className="text1 div1">
-                ――――――――&nbsp;&nbsp;&nbsp; 또는 &nbsp;&nbsp; ――――――――
-              </div>
-              <div className="input-group-sm">
-                이름
-                <input
-                  name="name"
-                  value={values.name}
-                  onChange={handleChange}
-                  type="text"
-                  className="form-control"
-                  placeholder="사용하실 이름을 입력해주세요"
-                />
-              </div>
-              <div className="input-group-sm mar">
-                이메일 주소
-                <input
-                  name="userId"
-                  value={values.userId}
-                  onChange={handleChange}
-                  type="email"
-                  className="form-control"
-                  placeholder="이메일 주소를 입력해주세요"
-                />
-                <input
-                  name="checkId"
-                  value={values.checkId}
-                  onChange={handleChange}
-                  type="email"
-                  class="form-control"
-                  placeholder="이메일 주소를 확인합니다"
-                />
-                <div>{errors.userId && <span>{errors.userId}</span>} </div>
-              </div>
-              <div className="input-group-sm mar">
-                비밀번호
-                <input
-                  name="pwd"
-                  value={values.pwd}
-                  onChange={handleChange}
-                  type="password"
-                  className="form-control input-lg"
-                  placeholder="비밀번호를 입력해주세요"
-                />
-                <input
-                  name="checkpwd"
-                  value={values.checkpwd}
-                  onChange={handleChange}
-                  type="password"
-                  class="form-control"
-                  placeholder="비밀번호를 확인합니다"
-                />
-              </div>
-              <div>{errors.pwd && <span>{errors.pwd}</span>}</div>
-              <Button
-                variant="contained"
-                className={classes.button}
-                type="submit"
+    <div>
+      <hr />
+
+      <Grid container direction="row" justify="center" alignItems="center">
+        <form method="post" onSubmit={handleSubmit} noValidate>
+          <div className={classes.root3}>
+            <Paper elevation={2}>
+              <Grid
+                container
+                direction="row"
+                justify="center"
+                alignItems="center"
               >
-                회원가입
-              </Button>
-            </Grid>
-            <hr />
-            <div className="text3">
-              <div className="text3">이미 계정이 있으신가요?</div>
-              <Link to={"/login"} className="a1">
-                기존 계정으로 로그인하기
-              </Link>
-            </div>
-          </Paper>
-        </div>
-      </form>
-    </Grid>
+                <FBButton />
+                <Nbtn />
+                <div className="text1 div1">
+                  ――――――――&nbsp;&nbsp;&nbsp; 또는 &nbsp;&nbsp; ――――――――
+                </div>
+                <div className="input-group-sm">
+                  이름
+                  <input
+                    name="name"
+                    value={values.name}
+                    onChange={handleChange}
+                    type="text"
+                    className="form-control"
+                    placeholder="사용하실 이름을 입력해주세요"
+                  />
+                </div>
+                <div className="input-group-sm mar">
+                  이메일 주소
+                  <input
+                    name="userId"
+                    value={values.userId}
+                    onChange={handleChange}
+                    type="email"
+                    className="form-control"
+                    placeholder="이메일 주소를 입력해주세요"
+                  />
+                  <input
+                    name="checkId"
+                    value={values.checkId}
+                    onChange={handleChange}
+                    type="email"
+                    class="form-control"
+                    placeholder="이메일 주소를 확인합니다"
+                  />
+                  <div>{errors.userId && <span>{errors.userId}</span>} </div>
+                </div>
+                <div className="input-group-sm mar">
+                  비밀번호
+                  <input
+                    name="pwd"
+                    value={values.pwd}
+                    onChange={handleChange}
+                    type="password"
+                    className="form-control input-lg"
+                    placeholder="비밀번호를 입력해주세요"
+                  />
+                  <input
+                    name="checkpwd"
+                    value={values.checkpwd}
+                    onChange={handleChange}
+                    type="password"
+                    class="form-control"
+                    placeholder="비밀번호를 확인합니다"
+                  />
+                </div>
+                <div>{errors.pwd && <span>{errors.pwd}</span>}</div>
+                <Button
+                  variant="contained"
+                  className={classes.button}
+                  type="submit"
+                >
+                  회원가입
+                </Button>
+              </Grid>
+              <hr />
+              <div className="text3">
+                <div className="text3">이미 계정이 있으신가요?</div>
+                <Link to={"/login"} className="a1">
+                  기존 계정으로 로그인하기
+                </Link>
+              </div>
+            </Paper>
+          </div>
+        </form>
+      </Grid>
+    </div>
   );
 }
 export default withRouter(Join);
