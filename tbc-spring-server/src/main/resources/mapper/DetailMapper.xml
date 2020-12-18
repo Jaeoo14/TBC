@@ -2,29 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTDMapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.team2.tbcserver.mapper.DetailMapper">
-
-<select id="projectDetail" resultType="com.team2.tbcserver.vo.ProjectVO">
-		SELECT	id,
-				creatorId,
-				longTitle,
-				mainImg,
-				content,
-				category,
-				url,
-				fundingGoalAmount,
-				favoriteCount,
-				fundingStart,
-				fundingEnd,
-				rewards,
-				favoriteCount,
-				fundedAmount,
-				sponsorCount,
-				createdDate,
-				updatedDate
-		FROM 	project
-		WHERE   id = #{id}
-	   ORDER BY fundedAmount DESC
-	</select>
 	
 	<select id="fetch" resultType="com.team2.tbcserver.vo.DetailVO">
 		SELECT 	id,

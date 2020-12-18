@@ -25,11 +25,6 @@ public class DetailController {
 	DetailMapper mapper;
 	
 	@GetMapping
-	public List<ProjectVO> projectDetail() {
-		System.out.println("프로젝트 상세보기" + mapper.projectDetail());
-		return mapper.projectDetail();
-	}
-	@GetMapping
 	public List<DetailVO> fetch() {
 		System.out.println(mapper.fetch());
 		return mapper.fetch();
