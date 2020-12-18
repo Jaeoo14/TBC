@@ -16,6 +16,8 @@ const URL4 = "http://localhost:8090";
 
 //Discvoer에서 쓰는 url 
 
+const CATE = "http://localhost:8090/discover/category"
+
 const ALIGN1 = "http://localhost:8090/discover/alignnew"
 const ALIGN2 = "http://localhost:8090/discover/alignamountpercent"
 const ALIGN3 = "http://localhost:8090/discover/alignfundamount"
@@ -163,6 +165,11 @@ class ProjectApiService extends Component {
 
   countProject() {
     return Axios.get(URL3);
+  }
+
+  //카테고리별 분류 
+  categoryBy(category) {
+    return Axios.get(CATE + "/" + category);
   }
 
   //필터별 분류
