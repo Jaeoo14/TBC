@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.team2.tbcserver.mapper.DetailMapper;
 import com.team2.tbcserver.vo.DetailVO;
+import com.team2.tbcserver.vo.ProjectVO;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -23,7 +23,12 @@ public class DetailController {
 
 	@Autowired
 	DetailMapper mapper;
-
+	
+	@GetMapping
+	public List<ProjectVO> projectDetail() {
+		System.out.println("프로젝트 상세보기" + mapper.projectDetail());
+		return mapper.projectDetail();
+	}
 	@GetMapping
 	public List<DetailVO> fetch() {
 		System.out.println(mapper.fetch());
