@@ -14,8 +14,11 @@ const URL = "http://localhost:8090/project"; // https는 따로 알아보자.
 const URL2 = "http://localhost:8090/discover";
 const URL3 = "http://localhost:8090/discover/count";
 const URL4 = "http://localhost:8090";
+const URL5 = "http://localhost:8090/detail";
 
 //Discvoer에서 쓰는 url 
+
+const CATE = "http://localhost:8090/discover/category"
 
 const ALIGN1 = "http://localhost:8090/discover/alignnew"
 const ALIGN2 = "http://localhost:8090/discover/alignamountpercent"
@@ -166,6 +169,11 @@ class ProjectApiService extends Component {
     return Axios.get(URL3);
   }
 
+  //카테고리별 분류 
+  categoryBy(category) {
+    return Axios.get(CATE + "/" + category);
+  }
+
   //필터별 분류
   alignNew() {
     return Axios.get(ALIGN1);
@@ -245,6 +253,10 @@ class ProjectApiService extends Component {
     return Axios.put(MEMBER+"/"+id);
   }
 
+  ////Detail 부분
+  projectDetail() {
+    return Axios.get(URL5);
+  }
 }
 
 export default new ProjectApiService();

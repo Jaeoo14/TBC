@@ -30,6 +30,7 @@ class Discover extends Component {
             dates : [],
             date : '',
             liked : false,
+            category : 0,
         };
     }
 
@@ -58,6 +59,9 @@ class Discover extends Component {
     // }
 
     //전체 프로젝트 보기
+   
+   
+   
     viewProjectList = () => {
 
         ProjectApiService.projectList()
@@ -67,6 +71,19 @@ class Discover extends Component {
         })
         .catch(err => {
             console.error('Discover.js의 viewProjectList() 에러!', err);
+        })
+    }
+
+    //카테고리별
+    viewCategoryBy = (categoryNum) => {
+
+        ProjectApiService.categoryBy(categoryNum)
+        .then(res => {
+            this.setState({ lists : res.data });
+            console.log('categoryBy 값', res.data)
+        })
+        .catch(err => {
+            console.error('Discover.js의 categoryBy() 에러!', err);
         })
     }
 
@@ -277,7 +294,7 @@ class Discover extends Component {
                             </Button>
                                 {/* <a tabIndex="-1">게임 &emsp;&emsp; </a> */}
                                 <ul className="dropdown-menu">
-                                <li className="dropdown-item">게임 전체</li>
+                                <li className="dropdown-item" onClick={() => this.viewCategoryBy(1)}>게임 전체</li>
                                 <li className="dropdown-item">TRPG</li>
                                 <li className="dropdown-item">모바일 게임</li>
                                 <li className="dropdown-item">보드 게임</li>
@@ -293,7 +310,7 @@ class Discover extends Component {
                                 <Arrow fontSize="small" style={{float:"right"}}/>  
                             </Button>
                                 <ul className="dropdown-menu">
-                                <li className="dropdown-item">공연 전체</li>
+                                <li className="dropdown-item" onClick={() => this.viewCategoryBy(2)}>공연 전체</li>
                                 <li className="dropdown-item">무용 &emsp;</li>
                                 <li className="dropdown-item">뮤지컬</li>
                                 <li className="dropdown-item">연극</li>
@@ -306,7 +323,7 @@ class Discover extends Component {
                                 <Arrow fontSize="small" style={{float:"right"}}/>  
                             </Button>
                                 <ul className="dropdown-menu">
-                                <li className="dropdown-item">디자인 전체</li>
+                                <li className="dropdown-item" onClick={() => this.viewCategoryBy(3)}>디자인 전체</li>
                                 <li className="dropdown-item">건축공간</li>
                                 <li className="dropdown-item">그래픽디자인</li>
                                 <li className="dropdown-item">제품 디자인</li>
@@ -320,7 +337,7 @@ class Discover extends Component {
                                 <Arrow fontSize="small" style={{float:"right"}}/>  
                             </Button>
                                 <ul className="dropdown-menu">
-                                <li className="dropdown-item">만화 전체</li>
+                                <li className="dropdown-item" onClick={() => this.viewCategoryBy(4)}>만화 전체</li>
                                 <li className="dropdown-item">그래픽 노블</li>
                                 <li className="dropdown-item">웹툰</li>
                                 <li className="dropdown-item">만화책</li>
@@ -334,7 +351,7 @@ class Discover extends Component {
                                 <Arrow fontSize="small" style={{float:"right"}}/>  
                             </Button>
                                 <ul className="dropdown-menu">
-                                <li className="dropdown-item">예술 전체</li>
+                                <li className="dropdown-item" onClick={() => this.viewCategoryBy(5)}>예술 전체</li>
                                 <li className="dropdown-item">공공 예술</li>
                                 <li className="dropdown-item">조소·피규어</li>
                                 <li className="dropdown-item">디지털 아트</li>
@@ -352,7 +369,7 @@ class Discover extends Component {
                                 <Arrow fontSize="small" style={{float:"right"}}/>  
                             </Button>
                                 <ul className="dropdown-menu">
-                                <li className="dropdown-item">공예 전체</li>
+                                <li className="dropdown-item" onClick={() => this.viewCategoryBy(6)}>공예 전체</li>
                                 <li className="dropdown-item">캔들</li>
                                 <li className="dropdown-item">조향</li>
                                 <li className="dropdown-item">비누</li>
@@ -366,7 +383,7 @@ class Discover extends Component {
                                 <Arrow fontSize="small" style={{float:"right"}}/>  
                             </Button>
                                 <ul className="dropdown-menu">
-                                <li className="dropdown-item">사진 전체</li>
+                                <li className="dropdown-item" onClick={() => this.viewCategoryBy(7)}>사진 전체</li>
                                 <li className="dropdown-item">인물사진</li>
                                 <li className="dropdown-item">공간·장소사진</li>
                                 <li className="dropdown-item">자연사진</li>
@@ -380,7 +397,7 @@ class Discover extends Component {
                                 <Arrow fontSize="small" style={{float:"right"}}/>  
                             </Button>
                                 <ul className="dropdown-menu">
-                                <li className="dropdown-item">영화·비디오 전체</li>
+                                <li className="dropdown-item" onClick={() => this.viewCategoryBy(8)}>영화·비디오 전체</li>
                                 <li className="dropdown-item">극 영화</li>
                                 <li className="dropdown-item">다큐멘터리</li>
                                 <li className="dropdown-item">뮤직비디오</li>
@@ -396,7 +413,7 @@ class Discover extends Component {
                                 <Arrow fontSize="small" style={{float:"right"}}/>  
                             </Button>
                                 <ul className="dropdown-menu">
-                                <li className="dropdown-item">푸드 전체</li>
+                                <li className="dropdown-item" onClick={() => this.viewCategoryBy(9)}>푸드 전체</li>
                                 <li className="dropdown-item">베이킹·디저트</li>
                                 <li className="dropdown-item">음료</li>
                                 <li className="dropdown-item">간편식</li>
@@ -412,7 +429,7 @@ class Discover extends Component {
                                 <Arrow fontSize="small" style={{float:"right"}}/>  
                             </Button>
                                 <ul className="dropdown-menu">
-                                <li className="dropdown-item">음악 전체</li>
+                                <li className="dropdown-item" onClick={() => this.viewCategoryBy(10)}>음악 전체</li>
                                 <li className="dropdown-item">전자음악</li>
                                 <li className="dropdown-item">포크·어쿠스틱</li>
                                 <li className="dropdown-item">록</li>
@@ -431,7 +448,7 @@ class Discover extends Component {
                                 <Arrow fontSize="small" style={{float:"right"}}/>  
                             </Button>
                                 <ul className="dropdown-menu">
-                                <li className="dropdown-item">출판 전체</li>
+                                <li className="dropdown-item" onClick={() => this.viewCategoryBy(11)}>출판 전체</li>
                                 <li className="dropdown-item">잡지</li>
                                 <li className="dropdown-item">아트북·도감</li>
                                 <li className="dropdown-item">문학·에세이</li>
@@ -446,7 +463,7 @@ class Discover extends Component {
                                 <Arrow fontSize="small" style={{float:"right"}}/>  
                             </Button>
                                 <ul className="dropdown-menu">
-                                <li className="dropdown-item">테크 전체</li>
+                                <li className="dropdown-item" onClick={() => this.viewCategoryBy(12)}>테크 전체</li>
                                 <li className="dropdown-item">소프트웨어</li>
                                 <li className="dropdown-item">하드웨어</li>
                                 <li className="dropdown-item">앱</li>
@@ -462,7 +479,7 @@ class Discover extends Component {
                                 <Arrow fontSize="small" style={{float:"right"}}/>  
                             </Button>
                                 <ul className="dropdown-menu">
-                                <li className="dropdown-item">패션 전체</li>
+                                <li className="dropdown-item" onClick={() => this.viewCategoryBy(13)}>패션 전체</li>
                                 <li className="dropdown-item">의류</li>
                                 <li className="dropdown-item">잡화</li>
                                 <li className="dropdown-item">쥬얼리</li>
@@ -479,7 +496,7 @@ class Discover extends Component {
                                 <Arrow fontSize="small" style={{float:"right"}}/>  
                             </Button>
                                 <ul className="dropdown-menu">
-                                <li className="dropdown-item">저널리즘 전체</li>
+                                <li className="dropdown-item" onClick={() => this.viewCategoryBy(14)}>저널리즘 전체</li>
                                 <li className="dropdown-item">오디오 저널</li>
                                 <li className="dropdown-item">비디오 저널</li>
                                 <li className="dropdown-item">출판 저널</li>
