@@ -17,7 +17,7 @@ class Detail extends Component {
 		datetime: this.props.value,
 	};
     componentDidMount() {
-        this.getCategoryId();
+        this.getCategoryId(); 
     }
 
     constructor(props) {
