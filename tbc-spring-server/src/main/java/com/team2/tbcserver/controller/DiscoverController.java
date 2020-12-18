@@ -3,10 +3,9 @@ package com.team2.tbcserver.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,6 +33,39 @@ public class DiscoverController {
 		System.out.println("프로젝트 갯수" + Dmapper.countProject());
 		return Dmapper.countProject();
 	}
+	
+	//카테고리별 분류
+	@GetMapping("/category/{category}")
+	public List<ProjectVO> categoryBy(@PathVariable Long category) {
+		System.out.println("카테고리별 받아오기" + Dmapper.categoryBy(category));
+		return Dmapper.categoryBy(category);
+	}
+	
+	//필터별 분류
+	@GetMapping("/alignnew")
+	public List<ProjectVO> alignNew() {
+		System.out.println("최신순으로 프로젝트 나열" + Dmapper.alignNew());
+		return Dmapper.alignNew();
+	}
+	
+	@GetMapping("/alignamountpercent")
+	public List<ProjectVO> alignAmountPercent() {
+		System.out.println("최신순으로 프로젝트 나열" + Dmapper.alignAmountPercent());
+		return Dmapper.alignAmountPercent();
+	}
+	
+	@GetMapping("/alignfundamount")
+	public List<ProjectVO> alignFundAmount() {
+		System.out.println("최신순으로 프로젝트 나열" + Dmapper.alignFundAmount());
+		return Dmapper.alignFundAmount();
+	}
+	
+	@GetMapping("/aligndate")
+	public List<ProjectVO> alignDate() {
+		System.out.println("최신순으로 프로젝트 나열" + Dmapper.alignDate());
+		return Dmapper.alignDate();
+	}
+	
 	
 	//상태별 분류
 	@GetMapping("/stateing")

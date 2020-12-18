@@ -3,6 +3,50 @@
 
 <mapper namespace="com.team2.tbcserver.mapper.MemberMapper">
 	
+	<select id="fetch" resultType="com.team2.tbcserver.vo.MemberVO">
+		 SELECT id,
+			    userId,
+			    pwd,
+			    name,
+			    nickname,
+			    signUpDate,
+			    intro,
+			    profileImg,
+			    tel,
+			    address,
+			    myProjects,
+			    likeProjects,
+			    fundProjects,
+			    fundLog,
+			    payment,
+			    role,
+			    status
+		   FROM member
+		   ORDER BY id
+	</select>
+	
+	<select id="fetchBy" parameterType="Long" resultType="com.team2.tbcserver.vo.MemberVO">
+		 SELECT id,
+			    userId,
+			    pwd,
+			    name,
+			    nickname,
+			    signUpDate,
+			    intro,
+			    profileImg,
+			    tel,
+			    address,
+			    myProjects,
+			    likeProjects,
+			    fundProjects,
+			    fundLog,
+			    payment,
+			    role,
+			    status
+		   FROM member
+		  where id= #{id};
+	</select>
+	
 	<select id="login" parameterType="String" resultType="com.team2.tbcserver.vo.MemberVO">
 		 SELECT id,
 			    userId,
@@ -24,6 +68,7 @@
 		   FROM member
 		  where userId = #{userId};
 	</select>
+	
 	<insert id="join" parameterType="com.team2.tbcserver.vo.MemberVO" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
 			INSERT INTO member(
 						name,
@@ -35,7 +80,31 @@
 						#{userId},
 						#{pwd},
 						SYSDATE())
-				    
 	</insert>
+	
+	<update id="update" parameterType="com.team2.tbcserver.vo.MemberVO">
+		UPDATE 	member
+		SET
+				pwd = #{pwd},
+				name = #{name},
+				nickname = #{nickname},
+				signUpDate = #{signUpDate},
+				intro = #{intro},
+				profileImg = #{profileImg},
+				tel = #{tel},
+				address = #{address},
+				myProjects = #{myProjects},
+				likeProjects = #{likeProjects},
+				fundProjects = #{fundProjects},
+				fundLog = #{fundLog},
+				payment = #{payment},
+				role = #{role},
+				status = #{status}
+		WHERE 	id = #{id} AND userId=#{userId}
+	</update>
+	
+ 	<delete id="deleteBy" parameterType="Long">
+		DELETE FROM member WHERE id = #{id}
+	</delete>	
 		
 </mapper>

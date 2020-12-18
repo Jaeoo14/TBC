@@ -7,14 +7,23 @@ import { Component } from "react";
 
 const ITEM = "http://localhost:8090/item";
 const CATEGORY = "http://localhost:8090/category";
+const MEMBER = "http://localhost:8090/member";
 
 // spring boot back-end url.
 const URL = "http://localhost:8090/project"; // https는 따로 알아보자.
 const URL2 = "http://localhost:8090/discover";
 const URL3 = "http://localhost:8090/discover/count";
 const URL4 = "http://localhost:8090";
+const URL5 = "http://localhost:8090/detail";
 
 //Discvoer에서 쓰는 url 
+
+const CATE = "http://localhost:8090/discover/category"
+
+const ALIGN1 = "http://localhost:8090/discover/alignnew"
+const ALIGN2 = "http://localhost:8090/discover/alignamountpercent"
+const ALIGN3 = "http://localhost:8090/discover/alignfundamount"
+const ALIGN4 = "http://localhost:8090/discover/aligndate"
 
 const STATE1 = "http://localhost:8090/discover/stateing";
 const STATE2 = "http://localhost:8090/discover/stateend";
@@ -160,6 +169,28 @@ class ProjectApiService extends Component {
     return Axios.get(URL3);
   }
 
+  //카테고리별 분류 
+  categoryBy(category) {
+    return Axios.get(CATE + "/" + category);
+  }
+
+  //필터별 분류
+  alignNew() {
+    return Axios.get(ALIGN1);
+  }
+
+  alignAmountPercent() {
+    return Axios.get(ALIGN2);
+  }
+  
+  alignFundAmount() {
+    return Axios.get(ALIGN3);
+  }
+
+  alignDate() {
+    return Axios.get(ALIGN4);
+  }
+
   //상태별 분류
   stateIng() {
     return Axios.get(STATE1);
@@ -207,13 +238,24 @@ class ProjectApiService extends Component {
   /////////////////////////////////////////
   //여기서부터 Member에서 쓰는 것들//
   login(userId) {
-    return Axios.get(URL4 + "/login/" + userId);
+    return Axios.get(MEMBER + "/login/" + userId); // e-mail
   }
+
   join(member) {
-    return Axios.post(URL4 + "/join", member);
+    return Axios.post(MEMBER + "/join", member);
   }
-  getUser(userId) {
-    return Axios.get(URL4 + "/setting/" + userId);
+
+  getUser(id) {
+    return Axios.get(MEMBER + "/" + id); // member.id
+  }
+
+  updateUser(id) {
+    return Axios.put(MEMBER+"/"+id);
+  }
+
+  ////Detail 부분
+  projectDetail() {
+    return Axios.get(URL5);
   }
 }
 

@@ -9,10 +9,18 @@ public interface DiscoverMapper {
 	List<ProjectVO> projectList();
 	Long countProject();
 	
+	//카테고리별 분류
+	List<ProjectVO> categoryBy(Long category);
+	
+	//필터별 분류
+	List<ProjectVO> alignNew();
+	List<ProjectVO> alignAmountPercent();
+	List<ProjectVO> alignFundAmount();
+	List<ProjectVO> alignDate();
+	
 	//상태별 분류
 	List<ProjectVO> stateIng();
 	List<ProjectVO> stateEnd();
-	
 	
 	//달성률별 분류
 	List<ProjectVO> goalUnder75();

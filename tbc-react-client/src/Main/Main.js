@@ -9,12 +9,12 @@ class Main extends Component {
         return (
           <div style={{display:'inline'}}>
           <div style={{display:'inline-flex'}}>
-            <Carousel style={{width: '1500px'}}>
+            <Carousel style={{width: '1275px'}}>
               <Carousel.Item>
                 <a href="#">
                 <img
                   className="d-block w-100"
-                  src="http://ipsumimage.appspot.com/1500x400?text=First slide&bg=373940"
+                  src="http://ipsumimage.appspot.com/1275x400?text=First slide&bg=373940"
                   alt="First slide"
                   style={{height:400, width: 1500}}
                 />
@@ -28,7 +28,7 @@ class Main extends Component {
                 <a href="#">
                 <img
                   className="d-block w-100"
-                  src="http://ipsumimage.appspot.com/1500x400?text=Second slide&bg=282c34"
+                  src="http://ipsumimage.appspot.com/1275x400?text=Second slide&bg=282c34"
                   alt="Third slide"
                   style={{height:400, width: 1500}}
                 />
@@ -42,7 +42,7 @@ class Main extends Component {
                 <a href="#">
                 <img
                   className="d-block w-100"
-                  src="http://ipsumimage.appspot.com/1500x400?text=Third slide&bg=20232a"
+                  src="http://ipsumimage.appspot.com/1275x400?text=Third slide&bg=20232a"
                   alt="Third slide"
                   style={{height:400, width: 1500}}
                 />
