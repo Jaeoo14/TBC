@@ -347,7 +347,7 @@ class Discover extends Component {
 
                             <li className="dropdown-submenu">
                             <Button class="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span style={{float:"left"}}>게임</span>
+                                <span style={{float:"left"}}>예술</span>
                                 <Arrow fontSize="small" style={{float:"right"}}/>  
                             </Button>
                                 <ul className="dropdown-menu">
