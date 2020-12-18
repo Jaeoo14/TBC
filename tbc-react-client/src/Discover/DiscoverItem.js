@@ -9,16 +9,35 @@ import ScheduleIcon from '@material-ui/icons/Schedule';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import NotFavoriteIcon from '@material-ui/icons/FavoriteBorderOutlined';
 import DisplayImage from "../components/DisplayImage";
+import ProjectApiService from "../ProjectApiService";
 
 
 class DiscoverItem extends Component {
+
+    componentDidMount() {
+        this.getCategoryId();
+    }
 
     constructor(props) {
         super(props);
         
         this.state = {
-
+            liked : false,
+            categoryId : this.props.category,
+            categoryText : "",
         };
+    }
+
+    getCategoryId = () => {
+
+        ProjectApiService.getCategory(this.props.pId)
+        .then(res => {
+            this.setState({ categoryId : res.data.id, categoryText : res.data.text });
+            // console.log('getCategoryId&categoryText 값', res.data.id, res.data.text)
+        })
+        .catch(err => {
+            console.error('DiscoverItem.js의 getCategoryId() 에러!', err);
+        })
     }
     
     toggleLike = (id) => {
@@ -37,6 +56,7 @@ class DiscoverItem extends Component {
         return parseFloat(x).toFixed(0);
     }
 
+
     render() {
         
         return(
@@ -49,7 +69,7 @@ class DiscoverItem extends Component {
                 <div style={{}} onClick={() => this.toggleLike()}>
                     {this.state.liked === false ? <NotFavoriteIcon /> : <FavoriteIcon color="secondary" />}                 
                 </div>
-                <DisplayImage pId={this.props.id} width="280px" height="240px" />
+                <DisplayImage pId={this.props.pId} width="280px" height="240px" />
                 <Box
                     fontSize="1.3rem"
                     align="left"
@@ -67,7 +87,9 @@ class DiscoverItem extends Component {
                     align="left"
                     letterSpacing="-0.03rem"
                     >
-                    {this.props.category} | {this.props.creatorId} </Typography>
+
+                    {this.state.categoryText}&nbsp;
+                    | {this.props.creatorId} </Typography>
                 <Box marginTop="0.8rem" marginBottom="0.8rem" />
                 <Typography
                     variant="body1"

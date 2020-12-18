@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/img-redundant-alt */
 import {Component} from 'react';
 import './Discover.css'
 import jquery from 'jquery'
@@ -17,8 +16,9 @@ class Discover extends Component {
     componentDidMount() {
         window.$ = window.jQuery = jquery;
         this.viewProjectList();
-        this.viewRemainDate();
         this.viewCountProject();
+        // this.viewAmountUnder100();
+        // this.viewRemainDate();
         // this.viewProjectId();
     }
 
@@ -48,7 +48,7 @@ class Discover extends Component {
     }
 
 
- 
+    //전체 프로젝트 보기
     viewProjectList = () => {
 
         ProjectApiService.projectList()
@@ -60,41 +60,69 @@ class Discover extends Component {
             console.error('Discover.js의 viewProjectList() 에러!', err);
         })
     }
- 
-    viewRemainDate = () => {
-        ProjectApiService.getColumn('fundingEnd')
-        .then(res => {
-            this.setState({ dates : res.data.map(day=>day.fundingEnd) });
-            
-            var newDate = new Date();
-            console.log('date의값', newDate);
-            newDate = newDate.getFullYear()+"-"+(newDate.getMonth()+1)+"-"+newDate.getDate();
-            console.log('재지정한 date의값', newDate);
- 
- 
-            console.log('받아온 fundingEnd값', this.state.dates);
-            console.log('받아온 fundingEnd값의 개별값', this.state.dates[0]);
 
-            // newDate.setDate(newDate.getDate()-this.state.date);
-            // console.log('나오나?', newDate)
+    //모인금액별
+
+    viewAmountUnder100 = () => {
+       
+        ProjectApiService.amountUnder100()
+        .then(res => {
+            this.setState({ lists : res.data });
+            console.log('amountUnder100 값', res.data)
         })
         .catch(err => {
-            console.error('Discover.js의 viewProjectList() 에러!', err);
+            console.error('Discover.js의 viewAmountUnder100() 에러!', err);
         })
     }
 
-        // viewProjectId = () => {
-    //     ProjectApiService.getColumn('id') 
-    //     .then(res => {
-    //         this.setState({ id : res.data.map(pId=>pId.id) });
-    //         console.log('getColumn id 값', res.data)
-    //         console.log('getColumn id 값만 뺌', res.data.map(pId=>pId.id))
-    //     })
-    //     .catch(err => {
-    //         console.error('Discover.js의 getColumn() 에러!', err);
-    //     })
-    // }
+    viewAmount100to10000 = () => {
+       
+        ProjectApiService.amount100to1000()
+        .then(res => {
+            this.setState({ lists : res.data });
+            console.log('amountUnder100to1000 값', res.data)
+        })
+        .catch(err => {
+            console.error('Discover.js의 amountUnder100to1000() 에러!', err);
+        })
+    }
 
+    viewAmount1000to5000 = () => {
+       
+        ProjectApiService.amount1000to5000()
+        .then(res => {
+            this.setState({ lists : res.data });
+            console.log('amountUnder100to1000 값', res.data)
+        })
+        .catch(err => {
+            console.error('Discover.js의 amount1000to5000() 에러!', err);
+        })
+    }
+
+    viewAmount5000toMillion = () => {
+       
+        ProjectApiService.amount5000toMillion()
+        .then(res => {
+            this.setState({ lists : res.data });
+            console.log('amountUnder100to1000 값', res.data)
+        })
+        .catch(err => {
+            console.error('Discover.js의 amount5000toMillion() 에러!', err);
+        })
+    }
+
+    viewAmountOverMillion = () => {
+       
+        ProjectApiService.amountOverMillion()
+        .then(res => {
+            this.setState({ lists : res.data });
+            console.log('amountUnder100to1000 값', res.data)
+        })
+        .catch(err => {
+            console.error('Discover.js의 amountOverMillion() 에러!', err);
+        })
+    }
+ 
 
 
     render() {
@@ -186,16 +214,16 @@ class Discover extends Component {
                         모인 금액 <span className="caret"></span>
                     </button>
                     <ul className="dropdown-menu" role="menu">
-                        <li><a href="#">1백만원 이하</a></li>
-                        <li><a href="#">1백만원~1천만원</a></li>
-                        <li><a href="#">1천만원~5천만원</a></li>
-                        <li><a href="#">5천만원~1억원</a></li>
-                        <li><a href="#">1억원 이상</a></li>
+                        <li onClick={this.viewAmountUnder100}>1백만원 이하</li>
+                        <li onClick={this.viewAmount100to10000}>1백만원~1천만원</li>
+                        <li onClick={this.viewAmount1000to5000}>1천만원~5천만원</li>
+                        <li onClick={this.viewAmount5000toMillion}>5천만원~1억원</li>
+                        <li onClick={this.viewAmountOverMillion}>1억원 이상</li>
                     </ul>
                 </div>
 
                 {/* 필터초기화 */}
-                <div className="button" onClick={Discover}>
+                <div className="button" onClick={this.viewProjectList}>
                     <Button variant="outlined"><CachedIcon color="disabled"/> 필터 초기화</Button>
                 </div>
                 </div>
@@ -233,7 +261,7 @@ class Discover extends Component {
             <Item key={list.id} longTitle={list.longTitle} mainImg={list.mainImg} 
                 category={list.category} creatorId={list.creatorId} content={list.content}
                 fundedAmount={list.fundedAmount} fundingGoalAmount={list.fundingGoalAmount}
-                fundingEnd={list.fundingEnd} id={list.id} />
+                fundingEnd={list.fundingEnd} pId={list.id} />
         )}
     </div>
   </div>
