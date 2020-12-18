@@ -70,7 +70,7 @@ class CustomInput extends Component {
 				)}
 				{minlen && maxlen && 
 				<Form.Text className='text-muted'>
-					{minlen !== '' && this.state.text.length < minlen && `최소${minlen} / `} {this.state.remain}자 남았습니다.
+					<span style={{color:'tomato'}}>{minlen !== '' && this.state.text.length < minlen && `최소${minlen} / `}</span> {this.state.remain}자 남았습니다.
 				</Form.Text>}
 			</Form.Group>
 		);

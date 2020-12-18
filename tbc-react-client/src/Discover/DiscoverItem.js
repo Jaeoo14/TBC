@@ -87,7 +87,6 @@ class DiscoverItem extends Component {
                     align="left"
                     letterSpacing="-0.03rem"
                     >
-
                     {this.state.categoryText}&nbsp;
                     | {this.props.creatorId} </Typography>
                 <Box marginTop="0.8rem" marginBottom="0.8rem" />

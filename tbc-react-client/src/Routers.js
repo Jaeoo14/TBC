@@ -9,6 +9,7 @@ import Detail from "./Detail/Detail";
 import Start from "./components/Start";
 import EditProject from "./components/EditProject";
 import Discover from "./Discover/Discover";
+import Main from "./Main/Main";
 
 class Routers extends React.Component {
   render() {
@@ -23,6 +24,8 @@ class Routers extends React.Component {
           <Route exact path="/discover" component={Discover} />
           <Route exact path="/start" component={Start} />
           <Route exact path="/editproject" component={EditProject} />
+          <Route path="/main" component={Main} />
+          <Route path="/" component={Main} />
         </Switch>
       </Router>
     );

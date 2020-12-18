@@ -1,12 +1,12 @@
 import {Component} from 'react';
 import './Discover.css'
 import jquery from 'jquery'
-import Moment from "react-moment";
-import 'moment/locale/ko';
- 
-import { Button, Link } from '@material-ui/core';
+import { Button } from '@material-ui/core';
+
 import CachedIcon from '@material-ui/icons/Cached';
+import Arrow from '@material-ui/icons/ChevronRight';
 import ProjectApiService from '../ProjectApiService';
+
 import Item from './DiscoverItem';
 
 
@@ -16,10 +16,7 @@ class Discover extends Component {
     componentDidMount() {
         window.$ = window.jQuery = jquery;
         this.viewProjectList();
-        this.viewCountProject();
-        // this.viewAmountUnder100();
-        // this.viewRemainDate();
-        // this.viewProjectId();
+        // this.viewCountProject();
     }
 
     constructor(props) {
@@ -27,7 +24,7 @@ class Discover extends Component {
         
         this.state = {
             lists : [],
-            count : Number,
+            // count : Number,
             id : Number,
             dates : [],
             date : '',
@@ -35,18 +32,18 @@ class Discover extends Component {
         };
     }
 
-    viewCountProject = () => {
+    // //프로젝트 갯수
+    // viewCountProject = () => {
 
-        ProjectApiService.countProject()
-        .then(res => {
-            this.setState({ count : res.data });
-            console.log('viewCountProject의 값', res.data)
-        })
-        .catch(err => {
-            console.error('Discover.js의 viewCountProject() 에러!', err);
-        })
-    }
-
+    //     ProjectApiService.countProject()
+    //     .then(res => {
+    //         this.setState({ count : res.data });
+    //         console.log('viewCountProject의 값', res.data)
+    //     })
+    //     .catch(err => {
+    //         console.error('Discover.js의 viewCountProject() 에러!', err);
+    //     })
+    // }
 
     //전체 프로젝트 보기
     viewProjectList = () => {
@@ -61,8 +58,69 @@ class Discover extends Component {
         })
     }
 
-    //모인금액별
+    //상태별
+    viewStateIng = () => {
 
+        ProjectApiService.stateIng()
+        .then(res => {
+            this.setState({ lists : res.data });
+            console.log('stateIng 값', res.data)
+        })
+        .catch(err => {
+            console.error('Discover.js의 stateIng() 에러!', err);
+        })
+    }
+
+    viewStateEnd = () => {
+
+        ProjectApiService.stateEnd()
+        .then(res => {
+            this.setState({ lists : res.data });
+            console.log('stateEnd 값', res.data)
+        })
+        .catch(err => {
+            console.error('Discover.js의 stateEnd() 에러!', err);
+        })
+    }
+
+    //달성률별
+    viewGoalUnder75 = () => {
+
+        ProjectApiService.goalUnder75()
+        .then(res => {
+            this.setState({ lists : res.data });
+            console.log('goalUnder75 값', res.data)
+        })
+        .catch(err => {
+            console.error('Discover.js의 goalUnder75() 에러!', err);
+        })
+    }
+
+    viewGoalUnder75to100 = () => {
+
+        ProjectApiService.goalUnder75to100()
+        .then(res => {
+            this.setState({ lists : res.data });
+            console.log('goalUnder75to100 값', res.data)
+        })
+        .catch(err => {
+            console.error('Discover.js의 goalUnder75to100() 에러!', err);
+        })
+    }
+
+    viewGoalOver100 = () => {
+
+        ProjectApiService.goalOver100()
+        .then(res => {
+            this.setState({ lists : res.data });
+            console.log('goalOver100 값', res.data)
+        })
+        .catch(err => {
+            console.error('Discover.js의 goalOver100() 에러!', err);
+        })
+    }
+
+    //모인금액별
     viewAmountUnder100 = () => {
        
         ProjectApiService.amountUnder100()
@@ -133,48 +191,225 @@ class Discover extends Component {
 
                     {/* 카테고리메뉴 */}
                     <div className="dropdown">
-                        <a
+                        <Button
                             id="dLabel"
                             role="button"
                             data-toggle="dropdown"
-                            className="btn btn-link"
+                            className="btn btn-link black-background white"
                             data-target="#"
                             href="/page.html">
-                            카테고리
-                            <span className="caret"></span>
-                        </a>
+                            <span style={{fontSize:"0.98rem"}}>카테고리</span>
+                        </Button>
                         <ul
                             className="dropdown-menu multi-level"
                             role="menu"
                             aria-labelledby="dropdownMenu">
                             <li>
-                                <a href="#">전체보기</a>
+                            <a tabIndex="-1" onClick={this.viewProjectList}> 전체보기 &emsp;&emsp; </a>
+
                             </li>
 
                             <li className="dropdown-submenu">
-                                <a tabIndex="-1" href="#">게임 &emsp;&emsp;</a>
+                            <Button class="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span style={{float:"left"}}>게임</span>
+                                <Arrow fontSize="small" style={{float:"right"}}/>  
+                            </Button>
+                                {/* <a tabIndex="-1">게임 &emsp;&emsp; </a> */}
                                 <ul className="dropdown-menu">
-                                <li><a href="#">게임 전체</a></li>
-                                <li><a href="#">TRPG</a></li>
-                                <li><a href="#">모바일 게임</a></li>
+                                <li className="dropdown-item">게임 전체</li>
+                                <li className="dropdown-item">TRPG</li>
+                                <li className="dropdown-item">모바일 게임</li>
+                                <li className="dropdown-item">보드 게임</li>
+                                <li className="dropdown-item">비디오 게임</li>
+                                <li className="dropdown-item">카드 게임</li>
+                                <li className="dropdown-item">게임 페스티벌</li>
                                 </ul>
                             </li>
 
                             <li className="dropdown-submenu">
-                                <a tabIndex="-1" href="#">공연 &emsp;&emsp;</a>
+                            <Button class="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span style={{float:"left"}}>공연</span>
+                                <Arrow fontSize="small" style={{float:"right"}}/>  
+                            </Button>
                                 <ul className="dropdown-menu">
-                                <li><a href="#">공연 전체</a></li>
-                                <li><a href="#">무용 &emsp;</a></li>
-                                <li><a href="#">뮤지컬</a></li>
+                                <li className="dropdown-item">공연 전체</li>
+                                <li className="dropdown-item">무용 &emsp;</li>
+                                <li className="dropdown-item">뮤지컬</li>
+                                <li className="dropdown-item">연극</li>
                                 </ul>
                             </li>
                             
                             <li className="dropdown-submenu">
-                                <a tabIndex="-1" href="#">디자인 &emsp;&emsp;</a>
+                            <Button class="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span style={{float:"left"}}>디자인</span>
+                                <Arrow fontSize="small" style={{float:"right"}}/>  
+                            </Button>
                                 <ul className="dropdown-menu">
-                                <li><a href="#">디자인 전체</a></li>
-                                <li><a href="#">건축공간</a></li>
-                                <li><a href="#">그래픽디자인</a></li>
+                                <li className="dropdown-item">디자인 전체</li>
+                                <li className="dropdown-item">건축공간</li>
+                                <li className="dropdown-item">그래픽디자인</li>
+                                <li className="dropdown-item">제품 디자인</li>
+                                <li className="dropdown-item">타이포그래피</li>
+                                </ul>
+                            </li>
+
+                            <li className="dropdown-submenu">
+                            <Button class="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span style={{float:"left"}}>만화</span>
+                                <Arrow fontSize="small" style={{float:"right"}}/>  
+                            </Button>
+                                <ul className="dropdown-menu">
+                                <li className="dropdown-item">만화 전체</li>
+                                <li className="dropdown-item">그래픽 노블</li>
+                                <li className="dropdown-item">웹툰</li>
+                                <li className="dropdown-item">만화책</li>
+                                <li className="dropdown-item">만화·웹툰 리소스</li>
+                                </ul>
+                            </li>
+
+                            <li className="dropdown-submenu">
+                            <Button class="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span style={{float:"left"}}>게임</span>
+                                <Arrow fontSize="small" style={{float:"right"}}/>  
+                            </Button>
+                                <ul className="dropdown-menu">
+                                <li className="dropdown-item">예술 전체</li>
+                                <li className="dropdown-item">공공 예술</li>
+                                <li className="dropdown-item">조소·피규어</li>
+                                <li className="dropdown-item">디지털 아트</li>
+                                <li className="dropdown-item">전시</li>
+                                <li className="dropdown-item">일러스트레이션</li>
+                                <li className="dropdown-item">행위예술</li>
+                                <li className="dropdown-item">혼합매체</li>
+                                <li className="dropdown-item">예술 페스티벌</li>
+                                </ul>
+                            </li>
+
+                            <li className="dropdown-submenu">
+                            <Button class="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span style={{float:"left"}}>공예</span>
+                                <Arrow fontSize="small" style={{float:"right"}}/>  
+                            </Button>
+                                <ul className="dropdown-menu">
+                                <li className="dropdown-item">공예 전체</li>
+                                <li className="dropdown-item">캔들</li>
+                                <li className="dropdown-item">조향</li>
+                                <li className="dropdown-item">비누</li>
+                                <li className="dropdown-item">도예</li>
+                                </ul>
+                            </li>
+
+                            <li className="dropdown-submenu">
+                            <Button class="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span style={{float:"left"}}>사진</span>
+                                <Arrow fontSize="small" style={{float:"right"}}/>  
+                            </Button>
+                                <ul className="dropdown-menu">
+                                <li className="dropdown-item">사진 전체</li>
+                                <li className="dropdown-item">인물사진</li>
+                                <li className="dropdown-item">공간·장소사진</li>
+                                <li className="dropdown-item">자연사진</li>
+                                <li className="dropdown-item">동물사진</li>
+                                </ul>
+                            </li>
+
+                            <li className="dropdown-submenu">
+                            <Button class="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span style={{float:"left"}}>영화·비디오</span>
+                                <Arrow fontSize="small" style={{float:"right"}}/>  
+                            </Button>
+                                <ul className="dropdown-menu">
+                                <li className="dropdown-item">영화·비디오 전체</li>
+                                <li className="dropdown-item">극 영화</li>
+                                <li className="dropdown-item">다큐멘터리</li>
+                                <li className="dropdown-item">뮤직비디오</li>
+                                <li className="dropdown-item">단편영화</li>
+                                <li className="dropdown-item">애니메이션</li>
+                                <li className="dropdown-item">웹드라마</li>
+                                </ul>
+                            </li>
+
+                            <li className="dropdown-submenu">
+                            <Button class="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span style={{float:"left"}}>푸드</span>
+                                <Arrow fontSize="small" style={{float:"right"}}/>  
+                            </Button>
+                                <ul className="dropdown-menu">
+                                <li className="dropdown-item">만화 전체</li>
+                                <li className="dropdown-item">그래픽 노블</li>
+                                <li className="dropdown-item">웹툰</li>
+                                <li className="dropdown-item">만화책</li>
+                                <li className="dropdown-item">만화·웹툰 리스소</li>
+                                </ul>
+                            </li>
+
+                            <li className="dropdown-submenu">
+                            <Button class="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span style={{float:"left"}}>음악</span>
+                                <Arrow fontSize="small" style={{float:"right"}}/>  
+                            </Button>
+                                <ul className="dropdown-menu">
+                                <li className="dropdown-item">만화 전체</li>
+                                <li className="dropdown-item">그래픽 노블</li>
+                                <li className="dropdown-item">웹툰</li>
+                                <li className="dropdown-item">만화책</li>
+                                <li className="dropdown-item">만화·웹툰 리스소</li>
+                                </ul>
+                            </li>
+
+                            <li className="dropdown-submenu">
+                            <Button class="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span style={{float:"left"}}>출판</span>
+                                <Arrow fontSize="small" style={{float:"right"}}/>  
+                            </Button>
+                                <ul className="dropdown-menu">
+                                <li className="dropdown-item">만화 전체</li>
+                                <li className="dropdown-item">그래픽 노블</li>
+                                <li className="dropdown-item">웹툰</li>
+                                <li className="dropdown-item">만화책</li>
+                                <li className="dropdown-item">만화·웹툰 리스소</li>
+                                </ul>
+                            </li>
+
+                            <li className="dropdown-submenu">
+                            <Button class="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span style={{float:"left"}}>테크</span>
+                                <Arrow fontSize="small" style={{float:"right"}}/>  
+                            </Button>
+                                <ul className="dropdown-menu">
+                                <li className="dropdown-item">만화 전체</li>
+                                <li className="dropdown-item">그래픽 노블</li>
+                                <li className="dropdown-item">웹툰</li>
+                                <li className="dropdown-item">만화책</li>
+                                <li className="dropdown-item">만화·웹툰 리스소</li>
+                                </ul>
+                            </li>
+
+                            <li className="dropdown-submenu">
+                            <Button class="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span style={{float:"left"}}>패션</span>
+                                <Arrow fontSize="small" style={{float:"right"}}/>  
+                            </Button>
+                                <ul className="dropdown-menu">
+                                <li className="dropdown-item">만화 전체</li>
+                                <li className="dropdown-item">그래픽 노블</li>
+                                <li className="dropdown-item">웹툰</li>
+                                <li className="dropdown-item">만화책</li>
+                                <li className="dropdown-item">만화·웹툰 리스소</li>
+                                </ul>
+                            </li>
+
+                            <li className="dropdown-submenu">
+                            <Button class="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span style={{float:"left"}}>저널리즘</span>
+                                <Arrow fontSize="small" style={{float:"right"}}/>  
+                            </Button>
+                                <ul className="dropdown-menu">
+                                <li className="dropdown-item">만화 전체</li>
+                                <li className="dropdown-item">그래픽 노블</li>
+                                <li className="dropdown-item">웹툰</li>
+                                <li className="dropdown-item">만화책</li>
+                                <li className="dropdown-item">만화·웹툰 리스소</li>
                                 </ul>
                             </li>
 
@@ -187,9 +422,9 @@ class Discover extends Component {
                         상태 <span className="caret"></span>
                     </button>
                     <ul className="dropdown-menu" role="menu">
-                        <li><a href="#">전체 프로젝트</a></li>
-                        <li><a href="#">진행중 프로젝트</a></li>
-                        <li><a href="#">성사된 프로젝트</a></li>
+                        <li className="dropdown-item" onClick={this.viewProjectList}>전체 프로젝트</li>
+                        <li className="dropdown-item" onClick={this.viewStateIng}>진행중 프로젝트</li>
+                        <li className="dropdown-item" onClick={this.viewStateEnd}>성사된 프로젝트</li>
                         
                     </ul>
                 </div>
@@ -200,11 +435,10 @@ class Discover extends Component {
                         달성률 <span className="caret"></span>
                     </button>
                     <ul className="dropdown-menu" role="menu">
-                        <li><a href="#">전체보기</a></li>
-                        <li><a href="#">75% 이하</a></li>
-                        <li><a href="#">75%~100%</a></li>
-                        <li><a href="#">100% 이상</a></li>
-                        
+                        <li className="dropdown-item" onClick={this.viewProjectList}>전체보기&emsp;&emsp;</li>
+                        <li className="dropdown-item" onClick={this.viewGoalUnder75}>75% 이하&emsp;&emsp;</li>
+                        <li className="dropdown-item" onClick={this.viewGoalUnder75to100}>75%~100%</li>
+                        <li className="dropdown-item" onClick={this.viewGoalOver100}>100% 이상</li>
                     </ul>
                 </div>
 
@@ -214,11 +448,11 @@ class Discover extends Component {
                         모인 금액 <span className="caret"></span>
                     </button>
                     <ul className="dropdown-menu" role="menu">
-                        <li onClick={this.viewAmountUnder100}>1백만원 이하</li>
-                        <li onClick={this.viewAmount100to10000}>1백만원~1천만원</li>
-                        <li onClick={this.viewAmount1000to5000}>1천만원~5천만원</li>
-                        <li onClick={this.viewAmount5000toMillion}>5천만원~1억원</li>
-                        <li onClick={this.viewAmountOverMillion}>1억원 이상</li>
+                        <li className="dropdown-item" onClick={this.viewAmountUnder100}>1백만원 이하</li>
+                        <li className="dropdown-item" onClick={this.viewAmount100to10000}>1백만원~1천만원</li>
+                        <li className="dropdown-item" onClick={this.viewAmount1000to5000}>1천만원~5천만원</li>
+                        <li className="dropdown-item" onClick={this.viewAmount5000toMillion}>5천만원~1억원</li>
+                        <li className="dropdown-item" onClick={this.viewAmountOverMillion}>1억원 이상</li>
                     </ul>
                 </div>
 
@@ -240,7 +474,7 @@ class Discover extends Component {
 <div className="row">
 <div className="col-md-12">
 <span className="countProject" style={{float:"left"}}>
-    <span style={{color:"#ff4646"}}>{this.state.count}</span>개의 프로젝트가 있습니다.
+    <span style={{color:"#ff4646"}}>{this.state.lists.length}</span>개의 프로젝트가 있습니다.
     </span>    
 
         <select id="filter" name="filter">

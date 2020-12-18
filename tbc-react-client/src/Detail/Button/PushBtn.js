@@ -31,7 +31,7 @@ export default function LoginButton() {
       <Button variant="contained" className={classes.button}>
         프로젝트 밀어주기
       </Button>
-      <Button variant="outlined"><FavoriteIcon color="secondary"/></Button>
+      <Button variant="outlined"><FavoriteIcon color="secondary" onClick={() => this.toggleLike()}/></Button>
     </div>
   );
 }
