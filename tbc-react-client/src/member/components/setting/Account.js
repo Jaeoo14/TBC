@@ -20,15 +20,17 @@ class Account extends Component {
   }
   componentDidMount() {
     const user = JSON.parse(localStorage.getItem("myStorage"));
-    this.setState({
-      id: user.id,
-      userId: user.userId,
-      pwd: user.pwd,
-      name: user.name,
-      nickname: user.nickname,
-      intro: user.intro,
-      tel: user.tel,
-    });
+    if (user) {
+      this.setState({
+        id: user.id,
+        userId: user.userId,
+        pwd: user.pwd,
+        name: user.name,
+        nickname: user.nickname,
+        intro: user.intro,
+        tel: user.tel,
+      });
+    }
   }
 
   render() {

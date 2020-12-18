@@ -6,7 +6,16 @@ import "./style/UserSetting.css";
 {
   /* member에서 데이터 불러와야 함 */
 }
+
 class UserSetting extends Component {
+  componentDidMount() {
+    const user = JSON.parse(localStorage.getItem("myStorage"));
+    if (user === null) {
+      alert("로그인 하십시오");
+      this.props.history.push("/login");
+    }
+  }
+
   render() {
     return (
       <div>

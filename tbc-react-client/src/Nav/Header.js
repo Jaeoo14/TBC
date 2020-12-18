@@ -5,6 +5,11 @@ import SearchIcon from "@material-ui/icons/Search";
 import { Link } from "react-router-dom";
 import { Grid } from "@material-ui/core";
 
+const user = JSON.parse(localStorage.getItem("myStorage"));
+let onLogin = false;
+if (user) {
+  onLogin = true;
+}
 const Header = () => {
   return (
     <div className="myStyle">
@@ -38,6 +43,7 @@ const Header = () => {
 
         <Grid item>
           <span>
+            {/* <span>{user.userId}</span> */}
             <Link className="link" to="/login">
               로그인/회원가입
             </Link>
