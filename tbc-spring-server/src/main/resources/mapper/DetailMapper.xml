@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTDMapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.team2.tbcserver.mapper.DetailMapper">
-	<select id="fetch" resultType="com.team2.tbcserver.vo.RewardVO">
+	<select id="fetch" resultType="com.team2.tbcserver.vo.DetailVO">
 		SELECT 	id,
 				comment,
 				commuContent
@@ -10,7 +10,7 @@
 	   ORDER BY id
 	</select>
 
-	<select id="fetchBy" parameterType="Long" resultType="com.team2.tbcserver.vo.RewardVO">
+	<select id="fetchBy" parameterType="Long" resultType="com.team2.tbcserver.vo.DetailVO">
 		SELECT 	id,
 			    comment,
 				commuContent
@@ -18,7 +18,7 @@
 		WHERE   id = #{id}
 	</select>
 	
-	<insert id="insert" parameterType="com.team2.tbcserver.vo.RewardVO" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+	<insert id="insert" parameterType="com.team2.tbcserver.vo.DetailVO" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
 		INSERT INTO reward (
 				id,
 				comment,

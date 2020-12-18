@@ -18,7 +18,7 @@ import com.team2.tbcserver.vo.DetailVO;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/")
+@RequestMapping("/detail")
 public class DetailController {
 
 	@Autowired
