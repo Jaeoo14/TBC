@@ -5,7 +5,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import { Link } from "react-router-dom";
 import { Grid } from "@material-ui/core";
 
-const Header2 = () => {
+const Header = () => {
   return (
     <div className="myStyle">
       <Grid
@@ -53,4 +53,4 @@ const Header2 = () => {
   );
 };
 
-export default Header2;
+export default Header;

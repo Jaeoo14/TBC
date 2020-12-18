@@ -68,16 +68,23 @@ function SimplePaper(props) {
               localStorage.setItem("myStorage", JSON.stringify(res.data));
               props.history.push("/setting");
             } else {
-              console.error("비밀번호 오류!");
+              console.error("잘못된 비밀번호 입니다");
+              alert("잘못된 비밀번호 입니다");
             }
           })
           .catch((err) => {
             console.error("로그인 에러!", err);
           });
+      } else {
+        if (errors.userId !== undefined) {
+          alert(errors.userId);
+        } else {
+          alert(errors.pwd);
+        }
       }
       setSubmitting(false);
     }
-  }, [errors]);
+  });
 
   return (
     <div className={classes.root3}>
@@ -86,7 +93,6 @@ function SimplePaper(props) {
           <Grid container direction="row" justify="center" alignItems="center">
             <FBButton />
             <Nbtn />
-            {/* 현타오네 */}
             <div className="text1 div1">
               ――――――――&nbsp;&nbsp;&nbsp; 또는 &nbsp;&nbsp; ――――――――
             </div>
@@ -125,10 +131,7 @@ function SimplePaper(props) {
             </Button>
           </Grid>
         </form>
-        <div>
-          {errors.userId && <span>{errors.userId}</span>}{" "}
-          {errors.pwd && <span>{errors.pwd}</span>}
-        </div>
+
         <div className="text1 text2">
           아직 계정이 없으신가요?{" "}
           <Link to={"/join"} className="a1">
@@ -137,7 +140,7 @@ function SimplePaper(props) {
         </div>
         <hr />
         <div className="text3">
-          <a className="a1">혹시 비밀번호를 잊으셨나요?</a>
+          <div className="a1">혹시 비밀번호를 잊으셨나요?</div>
         </div>
       </Paper>
     </div>
