@@ -13,6 +13,7 @@ const URL = "http://localhost:8090/project"; // https는 따로 알아보자.
 const URL2 = "http://localhost:8090/discover";
 const URL3 = "http://localhost:8090/discover/count";
 const URL4 = "http://localhost:8090";
+const URL5 = "http://localhost:8090/detail";
 
 //Discvoer에서 쓰는 url 
 
@@ -236,6 +237,11 @@ class ProjectApiService extends Component {
   }
   getUser(userId) {
     return Axios.get(URL4 + "/setting/" + userId);
+  }
+
+  ////Detail 부분
+  projectDetail() {
+    return Axios.get(URL5);
   }
 }
 
