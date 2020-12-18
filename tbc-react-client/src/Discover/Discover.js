@@ -1,7 +1,6 @@
 import {Component} from 'react';
 import './Discover.css'
 import jquery from 'jquery'
- 
 import { Button } from '@material-ui/core';
 
 import CachedIcon from '@material-ui/icons/Cached';
@@ -17,7 +16,7 @@ class Discover extends Component {
     componentDidMount() {
         window.$ = window.jQuery = jquery;
         this.viewProjectList();
-        this.viewCountProject();
+        // this.viewCountProject();
     }
 
     constructor(props) {
@@ -25,7 +24,7 @@ class Discover extends Component {
         
         this.state = {
             lists : [],
-            count : Number,
+            // count : Number,
             id : Number,
             dates : [],
             date : '',
@@ -33,18 +32,18 @@ class Discover extends Component {
         };
     }
 
-    //프로젝트 갯수
-    viewCountProject = () => {
+    // //프로젝트 갯수
+    // viewCountProject = () => {
 
-        ProjectApiService.countProject()
-        .then(res => {
-            this.setState({ count : res.data });
-            console.log('viewCountProject의 값', res.data)
-        })
-        .catch(err => {
-            console.error('Discover.js의 viewCountProject() 에러!', err);
-        })
-    }
+    //     ProjectApiService.countProject()
+    //     .then(res => {
+    //         this.setState({ count : res.data });
+    //         console.log('viewCountProject의 값', res.data)
+    //     })
+    //     .catch(err => {
+    //         console.error('Discover.js의 viewCountProject() 에러!', err);
+    //     })
+    // }
 
     //전체 프로젝트 보기
     viewProjectList = () => {
@@ -475,7 +474,7 @@ class Discover extends Component {
 <div className="row">
 <div className="col-md-12">
 <span className="countProject" style={{float:"left"}}>
-    <span style={{color:"#ff4646"}}>{this.state.count}</span>개의 프로젝트가 있습니다.
+    <span style={{color:"#ff4646"}}>{this.state.lists.length}</span>개의 프로젝트가 있습니다.
     </span>    
 
         <select id="filter" name="filter">
