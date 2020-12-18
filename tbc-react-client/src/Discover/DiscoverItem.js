@@ -5,6 +5,9 @@ import 'moment/locale/ko';
 import Moment from "react-moment";
 
 import { Box, Typography } from "@material-ui/core";
+
+import Star from '@material-ui/icons/Star';
+import Star2 from '@material-ui/icons/StarOutline';
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import NotFavoriteIcon from '@material-ui/icons/FavoriteBorderOutlined';
@@ -78,7 +81,7 @@ class DiscoverItem extends Component {
                     marginTop="0.8rem"
                     marginBottom="0.8rem"
                     letterSpacing="-0.04rem"
-                    onClick={"/*프로젝트 올리기 페이지 입력*/"}>
+                    onClick={`location.href='/detail'`}>
                         {this.props.longTitle} 
                 </Box>
                 <Typography
@@ -94,9 +97,15 @@ class DiscoverItem extends Component {
                     variant="body1"
                     align="left"
                     marginBottom="0.8rem"
-                    onClick={"/*프로젝트 올리기 페이지 입력*/"}>
+                    onClick={`location.href='http://localhost:3000/detail/${this.props.url}'`}>
                         {this.props.content}
                     </Typography>
+                <Box>
+                    {`${this.numberDemical(this.props.fundedAmount * 100 / this.props.fundingGoalAmount)}` > 100 
+                        ? (<Star />) : (<Star2 />) }
+
+                    
+                </Box>
 
                 <Box
                     fontSize={18}

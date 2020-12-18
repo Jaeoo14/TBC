@@ -495,7 +495,7 @@ class Discover extends Component {
             <Item key={list.id} longTitle={list.longTitle} mainImg={list.mainImg} 
                 category={list.category} creatorId={list.creatorId} content={list.content}
                 fundedAmount={list.fundedAmount} fundingGoalAmount={list.fundingGoalAmount}
-                fundingEnd={list.fundingEnd} pId={list.id} />
+                fundingEnd={list.fundingEnd} pId={list.id} url={list.url} />
         )}
     </div>
   </div>
