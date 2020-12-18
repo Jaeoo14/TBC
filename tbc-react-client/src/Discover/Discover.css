@@ -88,6 +88,10 @@ div.img {
     object-fit: cover;
   }
 
+div.filter {
+    float:right;
+}
+
 select {
     -moz-appearance: none;
     -webkit-appearance: none;

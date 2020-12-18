@@ -16,6 +16,11 @@ const URL4 = "http://localhost:8090";
 
 //Discvoer에서 쓰는 url 
 
+const ALIGN1 = "http://localhost:8090/discover/alignnew"
+const ALIGN2 = "http://localhost:8090/discover/alignamountpercent"
+const ALIGN3 = "http://localhost:8090/discover/alignfundamount"
+const ALIGN4 = "http://localhost:8090/discover/aligndate"
+
 const STATE1 = "http://localhost:8090/discover/stateing";
 const STATE2 = "http://localhost:8090/discover/stateend";
 
@@ -158,6 +163,23 @@ class ProjectApiService extends Component {
 
   countProject() {
     return Axios.get(URL3);
+  }
+
+  //필터별 분류
+  alignNew() {
+    return Axios.get(ALIGN1);
+  }
+
+  alignAmountPercent() {
+    return Axios.get(ALIGN2);
+  }
+  
+  alignFundAmount() {
+    return Axios.get(ALIGN3);
+  }
+
+  alignDate() {
+    return Axios.get(ALIGN4);
   }
 
   //상태별 분류

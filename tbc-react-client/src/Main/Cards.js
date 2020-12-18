@@ -82,8 +82,8 @@ class Cards extends Component {
                                  <div style={{float:"right"}} onClick={() => this.toggleLike()}>
                                   {this.state.liked === false ? <NotFavoriteIcon /> : <FavoriteIcon color="secondary" />} 
                               </div>
-                            <Card.Img variant="top" src={list.mainImg} style={{ height: 180}} />
-                            {/* <Card.Img><DisplayImage pId={this.props.id} width="280px" height="240px" /></Card.Img> */}
+                            {/* <Card.Img variant="top" src={list.mainImg} style={{ height: 180}} /> */}
+                            <DisplayImage pId={this.props.id} width="280px" height="240px" />
                             <Card.Body>
                               <Card.Subtitle style={{fontSize: 10, textAlign: 'left'}}>
                                     {list.category} | {list.creatorId}

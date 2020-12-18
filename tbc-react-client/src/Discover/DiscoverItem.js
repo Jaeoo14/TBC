@@ -32,7 +32,6 @@ class DiscoverItem extends Component {
         
         this.state = {
             liked : false,
-            categoryId : this.props.category,
             categoryText : "",
             amountPercent : Number(`${this.numberDemical(this.props.fundedAmount * 100 / this.props.fundingGoalAmount)}`),
         };
@@ -43,7 +42,7 @@ class DiscoverItem extends Component {
         ProjectApiService.getCategory(this.props.category)
         .then(res => {
             this.setState({ categoryId : res.data.id, categoryText : res.data.text });
-            console.log('getCategoryId&categoryText 값', this.state.categoryText)
+            // console.log('getCategoryId&categoryText 값', this.state.categoryText)
         })
         .catch(err => {
             console.error('DiscoverItem.js의 getCategoryId() 에러!', err);
@@ -69,7 +68,7 @@ class DiscoverItem extends Component {
     viewPercentImage(x) {
             if (x >= 100)
                 return <img src={per100} style={{width:"20rem", height:"0.2rem"}}/>;
-            if (x <= 90 && x > 70)
+            if (x < 100 && x > 70)
                 return <img src={per90} style={{width:"20rem", height:"0.2rem"}}/>;
             if (x <= 70 && x > 50)
                 return <img src={per70} style={{width:"20rem", height:"0.2rem"}}/>;
@@ -96,12 +95,14 @@ class DiscoverItem extends Component {
                 </div>
                 <DisplayImage pId={this.props.pId} width="280px" height="240px" />
                 <Box
+                    width="20rem"
+                    height="3rem"
                     fontSize="1.3rem"
                     align="left"
                     fontWeight="fontWeightBold"
                     color="#393e46"
                     marginTop="0.8rem"
-                    marginBottom="0.8rem"
+                    marginBottom="1.3rem"
                     letterSpacing="-0.04rem"
                     onClick={`location.href='/detail'`}>
                         {this.props.longTitle} 
@@ -112,17 +113,20 @@ class DiscoverItem extends Component {
                     align="left"
                     letterSpacing="-0.03rem"
                     >
-            {/* !!!!!!!!!!!!!!!!!!!!!!~~~~지금 작업하고 있는 부분~~~~!!!!!!!!!!!!!!!! */}
-                    {this.state.categoryText} &nbsp;
+                    {this.state.categoryText}&nbsp;
                     | {this.props.creatorId} </Typography>
                 <Box marginTop="0.8rem" marginBottom="0.8rem" />
-                <Typography
+                <Box
+                width="20rem"
+                height="5.5rem">
+                    <Typography
                     variant="body1"
                     align="left"
                     marginBottom="0.8rem"
                     onClick={`location.href='http://localhost:3000/detail/${this.props.url}'`}>
                         {this.props.content}
                     </Typography>
+                </Box>
                 <Box>
                     {this.viewPercentImage(this.state.amountPercent)}
 

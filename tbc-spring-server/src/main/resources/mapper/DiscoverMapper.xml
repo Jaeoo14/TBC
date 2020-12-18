@@ -113,5 +113,37 @@
 	]]>
 	</select>
 	
+	<select id="alignNew" resultType="com.team2.tbcserver.vo.ProjectVO">
+	<![CDATA[ 	
+		SELECT	*
+		  FROM	project
+	  ORDER BY  fundingStart DESC
+	]]>
+	</select>
+	
+	<select id="alignAmountPercent" resultType="com.team2.tbcserver.vo.ProjectVO">
+	<![CDATA[ 	
+		SELECT	*
+		  FROM	project
+	  ORDER BY  (fundedAmount*100/fundingGoalAmount) DESC
+	]]>
+	</select>
+	
+	<select id="alignFundAmount" resultType="com.team2.tbcserver.vo.ProjectVO">
+	<![CDATA[ 	
+		SELECT	*
+		  FROM	project
+	  ORDER BY  fundedAmount DESC;
+	]]>
+	</select>
+	
+		<select id="alignDate" resultType="com.team2.tbcserver.vo.ProjectVO">
+	<![CDATA[ 	
+		SELECT	*
+		  FROM	project
+		 WHERE  fundingEnd > sysdate()
+	  ORDER BY  fundingEnd ASC;
+	]]>
+	</select>
 
 </mapper>
