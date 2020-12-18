@@ -6,8 +6,8 @@ import Comment from './Comment';
 import ProjectApiService from "../ProjectApiService";
 import DisplayImage from "../components/DisplayImage";
 
-import 'moment/locale/ko';
 import Moment from "react-moment";
+import 'moment/locale/ko';
 
 
 import './Detail.css';

@@ -1,8 +1,10 @@
+
 import { Component } from "react";
 import './Discover.css'
 
-import 'moment/locale/ko';
 import Moment from "react-moment";
+import 'moment/locale/ko';
+
 
 import { Box, Typography } from "@material-ui/core";
 
@@ -20,7 +22,6 @@ import NotFavoriteIcon from '@material-ui/icons/FavoriteBorderOutlined';
 import DisplayImage from "../components/DisplayImage";
 import ProjectApiService from "../ProjectApiService";
 
-
 class DiscoverItem extends Component {
 
     componentDidMount() {
@@ -29,6 +30,7 @@ class DiscoverItem extends Component {
 
     constructor(props) {
         super(props);
+
         
         this.state = {
             liked : false,
@@ -79,7 +81,6 @@ class DiscoverItem extends Component {
             if (x <= 10)
                 return <img src={per10} style={{width:"20rem", height:"0.2rem"}}/>;
     }
-
 
     render() {
         
@@ -146,9 +147,10 @@ class DiscoverItem extends Component {
                 </span>
                 <span style={{color:"#bbbbbb", fontSize:14, float:"right"}}> 
                     <ScheduleIcon color="disabled" /> 
-                    <Moment fromNow ago>
-                        {this.props.fundingEnd}
-                    </Moment>전 
+                    <Moment fromNow> 
+                       {this.props.fundingEnd}
+                    </Moment>
+    {/* {this.test} */}
                 </span>
                     </Box>
             </div>

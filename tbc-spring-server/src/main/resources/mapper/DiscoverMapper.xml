@@ -145,5 +145,11 @@
 	  ORDER BY  fundingEnd ASC;
 	]]>
 	</select>
+	
+	<select id="categoryBy" parameterType="Long" resultType="com.team2.tbcserver.vo.ProjectVO">
+		SELECT 	*
+		FROM 	project
+		WHERE   category = #{category}
+	</select>
 
 </mapper>

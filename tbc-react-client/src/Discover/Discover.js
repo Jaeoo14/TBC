@@ -33,6 +33,7 @@ class Discover extends Component {
         };
     }
 
+    //상세페이지랑 연결시에 꼭 들어가야함!
     gotoEditProject = (_id, _creatorId) => {
         this.props.history.push({
            pathname: '/editproject',

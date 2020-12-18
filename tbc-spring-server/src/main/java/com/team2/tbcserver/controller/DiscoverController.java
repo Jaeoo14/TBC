@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,6 +32,13 @@ public class DiscoverController {
 	public Long countProject() {
 		System.out.println("프로젝트 갯수" + Dmapper.countProject());
 		return Dmapper.countProject();
+	}
+	
+	//카테고리별 분류
+	@GetMapping("/category/{category}")
+	public List<ProjectVO> categoryBy(@PathVariable Long category) {
+		System.out.println("카테고리별 받아오기" + Dmapper.categoryBy(category));
+		return Dmapper.categoryBy(category);
 	}
 	
 	//필터별 분류
