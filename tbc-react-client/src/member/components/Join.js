@@ -79,8 +79,18 @@ function Join(props) {
             .catch((err) => {
               console.error("회원가입 전송 오류!", err);
             });
+        } else if (values.userId !== values.checkId) {
+          alert("이메일이 다릅니다");
+        } else if (values.pwd !== values.checkpwd) {
+          alert("비밀번호가 다릅니다");
         } else {
           console.error("회원가입 입력 오류");
+        }
+      } else {
+        if (errors.userId !== undefined) {
+          alert(errors.userId);
+        } else {
+          alert(errors.pwd);
         }
       }
       setSubmitting(false);

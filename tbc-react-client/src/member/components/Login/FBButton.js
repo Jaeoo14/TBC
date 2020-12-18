@@ -30,6 +30,7 @@ export default function LoginButton() {
   return (
     <div>
       <Button
+        disabled
         variant="contained"
         className={classes.button}
         startIcon={<Facebook />}

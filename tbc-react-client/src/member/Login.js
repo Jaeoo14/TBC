@@ -10,7 +10,7 @@ class Login extends Component {
     return (
       <div>
         <hr />
-        <Grid container direction="row" justify="center" alignItems="center">
+        <Grid container justify="center">
           <LoginCard></LoginCard>
         </Grid>
       </div>

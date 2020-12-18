@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
-import { makeStyles, withStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import YoutubeSearchedFor from "@material-ui/icons/YoutubeSearchedFor";
 // import "./../../style/Login.css";
 
@@ -29,6 +29,7 @@ export default function LoginButton() {
   return (
     <div>
       <Button
+        disabled
         variant="contained"
         className={classes.button}
         startIcon={<YoutubeSearchedFor />}
