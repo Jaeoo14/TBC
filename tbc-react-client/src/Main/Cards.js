@@ -149,6 +149,6 @@ class Cards extends Component {
 }
 
 
-const rootElement = document.getElementById("root");
-ReactDOM.render(<Cards />, rootElement);
+// const rootElement = document.getElementById("root");
+// ReactDOM.render(<Cards />, rootElement);
 export default Cards;
