@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.team2.tbcserver.mapper.DetailMapper;
 import com.team2.tbcserver.vo.DetailVO;
-import com.team2.tbcserver.vo.ProjectVO;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
