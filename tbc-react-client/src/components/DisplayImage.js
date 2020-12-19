@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { Image } from 'react-bootstrap';
+import { Image, Card } from 'react-bootstrap';
 import Pas from '../ProjectApiService';
+
+import "./DisplayImage.css";
 
 // props
 //  pId : 프로젝트 id.
@@ -27,11 +29,19 @@ class DisplayImage extends Component {
 	render() {
     // return (<img src={`data:image/png;base64,${this.state.file.data}`} alt='' width={this.props.width} height={this.props.height}/>);
 		return (
-		<Image 
-			src={`data:image/png;base64,${this.state.file.data}`} 
-			alt='image' 
-			style={{width:this.props.width, height:this.props.height}} 
-			thumbnail/>);
+		// <Image 
+		// 	src={`data:image/png;base64,${this.state.file.data}`} 
+		// 	alt='image' 
+		// 	style={{width:this.props.width, height:this.props.height}} 
+		// 	thumbnail/>
+			
+			(typeof this.state.file.data !== 'undefined' && <Card className="bg-light text-dark" style={{width:this.props.width, height:this.props.height}}>
+				<Card.Img src={`data:image/png;base64,${this.state.file.data}`} alt="Card image" style={{width:'100%', height:'100%'}}/>
+				<Card.ImgOverlay>
+					<Card.Title>{this.props.children}</Card.Title>
+				</Card.ImgOverlay>
+		</Card>)
+			);
 	}
 }
 
