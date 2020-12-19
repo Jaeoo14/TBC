@@ -82,6 +82,19 @@
 						SYSDATE())
 	</insert>
 	
+	<update id="updateUser" parameterType="com.team2.tbcserver.vo.MemberVO">
+		UPDATE 	member
+		   SET
+		   		nickname = #{nickname},
+		   		intro = #{intro},
+		   		pwd = #{pwd},
+		   		tel = #{tel},
+		   		address = #{address},
+		   		payment = #{payment}
+	
+		 WHERE 	id = #{id}
+	</update>
+	
 	<update id="update" parameterType="com.team2.tbcserver.vo.MemberVO">
 		UPDATE 	member
 		SET
