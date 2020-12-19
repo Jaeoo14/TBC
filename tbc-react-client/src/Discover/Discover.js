@@ -16,7 +16,6 @@ class Discover extends Component {
     componentDidMount() {
         window.$ = window.jQuery = jquery;
         this.viewProjectList();
-        // this.viewCountProject();
     }
 
     constructor(props) {
