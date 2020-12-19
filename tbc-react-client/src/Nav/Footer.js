@@ -14,15 +14,15 @@ class Footer extends Component {
       <Grid
         container
         justify="center"
-        Width="md"
+        width="md"
         style={{
           paddingLeft: "8rem",
           paddingRight: "8rem",
         }}
       >
-        <div class="footer" style={{ marginBottom: "3rem" }}>
-          <div class="contain">
-            <div class="col">
+        <div className="footer" style={{ marginBottom: "3rem" }}>
+          <div className="contain">
+            <div className="col">
               <ul style={{ textAlign: "left" }}>
                 <li>공지사항</li>
                 <li>채용</li>
@@ -30,7 +30,7 @@ class Footer extends Component {
                 <li>서비스 개선사항</li>
               </ul>
             </div>
-            <div class="col">
+            <div className="col">
               <ul style={{ textAlign: "left" }}>
                 <li>이용약관</li>
                 <li>개인정보 처리방침</li>
@@ -40,10 +40,10 @@ class Footer extends Component {
             </div>
 
             <div
-              class="col-md-18"
+              className="col-md-18"
               style={{ float: "right", marginRight: "2rem" }}
             >
-              <ul class="social-network social-circle">
+              <ul className="social-network social-circle">
                 <li>
                   <Kakao />
                 </li>
@@ -62,7 +62,7 @@ class Footer extends Component {
               </ul>
               <ul style={{ listStyle: "none", marginTop: "1rem" }}>
                 <li>
-                  <button type="button" class="btn btn-outline-dark btn-sm">
+                  <button type="button" className="btn btn-outline-dark btn-sm">
                     <Help
                       color="disabled"
                       fontSize="small"
@@ -75,7 +75,7 @@ class Footer extends Component {
             </div>
 
             <div
-              class="clearfix"
+              className="clearfix"
               style={{
                 fontSize: "9.5pt",
                 marginLeft: "1rem",
