@@ -74,7 +74,7 @@ class Cards extends Component {
                  {/* <h4 style={{textAlign:"center"}}>주목할 만한 프로젝트</h4> */}
                  <Carousel breakPoints={breakPoints}>
                    {this.state.lists.map(list => 
-                <div className='Card' >
+                <div className='Card' key={list.id}>
                     <CardDeck  >
                             {/* //     좋아요기능      */}
                             <Card.Link href="#">
@@ -110,7 +110,7 @@ class Cards extends Component {
                  {/* <h4 style={{textAlign:"center"}}>주목할 만한 프로젝트</h4> */}
                  <Carousel breakPoints={breakPoints}>
                    {this.state.lists.map(list => 
-                     <div className='Card' >
+                     <div className='Card' key={list.id}>
                       <CardDeck  >
                             {/* //     좋아요기능      */}
                             <Card.Link href="#">
