@@ -45,10 +45,20 @@ class Footer extends Component {
                     
             
                 <div class="clearfix" style={{fontSize:"9.5pt", marginLeft:"1rem", marginRight:"1rem"}}> 
-                    <span style={{color:"#808080", textAlign:"left"}}>
+                    <span style={{color:"#808080", textAlign:"left", marginBottom:"1.5rem"}}>
                     텀블벅은 플랫폼 제공자로서 프로젝트의 당사자가 아니며, 직접적인 통신판매를 진행하지 않습니다. 프로젝트의 완수 및 선물제공의 책임은 해당 프로젝트의 창작자에게 있으며, 프로젝트와 관련하여 후원자와 발생하는 법적 분쟁에 대한 책임은 해당 창작자가 부담합니다.
                     </span>
+
+                    <span style={{color:"#808080", textAlign:"left", float:"left"}}>
+                    텀블벅(주) | 대표 염재승 105-87-52823 | 서울시 중구 청계천로 100, 시그니쳐타워 9층 (수표동) | 통신판매업 2019-3010165-30-2-02129 | 대표전화 02-6080-0760
+                    </span>
+                    <span style={{color:"#808080", textAlign:"left", float:"right", marginRight:"1rem"}}>
+                    © 2020 Tumblbug Inc.
+                    </span>
+
                 </div>
+
+               
             </div>
           </div>
 
