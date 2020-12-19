@@ -25,13 +25,11 @@ public class MemberController {
 	
 	@GetMapping
 	public List<MemberVO> fetch() {
-		System.out.println("회원 정보" + mapper.fetch());
 		return mapper.fetch();
 	}
 	
 	@GetMapping("/{id}")
 	public MemberVO fetchBy(@PathVariable Long id) {
-		System.out.println("회원 정보" + mapper.fetchBy(id));
 		return mapper.fetchBy(id);
 	}
 	
@@ -42,20 +40,19 @@ public class MemberController {
 	}
 	
 	@PostMapping("/join")
-	public void join(@RequestBody MemberVO Member) {
-		mapper.join(Member);
+	public void join(@RequestBody MemberVO member) {
+		mapper.join(member);
 		System.out.println("유저 데이터 저장");
 	}
 	
 	@PutMapping("/{id}")
-	public void update(@RequestBody MemberVO Member, @PathVariable Long id) {
-		mapper.update(Member);
+	public void update(@RequestBody MemberVO member, @PathVariable Long id) {
+		mapper.update(member);
 	}
 	
 	@DeleteMapping("/{id}")
 	public void deleteBy(@PathVariable Long id) {
 		mapper.deleteBy(id);
-		System.out.println("id: " + id + " removeUser OK!");
 	}	
 	
 }
