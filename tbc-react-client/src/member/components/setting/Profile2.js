@@ -1,19 +1,25 @@
 import { Component } from "react";
-import Grid from "@material-ui/core/Grid";
 import "../../style/Setting.css";
-import Paper from "@material-ui/core/Paper";
-import { Avatar } from "@material-ui/core";
+
+import { Avatar, Paper, Grid } from "@material-ui/core";
+import Api from "../../../ProjectApiService";
 
 class Profile extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      // 기존값
       id: "",
       userId: "",
       profileImg: "",
       nickname: "",
       intro: "",
+      // 변경 가능한 값
+      newImg: "",
+      newNick: "",
+      newIntro: "",
+      // 상태
       editImg: false,
       editNick: false,
       editIntro: false,
@@ -31,7 +37,7 @@ class Profile extends Component {
       });
     }
   }
-
+  // edit 시작
   startEdit = (e, target) => {
     e.preventDefault();
     this.setState(
@@ -43,7 +49,7 @@ class Profile extends Component {
       () => this.setState({ [target]: true })
     );
   };
-
+  // edit 취소
   endEdit = (e) => {
     e.preventDefault();
     this.setState({
@@ -52,6 +58,29 @@ class Profile extends Component {
       editIntro: false,
     });
   };
+  // edit 중
+  handleChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+    console.log(this.state.newIntro);
+  };
+
+  //클론코딩이라서 업데이트 따로 따로 구현
+  updateIntro = (e) => {
+    e.preventDefault();
+    const user = JSON.parse(localStorage.getItem("myStorage"));
+    if (this.state.newIntro !== "") {
+      console.log("intro 업데이트", this.state.intro, this.state.newIntro);
+      user.intro = this.state.newIntro;
+      Api.updateIntro(user)
+        .then()
+        .catch((err) => console.log(err));
+    } else {
+      alert("입력을 하시오");
+    }
+  };
+
   render() {
     return (
       <Grid container spacing={3}>
@@ -82,7 +111,31 @@ class Profile extends Component {
           )}
 
           {this.state.editNick ? (
-            <div>asdasd</div>
+            <form>
+              <div className="div1">
+                <div className="div1">
+                  닉네임
+                  <span>
+                    <button onClick={(e) => this.endEdit(e, "editNick")}>
+                      취소
+                    </button>
+                  </span>
+                </div>
+                <input
+                  name="newNick"
+                  type="text"
+                  onChange={this.handleChange}
+                  className="form-control div2 input2"
+                  placeholder={this.state.nickname}
+                />
+              </div>
+              <div className="div2">
+                <button type="button" class="btn btn-dark btn1">
+                  저장
+                </button>
+              </div>
+              <hr />
+            </form>
           ) : (
             <div className="div1">
               <div className="div1">
@@ -99,7 +152,7 @@ class Profile extends Component {
           )}
 
           {this.state.editIntro ? (
-            <form>
+            <div method="put">
               <div className="div1">
                 <div className="div1">
                   소개
@@ -109,18 +162,23 @@ class Profile extends Component {
                     </button>
                   </span>
                 </div>
-                <input
-                  className="form-control div2"
+                <textarea
+                  width="100px"
+                  rows="5"
+                  id="newIntro"
+                  name="newIntro"
                   type="text"
+                  onChange={this.handleChange}
+                  className="form-control div2 input2"
                   placeholder={this.state.intro}
                 />
               </div>
               <div className="div2">
-                <button type="button" class="btn btn-dark btn1">
+                <button class="btn btn-dark btn1" onClick={this.updateIntro}>
                   저장
                 </button>
               </div>
-            </form>
+            </div>
           ) : (
             <div className="div1">
               <div className="div1">

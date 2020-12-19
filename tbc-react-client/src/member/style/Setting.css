@@ -44,6 +44,9 @@ div > span {
 input::placeholder {
   font-size: x-small;
 }
+.input2::placeholder {
+  font-size: small;
+}
 input::text {
   font-size: small;
 }
