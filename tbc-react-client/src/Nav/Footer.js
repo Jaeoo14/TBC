@@ -10,7 +10,7 @@ import Help from '@material-ui/icons/Help';
 class Footer extends Component {
     render() {
         return(
-            <div class="footer">
+            <div class="footer" style={{marginBottom:"3rem"}}>
                 <div class="contain">
                     <div class="col">
                         <ul style={{textAlign:"left"}}>
@@ -38,7 +38,7 @@ class Footer extends Component {
                             <li><RssFeed /></li>
                         </ul>				
                         <ul style={{listStyle:"none", marginTop:"1rem"}}>
-                        <li><button type="button" class="btn btn-outline-dark btn-sm"><Help color="disabled" fontSize="small"/> 문의하기</button></li>
+                        <li><button type="button" class="btn btn-outline-dark btn-sm"><Help color="disabled" fontSize="small" style={{marginBottom:"2px"}}/> 문의하기</button></li>
 
                         </ul>
                     </div>

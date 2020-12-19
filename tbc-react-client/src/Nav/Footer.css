@@ -48,7 +48,7 @@
     padding: 0;
   }
   .footer .col ul li {
-    color: #999999;
+    color: #606060;
     font-size: 13px;
     font-family: inherit;
     font-weight: bolder;
@@ -131,8 +131,4 @@ ul.social-network {
 ul.social-network li {
 	display: inline;
 	margin: 0 5px;
-}
-
-a {
- background-color: #D3D3D3;   
 }
