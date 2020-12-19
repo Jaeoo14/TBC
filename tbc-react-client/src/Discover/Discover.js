@@ -24,7 +24,6 @@ class Discover extends Component {
         
         this.state = {
             lists : [],
-            // count : Number,
             id : Number,
             value : 0,
             dates : [],
@@ -45,23 +44,8 @@ class Discover extends Component {
         });
      };
 
-    // //프로젝트 갯수
-    // viewCountProject = () => {
 
-    //     ProjectApiService.countProject()
-    //     .then(res => {
-    //         this.setState({ count : res.data });
-    //         console.log('viewCountProject의 값', res.data)
-    //     })
-    //     .catch(err => {
-    //         console.error('Discover.js의 viewCountProject() 에러!', err);
-    //     })
-    // }
-
-    //전체 프로젝트 보기
-   
-   
-   
+    //전체 프로젝트 보기  
     viewProjectList = () => {
 
         ProjectApiService.projectList()
