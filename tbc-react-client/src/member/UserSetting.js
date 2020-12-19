@@ -22,8 +22,8 @@ class UserSetting extends Component {
         <Container
           Width="md"
           style={{
-            paddingLeft: "5.5rem",
-            paddingRight: "5.5rem",
+            paddingLeft: "8.8rem",
+            paddingRight: "8.8rem",
           }}
         >
           <Grid container direction="row">

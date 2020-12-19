@@ -8,7 +8,7 @@ import FBButton from "./FBButton";
 import Nbtn from "./Nbtn";
 import validate from "./validate";
 import ProjectApiService from "../../../ProjectApiService";
-import "./../../style/Login.css";
+import "../../style/Login.css";
 
 const useStyles = makeStyles((theme) => ({
   root3: {
@@ -94,12 +94,13 @@ function SimplePaper(props) {
           <Grid container direction="row" justify="center" alignItems="center">
             <FBButton />
             <Nbtn />
-            <div className="text1 div1">
+            <div className="logintext1 logindiv1">
               ――――――――&nbsp;&nbsp;&nbsp; 또는 &nbsp;&nbsp; ――――――――
             </div>
             <div>
               <label>
                 <input
+                  className="input1"
                   name="userId"
                   value={values.userId}
                   onChange={handleChange}
@@ -113,6 +114,7 @@ function SimplePaper(props) {
             <div>
               <label>
                 <input
+                  className="input1"
                   name="pwd"
                   value={values.pwd}
                   onChange={handleChange}
@@ -133,14 +135,14 @@ function SimplePaper(props) {
           </Grid>
         </form>
 
-        <div className="text1 text2">
+        <div className="logintext1 logintext2">
           아직 계정이 없으신가요?{" "}
           <Link to={"/join"} className="a1">
             텀블벅 가입하기
           </Link>
         </div>
         <hr />
-        <div className="text3">
+        <div className="logintext1 logintext4">
           <div className="a1" onClick={(alert = "관리자에게 문의하세요")}>
             혹시 비밀번호를 잊으셨나요?
           </div>

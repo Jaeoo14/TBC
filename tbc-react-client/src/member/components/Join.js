@@ -99,8 +99,6 @@ function Join(props) {
 
   return (
     <div>
-      <hr />
-
       <Grid container direction="row" justify="center" alignItems="center">
         <form method="post" onSubmit={handleSubmit} noValidate>
           <div className={classes.root3}>
@@ -113,60 +111,66 @@ function Join(props) {
               >
                 <FBButton />
                 <Nbtn />
-                <div className="text1 div1">
+                <div className="logintext1 logindiv1 joinleft">
                   ――――――――&nbsp;&nbsp;&nbsp; 또는 &nbsp;&nbsp; ――――――――
+                  <div className="input-group-sm" style={{ textAlign: "left" }}>
+                    이름
+                    <input
+                      name="name"
+                      value={values.name}
+                      onChange={handleChange}
+                      type="text"
+                      className="form-control"
+                      placeholder="사용하실 이름을 입력해주세요"
+                    />
+                  </div>
+                  <div
+                    className="input-group-sm mar"
+                    style={{ textAlign: "left" }}
+                  >
+                    이메일 주소
+                    <input
+                      name="userId"
+                      value={values.userId}
+                      onChange={handleChange}
+                      type="email"
+                      className="form-control"
+                      placeholder="이메일 주소를 입력해주세요"
+                    />
+                    <input
+                      name="checkId"
+                      value={values.checkId}
+                      onChange={handleChange}
+                      type="email"
+                      class="form-control"
+                      placeholder="이메일 주소를 확인합니다"
+                    />
+                    <div>{errors.userId && <span>{errors.userId}</span>} </div>
+                  </div>
+                  <div
+                    className="input-group-sm mar"
+                    style={{ textAlign: "left" }}
+                  >
+                    비밀번호
+                    <input
+                      name="pwd"
+                      value={values.pwd}
+                      onChange={handleChange}
+                      type="password"
+                      className="form-control input-lg"
+                      placeholder="비밀번호를 입력해주세요"
+                    />
+                    <input
+                      name="checkpwd"
+                      value={values.checkpwd}
+                      onChange={handleChange}
+                      type="password"
+                      class="form-control"
+                      placeholder="비밀번호를 확인합니다"
+                    />
+                  </div>
+                  <div>{errors.pwd && <span>{errors.pwd}</span>}</div>
                 </div>
-                <div className="input-group-sm">
-                  이름
-                  <input
-                    name="name"
-                    value={values.name}
-                    onChange={handleChange}
-                    type="text"
-                    className="form-control"
-                    placeholder="사용하실 이름을 입력해주세요"
-                  />
-                </div>
-                <div className="input-group-sm mar">
-                  이메일 주소
-                  <input
-                    name="userId"
-                    value={values.userId}
-                    onChange={handleChange}
-                    type="email"
-                    className="form-control"
-                    placeholder="이메일 주소를 입력해주세요"
-                  />
-                  <input
-                    name="checkId"
-                    value={values.checkId}
-                    onChange={handleChange}
-                    type="email"
-                    class="form-control"
-                    placeholder="이메일 주소를 확인합니다"
-                  />
-                  <div>{errors.userId && <span>{errors.userId}</span>} </div>
-                </div>
-                <div className="input-group-sm mar">
-                  비밀번호
-                  <input
-                    name="pwd"
-                    value={values.pwd}
-                    onChange={handleChange}
-                    type="password"
-                    className="form-control input-lg"
-                    placeholder="비밀번호를 입력해주세요"
-                  />
-                  <input
-                    name="checkpwd"
-                    value={values.checkpwd}
-                    onChange={handleChange}
-                    type="password"
-                    class="form-control"
-                    placeholder="비밀번호를 확인합니다"
-                  />
-                </div>
-                <div>{errors.pwd && <span>{errors.pwd}</span>}</div>
                 <Button
                   variant="contained"
                   className={classes.button}
@@ -176,8 +180,10 @@ function Join(props) {
                 </Button>
               </Grid>
               <hr />
-              <div className="text3">
-                <div className="text3">이미 계정이 있으신가요?</div>
+              <div className="logintext1 logintext4">
+                <div className="logintext1 logintext4">
+                  이미 계정이 있으신가요?
+                </div>
                 <Link to={"/login"} className="a1">
                   기존 계정으로 로그인하기
                 </Link>

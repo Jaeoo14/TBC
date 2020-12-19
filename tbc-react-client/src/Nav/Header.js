@@ -50,7 +50,7 @@ const Header = () => {
           {user !== null ? (
             <span>
               <Link className="link" to="/setting">
-                {user.nickname !== null ? user.nickname : user.userId}
+                {user.nickname !== "" ? user.nickname : user.userId}
               </Link>
             </span>
           ) : (

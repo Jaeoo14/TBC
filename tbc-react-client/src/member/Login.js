@@ -1,5 +1,4 @@
 import { Component } from "react";
-import "./style/UserSetting.css";
 import Grid from "@material-ui/core/Grid";
 import LoginCard from "./components/Login/LoginCard";
 {

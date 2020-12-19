@@ -43,6 +43,15 @@ class Profile extends Component {
       () => this.setState({ [target]: true })
     );
   };
+
+  endEdit = (e) => {
+    e.preventDefault();
+    this.setState({
+      editImg: false,
+      editNick: false,
+      editIntro: false,
+    });
+  };
   render() {
     return (
       <Grid container spacing={3}>
@@ -90,7 +99,28 @@ class Profile extends Component {
           )}
 
           {this.state.editIntro ? (
-            <div>asdasd</div>
+            <form>
+              <div className="div1">
+                <div className="div1">
+                  소개
+                  <span>
+                    <button onClick={(e) => this.endEdit(e, "editIntro")}>
+                      취소
+                    </button>
+                  </span>
+                </div>
+                <input
+                  className="form-control div2"
+                  type="text"
+                  placeholder={this.state.intro}
+                />
+              </div>
+              <div className="div2">
+                <button type="button" class="btn btn-dark btn1">
+                  저장
+                </button>
+              </div>
+            </form>
           ) : (
             <div className="div1">
               <div className="div1">

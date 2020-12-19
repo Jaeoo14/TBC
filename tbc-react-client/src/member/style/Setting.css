@@ -13,10 +13,13 @@ div > span {
   text-align: left;
 }
 .div2 {
+  width: fit-content;
   color: gray;
   text-align: left;
   font-size: medium;
+  margin-top: 1rem;
 }
+
 .bold {
   font-weight: bold;
 }
@@ -38,6 +41,12 @@ div > span {
   margin-left: 10px;
 }
 
+input::placeholder {
+  font-size: x-small;
+}
+input::text {
+  font-size: small;
+}
 button {
   background: transparent;
   border: 0px;
@@ -47,4 +56,8 @@ button {
   font-weight: normal;
   text-decoration: none;
   outline: 0;
+}
+
+.btn1 {
+  text-align: center;
 }

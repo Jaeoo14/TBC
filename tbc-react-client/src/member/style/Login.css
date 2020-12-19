@@ -8,28 +8,24 @@ input:focus {
   animation-name: border-focus;
   outline-color: red;
 }
-input::placeholder {
-  font-size: x-small;
-  color: #9b9b9b;
-}
-input::text {
-  font-size: x-small;
-}
-.div1 {
+
+.logindiv1 {
   margin-bottom: 15px;
 }
-.text1 {
+.logintext1 {
   color: #9b9b9b;
+  font-size: x-small;
 }
-.text2 {
+
+.logintext2 {
   padding: 0.5rem;
   text-align: center;
 }
-.text3 {
+.logintext3 {
   padding: 0.8em;
   text-align: center;
 }
-.text3 {
+.logintext4 {
   padding: 0.4em;
   text-align: center;
 }
