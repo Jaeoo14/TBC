@@ -189,8 +189,8 @@ class ProjectDescription extends Component {
                   ) : (
                     <DisplayImage
                       pId={this.state.project.id}
-                      width={100}
-                      height={100}
+                      width={'25%'}
+                      height={'25%'}
                     />
                   )}
                 </div>

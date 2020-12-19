@@ -16,7 +16,6 @@ class Discover extends Component {
     componentDidMount() {
         window.$ = window.jQuery = jquery;
         this.viewProjectList();
-        // this.viewCountProject();
     }
 
     constructor(props) {
@@ -24,7 +23,6 @@ class Discover extends Component {
         
         this.state = {
             lists : [],
-            // count : Number,
             id : Number,
             value : 0,
             dates : [],
@@ -45,23 +43,8 @@ class Discover extends Component {
         });
      };
 
-    // //프로젝트 갯수
-    // viewCountProject = () => {
 
-    //     ProjectApiService.countProject()
-    //     .then(res => {
-    //         this.setState({ count : res.data });
-    //         console.log('viewCountProject의 값', res.data)
-    //     })
-    //     .catch(err => {
-    //         console.error('Discover.js의 viewCountProject() 에러!', err);
-    //     })
-    // }
-
-    //전체 프로젝트 보기
-   
-   
-   
+    //전체 프로젝트 보기  
     viewProjectList = () => {
 
         ProjectApiService.projectList()
@@ -283,7 +266,10 @@ class Discover extends Component {
                             role="menu"
                             aria-labelledby="dropdownMenu">
                             <li>
-                            <a tabIndex="-1" onClick={this.viewProjectList}> 전체보기 &emsp;&emsp; </a>
+                            {/* <a tabIndex="-1" onClick={this.viewProjectList}> 전체보기 &emsp;&emsp; </a> */}
+                            <Button class="btn btn-link black-background white" onClick={this.viewProjectList} style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span style={{float:"left"}}>전체보기</span>
+                            </Button>
 
                             </li>
 

@@ -21,22 +21,18 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import NotFavoriteIcon from '@material-ui/icons/FavoriteBorderOutlined';
 import DisplayImage from "../components/DisplayImage";
 import ProjectApiService from "../ProjectApiService";
+import CreatorName from '../member/components/CreatorName';
+import Favorite from '../member/components/Favorite';
 
 class DiscoverItem extends Component {
+    state = {
+        liked : false,
+        categoryText : "",
+        amountPercent : Number(`${this.numberDemical(this.props.fundedAmount * 100 / this.props.fundingGoalAmount)}`),
+    };
 
     componentDidMount() {
         this.getCategoryId();
-    }
-
-    constructor(props) {
-        super(props);
-
-        
-        this.state = {
-            liked : false,
-            categoryText : "",
-            amountPercent : Number(`${this.numberDemical(this.props.fundedAmount * 100 / this.props.fundingGoalAmount)}`),
-        };
     }
 
     getCategoryId = () => {
@@ -82,6 +78,16 @@ class DiscoverItem extends Component {
                 return <img src={per10} style={{width:"20rem", height:"0.2rem"}}/>;
     }
 
+    getUserId = () => {
+        const member = JSON.parse(localStorage.getItem('myStorage'));
+        if (member)
+            return 1;//member.id;
+        else
+            alert('로그인 사용자가 없습니다.');
+
+        return 0; // no log-in user.
+    }
+
     render() {
         
         return(
@@ -91,10 +97,13 @@ class DiscoverItem extends Component {
                     className="d-inline-block img-fluid mb-4" 
                     src={this.props.mainImg}
                 alt="Image Description"/> */}
-                <div style={{}} onClick={() => this.toggleLike()}>
+                {/* <div style={{}} onClick={() => this.toggleLike()}>
                     {this.state.liked === false ? <NotFavoriteIcon /> : <FavoriteIcon color="secondary" />}                 
-                </div>
-                <DisplayImage pId={this.props.pId} width="280px" height="240px" />
+                </div> */}
+                
+                <DisplayImage pId={this.props.pId} width="280px" height="240px">
+                    <Favorite userId={this.getUserId()} projectId={this.props.pId} />
+                </DisplayImage>
                 <Box
                     width="20rem"
                     height="3rem"
@@ -115,7 +124,7 @@ class DiscoverItem extends Component {
                     letterSpacing="-0.03rem"
                     >
                     {this.state.categoryText}&nbsp;
-                    | {this.props.creatorId} </Typography>
+                    | <CreatorName creatorId={this.props.creatorId}/> </Typography>
                 <Box marginTop="0.8rem" marginBottom="0.8rem" />
                 <Box
                 width="20rem"
