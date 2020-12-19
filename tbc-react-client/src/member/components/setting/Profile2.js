@@ -3,6 +3,9 @@ import "../../style/Setting.css";
 
 import { Avatar, Paper, Grid } from "@material-ui/core";
 import Api from "../../../ProjectApiService";
+import { Link } from "react-router-dom";
+
+const user = JSON.parse(localStorage.getItem("myStorage"));
 
 class Profile extends Component {
   constructor(props) {
@@ -27,6 +30,7 @@ class Profile extends Component {
   }
   componentDidMount() {
     const user = JSON.parse(localStorage.getItem("myStorage"));
+
     if (user) {
       this.setState({
         id: user.id,
@@ -50,32 +54,51 @@ class Profile extends Component {
     );
   };
   // edit 취소
-  endEdit = (e) => {
-    e.preventDefault();
+  endEdit = () => {
     this.setState({
       editImg: false,
       editNick: false,
       editIntro: false,
     });
   };
+
   // edit 중
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
     });
-    console.log(this.state.newIntro);
   };
 
-  //클론코딩이라서 업데이트 따로 따로 구현
-  updateIntro = (e) => {
+  //state부분만 다름
+
+  updateNick = (e) => {
     e.preventDefault();
-    const user = JSON.parse(localStorage.getItem("myStorage"));
-    if (this.state.newIntro !== "") {
-      console.log("intro 업데이트", this.state.intro, this.state.newIntro);
-      user.intro = this.state.newIntro;
+    if (this.state.newNick !== "") {
+      console.log("intro 업데이트", this.state.newNick);
+      user.nickname = this.state.newNick;
+
       Api.updateIntro(user)
         .then()
         .catch((err) => console.log(err));
+      this.state.nickname = user.nickname;
+      this.endEdit();
+    } else {
+      alert("입력을 하시오");
+    }
+  };
+
+  updateIntro = (e) => {
+    e.preventDefault();
+    if (this.state.newIntro !== "") {
+      console.log("intro 업데이트", this.state.newIntro);
+      user.intro = this.state.newIntro;
+
+      Api.updateIntro(user)
+        .then()
+        .catch((err) => console.log(err));
+
+      this.state.intro = user.intro;
+      this.endEdit();
     } else {
       alert("입력을 하시오");
     }
@@ -122,6 +145,7 @@ class Profile extends Component {
                   </span>
                 </div>
                 <input
+                  id="newNick"
                   name="newNick"
                   type="text"
                   onChange={this.handleChange}
@@ -130,7 +154,7 @@ class Profile extends Component {
                 />
               </div>
               <div className="div2">
-                <button type="button" class="btn btn-dark btn1">
+                <button class="btn btn-dark btn1" onClick={this.updateNick}>
                   저장
                 </button>
               </div>
@@ -200,7 +224,7 @@ class Profile extends Component {
               프로필 사진과, 이름, 사용자 이름, 소개글, 웹사이트 및 회원님과
               관련된 프로젝트 등이 프로필 페이지에 공개 됩니다. 프라이버시
               설정을 활성화하시면 밀어준 프로젝트 목록을 숨길 수 있습니다.&nbsp;
-              <a href="/u/brown2243">내 프로필 바로가기</a>
+              <Link to="#">내 프로필 바로가기</Link>
             </div>
           </Paper>
         </Grid>

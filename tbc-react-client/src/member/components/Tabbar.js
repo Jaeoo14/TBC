@@ -108,8 +108,8 @@ export default function SimpleTabs() {
         <AntTabs value={value} onChange={handleChange} aria-label="ant example">
           <AntTab label="프로필" />
           <AntTab label="계정" />
-          <AntTab label="결제수단" />
-          <AntTab label="배송지" />
+          <AntTab label="좋아하는 프로젝트" />
+          <AntTab label="후원 기록" />
           <AntTab label="알림" />
         </AntTabs>
 
