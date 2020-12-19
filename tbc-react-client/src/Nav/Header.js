@@ -4,12 +4,14 @@ import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import { Link } from "react-router-dom";
 import { Grid, Avatar } from "@material-ui/core";
+import ProfileImage from '../member/components/ProfileImage';
 
 const user = JSON.parse(localStorage.getItem("myStorage"));
 let onLogin = false;
 if (user) {
   onLogin = true;
 }
+
 const Header = () => {
   return (
     <div className="myStyle">
@@ -34,7 +36,7 @@ const Header = () => {
           </span>
         </Grid>
 
-        <Grid item justify="center">
+        <Grid item>
           <Link to="/">
             {/* 로고에 링크 걸릴지 테스트로 걸어놓았습니다 나중에 메인으로 수정할게요 */}
             <img className="logo" src="logo.png" alt="logo" />
@@ -43,14 +45,14 @@ const Header = () => {
 
         <Grid item>
           <span>
-            <Link className="link1" to="/#">
-              <Avatar></Avatar>
+            <Link className="link1" to="/setting">
+              {(user !== null) ? <ProfileImage userId={user.id} />:<Avatar />}
             </Link>
           </span>
           {user !== null ? (
             <span>
               <Link className="link" to="/setting">
-                {user.nickname !== "" ? user.nickname : user.userId}
+                {(user.nickname !== "") ? user.nickname : (user.name !== "" ? user.name : user.userId)}
               </Link>
             </span>
           ) : (

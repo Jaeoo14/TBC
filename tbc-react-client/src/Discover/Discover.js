@@ -267,14 +267,14 @@ class Discover extends Component {
                             aria-labelledby="dropdownMenu">
                             <li>
                             {/* <a tabIndex="-1" onClick={this.viewProjectList}> 전체보기 &emsp;&emsp; </a> */}
-                            <Button class="btn btn-link black-background white" onClick={this.viewProjectList} style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <Button className="btn btn-link black-background white" onClick={this.viewProjectList} style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span style={{float:"left"}}>전체보기</span>
                             </Button>
 
                             </li>
 
                             <li className="dropdown-submenu">
-                            <Button class="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <Button className="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span style={{float:"left"}}>게임</span>
                                 <Arrow fontSize="small" style={{float:"right"}}/>  
                             </Button>
@@ -291,7 +291,7 @@ class Discover extends Component {
                             </li>
 
                             <li className="dropdown-submenu">
-                            <Button class="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <Button className="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span style={{float:"left"}}>공연</span>
                                 <Arrow fontSize="small" style={{float:"right"}}/>  
                             </Button>
@@ -304,7 +304,7 @@ class Discover extends Component {
                             </li>
                             
                             <li className="dropdown-submenu">
-                            <Button class="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <Button className="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span style={{float:"left"}}>디자인</span>
                                 <Arrow fontSize="small" style={{float:"right"}}/>  
                             </Button>
@@ -318,7 +318,7 @@ class Discover extends Component {
                             </li>
 
                             <li className="dropdown-submenu">
-                            <Button class="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <Button className="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span style={{float:"left"}}>만화</span>
                                 <Arrow fontSize="small" style={{float:"right"}}/>  
                             </Button>
@@ -332,7 +332,7 @@ class Discover extends Component {
                             </li>
 
                             <li className="dropdown-submenu">
-                            <Button class="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <Button className="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span style={{float:"left"}}>예술</span>
                                 <Arrow fontSize="small" style={{float:"right"}}/>  
                             </Button>
@@ -350,7 +350,7 @@ class Discover extends Component {
                             </li>
 
                             <li className="dropdown-submenu">
-                            <Button class="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <Button className="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span style={{float:"left"}}>공예</span>
                                 <Arrow fontSize="small" style={{float:"right"}}/>  
                             </Button>
@@ -364,7 +364,7 @@ class Discover extends Component {
                             </li>
 
                             <li className="dropdown-submenu">
-                            <Button class="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <Button className="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span style={{float:"left"}}>사진</span>
                                 <Arrow fontSize="small" style={{float:"right"}}/>  
                             </Button>
@@ -378,7 +378,7 @@ class Discover extends Component {
                             </li>
 
                             <li className="dropdown-submenu">
-                            <Button class="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <Button className="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span style={{float:"left"}}>영화·비디오</span>
                                 <Arrow fontSize="small" style={{float:"right"}}/>  
                             </Button>
@@ -394,7 +394,7 @@ class Discover extends Component {
                             </li>
 
                             <li className="dropdown-submenu">
-                            <Button class="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <Button className="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span style={{float:"left"}}>푸드</span>
                                 <Arrow fontSize="small" style={{float:"right"}}/>  
                             </Button>
@@ -410,7 +410,7 @@ class Discover extends Component {
                             </li>
 
                             <li className="dropdown-submenu">
-                            <Button class="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <Button className="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span style={{float:"left"}}>음악</span>
                                 <Arrow fontSize="small" style={{float:"right"}}/>  
                             </Button>
@@ -429,7 +429,7 @@ class Discover extends Component {
                             </li>
 
                             <li className="dropdown-submenu">
-                            <Button class="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <Button className="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span style={{float:"left"}}>출판</span>
                                 <Arrow fontSize="small" style={{float:"right"}}/>  
                             </Button>
@@ -444,7 +444,7 @@ class Discover extends Component {
                             </li>
 
                             <li className="dropdown-submenu">
-                            <Button class="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <Button className="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span style={{float:"left"}}>테크</span>
                                 <Arrow fontSize="small" style={{float:"right"}}/>  
                             </Button>
@@ -460,7 +460,7 @@ class Discover extends Component {
                             </li>
 
                             <li className="dropdown-submenu">
-                            <Button class="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <Button className="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span style={{float:"left"}}>패션</span>
                                 <Arrow fontSize="small" style={{float:"right"}}/>  
                             </Button>
@@ -477,7 +477,7 @@ class Discover extends Component {
                             </li>
 
                             <li className="dropdown-submenu">
-                            <Button class="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <Button className="btn btn-link black-background white" style={{width:"170px"}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span style={{float:"left"}}>저널리즘</span>
                                 <Arrow fontSize="small" style={{float:"right"}}/>  
                             </Button>
