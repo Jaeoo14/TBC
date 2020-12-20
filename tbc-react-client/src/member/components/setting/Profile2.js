@@ -114,7 +114,7 @@ class Profile extends Component {
   render() {
     return (
       <Grid container spacing={3}>
-        <Grid xs={8}>
+        <Grid item xs={8}>
           <div id="first">
             <div className="div1">이메일</div>
             <div className="div2">{this.state.userId}</div>
