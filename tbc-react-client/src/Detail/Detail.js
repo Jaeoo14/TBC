@@ -61,7 +61,7 @@ class Detail extends Component {
       <div className="full">
         <div className="category">
           <a role="button" data-target="#">
-            {`${this.props.category}`}asdasd
+            {`${this.props.category}`}
           </a>
         </div>
 
