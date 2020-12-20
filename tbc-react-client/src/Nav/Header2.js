@@ -21,7 +21,7 @@ const Header2 = () => {
         </li>
 
         <li className="login">
-          <Link to="/login">로그인/회원가입</Link>
+          <Link to="/login" style={{textDecoration:'none'}}>로그인/회원가입</Link>
         </li>
 
         <li className="search">
