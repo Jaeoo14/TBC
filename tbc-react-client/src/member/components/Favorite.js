@@ -31,7 +31,7 @@ const Favorite = ({ userId, projectId }) => {
         return Pas.updateUser(member);
       })
       .then(res=>setLike(!like))
-			.catch(err => console.log(err));
+			.catch(err => { console.log(err); alert('로그인 사용자만 이용할 수 있습니다.');});
 	};
 
   return <div onClick={onToggle}>{like ? <FavoriteIcon color='secondary'/> : <NotFavoriteIcon />}</div>;
