@@ -1,19 +1,13 @@
 import React from "react";
 import "./Header.css";
-import ExitToApp from "@material-ui/icons/ExitToApp";
 import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import { Link } from "react-router-dom";
 import { Grid, Avatar } from "@material-ui/core";
 import ProfileImage from "../member/components/ProfileImage";
 
-const user = JSON.parse(localStorage.getItem("myStorage"));
-let onLogin = false;
-if (user) {
-  onLogin = true;
-}
-
 const Header = ({}) => {
+  const user = JSON.parse(localStorage.getItem("myStorage"));
   return (
     <div className="myStyle">
       <Grid

@@ -49,7 +49,6 @@
   },
   "devDependencies": {
     "css-loader": "5.0.1",
-    "react-hot-loader": "^4.5.3",
     "style-loader": "2.0.0"
   }
 }
