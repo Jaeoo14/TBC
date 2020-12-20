@@ -4,8 +4,10 @@ import PushBtn from "./Button/PushBtn";
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Comment from './Comment';
 import ProjectApiService from "../ProjectApiService";
+import Pas from '../ProjectApiService';
 import DisplayImage from "../components/DisplayImage";
 
+import 'moment/locale/ko';
 import Moment from "react-moment";
 import 'moment/locale/ko';
 
@@ -14,21 +16,25 @@ import './Detail.css';
 
 class Detail extends Component {
 	state = {
-		datetime: this.props.value,
-	};
-    componentDidMount() {
-        this.getCategoryId(); 
-    }
+		project: undefined,
+		datetime: this.props.value
+    };
+    
+	componentDidMount = () => {
 
-    constructor(props) {
-        super(props);
-        
-        this.state = {
-            liked : false,
-            categoryId : this.props.category,
-            categoryText : "",
-        };
-    }
+		console.log('PD.componentDidMount', this.state, this.props);
+
+		const { pId } = this.props;
+
+		Pas.fetchBy(pId)
+			.then(res =>
+				this.setState({ project: res.data }, () => {
+                console.log('PD.componentDidMount', this.state, this.props);
+				}),
+			)
+			.catch(err => console.log(err));
+	}
+
 
     getCategoryId = () => {
 
@@ -57,8 +63,6 @@ class Detail extends Component {
     numberDemical(x) {
         return parseFloat(x).toFixed(0);
     }
-
-
 	render() {
 		return (
 
@@ -96,7 +100,7 @@ class Detail extends Component {
 						<Box fontSize={10} color='black' paddingLeft={5}> 
 						남은시간</Box>
 						<Box fontSize={20} color='black' paddingBottom={2} paddingLeft={5}> 
-						<Moment fromNow ago>
+						<Moment fromNow>
                         {this.props.fundingEnd}
                     	</Moment>
 						<text style={{fontSize:15}}> 일</text></Box>
