@@ -1,5 +1,5 @@
 .full {
-  align-items: center;
+  align-items: left;
 }
 .title {
     text-align: center;
@@ -17,15 +17,16 @@
   flex-direction: row;
   }
 .flex {
+  text-align: left;
   flex: 1;
   flex-direction: row;
   float: right;
-  padding-left: 100;
+  padding-left: 5;
   }
 
 .img {
-  padding-left: 60px;
-  padding-bottom: 10px;
+  align-items: right;
+  margin-left: 150px;
   width: 600px;
   height: 350px;
   object-fit: cover;
