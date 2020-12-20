@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { Grid, Avatar } from "@material-ui/core";
 import ProfileImage from "../member/components/ProfileImage";
 
-const Header = ({}) => {
+const Header = () => {
   const user = JSON.parse(localStorage.getItem("myStorage"));
   return (
     <div className="myStyle">
@@ -39,7 +39,7 @@ const Header = ({}) => {
 
         <Grid item>
           <span>
-            <Link className="link1">
+            <Link className="link1" to="/setting">
               {user !== null ? <ProfileImage userId={user.id} /> : <Avatar />}
             </Link>
           </span>
@@ -61,7 +61,7 @@ const Header = ({}) => {
             </span>
           )}
           <span>
-            <Link className="link" to="/#">
+            <Link className="link" to="/">
               <SearchIcon />
             </Link>
           </span>
