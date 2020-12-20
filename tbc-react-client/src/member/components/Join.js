@@ -65,7 +65,7 @@ function Join(props) {
   };
 
   useEffect(
-    ({ props }, { submitting }, { values }) => {
+    (props, submitting, values) => {
       if (submitting) {
         if (Object.keys(errors).length === 0) {
           if (
@@ -145,7 +145,7 @@ function Join(props) {
                       value={values.checkId}
                       onChange={handleChange}
                       type="email"
-                      class="form-control"
+                      className="form-control"
                       placeholder="이메일 주소를 확인합니다"
                     />
                     <div>{errors.userId && <span>{errors.userId}</span>} </div>
@@ -168,7 +168,7 @@ function Join(props) {
                       value={values.checkpwd}
                       onChange={handleChange}
                       type="password"
-                      class="form-control"
+                      className="form-control"
                       placeholder="비밀번호를 확인합니다"
                     />
                   </div>
