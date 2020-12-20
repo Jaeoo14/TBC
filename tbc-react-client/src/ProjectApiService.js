@@ -92,10 +92,13 @@ class ProjectApiService extends Component {
     });
   }
 
-  // download project image file.
-  getFile(fileId) {
-    console.log("getFile...", fileId);
-    return FileDB.get("/" + fileId);
+  // get file from file table.
+  getFile(id) {
+    if (id === undefined || id === 0)
+      return new Promise(()=>{throw new Error(`There is NO file(id=${id})!`);});
+    
+    console.log(`getFile(id=${id})`);
+    return FileDB.get("/" + id);
   }
 
   // download project image file.
@@ -243,7 +246,11 @@ class ProjectApiService extends Component {
   }
 
   getUser(id) {
-    return Axios.get(MEMBER + "/" + id); // member.id
+    if (id === undefined || id === 0)
+      return new Promise(()=>{throw new Error(`There is NO user(id=${id}) !`);});
+
+    console.log(`getUser(id=${id})`);
+    return Axios.get(MEMBER + "/" + id);
   }
 
   updateIntro(member) {
