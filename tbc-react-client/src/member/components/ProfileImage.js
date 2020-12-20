@@ -13,11 +13,11 @@ const ProfileImage = props => {
 		Pas.getUser(userId)
 			.then(res => Pas.getFile(res.data.profileImg))
 			.then(res => setImage(res.data))
-			.catch(err => console.log('Can not read profile image from DB !', err));
+			.catch(console.log);
 	}, [userId]);
 
 	return image !== undefined ? (
-		<Image src={`data:image/png;base64,${image.data}`} alt='profile image' style={{ width: width, height: height }} roundedCircle />
+		<Image src={`data:${image.type};base64,${image.data}`} alt='profile image' style={{ width: width, height: height }} roundedCircle />
 	) : (
 		<Avatar />
 	);
