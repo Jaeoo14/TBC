@@ -110,7 +110,8 @@ class Profile extends Component {
   };
   logout = () => {
     localStorage.clear();
-    this.props.history.push("/");
+    document.location.href = "/";
+    // this.props.history.push("/");
   };
   render() {
     return (
@@ -149,7 +150,7 @@ class Profile extends Component {
                 </span>
               </div>
               <div style={{ textAlign: "left", padding: "2px" }}>
-                {(user !== null && user.profileImg != 0) ? (
+                {user !== null && user.profileImg !== 0 ? (
                   <ProfileImage userId={user.id} />
                 ) : (
                   <Avatar />

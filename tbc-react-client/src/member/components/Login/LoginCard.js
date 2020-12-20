@@ -66,7 +66,8 @@ function SimplePaper(props) {
             if (values.pwd === res.data.pwd) {
               console.log("login 값", res.data);
               localStorage.setItem("myStorage", JSON.stringify(res.data));
-              props.history.push("/setting");
+              document.location.href = "/";
+              // props.history.push("/");
             } else {
               console.error("잘못된 비밀번호 입니다");
               alert("잘못된 비밀번호 입니다");
@@ -143,7 +144,13 @@ function SimplePaper(props) {
         </div>
         <hr />
         <div className="logintext1 logintext4">
-          <div className="a1" onClick={(e)=>{e.preventDefault(); alert("관리자에게 문의하세요");}}>
+          <div
+            className="a1"
+            onClick={(e) => {
+              e.preventDefault();
+              alert("관리자에게 문의하세요");
+            }}
+          >
             혹시 비밀번호를 잊으셨나요?
           </div>
         </div>

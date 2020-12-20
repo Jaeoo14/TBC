@@ -10,7 +10,6 @@ class UserSetting extends Component {
   componentDidMount() {
     const user = JSON.parse(localStorage.getItem("myStorage"));
     if (user === null) {
-      //alert("로그인 하십시오");
       this.props.history.push("/login");
     }
   }
