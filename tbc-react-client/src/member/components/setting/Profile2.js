@@ -5,6 +5,7 @@ import { Avatar, Paper, Grid } from "@material-ui/core";
 import Api from "../../../ProjectApiService";
 import { Link, withRouter } from "react-router-dom";
 import Uploadprofile from "./UploadImage";
+import ProfileImage from "../ProfileImage";
 
 const user = JSON.parse(localStorage.getItem("myStorage"));
 
@@ -127,7 +128,7 @@ class Profile extends Component {
                 <div className="div1">
                   프로필 사진
                   <span>
-                    <button onClick={(e) => this.endEdit(e, "editNick")}>
+                    <button onClick={(e) => this.endEdit(e, "editImg")}>
                       취소
                     </button>
                   </span>
@@ -147,8 +148,12 @@ class Profile extends Component {
                   </button>
                 </span>
               </div>
-              <div>
-                <Avatar>D</Avatar>
+              <div style={{ textAlign: "left", padding: "2px" }}>
+                {user.profileImg !== "''" ? (
+                  <ProfileImage userId={user.id} />
+                ) : (
+                  <Avatar />
+                )}
               </div>
               <hr />
             </div>
