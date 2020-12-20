@@ -65,7 +65,8 @@ function Join(props) {
   };
 
   useEffect(
-    (props, submitting, values) => {
+    () => {
+      console.log('Join.useEffect submitting=', submitting);
       if (submitting) {
         if (Object.keys(errors).length === 0) {
           if (
@@ -198,4 +199,5 @@ function Join(props) {
     </div>
   );
 }
+
 export default withRouter(Join);
