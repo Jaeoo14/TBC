@@ -143,7 +143,7 @@ function SimplePaper(props) {
         </div>
         <hr />
         <div className="logintext1 logintext4">
-          <div className="a1" onClick={(alert = "관리자에게 문의하세요")}>
+          <div className="a1" onClick={(e)=>{e.preventDefault(); alert("관리자에게 문의하세요");}}>
             혹시 비밀번호를 잊으셨나요?
           </div>
         </div>
