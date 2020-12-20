@@ -1,17 +1,13 @@
 import React, { Component } from 'react';
-import { Box} from '@material-ui/core';
-import PushBtn from "./Button/PushBtn";
+import { Box } from '@material-ui/core';
+import PushBtn from "./PushBtn";
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Comment from './Comment';
 import ProjectApiService from "../ProjectApiService";
 import Pas from '../ProjectApiService';
 import DisplayImage from "../components/DisplayImage";
-
-import 'moment/locale/ko';
 import Moment from "react-moment";
 import 'moment/locale/ko';
-
-
 import './Detail.css';
 
 class Detail extends Component {
