@@ -83,7 +83,7 @@ class DiscoverItem extends Component {
         if (member)
             return 1;//member.id;
         else
-            alert('로그인 사용자가 없습니다.');
+            console.log('로그인 사용자가 없습니다.');
 
         return 0; // no log-in user.
     }
