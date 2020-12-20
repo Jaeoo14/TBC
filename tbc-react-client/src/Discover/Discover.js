@@ -1,7 +1,7 @@
 import { Component } from "react";
 import "./Discover.css";
 import jquery from "jquery";
-import { Button } from "@material-ui/core";
+import { Button, Grid } from "@material-ui/core";
 
 import CachedIcon from "@material-ui/icons/Cached";
 import Arrow from "@material-ui/icons/ChevronRight";
@@ -660,8 +660,7 @@ class Discover extends Component {
                 </li>
               </ul>
             </div>
-
-            {/* 상태 분류 */}
+            상태 분류
             <div className="btn-group show-on-hover">
               <button
                 type="button"
@@ -682,7 +681,6 @@ class Discover extends Component {
                 </li>
               </ul>
             </div>
-
             {/* 달성률 분류 */}
             <div className="btn-group show-on-hover">
               <button
@@ -710,7 +708,6 @@ class Discover extends Component {
                 </li>
               </ul>
             </div>
-
             {/* 금액별 분류 */}
             <div className="btn-group show-on-hover">
               <button
@@ -750,7 +747,6 @@ class Discover extends Component {
                 </li>
               </ul>
             </div>
-
             {/* 필터초기화 */}
             <div className="button" onClick={this.viewProjectList}>
               <Button variant="outlined">
@@ -821,11 +817,11 @@ class Discover extends Component {
 
           {/* 프로젝트 구성 페이지 */}
 
-          <div className="row">
+          {/* <div className="row">
             {this.state.lists.map((list) => (
               <div
                 onClick={() => {
-                  this.props.location.id({
+                  this.state.history.push({
                     pathname: "/detail",
                     state: list.id,
                   });
@@ -847,6 +843,7 @@ class Discover extends Component {
               </div>
             ))}
           </div>
+           */}
         </div>
       </div>
     );
