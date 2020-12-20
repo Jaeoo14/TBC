@@ -13,7 +13,7 @@ class MoreButton extends Component{
                         fontSize: 16,
                         paddingLeft: 30,
                         paddingRight: 30,
-                        border: 1,
+                        border: 10,
                         borderColor:'black',
                         color:'#6d6d6d',
                         fontWeight:'bold',
