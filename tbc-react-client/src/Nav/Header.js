@@ -55,7 +55,7 @@ const Header = () => {
             </span>
           ) : (
             <span>
-              <Link className="link" to="/login">
+              <Link className="link" to="/login" style={{textDecoration:'none'}}>
                 로그인/회원가입
               </Link>
             </span>
