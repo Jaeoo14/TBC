@@ -12,7 +12,8 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import NotFavoriteIcon from '@material-ui/icons/FavoriteBorderOutlined';
 import MoreButton from './MoreButton';
 import DisplayImage from '../components/DisplayImage';
-
+import CreatorName from '../member/components/CreatorName';
+import CardItem from './CardItem';
 const breakPoints = [
     { width: 1, itemsToShow: 1 },
     { width: 550, itemsToShow: 2, itemsToScroll: 2 },
@@ -25,8 +26,7 @@ class Cards extends Component {
         componentDidMount() {
             window.$ = window.jQuery = jquery;
             this.viewProjectList();
-            // this.viewRemainDate();
-            this.viewCountProject();
+            this.getCategoryId();
         }
     
         constructor(props) {
@@ -34,20 +34,20 @@ class Cards extends Component {
 
             this.state = {
                 lists: [],
-                count: 0,
+                project: this.props.project,
             };
         };
-        viewCountProject = () => {
+        // viewCountProject = () => {
 
-            ProjectApiService.countProject()
-            .then(res => {
-                this.setState({ count : res.data });
-                console.log('viewCountProject의 값', res.data)
-            })
-            .catch(err => {
-                console.error('Discover.js의 viewCountProject() 에러!', err);
-            })
-        }
+        //     ProjectApiService.countProject()
+        //     .then(res => {
+        //         this.setState({ count : res.data });
+        //         console.log('viewCountProject의 값', res.data)
+        //     })
+        //     .catch(err => {
+        //         console.error('Discover.js의 viewCountProject() 에러!', err);
+        //     })
+        // }
         viewProjectList = () => {
 
             ProjectApiService.projectList()
@@ -65,6 +65,18 @@ class Cards extends Component {
             const localLiked = !this.state.liked;        
             this.setState({ liked : localLiked });
         };
+        getCategoryId = () => {
+
+            ProjectApiService.getCategory(this.state.category)
+            .then(res => {
+                this.setState({ category : res.data.id, categoryText : res.data.text });
+                console.log('getCategoryId&categoryText 값', this.state.category, this.state.categoryText)
+            })
+            .catch(err => {
+                console.error('DiscoverItem.js의 getCategoryId() 에러!', err);
+            })
+        }
+        
             render() {
             return (
                 
@@ -74,32 +86,7 @@ class Cards extends Component {
                  {/* <h4 style={{textAlign:"center"}}>주목할 만한 프로젝트</h4> */}
                  <Carousel breakPoints={breakPoints}>
                    {this.state.lists.map(list => 
-                <div className='Card' >
-                    <CardDeck  >
-                            {/* //     좋아요기능      */}
-                            <Card.Link href="#">
-                            <Card style={{width: 240}}>
-                                 <div style={{float:"right"}} onClick={() => this.toggleLike()}>
-                                  {this.state.liked === false ? <NotFavoriteIcon /> : <FavoriteIcon color="secondary" />} 
-                              </div>
-                            {/* <Card.Img variant="top" src={list.mainImg} style={{ height: 180}} /> */}
-                            <DisplayImage pId={this.props.id} width="280px" height="240px" />
-                            <Card.Body>
-                              <Card.Subtitle style={{fontSize: 10, textAlign: 'left'}}>
-                                    {list.category} | {list.creatorId}
-                              </Card.Subtitle>
-                              <Card.Title>{list.shortTitle}</Card.Title>
-                              <Card.Text style={{fontSize: 15}}>
-                                    {list.content}
-                              </Card.Text>
-                            </Card.Body>
-                            <Card.Footer>
-                              <small className="text-muted"><span style={{color:"#ff4646", fontSize:15}}> nnn%</span></small>
-                            </Card.Footer>
-                          </Card>
-                    </Card.Link>
-                    </CardDeck>
-                </div>
+                <CardItem project={list} />
                     )}
                 </Carousel>
                     </div>
