@@ -74,7 +74,7 @@ class Cards extends Component {
                  {/* <h4 style={{textAlign:"center"}}>주목할 만한 프로젝트</h4> */}
                  <Carousel breakPoints={breakPoints}>
                    {this.state.lists.map(list => 
-                <div className='Card' key={list.id}>
+                <div className='Card' >
                     <CardDeck  >
                             {/* //     좋아요기능      */}
                             <Card.Link href="#">
@@ -102,44 +102,8 @@ class Cards extends Component {
                 </div>
                     )}
                 </Carousel>
-                    
                     </div>
                     <MoreButton />
-                    
-            <div style={{width:1500, display: 'inline-flex', verticalAlign: 'center',marginTop:50}}>
-                 {/* <h4 style={{textAlign:"center"}}>주목할 만한 프로젝트</h4> */}
-                 <Carousel breakPoints={breakPoints}>
-                   {this.state.lists.map(list => 
-                     <div className='Card' key={list.id}>
-                      <CardDeck  >
-                            {/* //     좋아요기능      */}
-                            <Card.Link href="#">
-                            <Card style={{width: 240}}>
-                                 <div style={{float:"right"}} onClick={() => this.toggleLike()}>
-                                  {this.state.liked === false ? <NotFavoriteIcon /> : <FavoriteIcon color="secondary" />} 
-                              </div>
-                            <Card.Img variant="top" src={list.mainImg} style={{ height: 180}} />
-                            {/* <Card.Img><DisplayImage pId={this.props.id} width="280px" height="240px" /></Card.Img> */}
-                            <Card.Body>
-                              <Card.Subtitle style={{fontSize: 10, textAlign: 'left'}}>
-                                    {list.category} | {list.creatorId}
-                              </Card.Subtitle>
-                              <Card.Title>{list.shortTitle}</Card.Title>
-                              <Card.Text style={{fontSize: 15}}>
-                                    {list.content}
-                              </Card.Text>
-                            </Card.Body>
-                            <Card.Footer>
-                              <small className="text-muted"><span style={{color:"#ff4646", fontSize:15}}> nnn%</span></small>
-                            </Card.Footer>
-                          </Card>
-                          </Card.Link>
-                      </CardDeck>
-                     </div>
-                     )}
-                 </Carousel>
-                    </div>
-                        <MoreButton />
                     </div>
                    
                     
@@ -149,6 +113,6 @@ class Cards extends Component {
 }
 
 
-// const rootElement = document.getElementById("root");
-// ReactDOM.render(<Cards />, rootElement);
+const rootElement = document.getElementById("root");
+ReactDOM.render(<Cards />, rootElement);
 export default Cards;
