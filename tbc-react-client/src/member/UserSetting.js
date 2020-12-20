@@ -19,7 +19,6 @@ class UserSetting extends Component {
     return (
       <div>
         <Container
-          maxWidth="md"
           style={{
             paddingLeft: "3rem",
             paddingRight: "3rem",

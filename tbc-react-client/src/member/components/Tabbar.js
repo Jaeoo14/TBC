@@ -105,7 +105,7 @@ export default function SimpleTabs() {
   return (
     <div className={classes.root}>
       <div className={classes.demo1}>
-        <AntTabs value={value} onChange={handleChange} aria-label="ant example">
+        <AntTabs value={value} onChange={handleChange}>
           <AntTab label="프로필" />
           <AntTab label="계정" />
           <AntTab label="좋아하는 프로젝트" />
