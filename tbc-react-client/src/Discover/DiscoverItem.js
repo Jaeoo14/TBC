@@ -143,6 +143,8 @@ class DiscoverItem extends Component {
                 </Box>
 
                 <Box
+                    width={300}
+                    height={20}            
                     fontSize={18}
                     align="left"
                     marginTop="0.8rem"
@@ -159,7 +161,6 @@ class DiscoverItem extends Component {
                     <Moment fromNow> 
                        {this.props.fundingEnd}
                     </Moment>
-    {/* {this.test} */}
                 </span>
                     </Box>
             </div>
