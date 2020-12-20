@@ -149,7 +149,7 @@ class Profile extends Component {
                 </span>
               </div>
               <div style={{ textAlign: "left", padding: "2px" }}>
-                {user.profileImg !== "''" ? (
+                {(user !== null && user.profileImg != 0) ? (
                   <ProfileImage userId={user.id} />
                 ) : (
                   <Avatar />
