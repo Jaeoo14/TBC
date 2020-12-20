@@ -3,7 +3,8 @@ import "../../style/Setting.css";
 
 import { Avatar, Paper, Grid } from "@material-ui/core";
 import Api from "../../../ProjectApiService";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
+import Uploadprofile from "./UploadImage";
 
 const user = JSON.parse(localStorage.getItem("myStorage"));
 
@@ -80,7 +81,9 @@ class Profile extends Component {
       Api.updateIntro(user)
         .then()
         .catch((err) => console.log(err));
-      this.state.nickname = user.nickname;
+      this.setState({
+        nickname: user.nickname,
+      });
       this.endEdit();
     } else {
       alert("입력을 하시오");
@@ -96,14 +99,18 @@ class Profile extends Component {
       Api.updateIntro(user)
         .then()
         .catch((err) => console.log(err));
-
-      this.state.intro = user.intro;
+      this.setState({
+        intro: user.intro,
+      });
       this.endEdit();
     } else {
       alert("입력을 하시오");
     }
   };
-
+  logout = () => {
+    localStorage.clear();
+    this.props.history.push("/");
+  };
   render() {
     return (
       <Grid container spacing={3}>
@@ -115,7 +122,21 @@ class Profile extends Component {
           </div>
 
           {this.state.editImg ? (
-            <div>asdasd</div>
+            <form>
+              <div className="div1">
+                <div className="div1">
+                  프로필 사진
+                  <span>
+                    <button onClick={(e) => this.endEdit(e, "editNick")}>
+                      취소
+                    </button>
+                  </span>
+                </div>
+                <Uploadprofile mainImg={this.state.profileImg} />
+              </div>
+
+              <hr />
+            </form>
           ) : (
             <div>
               <div className="div1">
@@ -214,8 +235,12 @@ class Profile extends Component {
                 </span>
               </div>
               <div className="div2">{this.state.intro}</div>
+              <hr />
             </div>
           )}
+          <div className="div1" onClick={this.logout}>
+            로그아웃
+          </div>
         </Grid>
         <Grid item xs={4} sm={4}>
           <Paper id="paper" variant="outlined">
@@ -233,4 +258,4 @@ class Profile extends Component {
   }
 }
 
-export default Profile;
+export default withRouter(Profile);

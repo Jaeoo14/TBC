@@ -3,9 +3,8 @@ import Tabbar from "./components/Tabbar";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import "./style/UserSetting.css";
-{
-  /* member에서 데이터 불러와야 함 */
-}
+
+import { withRouter } from "react-router-dom";
 
 class UserSetting extends Component {
   componentDidMount() {
@@ -39,4 +38,4 @@ class UserSetting extends Component {
   }
 }
 
-export default UserSetting;
+export default withRouter(UserSetting);

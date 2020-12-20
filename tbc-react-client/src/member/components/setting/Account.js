@@ -91,7 +91,7 @@ class Account extends Component {
         .then()
         .catch((err) => console.log(err));
 
-      this.state.address = user.address;
+      this.setState({ address: user.address });
       this.endEdit();
     } else {
       alert("입력을 하시오");
@@ -108,7 +108,7 @@ class Account extends Component {
         .then()
         .catch((err) => console.log(err));
 
-      this.state.tel = user.tel;
+      this.setState({ tel: user.tel });
       this.endEdit();
     } else {
       alert("입력을 하시오");
@@ -125,7 +125,7 @@ class Account extends Component {
         .then()
         .catch((err) => console.log(err));
 
-      this.state.payment = user.payment;
+      this.setState({ payment: user.payment });
       this.endEdit();
     } else {
       alert("입력을 하시오");
