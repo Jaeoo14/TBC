@@ -48,6 +48,7 @@ class Cards extends Component {
         //         console.error('Discover.js의 viewCountProject() 에러!', err);
         //     })
         // }
+        
         viewProjectList = () => {
 
             ProjectApiService.projectList()
