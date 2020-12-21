@@ -150,7 +150,7 @@ class Profile extends Component {
                 </span>
               </div>
               <div style={{ textAlign: "left", padding: "2px" }}>
-                <ProfileImage userId={user.id} />
+                {user && <ProfileImage userId={user.id} />}
               </div>
               <hr />
             </div>
