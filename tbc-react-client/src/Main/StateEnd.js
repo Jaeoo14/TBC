@@ -19,7 +19,7 @@ class CardItem extends Component{
         console.log("alignAmountPercent 값", res.data);
       })
       .catch((err) => {
-        console.error("Cards.js의 alignAmountPercent() 에러!", err);
+        console.error("Discover.js의 alignAmountPercent() 에러!", err);
       });
   };
 
@@ -55,7 +55,7 @@ class CardItem extends Component{
         // console.log('getCategoryId&categoryText 값', this.state.categoryText)
     })
     .catch(err => {
-        console.error('CardItem.js의 getCategoryId() 에러!', err);
+        console.error('DiscoverItem.js의 getCategoryId() 에러!', err);
     })
   }
   // toggleLike = (id) => {
@@ -92,11 +92,7 @@ class CardItem extends Component{
                 </Card.Text>
               </Card.Body>
               <Card.Footer>
-              <small className="text-muted">
-                  <span style={{color:"#ff4646", fontSize:15}}>
-                      {Number(`${this.numberDemical(this.props.project.fundedAmount * 100 / this.props.project.fundingGoalAmount)}`)}% 달성
-                  </span>
-              </small>
+              <small className="text-muted"><span style={{color:"#ff4646", fontSize:15}}>{Number(`${this.numberDemical(this.props.project.fundedAmount * 100 / this.props.project.fundingGoalAmount)}`)}% 달성</span></small>
               </Card.Footer>
             </Card>
             {/* </Card.Link> */}

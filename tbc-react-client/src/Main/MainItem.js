@@ -35,8 +35,8 @@ class MainItem extends Component {
 				/>
 			
 				<Carousel.Caption>
-					<h4 style={{ color: 'black', fontWeight: 'bold', borderRadius: 20, backgroundColor: '#FAFAFA'}}>{this.props.longTitle}</h4>
-					<p style={{ color: 'black', fontWeight: 'bold',borderRadius: 20, backgroundColor: '#FAFAFA'  }}>{this.props.content}</p>
+					<h4 style={{ color: 'black', fontWeight: 'bold', borderRadius: 20, backgroundColor: 'whitesmoke', paddingTop: 5, paddingBottom: 5, width: 800, marginLeft: 45}}>{this.props.longTitle}</h4>
+					<p style={{ color: 'black', fontWeight: 'bold',borderRadius: 20, backgroundColor: 'whitesmoke', paddingTop: 5, paddingBottom: 5  }}>{this.props.content}</p>
 				</Carousel.Caption>
 			</>
 		);

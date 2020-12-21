@@ -26,6 +26,7 @@ class Cards extends Component {
 	componentDidMount() {
 		window.$ = window.jQuery = jquery;
 		this.viewProjectList();
+		// this.viewProjectList2();
 		// this.getCategoryId();
 	}
 
@@ -33,7 +34,8 @@ class Cards extends Component {
 		super(props);
 
 		this.state = {
-            lists: [],
+			lists: [],
+			list2: [],
             category: 0,
 		};
 	}
@@ -44,24 +46,49 @@ class Cards extends Component {
 				console.log('projectList 값', res.data);
 			})
 			.catch(err => {
-				console.error('Discover.js의 viewProjectList() 에러!', err);
+				console.error('Cards.js의 viewProjectList() 에러!', err);
 			});
 	};
+	// viewProjectList2 = () => {
+	// 	ProjectApiService.projectList()
+	// 		.then(res => {
+	// 			this.setState({ list2: res.data });
+	// 			console.log('projectList 값', res.data);
+	// 		})
+	// 		.catch(err => {
+	// 			console.error('Cards.js의 viewProjectList() 에러!', err);
+	// 		});
+	// };
 	toggleLike = id => {
 		console.log(`id = > ${id}`);
 		const localLiked = !this.state.liked;
 		this.setState({ liked: localLiked });
 	};
-	// getCategoryId = () => {
-	// 	ProjectApiService.getCategory(this.state.category)
-	// 		.then(res => {
-	// 			this.setState({ category: res.data.id, categoryText: res.data.text });
-	// 			console.log('getCategoryId&categoryText 값', this.state.category, this.state.categoryText);
-	// 		})
-	// 		.catch(err => {
-	// 			console.error('DiscoverItem.js의 getCategoryId() 에러!', err);
-	// 		});
-	// };
+  //상태별
+  viewStateIng = () => {
+    ProjectApiService.stateIng()
+      .then((res) => {
+        this.setState({ lists: res.data });
+        console.log("stateIng 값", res.data);
+      })
+      .catch((err) => {
+        console.error("Cards.js의 stateIng() 에러!", err);
+      });
+  };
+
+  viewStateEnd = () => {
+    ProjectApiService.stateEnd()
+      .then((res) => {
+        this.setState({ list2: res.data });
+        console.log("stateEnd 값", res.data);
+      })
+      .catch((err) => {
+        console.error("Cards.js의 stateEnd() 에러!", err);
+      });
+  };
+
+
+
 //상세페이지랑 연결시에 꼭 들어가야함!
 gotoEditProject = (_id, _creatorId) => {
     this.props.history.push({
@@ -75,18 +102,35 @@ gotoEditProject = (_id, _creatorId) => {
 	render() {
 		return (
 			<div style={{ display: 'inline' }}>
+					<h4 style={{textAlign:"center", fontWeight: 'bold'}}>진행중인 프로젝트</h4>
 				<div style={{ width: 1500, display: 'inline-flex', verticalAlign: 'center', marginTop: 50 }}>
-					{/* <h4 style={{textAlign:"center"}}>주목할 만한 프로젝트</h4> */}
 					<Carousel breakPoints={breakPoints}>
 						{this.state.lists.map(list => (
-                            <div onClick={() => this.props.history.push({ pathname: '/detail', state:list})}>
+							<div onClick={() => this.props.history.push({ pathname: '/detail', state:list})}>
                                 <CardItem
-                                    project={list} />
+									project={list} 
+									
+									/>
                             </div>
 						))}
 					</Carousel>
 				</div>
-				<MoreButton />
+				<br/><br/><br/>
+						<h4 style={{textAlign:"center", fontWeight: 'bold'}}>성사된 프로젝트</h4>
+				<div style={{ width: 1500, display: 'inline-flex', verticalAlign: 'center', marginTop: 50 }}>
+					<Carousel breakPoints={breakPoints}>
+						{this.state.list2.map(list => (
+                            <div onClick={() => this.props.history.push({ pathname: '/detail', state:list})}>
+                                <CardItem
+									project={list} 
+									
+									/>
+                            </div>
+						))}
+					</Carousel>
+				</div>
+						<MoreButton />
+				
 			</div>
 		);
 	}
