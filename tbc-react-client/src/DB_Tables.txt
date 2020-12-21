@@ -1,0 +1,95 @@
+-- MySQL
+CREATE DATABASE `tbc` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+-- --------------------------------
+CREATE TABLE `project` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `creatorId` int DEFAULT '0' COMMENT '이 프로젝트의 소유자 id (인덱스 숫자다)',
+  `longTitle` varchar(32) NOT NULL DEFAULT '' COMMENT '프로젝트 제목',
+  `shortTitle` varchar(7) NOT NULL DEFAULT '' COMMENT '프로젝트 짧은 제목',
+  `mainImg` int DEFAULT '0' COMMENT '프로젝트 대표 이미지',
+  `content` varchar(100) NOT NULL DEFAULT '' COMMENT '프로젝트 개요',
+  `category` int DEFAULT '0' COMMENT '프로젝트 카테고리',
+  `url` varchar(28) NOT NULL DEFAULT '' COMMENT '프로젝트 URL 주소',
+  `tags` varchar(125) NOT NULL DEFAULT '' COMMENT '검색에 사용 될 태그',
+  `fundingGoalAmount` int NOT NULL DEFAULT '0' COMMENT '펀딩 목표 금액',
+  `fundingStart` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '펀딩 시작 날짜-시간',
+  `fundingEnd` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '펀딩 마감 날짜-시간',
+  `rewards` varchar(500) NOT NULL DEFAULT '' COMMENT '선물 리스트(선물 ID들)',
+  `favoriteCount` int NOT NULL DEFAULT '0' COMMENT '받은 좋아요 ❤ 개수',
+  `fundedAmount` int NOT NULL DEFAULT '0' COMMENT '모인 금액',
+  `sponsorCount` int NOT NULL DEFAULT '0' COMMENT '후원자 인원 수',
+  `createdDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updatedDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `creatorId_idx` (`creatorId`),
+  KEY `mainImg_idx` (`mainImg`),
+  KEY `category_idx` (`category`),
+  CONSTRAINT `FK_category` FOREIGN KEY (`category`) REFERENCES `category` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
+  CONSTRAINT `FK_creatorId` FOREIGN KEY (`creatorId`) REFERENCES `member` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
+  CONSTRAINT `FK_mainImg` FOREIGN KEY (`mainImg`) REFERENCES `file` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=440 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+-- --------------------------------
+CREATE TABLE `member` (
+  `id` int NOT NULL AUTO_INCREMENT COMMENT 'index',
+  `userId` varchar(45) NOT NULL,
+  `pwd` varchar(45) NOT NULL,
+  `name` varchar(45) DEFAULT '',
+  `nickname` varchar(45) DEFAULT '',
+  `signUpDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `intro` varchar(500) DEFAULT '',
+  `profileImg` int DEFAULT '0',
+  `tel` varchar(45) DEFAULT '',
+  `address` varchar(500) DEFAULT '',
+  `myProjects` varchar(500) DEFAULT '',
+  `likeProjects` varchar(500) DEFAULT '',
+  `fundProjects` varchar(500) DEFAULT '',
+  `fundLog` varchar(500) DEFAULT '',
+  `payment` varchar(45) NOT NULL DEFAULT 'card',
+  `role` int NOT NULL DEFAULT '0' COMMENT 'user = 0, manager= 1, admin = 2',
+  `status` int NOT NULL DEFAULT '1' COMMENT 'inactive = 0, active = 1, delete = 2',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `userId_UNIQUE` (`userId`),
+  KEY `FK_profileImg_idx` (`profileImg`),
+  CONSTRAINT `FK_profileImg` FOREIGN KEY (`profileImg`) REFERENCES `file` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+-- --------------------------------
+CREATE TABLE `file` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(500) DEFAULT NULL COMMENT 'file name',
+  `type` varchar(45) DEFAULT NULL COMMENT 'mime type',
+  `data` longblob,
+  `createdAt` datetime DEFAULT NULL,
+  `updatedAt` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+-- --------------------------------
+CREATE TABLE `category` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `text` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name_UNIQUE` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+-- --------------------------------
+CREATE TABLE `item` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL COMMENT '아이템 이름',
+  `opt` int NOT NULL DEFAULT '0' COMMENT '옵션조건 -> 0 : 조건 없음, 1 : 옵션 설명, 2 : 후원자가 선택할 수 있는 옵션들 나열.',
+  `message` varchar(500) DEFAULT NULL COMMENT '옵션 조건 2 메시지',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+-- --------------------------------
+CREATE TABLE `reward` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `minFundAmount` int NOT NULL DEFAULT '0' COMMENT '최소 후원 금액',
+  `items` varchar(45) DEFAULT NULL COMMENT '선물에 포함된 아이템 ID들',
+  `description` varchar(50) DEFAULT NULL COMMENT '선물 설명',
+  `orderNo` int NOT NULL DEFAULT '1' COMMENT '선물 카드 정렬 순서',
+  `deliveryDate` datetime DEFAULT NULL COMMENT '예상 전달일',
+  `isLimited` tinyint NOT NULL DEFAULT '0' COMMENT '선물 개수 제한 여부, boolean',
+  `quantity` int NOT NULL DEFAULT '0' COMMENT '선물 제한 개수',
+  `stock` int NOT NULL DEFAULT '0' COMMENT '남은 선물 개수',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `order_UNIQUE` (`orderNo`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+-- --------------------------------
