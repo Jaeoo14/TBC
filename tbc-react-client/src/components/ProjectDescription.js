@@ -66,7 +66,7 @@ class ProjectDescription extends Component {
 
 	getUser = id => {
 		Pas.getUser(id)
-			.then(res => this.setState({ creator: res.data }))
+			.then(res => this.setState({ creator: res.data }, ()=>console.log('PD.getUser', this.state)))
 			.catch(console.log);
 	};
 
@@ -351,7 +351,14 @@ class ProjectDescription extends Component {
 							<div onClick={e => this.startEdit(e, 'editCreatorName')}>
 								<div>
 									<h6>창작자 이름</h6>
-									{this.state.creator && this.state.creator.name}
+									{!this.state.creator || this.state.creator.name === '' ? (
+										<div style={{ color: 'tomato' }}>
+											<ArrowRightIcon fontSize='small' />
+											창작자 이름을 입력해주세요.
+										</div>
+									) : (
+										<h6>{this.state.creator.name}</h6>
+									)}
 								</div>
 								<div style={{ textAlign: 'right', color: 'tomato' }}>
 									<EditIcon fontSize='small' />
@@ -377,7 +384,7 @@ class ProjectDescription extends Component {
 							<div onClick={e => this.startEdit(e, 'editCreatorIntro')}>
 								<div>
 									<h6>창작자 소개</h6>
-									{!this.state.creator ? (
+									{!this.state.creator || this.state.creator.intro === '' ? (
 										<div style={{ color: 'tomato' }}>
 											<ArrowRightIcon fontSize='small' />
 											창작자 소개를 입력해주세요.
