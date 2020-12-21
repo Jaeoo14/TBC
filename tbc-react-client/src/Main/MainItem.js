@@ -25,15 +25,18 @@ class MainItem extends Component {
 	render() {
 		return (
 			<>
+			
 				<img
 					className='d-block w-100'
 					src={`data:${this.state.file.type};base64,${this.state.file.data}`}
 					alt={this.props.shortTitle}
-					style={{ height: 400, width: 1500 }}
+					style={{ height: 400, width: 1275 }}
+					
 				/>
+			
 				<Carousel.Caption>
-					<h3 style={{ backgroundColor: 'black', color: 'yellow' }}>{this.props.longTitle}</h3>
-					<p style={{ backgroundColor: 'black', color: 'yellow' }}>{this.props.content}</p>
+					<h4 style={{ color: 'black', fontWeight: 'bold', borderRadius: 20, backgroundColor: '#FAFAFA'}}>{this.props.longTitle}</h4>
+					<p style={{ color: 'black', fontWeight: 'bold',borderRadius: 20, backgroundColor: '#FAFAFA'  }}>{this.props.content}</p>
 				</Carousel.Caption>
 			</>
 		);

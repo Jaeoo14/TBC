@@ -45,7 +45,9 @@ class Main extends Component {
 					<Carousel style={{ width: '1275px' }}>
 						{this.state.lists.map(list => (
 							<Carousel.Item>
+								<div onClick={() => this.props.history.push({ pathname: '/detail', state: list })}>
 								<MainItem key={list.id} pId={list.id} content={list.content} shortTitle={list.shortTitle} longTitle={list.longTitle} />
+								</div>
 							</Carousel.Item>
 						))}
 					</Carousel>
