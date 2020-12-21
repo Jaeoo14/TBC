@@ -89,8 +89,8 @@
 
 	<insert id="insert" parameterType="com.team2.tbcserver.vo.ProjectVO" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
 		INSERT INTO project 
-				(creatorId)
-		VALUES 	(#{creatorId})
+				(creatorId, fundingEnd)
+		VALUES 	(#{creatorId}, DATE_ADD(CURRENT_TIMESTAMP, INTERVAL 30 DAY))
 	</insert>	
 	
 	<update id="update" parameterType="com.team2.tbcserver.vo.ProjectVO">
