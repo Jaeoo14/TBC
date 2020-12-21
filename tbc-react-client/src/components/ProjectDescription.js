@@ -287,7 +287,7 @@ class ProjectDescription extends Component {
 											프로젝트 페이지 주소를 입력해주세요.
 										</div>
 									) : (
-										<h6>{this.state.project.url}</h6>
+										<h6>http://localhost:3000/{this.state.project.url}</h6>
 									)}
 								</div>
 								<div style={{ textAlign: 'right', color: 'tomato' }}>
