@@ -51,7 +51,7 @@ class FundDateTime extends Component {
 					/>
 				</Row>
 				<Row style={{ justifyContent: 'flex-end' }}>
-					<Button variant='secondary mr-1' size='sm'>
+					<Button variant='secondary mr-1' size='sm' onClick={this.props.handleClose}>
 						<CloseIcon />취소하기</Button>
 					<Button variant='primary' size='sm' disabled={false} onClick={this.handleSave}>
 						<CheckIcon />저장하기</Button>

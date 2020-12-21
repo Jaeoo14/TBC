@@ -326,10 +326,7 @@ class ProjectDescription extends Component {
         <h6>창작자 정보</h6>
         <ListGroup>
           <ListGroup.Item as="div" action>
-            테스트 1
-          </ListGroup.Item>
-          <ListGroup.Item as="div" action>
-            테스트 2
+            없습니다.
           </ListGroup.Item>
           {/*<ListGroup.Item as='div' action>
 						<UploadImage
