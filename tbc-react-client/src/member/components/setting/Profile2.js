@@ -244,7 +244,7 @@ class Profile extends Component {
               <hr />
             </div>
           )}
-          <div className="div1" onClick={this.logout}>
+          <div className="div1" onClick={this.logout} style={{ color: "red" }}>
             로그아웃
           </div>
         </Grid>

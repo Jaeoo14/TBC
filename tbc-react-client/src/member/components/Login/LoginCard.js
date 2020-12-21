@@ -69,8 +69,7 @@ function SimplePaper(props) {
               document.location.href = "/";
               // props.history.push("/");
             } else {
-              console.error("잘못된 비밀번호 입니다");
-              alert("잘못된 비밀번호 입니다");
+              alert("계정이나 비밀번호가 다릅니다");
             }
           })
           .catch((err) => {

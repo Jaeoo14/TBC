@@ -18,6 +18,7 @@ class Account extends Component {
       tel: "",
       payment: "",
       // 변경 가능한 값
+      checkPwd: "",
       newPwd: "",
       newAddr: "",
       newTel: "",
@@ -77,10 +78,31 @@ class Account extends Component {
     this.setState({
       [e.target.name]: e.target.value,
     });
-    console.log(e.target.value);
+    console.log(e.target.name, e.target.value);
   };
 
   //state부분만 다름
+  updatePwd = (e) => {
+    e.preventDefault();
+    if (this.state.checkPwd === user.pwd) {
+      if (this.state.newPwd !== "") {
+        console.log("intro 업데이트", this.state.newPwd);
+        user.pwd = this.state.newPwd;
+
+        Api.updateIntro(user)
+          .then()
+          .catch((err) => console.log(err));
+
+        this.setState({ pwd: user.pwd });
+        this.endEdit();
+      } else {
+        alert("새로운 비밀번호를 입력하시오");
+      }
+    } else {
+      alert("기존 비밀번호 오류");
+    }
+  };
+
   updateAddr = (e) => {
     e.preventDefault();
     if (this.state.newAddr !== "") {
@@ -131,7 +153,20 @@ class Account extends Component {
       alert("입력을 하시오");
     }
   };
+  memberOut = (e) => {
+    e.preventDefault();
+    if (window.confirm("삭제하시겠습니까?")) {
+      user.status = 0;
 
+      Api.updateIntro(user)
+        .then()
+        .catch((err) => console.log(err));
+
+      alert("삭제되었습니다.");
+      localStorage.clear();
+      document.location.href = "/";
+    }
+  };
   render() {
     return (
       <Grid container spacing={3}>
@@ -143,7 +178,42 @@ class Account extends Component {
           </div>
 
           {this.state.editPwd ? (
-            <div>비번</div>
+            <form>
+              <div className="div1">
+                <div className="div1">
+                  비밀번호
+                  <span>
+                    <button onClick={(e) => this.endEdit(e, "editPwd")}>
+                      취소
+                    </button>
+                  </span>
+                </div>
+                <div>
+                  <input
+                    name="checkPwd"
+                    type="password"
+                    onChange={this.handleChange}
+                    className="form-control div2 input2"
+                    placeholder="기존의 비밀번호를 입력하세요"
+                  />
+                </div>
+                <div>
+                  <input
+                    name="newPwd"
+                    type="password"
+                    onChange={this.handleChange}
+                    className="form-control div2 input2"
+                    placeholder="변경하실 비밀번호를 입력하세요"
+                  />
+                </div>
+              </div>
+              <div className="div2">
+                <button class="btn btn-dark btn1" onClick={this.updatePwd}>
+                  저장
+                </button>
+              </div>
+              <hr />
+            </form>
           ) : (
             <div>
               <div className="div1">
@@ -293,8 +363,12 @@ class Account extends Component {
               ) : (
                 <div className="div2">{this.state.payment}</div>
               )}
+              <hr />
             </div>
           )}
+          <div className="div1 bye" onClick={this.memberOut}>
+            회원탈퇴
+          </div>
         </Grid>
         <Grid item xs={4} sm={4}>
           <Paper id="paper" variant="outlined">
