@@ -47,7 +47,7 @@ const Favorite = ({ userId, projectId }) => {
 
   return (
     <div onClick={onToggle}>
-      {like ? <FavoriteIcon color="secondary" /> : <NotFavoriteIcon />}
+      {like ? <FavoriteIcon color="secondary" /> : <NotFavoriteIcon/>}
     </div>
   );
 };

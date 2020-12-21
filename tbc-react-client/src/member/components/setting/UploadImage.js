@@ -4,8 +4,11 @@ import { Form, Container, Row } from "react-bootstrap";
 
 import Pas from "../../../ProjectApiService";
 
+const user = JSON.parse(localStorage.getItem("myStorage"));
+
 export default class UploadImage extends Component {
   state = {
+    idx: undefined,
     file: undefined,
     info: undefined,
   };
@@ -38,7 +41,8 @@ export default class UploadImage extends Component {
     this.setState({ file: e.target.files[0] }, () => console.log(this.state));
   };
 
-  uploadFile = () => {
+  uploadFile = (e) => {
+    e.preventDefault();
     if (typeof this.state.info !== "undefined") {
       Pas.updateFile(this.state.file, this.state.info.id)
         .then((res) => Pas.getFile(this.state.info.id))
@@ -50,12 +54,14 @@ export default class UploadImage extends Component {
         .catch((err) => console.log(err));
     } else {
       Pas.upload(this.state.file)
+
         .then((res) => Pas.getFile(res.data))
         .then((res) =>
-          this.setState({ info: res.data }, () =>
+          this.setState({ idx: res.data.id, info: res.data }, () =>
             console.log("UploadProfileImage", this.state)
           )
         )
+
         .catch((err) => console.log(err));
     }
   };

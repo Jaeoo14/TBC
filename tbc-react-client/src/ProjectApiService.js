@@ -92,11 +92,22 @@ class ProjectApiService extends Component {
     });
   }
 
+  updateFile(file, id) {
+    console.log("update...", file, id);
+    let formData = new FormData();
+    formData.append("file", file);
+    return FileDB.put("/" + id, formData, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
+  }
+
   // get file from file table.
   getFile(id) {
     if (id === undefined || id === 0)
-      return new Promise(()=>{throw new Error(`There is NO file(id=${id})!`);});
-    
+      return new Promise(() => {
+        throw new Error(`There is NO file(id=${id})!`);
+      });
+
     console.log(`getFile(id=${id})`);
     return FileDB.get("/" + id);
   }
@@ -105,15 +116,6 @@ class ProjectApiService extends Component {
   getFileOfProject(projectId) {
     console.log("getFileOfProject...", projectId);
     return FileDB.get("/project/" + projectId);
-  }
-
-  updateFile(file, id) {
-    console.log("update...", file, id);
-    let formData = new FormData();
-    formData.append("file", file);
-    return FileDB.put("/" + id, formData, {
-      headers: { "Content-Type": "multipart/form-data" },
-    });
   }
 
   /////////////////////////////////////////
@@ -247,7 +249,9 @@ class ProjectApiService extends Component {
 
   getUser(id) {
     if (id === undefined || id === 0)
-      return new Promise(()=>{throw new Error(`There is NO user(id=${id}) !`);});
+      return new Promise(() => {
+        throw new Error(`There is NO user(id=${id}) !`);
+      });
 
     console.log(`getUser(id=${id})`);
     return Axios.get(MEMBER + "/" + id);
