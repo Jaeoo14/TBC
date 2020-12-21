@@ -24,9 +24,9 @@
 				sponsorCount,
 				createdDate,
 				updatedDate
-		FROM 	project
-		WHERE   fundingEnd > sysdate()
-	   ORDER BY fundedAmount DESC
+		 FROM	project
+		WHERE   fundedAmount 
+	ORDER BY    fundingEnd DESC;
 	 ]]>
 	</select>
 	

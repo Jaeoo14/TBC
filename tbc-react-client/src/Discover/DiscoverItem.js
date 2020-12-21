@@ -33,7 +33,6 @@ class DiscoverItem extends Component {
     }
 
     getCategoryId = () => {
-
         ProjectApiService.getCategory(this.props.category)
         .then(res => {
             this.setState({ categoryId : res.data.id, categoryText : res.data.text });
@@ -90,14 +89,6 @@ class DiscoverItem extends Component {
         return(
 
             <div className="col-md-6 col-lg-4 g-mb-30" style={{paddingLeft:"3.2rem", paddingRight:"3.4rem"}}>
-                {/* <img 
-                    className="d-inline-block img-fluid mb-4" 
-                    src={this.props.mainImg}
-                alt="Image Description"/> */}
-                {/* <div style={{}} onClick={() => this.toggleLike()}>
-                    {this.state.liked === false ? <NotFavoriteIcon /> : <FavoriteIcon color="secondary" />}                 
-                </div> */}
-                
                 <DisplayImage pId={this.props.pId} width="280px" height="240px">
                     <Favorite userId={this.getUserId()} projectId={this.props.pId} />
                 </DisplayImage>
@@ -111,7 +102,6 @@ class DiscoverItem extends Component {
                     marginTop="0.8rem"
                     marginBottom="1.3rem"
                     letterSpacing="-0.04rem"
-                    // onClick={`location.href='/detail'`}
                     >
                         {this.props.longTitle} 
                 </Box>
@@ -135,16 +125,13 @@ class DiscoverItem extends Component {
                     variant="body1"
                     align="left"
                     marginBottom="0.8rem"
-                    // onClick={`location.href='http://localhost:3000/detail/${this.props.url}'`}
                     >
                         {this.props.content}
                     </Typography>
                 </Box>
                 <Box>
                     {this.viewPercentImage(this.state.amountPercent)}
-
                 </Box>
-
                 <Box
                     width={300}
                     height={20}            
@@ -170,7 +157,6 @@ class DiscoverItem extends Component {
 
         )
     }
-
 }
 
 export default DiscoverItem;
