@@ -111,12 +111,14 @@ class DiscoverItem extends Component {
                     marginTop="0.8rem"
                     marginBottom="1.3rem"
                     letterSpacing="-0.04rem"
-                    onClick={`location.href='/detail'`}>
+                    // onClick={`location.href='/detail'`}
+                    >
                         {this.props.longTitle} 
                 </Box>
                 <Box 
                     width={300}
-                    height={20}>
+                    height={20}
+                    marginBottom="0.8rem">
                 <Typography
                     variant="body2"
                     color="textSecondary"
@@ -125,7 +127,6 @@ class DiscoverItem extends Component {
                     >
                     {this.state.categoryText}&nbsp;
                     | <CreatorName creatorId={this.props.creatorId}/> </Typography>
-                <Box marginTop="0.8rem" marginBottom="0.8rem" />
                 </Box>
                 <Box
                 width="20rem"
@@ -134,7 +135,8 @@ class DiscoverItem extends Component {
                     variant="body1"
                     align="left"
                     marginBottom="0.8rem"
-                    onClick={`location.href='http://localhost:3000/detail/${this.props.url}'`}>
+                    // onClick={`location.href='http://localhost:3000/detail/${this.props.url}'`}
+                    >
                         {this.props.content}
                     </Typography>
                 </Box>

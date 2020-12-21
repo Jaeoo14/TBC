@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import './Discover.css';
 import jquery from 'jquery';
-import { Button, Grid } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 
 import CachedIcon from '@material-ui/icons/Cached';
 import Arrow from '@material-ui/icons/ChevronRight';
@@ -22,8 +22,6 @@ class Discover extends Component {
 			lists: [],
 			id: Number,
 			value: 0,
-			dates: [],
-			date: '',
 			liked: false,
 			category: 0,
 		};
@@ -236,31 +234,19 @@ class Discover extends Component {
 								className='btn btn-link black-background white'
 								data-target='#'
 								href='/page.html'>
-								<span style={{ fontSize: '0.98rem' }}>카테고리</span>
+								<span style={{ fontSize: '0.9rem', marginTop:'0.2rem'}}>카테고리</span>
 							</Button>
 							<ul className='dropdown-menu multi-level' role='menu' aria-labelledby='dropdownMenu'>
 								<li>
-									<Button
-										className='btn btn-link black-background white'
-										onClick={this.viewProjectList}
-										style={{ width: '170px' }}
-										type='button'
-										>
-										<span style={{ float: 'left' }}>전체보기</span>
+								<Button className='btn btn-link black-background white'>
+								<span style={{marginRight:'4.7rem'}}> 전체보기 </span>
 									</Button>
 								</li>
 
 								<li className='dropdown-submenu'>
-									<Button
-										className='btn btn-link black-background white'
-										style={{ width: '170px' }}
-										type='button'
-										id='dropdownMenuButton'
-										data-toggle='dropdown'
-										aria-haspopup='true'
-										aria-expanded='false'>
-										<span style={{ float: 'left' }}>게임</span>
-										<Arrow fontSize='small' style={{ float: 'right' }} />
+									<Button className='btn btn-link black-background white'>
+										<span style={{marginLeft:'0.3rem'}}> 게임 </span>
+										<Arrow fontSize='small' style={{ float: 'right', marginLeft: 'auto'}} />
 									</Button>
 									{/* <a tabIndex="-1">게임 &emsp;&emsp; </a> */}
 									<ul className='dropdown-menu'>
@@ -277,16 +263,9 @@ class Discover extends Component {
 								</li>
 
 								<li className='dropdown-submenu'>
-									<Button
-										className='btn btn-link black-background white'
-										style={{ width: '170px' }}
-										type='button'
-										id='dropdownMenuButton'
-										data-toggle='dropdown'
-										aria-haspopup='true'
-										aria-expanded='false'>
-										<span style={{ float: 'left' }}>공연</span>
-										<Arrow fontSize='small' style={{ float: 'right' }} />
+								<Button className='btn btn-link black-background white'>
+										<span style={{marginLeft:'0.3rem'}}> 공연 </span>
+										<Arrow fontSize='small' style={{ float: 'right', marginLeft: 'auto'}} />
 									</Button>
 									<ul className='dropdown-menu'>
 										<li className='dropdown-item' onClick={() => this.viewCategoryBy(2)}>
@@ -299,16 +278,9 @@ class Discover extends Component {
 								</li>
 
 								<li className='dropdown-submenu'>
-									<Button
-										className='btn btn-link black-background white'
-										style={{ width: '170px' }}
-										type='button'
-										id='dropdownMenuButton'
-										data-toggle='dropdown'
-										aria-haspopup='true'
-										aria-expanded='false'>
-										<span style={{ float: 'left' }}>디자인</span>
-										<Arrow fontSize='small' style={{ float: 'right' }} />
+								<Button className='btn btn-link black-background white'>
+										<span style={{marginLeft:'0.3rem'}}>디자인</span>
+										<Arrow fontSize='small' style={{ float: 'right', marginLeft: 'auto' }} />
 									</Button>
 									<ul className='dropdown-menu'>
 										<li className='dropdown-item' onClick={() => this.viewCategoryBy(3)}>
@@ -322,16 +294,9 @@ class Discover extends Component {
 								</li>
 
 								<li className='dropdown-submenu'>
-									<Button
-										className='btn btn-link black-background white'
-										style={{ width: '170px' }}
-										type='button'
-										id='dropdownMenuButton'
-										data-toggle='dropdown'
-										aria-haspopup='true'
-										aria-expanded='false'>
-										<span style={{ float: 'left' }}>만화</span>
-										<Arrow fontSize='small' style={{ float: 'right' }} />
+								<Button className='btn btn-link black-background white'>
+										<span style={{marginLeft:'0.3rem'}}>만화</span>
+										<Arrow fontSize='small' style={{ float: 'right', marginLeft: 'auto' }} />
 									</Button>
 									<ul className='dropdown-menu'>
 										<li className='dropdown-item' onClick={() => this.viewCategoryBy(4)}>
@@ -345,16 +310,9 @@ class Discover extends Component {
 								</li>
 
 								<li className='dropdown-submenu'>
-									<Button
-										className='btn btn-link black-background white'
-										style={{ width: '170px' }}
-										type='button'
-										id='dropdownMenuButton'
-										data-toggle='dropdown'
-										aria-haspopup='true'
-										aria-expanded='false'>
-										<span style={{ float: 'left' }}>예술</span>
-										<Arrow fontSize='small' style={{ float: 'right' }} />
+								<Button className='btn btn-link black-background white'>
+										<span style={{marginLeft:'0.3rem'}}>예술</span>
+										<Arrow fontSize='small' style={{ float: 'right', marginLeft: 'auto' }} />
 									</Button>
 									<ul className='dropdown-menu'>
 										<li className='dropdown-item' onClick={() => this.viewCategoryBy(5)}>
@@ -372,16 +330,9 @@ class Discover extends Component {
 								</li>
 
 								<li className='dropdown-submenu'>
-									<Button
-										className='btn btn-link black-background white'
-										style={{ width: '170px' }}
-										type='button'
-										id='dropdownMenuButton'
-										data-toggle='dropdown'
-										aria-haspopup='true'
-										aria-expanded='false'>
-										<span style={{ float: 'left' }}>공예</span>
-										<Arrow fontSize='small' style={{ float: 'right' }} />
+								<Button className='btn btn-link black-background white'>
+										<span style={{marginLeft:'0.3rem'}}>공예</span>
+										<Arrow fontSize='small' style={{ float: 'right', marginLeft: 'auto' }} />
 									</Button>
 									<ul className='dropdown-menu'>
 										<li className='dropdown-item' onClick={() => this.viewCategoryBy(6)}>
@@ -395,16 +346,9 @@ class Discover extends Component {
 								</li>
 
 								<li className='dropdown-submenu'>
-									<Button
-										className='btn btn-link black-background white'
-										style={{ width: '170px' }}
-										type='button'
-										id='dropdownMenuButton'
-										data-toggle='dropdown'
-										aria-haspopup='true'
-										aria-expanded='false'>
-										<span style={{ float: 'left' }}>사진</span>
-										<Arrow fontSize='small' style={{ float: 'right' }} />
+								<Button className='btn btn-link black-background white'>
+										<span style={{marginLeft:'0.3rem'}}>사진</span>
+										<Arrow fontSize='small' style={{ float: 'right', marginLeft: 'auto' }} />
 									</Button>
 									<ul className='dropdown-menu'>
 										<li className='dropdown-item' onClick={() => this.viewCategoryBy(7)}>
@@ -418,16 +362,9 @@ class Discover extends Component {
 								</li>
 
 								<li className='dropdown-submenu'>
-									<Button
-										className='btn btn-link black-background white'
-										style={{ width: '170px' }}
-										type='button'
-										id='dropdownMenuButton'
-										data-toggle='dropdown'
-										aria-haspopup='true'
-										aria-expanded='false'>
-										<span style={{ float: 'left' }}>영화·비디오</span>
-										<Arrow fontSize='small' style={{ float: 'right' }} />
+								<Button className='btn btn-link black-background white'>
+										<span style={{marginLeft:'0.3rem'}}>영화·비디오</span>
+										<Arrow fontSize='small' className="arrow" style={{ float: 'right', marginLeft: 'auto' }} />
 									</Button>
 									<ul className='dropdown-menu'>
 										<li className='dropdown-item' onClick={() => this.viewCategoryBy(8)}>
@@ -443,16 +380,9 @@ class Discover extends Component {
 								</li>
 
 								<li className='dropdown-submenu'>
-									<Button
-										className='btn btn-link black-background white'
-										style={{ width: '170px' }}
-										type='button'
-										id='dropdownMenuButton'
-										data-toggle='dropdown'
-										aria-haspopup='true'
-										aria-expanded='false'>
-										<span style={{ float: 'left' }}>푸드</span>
-										<Arrow fontSize='small' style={{ float: 'right' }} />
+								<Button className='btn btn-link black-background white'>
+										<span style={{marginLeft:'0.3rem'}}>푸드</span>
+										<Arrow fontSize='small' style={{ float: 'right', marginLeft: 'auto' }} />
 									</Button>
 									<ul className='dropdown-menu'>
 										<li className='dropdown-item' onClick={() => this.viewCategoryBy(9)}>
@@ -468,16 +398,9 @@ class Discover extends Component {
 								</li>
 
 								<li className='dropdown-submenu'>
-									<Button
-										className='btn btn-link black-background white'
-										style={{ width: '170px' }}
-										type='button'
-										id='dropdownMenuButton'
-										data-toggle='dropdown'
-										aria-haspopup='true'
-										aria-expanded='false'>
-										<span style={{ float: 'left' }}>음악</span>
-										<Arrow fontSize='small' style={{ float: 'right' }} />
+								<Button className='btn btn-link black-background white'>
+										<span style={{marginLeft:'0.3rem'}}>음악</span>
+										<Arrow fontSize='small' style={{ float: 'right', marginLeft: 'auto' }} />
 									</Button>
 									<ul className='dropdown-menu'>
 										<li className='dropdown-item' onClick={() => this.viewCategoryBy(10)}>
@@ -496,16 +419,9 @@ class Discover extends Component {
 								</li>
 
 								<li className='dropdown-submenu'>
-									<Button
-										className='btn btn-link black-background white'
-										style={{ width: '170px' }}
-										type='button'
-										id='dropdownMenuButton'
-										data-toggle='dropdown'
-										aria-haspopup='true'
-										aria-expanded='false'>
-										<span style={{ float: 'left' }}>출판</span>
-										<Arrow fontSize='small' style={{ float: 'right' }} />
+								<Button className='btn btn-link black-background white'>
+										<span style={{marginLeft:'0.3rem'}}>출판</span>
+										<Arrow fontSize='small' style={{ float: 'right', marginLeft: 'auto' }} />
 									</Button>
 									<ul className='dropdown-menu'>
 										<li className='dropdown-item' onClick={() => this.viewCategoryBy(11)}>
@@ -520,16 +436,9 @@ class Discover extends Component {
 								</li>
 
 								<li className='dropdown-submenu'>
-									<Button
-										className='btn btn-link black-background white'
-										style={{ width: '170px' }}
-										type='button'
-										id='dropdownMenuButton'
-										data-toggle='dropdown'
-										aria-haspopup='true'
-										aria-expanded='false'>
-										<span style={{ float: 'left' }}>테크</span>
-										<Arrow fontSize='small' style={{ float: 'right' }} />
+								<Button className='btn btn-link black-background white'>
+										<span style={{marginLeft:'0.3rem'}}>테크</span>
+										<Arrow fontSize='small' style={{ float: 'right', marginLeft: 'auto' }} />
 									</Button>
 									<ul className='dropdown-menu'>
 										<li className='dropdown-item' onClick={() => this.viewCategoryBy(12)}>
@@ -545,16 +454,9 @@ class Discover extends Component {
 								</li>
 
 								<li className='dropdown-submenu'>
-									<Button
-										className='btn btn-link black-background white'
-										style={{ width: '170px' }}
-										type='button'
-										id='dropdownMenuButton'
-										data-toggle='dropdown'
-										aria-haspopup='true'
-										aria-expanded='false'>
-										<span style={{ float: 'left' }}>패션</span>
-										<Arrow fontSize='small' style={{ float: 'right' }} />
+								<Button className='btn btn-link black-background white'>
+										<span style={{marginLeft:'0.3rem'}}>패션</span>
+										<Arrow fontSize='small' style={{ float: 'right', marginLeft: 'auto' }} />
 									</Button>
 									<ul className='dropdown-menu'>
 										<li className='dropdown-item' onClick={() => this.viewCategoryBy(13)}>
@@ -571,16 +473,9 @@ class Discover extends Component {
 								</li>
 
 								<li className='dropdown-submenu'>
-									<Button
-										className='btn btn-link black-background white'
-										style={{ width: '170px' }}
-										type='button'
-										id='dropdownMenuButton'
-										data-toggle='dropdown'
-										aria-haspopup='true'
-										aria-expanded='false'>
-										<span style={{ float: 'left' }}>저널리즘</span>
-										<Arrow fontSize='small' style={{ float: 'right' }} />
+								<Button className='btn btn-link black-background white'>
+										<span style={{marginLeft:'0.3rem'}}>저널리즘</span>
+										<Arrow fontSize='small' style={{ float: 'right', marginLeft: 'auto' }} />
 									</Button>
 									<ul className='dropdown-menu'>
 										<li className='dropdown-item' onClick={() => this.viewCategoryBy(14)}>
@@ -598,7 +493,7 @@ class Discover extends Component {
 						{/* 상태 분류 */}
 						<div className="btn-group show-on-hover">
                     <button type="button" className="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                        상태 <span className="caret"></span>
+						<span style={{fontSize:'0.9rem'}}>상태</span>
                     </button>
                     <ul className="dropdown-menu" role="menu">
                         <li className="dropdown-item" onClick={this.viewProjectList}>전체 프로젝트</li>
@@ -607,11 +502,10 @@ class Discover extends Component {
                         
                     </ul>
                 </div>
-					
 						{/* 달성률 분류 */}
 						<div className='btn-group show-on-hover'>
 							<button type='button' className='btn btn-default dropdown-toggle' data-toggle='dropdown'>
-								달성률 <span className='caret'></span>
+							<span style={{fontSize:'0.9rem'}}>달성률</span>
 							</button>
 							<ul className='dropdown-menu' role='menu'>
 								<li className='dropdown-item' onClick={this.viewProjectList}>
@@ -631,7 +525,7 @@ class Discover extends Component {
 						{/* 금액별 분류 */}
 						<div className='btn-group show-on-hover'>
 							<button type='button' className='btn btn-default dropdown-toggle' data-toggle='dropdown'>
-								모인 금액 <span className='caret'></span>
+							<span style={{fontSize:'0.9rem'}}>모인 금액</span>
 							</button>
 							<ul className='dropdown-menu' role='menu'>
 								<li className='dropdown-item' onClick={this.viewAmountUnder100}>
@@ -654,7 +548,8 @@ class Discover extends Component {
 						{/* 필터초기화 */}
 						<div className='button' onClick={this.viewProjectList}>
 							<Button variant='outlined'>
-								<CachedIcon color='disabled' /> 필터 초기화
+								<CachedIcon color='disabled' />
+								<span style={{fontSize:'0.8rem'}}>필터 초기화</span>
 							</Button>
 						</div>
 					</div>
@@ -674,17 +569,9 @@ class Discover extends Component {
 								개의 프로젝트가 있습니다.
 							</span>
 
-							{/* <select id="filter" name="filter">
-            <option value="">인기순 ▼</option>
-            <option value="">최신순 ▼</option>
-            <option value="">최다 후원순 ▼</option>
-            <option value="">최다 금액순 ▼</option>
-            <option value="">마감 임박순 ▼</option>
-        </select> */}
-
 							<div className='filter'>
 								<button type='button' className='btn btn-default dropdown-toggle' data-toggle='dropdown'>
-									정렬 <span className='caret'></span>
+								<span style={{fontSize:'0.9rem'}}>정렬</span>
 								</button>
 								<ul className='dropdown-menu' role='menu'>
 									<li className='dropdown-item' onClick={this.projectList}>

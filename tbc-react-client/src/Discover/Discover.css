@@ -67,12 +67,16 @@ span.countProject {
 }
 
 /* 버튼색 */
-.black-background {
+Button.black-background {
   background-color: #ffffff;
+  width: 100%;
+  justify-content :'flex-start';
 }
-.white {
+Button.white {
   color: #000000;
 }
+
+
 
 /* div class=row 사용시 구역안 크기는 그대로 두는 CSS!! */
 div.row {
@@ -186,6 +190,10 @@ option {
 
 .show-on-hover:hover > ul.dropdown-menu {
   display: block;
+}
+
+.dropdown-item {
+  font-size: 10.5pt;
 }
 
 body {
