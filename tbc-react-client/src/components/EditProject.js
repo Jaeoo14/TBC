@@ -52,7 +52,7 @@ class EditProject extends Component {
 						<ProjectDescription pId={this.state.id} cId={this.state.creatorId} showTitle={this.showTitle}/>
 					</Tab>
 					<Tab eventKey='FundingAndReward' title='펀딩 및 선물 구성'>
-						<FundingAndReward pId={this.state.id} />
+						<FundingAndReward pId={this.state.id} cId={this.state.creatorId} />
 					</Tab>
 				</Tabs>
 			</div>

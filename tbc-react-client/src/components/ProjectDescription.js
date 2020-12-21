@@ -14,6 +14,8 @@ import ArrowRightIcon from "@material-ui/icons/ArrowRight";
 
 import Pas from "../ProjectApiService";
 import DisplayImage from "./DisplayImage";
+import ProfileImage from "../member/components/ProfileImage";
+import UploadProfileImage from './UploadProfileImage';
 
 class ProjectDescription extends Component {
   clearEditState = {
@@ -23,6 +25,10 @@ class ProjectDescription extends Component {
     editCategory: false,
     editUrl: false,
     editTags: false,
+    editCreatorProfileImg: false,
+    eidtCreatorName: false,
+    editCreatorIntro: false,
+    editCreatorCountry: false,
   }
 
   state = {
@@ -309,18 +315,29 @@ class ProjectDescription extends Component {
         </ListGroup>
         <h6>창작자 정보</h6>
         <ListGroup>
-          <ListGroup.Item as="div" action>
-            없습니다.
-          </ListGroup.Item>
-          {/*<ListGroup.Item as='div' action>
-						<UploadImage
-							title='프로필 이미지'
-							desc='창작자님 개인이나 팀의 사진을 올려주세요. 얼굴이 나온 사진을 넣으면 프로젝트의 신뢰성 향상에 도움이 됩니다.
-							파일 형식은 jpg, png 또는 gif로, 사이즈는 가로 200px, 세로 200px 이상으로 올려주세요.'
-							cId={this.state.project.creatorId}
-						/>
-					</ListGroup.Item>
-					 	<ListGroup.Item  as='div' action>
+        <ListGroup.Item as="div" action>
+            {this.state.editCreatorProfileImg ? (
+              <UploadProfileImage
+                title='프로필 이미지'
+                desc='창작자님 개인이나 팀의 사진을 올려주세요. 얼굴이 나온 사진을 넣으면 프로젝트의 신뢰성 향상에 도움이 됩니다.
+                파일 형식은 jpg, png 또는 gif로, 사이즈는 가로 200px, 세로 200px 이상으로 올려주세요.'
+                creatorId={this.state.project.creatorId}
+                handleClose={this.handleClose}
+            />
+            ) : (
+              <div onClick={(e) => this.startEdit(e, "editCreatorProfileImg")}>
+                <div>
+                  <h6>프로필 이미지</h6>
+                  <ProfileImage userId={this.state.project.creatorId} />
+                </div>
+                <div style={{ textAlign: "right", color: "tomato" }}>
+                  <EditIcon fontSize="small" />
+                  {this.state.project.profileImg === 0 ? "입력하기" : "수정하기"}
+                </div>
+              </div>
+            )}
+          </ListGroup.Item>          
+					{/* 	<ListGroup.Item  as='div' action>
 						<InputCreatorName />
 					</ListGroup.Item>
 					<ListGroup.Item  as='div' action>
