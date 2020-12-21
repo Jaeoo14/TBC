@@ -4,10 +4,10 @@ import CustomInput from './CustomInput';
 import CheckIcon from '@material-ui/icons/Check';
 import CloseIcon from '@material-ui/icons/Close';
 
-const InputCreatorName = () => {
-    const [name, setName] = useState('');
+const InputCreatorName = (props) => {
+    const [name, setName] = useState(props.creatorName);
 
-    const handleSave = () => { alert(`name is ${name}`); }
+    const handleSave = () =>props.handleCreator('name', name);
 
     return (
         <Container>
@@ -20,10 +20,11 @@ const InputCreatorName = () => {
                     maxlen='20'
                     width='50%'
                     handleText={setName}
+                    value={name}
                 />
             </Row>
             <Row style={{ justifyContent: 'flex-end' }}>
-                <Button variant='secondary mr-1' size='sm'><CloseIcon />취소하기</Button>
+                <Button variant='secondary mr-1' size='sm' onClick={props.handleClose}><CloseIcon />취소하기</Button>
                 <Button variant='primary' size='sm' onClick={handleSave}><CheckIcon />저장하기</Button>
             </Row>
         </Container>
