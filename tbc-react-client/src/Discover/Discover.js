@@ -240,16 +240,12 @@ class Discover extends Component {
 							</Button>
 							<ul className='dropdown-menu multi-level' role='menu' aria-labelledby='dropdownMenu'>
 								<li>
-									{/* <a tabIndex="-1" onClick={this.viewProjectList}> 전체보기 &emsp;&emsp; </a> */}
 									<Button
 										className='btn btn-link black-background white'
 										onClick={this.viewProjectList}
 										style={{ width: '170px' }}
 										type='button'
-										id='dropdownMenuButton'
-										data-toggle='dropdown'
-										aria-haspopup='true'
-										aria-expanded='false'>
+										>
 										<span style={{ float: 'left' }}>전체보기</span>
 									</Button>
 								</li>
