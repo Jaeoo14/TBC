@@ -69,7 +69,7 @@ function SimplePaper(props) {
               document.location.href = "/";
               // props.history.push("/");
             } else {
-              alert("계정이나 비밀번호가 다릅니다");
+              alert("없는 계정이거나, 비밀번호가 다릅니다");
             }
           })
           .catch((err) => {

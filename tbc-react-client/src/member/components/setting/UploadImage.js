@@ -45,8 +45,7 @@ export default class UploadImage extends Component {
     Pas.updateUser(user).then().catch();
   };
 
-  uploadFile = (e) => {
-    e.preventDefault();
+  uploadFile = () => {
     if (typeof this.state.info !== "undefined") {
       Pas.updateFile(this.state.file, this.state.info.id)
         .then((res) => Pas.getFile(this.state.info.id))

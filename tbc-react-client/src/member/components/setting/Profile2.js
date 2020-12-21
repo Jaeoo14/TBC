@@ -1,7 +1,7 @@
 import { Component } from "react";
 import "../../style/Setting.css";
 
-import { Avatar, Paper, Grid } from "@material-ui/core";
+import { Paper, Grid } from "@material-ui/core";
 import Api from "../../../ProjectApiService";
 import { Link, withRouter } from "react-router-dom";
 import Uploadprofile from "./UploadImage";
@@ -150,11 +150,7 @@ class Profile extends Component {
                 </span>
               </div>
               <div style={{ textAlign: "left", padding: "2px" }}>
-                {user !== null && user.profileImg !== 0 ? (
-                  <ProfileImage userId={user.id} />
-                ) : (
-                  <Avatar />
-                )}
+                <ProfileImage userId={user.id} />
               </div>
               <hr />
             </div>
@@ -197,7 +193,11 @@ class Profile extends Component {
                   </button>
                 </span>
               </div>
-              <div className="div2">{this.state.nickname}</div>
+              {this.state.nickname === "''" || this.state.nickname === "" ? (
+                <div className="div2">미등록 상태입니다</div>
+              ) : (
+                <div className="div2">{this.state.nickname}</div>
+              )}
               <hr />
             </div>
           )}
@@ -240,11 +240,15 @@ class Profile extends Component {
                   </button>
                 </span>
               </div>
-              <div className="div2">{this.state.intro}</div>
+              {this.state.intro === "''" || this.state.intro === "" ? (
+                <div className="div2">미등록 상태입니다</div>
+              ) : (
+                <div className="div2">{this.state.intro}</div>
+              )}
               <hr />
             </div>
           )}
-          <div className="div1" onClick={this.logout} style={{ color: "red" }}>
+          <div className="div1" onClick={this.logout}>
             로그아웃
           </div>
         </Grid>

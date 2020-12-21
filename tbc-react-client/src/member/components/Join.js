@@ -64,42 +64,39 @@ function Join(props) {
     setErrors(validate(values));
   };
 
-  useEffect(
-    () => {
-      console.log('Join.useEffect submitting=', submitting);
-      if (submitting) {
-        if (Object.keys(errors).length === 0) {
-          if (
-            values.userId === values.checkId &&
-            values.pwd === values.checkpwd
-          ) {
-            ProjectApiService.join(values)
-              .then(() => {
-                console.log("회원가입 되었습니다 로그인 하세요.");
-                props.history.push("/login");
-              })
-              .catch((err) => {
-                console.error("회원가입 전송 오류!", err);
-              });
-          } else if (values.userId !== values.checkId) {
-            alert("이메일이 다릅니다");
-          } else if (values.pwd !== values.checkpwd) {
-            alert("비밀번호가 다릅니다");
-          } else {
-            console.error("회원가입 입력 오류");
-          }
+  useEffect(() => {
+    console.log("Join.useEffect submitting=", submitting);
+    if (submitting) {
+      if (Object.keys(errors).length === 0) {
+        if (
+          values.userId === values.checkId &&
+          values.pwd === values.checkpwd
+        ) {
+          ProjectApiService.join(values)
+            .then(() => {
+              console.log("회원가입 되었습니다 로그인 하세요.");
+              props.history.push("/login");
+            })
+            .catch((err) => {
+              console.error("회원가입 전송 오류!", err);
+            });
+        } else if (values.userId !== values.checkId) {
+          alert("이메일이 다릅니다");
+        } else if (values.pwd !== values.checkpwd) {
+          alert("비밀번호가 다릅니다");
         } else {
-          if (errors.userId !== undefined) {
-            alert(errors.userId);
-          } else {
-            alert(errors.pwd);
-          }
+          console.error("회원가입 입력 오류");
         }
-        setSubmitting(false);
+      } else {
+        if (errors.userId !== undefined) {
+          alert(errors.userId);
+        } else {
+          alert(errors.pwd);
+        }
       }
-    },
-    [errors]
-  );
+      setSubmitting(false);
+    }
+  }, [errors]);
 
   return (
     <div>

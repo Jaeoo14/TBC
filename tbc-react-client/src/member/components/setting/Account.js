@@ -159,7 +159,7 @@ class Account extends Component {
       user.status = 0;
 
       Api.updateIntro(user)
-        .then()
+        .then((res) => console.log(res))
         .catch((err) => console.log(err));
 
       alert("삭제되었습니다.");
@@ -266,7 +266,8 @@ class Account extends Component {
                   </button>
                 </span>
               </div>
-              {this.state.address === "''" ? (
+
+              {this.state.address === "''" || this.state.address === "" ? (
                 <div className="div2">미등록 상태입니다.</div>
               ) : (
                 <div className="div2">{this.state.address}</div>
@@ -312,7 +313,7 @@ class Account extends Component {
                   </button>
                 </span>
               </div>
-              {this.state.tel === "''" ? (
+              {this.state.tel === "''" || this.state.tel === "" ? (
                 <div className="div2">미등록 상태입니다.</div>
               ) : (
                 <div className="div2">{this.state.tel}</div>
@@ -358,7 +359,7 @@ class Account extends Component {
                   </button>
                 </span>
               </div>
-              {this.state.payment === "''" ? (
+              {this.state.payment === "''" || this.state.payment === "" ? (
                 <div className="div2">미등록 상태입니다.</div>
               ) : (
                 <div className="div2">{this.state.payment}</div>
