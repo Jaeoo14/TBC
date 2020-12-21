@@ -16,17 +16,26 @@ import Pas from "../ProjectApiService";
 import DisplayImage from "./DisplayImage";
 
 class ProjectDescription extends Component {
-  state = {
-    project: undefined,
-
-    categoryName: undefined,
-
+  clearEditState = {
     editTitles: false,
     editMainImg: false,
     editContent: false,
     editCategory: false,
     editUrl: false,
     editTags: false,
+  }
+
+  state = {
+    project: undefined,
+    categoryName: undefined,
+    ...this.clearEditState,
+  };
+
+  handleClose = () => this.setState({...this.clearEditState});
+
+  startEdit = (e, target) => {
+    e.preventDefault();
+    this.setState({...this.clearEditState}, () => this.setState({ [target]: true }));
   };
 
   componentDidMount = () => {
@@ -52,17 +61,6 @@ class ProjectDescription extends Component {
     }
   }
 
-  handleClose = () => {
-    this.setState({
-      editTitles: false,
-      editMainImg: false,
-      editContent: false,
-      editCategory: false,
-      editUrl: false,
-      editTags: false,
-    });
-  };
-
   handleSaveMainImg = (imgFileId) => {
     this.setState(
       {
@@ -72,20 +70,6 @@ class ProjectDescription extends Component {
     );
   };
 
-  startEdit = (e, target) => {
-    e.preventDefault();
-    this.setState(
-      {
-        editTitles: false,
-        editMainImg: false,
-        editContent: false,
-        editCategory: false,
-        editUrl: false,
-        editTags: false,
-      },
-      () => this.setState({ [target]: true })
-    );
-  };
 
   handleTitles = (longTitle, shortTitle) => {
     let temp = { ...this.state.project };

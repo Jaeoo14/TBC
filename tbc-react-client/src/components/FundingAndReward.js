@@ -10,7 +10,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 
 export default class FundingAndReward extends Component {
-	clearState = {
+	clearEditState = {
 		editFundingGoalAmount: false,
 		editFundingStart: false,
 		editFundingEnd: false,
@@ -18,14 +18,14 @@ export default class FundingAndReward extends Component {
 
 	state = {
 		project: undefined,
-		...this.clearState,
+		...this.clearEditState,
 	};
 
-	handleClose = () => this.setState({ ...this.clearState });
+	handleClose = () => this.setState({ ...this.clearEditState });
 
 	startEdit = (e, target) => {
 		e.preventDefault();
-		this.setState({ ...this.clearState }, () => this.setState({ [target]: true }));
+		this.setState({ ...this.clearEditState }, () => this.setState({ [target]: true }));
 	};
 
 	componentDidMount = () => {
