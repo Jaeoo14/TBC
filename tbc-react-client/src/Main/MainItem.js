@@ -7,13 +7,11 @@ class MainItem extends Component {
 	state = {
 		file: {}, // 이미지 파일 데이타. file 테이블 참조.
 	};
-
 	componentDidMount = () => {
 		Pas.getFileOfProject(this.props.pId)
 			.then(res => this.setState({ file: res.data }, () => console.log(this.state.file)))
 			.catch(err => console.log(err));
 	};
-
 	componentDidUpdate(prevProps, prevState) {
 		if (prevProps.pId === this.props.pId) return;
 
@@ -21,11 +19,9 @@ class MainItem extends Component {
 			.then(res => this.setState({ file: res.data }, () => console.log(this.state.file)))
 			.catch(err => console.log(err));
 	}
-
 	render() {
 		return (
 			<>
-			
 				<img
 					className='d-block w-100'
 					src={`data:${this.state.file.type};base64,${this.state.file.data}`}
@@ -33,10 +29,19 @@ class MainItem extends Component {
 					style={{ height: 400, width: 1275 }}
 					
 				/>
-			
 				<Carousel.Caption>
-					<h4 style={{ color: 'black', fontWeight: 'bold', borderRadius: 20, backgroundColor: 'whitesmoke', paddingTop: 5, paddingBottom: 5, width: 800, marginLeft: 45}}>{this.props.longTitle}</h4>
-					<p style={{ color: 'black', fontWeight: 'bold',borderRadius: 20, backgroundColor: 'whitesmoke', paddingTop: 5, paddingBottom: 5  }}>{this.props.content}</p>
+					<h4 style={{
+						color: 'black', fontWeight: 'bold',
+						borderRadius: 20, backgroundColor: 'whitesmoke',
+						paddingTop: 5, paddingBottom: 5, width: 800, marginLeft: 45}}>
+							{this.props.longTitle}
+					</h4>
+					<p style={{ 
+						color: 'black', fontWeight: 'bold',
+						borderRadius: 20, backgroundColor: 'whitesmoke',
+						paddingTop: 5, paddingBottom: 5  }}>
+							{this.props.content}
+					</p>
 				</Carousel.Caption>
 			</>
 		);

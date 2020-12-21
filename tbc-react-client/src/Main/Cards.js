@@ -5,10 +5,10 @@ import './Card.css';
 import jquery from 'jquery';
 import ProjectApiService from '../ProjectApiService';
 import Carousel from 'react-elastic-carousel';
-import MoreButton from './MoreButton';
 import CardItem from './CardItem';
 import { withRouter } from 'react-router';
 import { Button } from 'react-bootstrap';
+
 const breakPoints = [
 	{ width: 1, itemsToShow: 1 },
 	{ width: 550, itemsToShow: 2, itemsToScroll: 2 },
@@ -23,7 +23,6 @@ class Cards extends Component {
 		this.viewStateIng();
 		this.viewStateEnd();
 	}
-
 	constructor(props) {
 		super(props);
 
@@ -44,38 +43,31 @@ class Cards extends Component {
 				console.error('Cards.js의 viewProjectList() 에러!', err);
 			});
 	};
-
 	toggleLike = id => {
 		console.log(`id = > ${id}`);
 		const localLiked = !this.state.liked;
 		this.setState({ liked: localLiked });
 	};
-  //상태별
-  viewStateIng = () => {
-    ProjectApiService.stateIng()
-      .then((res) => {
+	viewStateIng = () => {
+    	ProjectApiService.stateIng()
+      	.then((res) => {
         this.setState({ list1: res.data });
         console.log("stateIng 값", res.data);
       })
-      .catch((err) => {
+		.catch((err) => {
         console.error("Cards.js의 stateIng() 에러!", err);
       });
   };
-
   viewStateEnd = () => {
     ProjectApiService.stateEnd()
-      .then((res) => {
+      	.then((res) => {
         this.setState({ list2: res.data });
         console.log("stateEnd 값", res.data);
       })
-      .catch((err) => {
+      	.catch((err) => {
         console.error("Cards.js의 stateEnd() 에러!", err);
       });
   };
-
-
-
-//상세페이지랑 연결시에 꼭 들어가야함!
 gotoEditProject = (_id, _creatorId) => {
     this.props.history.push({
         pathname: '/editproject',
@@ -93,41 +85,33 @@ gotoEditProject = (_id, _creatorId) => {
 					<Carousel breakPoints={breakPoints}>
 						{this.state.lists.map(list => (
 							<div onClick={() => this.props.history.push({ pathname: '/detail', state:list})}>
-                                <CardItem
-									project={list} 
-									
-									/>
+                                <CardItem project={list} />
                             </div>
 						))}
 					</Carousel>
 				</div>
 				<br/><br/><br/>
-						<a href="http://localhost:3000/discover"><Button variant="outline-secondary" style={{borderRadius: 20}}>전체 프로젝트 더보기</Button>{' '}</a>
+					<a href="http://localhost:3000/discover">
+						<Button variant="outline-secondary" style={{borderRadius: 20}}>전체 프로젝트 더보기</Button>
+					</a>
 				<br/><br/><br/><br/><br/>
 						<h4 style={{textAlign:"center", fontWeight: 'bold'}}>진행중인 프로젝트</h4>
 				<div style={{ width: 1500, display: 'inline-flex', verticalAlign: 'center', marginTop: 50 }}>
 					<Carousel breakPoints={breakPoints}>
 						{this.state.list1.map(list => (
 							<div onClick={() => this.props.history.push({ pathname: '/detail', state:list})}>
-                                <CardItem
-									project={list} 
-									
-									/>
+                                <CardItem project={list} />
                             </div>
 						))}
 					</Carousel>
 				</div>
 				<br/><br/><br/><br/><br/>
-				
 						<h4 style={{textAlign:"center", fontWeight: 'bold'}}>성사된 프로젝트</h4>
 				<div style={{ width: 1500, display: 'inline-flex', verticalAlign: 'center', marginTop: 50 }}>
 					<Carousel breakPoints={breakPoints}>
 						{this.state.list2.map(list => (
                             <div onClick={() => this.props.history.push({ pathname: '/detail', state:list})}>
-                                <CardItem
-									project={list} 
-									
-									/>
+                                <CardItem project={list} />
                             </div>
 						))}
 					</Carousel>

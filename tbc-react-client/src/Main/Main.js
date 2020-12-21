@@ -8,11 +8,9 @@ class Main extends Component {
 	state = {
 		lists: [],
 	};
-
 	componentDidMount() {
 		this.viewStateIng();
 	}
-
 	viewStateIng = () => {
 		ProjectApiService.stateIng()
 		  .then((res) => {
@@ -23,8 +21,6 @@ class Main extends Component {
 			console.error("Cards.js의 stateIng() 에러!", err);
 		  });
 	  };
-	
-
 	render() {
 		if (this.state.lists.length === 0) return null;
 		return (
@@ -34,7 +30,10 @@ class Main extends Component {
 						{this.state.lists.map(list => (
 							<Carousel.Item>
 								<div onClick={() => this.props.history.push({ pathname: '/detail', state: list })}>
-								<MainItem key={list.id} pId={list.id} content={list.content} shortTitle={list.shortTitle} longTitle={list.longTitle} />
+								<MainItem 
+									key={list.id} pId={list.id} 
+									content={list.content} shortTitle={list.shortTitle} 
+									longTitle={list.longTitle} />
 								</div>
 							</Carousel.Item>
 						))}

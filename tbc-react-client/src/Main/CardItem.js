@@ -9,7 +9,6 @@ import ProjectApiService from '../ProjectApiService';
 
 class CardItem extends Component{
 
-
   viewAlignAmountPercent = () => {
     ProjectApiService.alignAmountPercent()
       .then((res) => {
@@ -21,29 +20,19 @@ class CardItem extends Component{
       });
   };
 
-
   state = {
     categoryText : "",
     amountPercent : Number(`${this.numberDemical(this.props.fundedAmount * 100 / this.props.fundingGoalAmount)}`),
   };
-
-
   componentDidMount() {
     this.getCategoryId();
   }
-
-
-  //숫자 세자리마다 콤마 끊어주는 함수
   numberFormatComma(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   }
-
-  //소수점 n자리씩 끊어주는 함수
   numberDemical(x) {
     return parseFloat(x).toFixed(0);
   }
-
-
   getCategoryId = () => {
 
     ProjectApiService.getCategory(this.props.project.category)
@@ -54,13 +43,9 @@ class CardItem extends Component{
         console.error('CardItem.js의 getCategoryId() 에러!', err);
     })
   }
-
-  
   render() {
     return (
-      
       <div>
-        
         <div className='Card' >
           <CardDeck>
               <Card style={{width: 240}}>
