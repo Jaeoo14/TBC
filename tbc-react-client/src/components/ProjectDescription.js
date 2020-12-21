@@ -17,6 +17,7 @@ import DisplayImage from './DisplayImage';
 import ProfileImage from '../member/components/ProfileImage';
 import UploadProfileImage from './UploadProfileImage';
 import InputCreatorName from './InputCreatorName';
+import InputCreatorInfo from './InputCreatorInfo';
 
 class ProjectDescription extends Component {
 	clearEditState = {
@@ -400,33 +401,6 @@ class ProjectDescription extends Component {
 							</div>
 						)}
 					</ListGroup.Item>
-					{/*<ListGroup.Item  as='div' action>
-						<Container>
-							<Row>
-								<Col>
-									<CustomInput
-										header=''
-										width='50%'
-										desc='창작자님은 주로 어느 지역에서 활동하시나요? 활동 지역을 구체적으로 기입해주시면 프로젝트의 신뢰를 높이는 데 도움이 됩니다.'
-										title='창작자 활동 지역'
-										placeholder='활동 지역을 입력하세요.'
-										maxlen='20'
-										changeText={this.handleCreatorRegion}
-									/>
-								</Col>
-							</Row>
-							<Row style={{ justifyContent: 'flex-end' }}>
-								<Button variant='secondary' size='sm'>
-									<CloseIcon />
-									취소하기
-								</Button>{' '}
-								<Button variant='primary' size='sm'>
-									<CheckIcon />
-									저장하기
-								</Button>
-							</Row>
-						</Container>
-					</ListGroup.Item> */}
 				</ListGroup>
 				<p></p>
 			</Container>
