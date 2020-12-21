@@ -69,6 +69,7 @@ public class MemberController {
 	
 	
 	
+	
 	@PutMapping("/{id}")
 	public void update(@RequestBody MemberVO member, @PathVariable Long id) {
 		mapper.update(member);

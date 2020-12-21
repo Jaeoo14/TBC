@@ -40,6 +40,10 @@ export default class UploadImage extends Component {
   selectFile = (e) => {
     this.setState({ file: e.target.files[0] }, () => console.log(this.state));
   };
+  doUpdate = () => {
+    user.profileImg = this.state.idx;
+    Pas.updateUser(user).then().catch();
+  };
 
   uploadFile = (e) => {
     e.preventDefault();
@@ -54,14 +58,13 @@ export default class UploadImage extends Component {
         .catch((err) => console.log(err));
     } else {
       Pas.upload(this.state.file)
-
         .then((res) => Pas.getFile(res.data))
         .then((res) =>
           this.setState({ idx: res.data.id, info: res.data }, () =>
             console.log("UploadProfileImage", this.state)
           )
         )
-
+        .then(this.doUpdate)
         .catch((err) => console.log(err));
     }
   };
