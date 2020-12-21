@@ -9,6 +9,7 @@
     margin-bottom: 10px;
   }
 .category {
+   font-size: 12px;
     text-align: center;
     color: black;
   }
@@ -32,11 +33,12 @@
   object-fit: cover;
   }
 .community {
+  align-content: center;
   padding-top: 5px;
   padding-bottom: 5px;
   text-align: center;
   color: black;
   }
-.backgound {
-color: gray;
+.content {
+  align-items: center;
 }

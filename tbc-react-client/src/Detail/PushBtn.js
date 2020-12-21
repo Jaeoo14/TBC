@@ -5,11 +5,10 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 
 const useStyles = makeStyles((theme) => ({
   button: {
-    margin: theme.spacing(3),
-
+    marginRight: theme.spacing(3),
     width: theme.spacing(27),
     height: theme.spacing(4.5),
-    fontSize: "10px",
+    fontSize: "12px",
     fontWeight: "bold",
     color: "white",
     boxShadow: "none",
@@ -23,15 +22,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
+
 export default function PushBtn() {
   const classes = useStyles();
 
   return (
     <div>
-      <Button variant="contained" className={classes.button}>
+      <Button variant="contained" className={classes.button} 
+      onClick={() => alert('준비중 입니다.')} >
         프로젝트 밀어주기
       </Button>
-      <Button variant="outlined"><FavoriteIcon color="secondary" onClick={() => this.toggleLike()}/></Button>
+      <Button variant="outlined"  onClick={() => alert('좋아하는 프로젝트에 선택되었습니다.')}>
+        <FavoriteIcon color="secondary" /></Button>
     </div>
   );
 }

@@ -43,21 +43,6 @@ class Detail extends Component {
       .catch(console.log);
   };
   
-  toggleLike = (id) => {
-    console.log(`id = > ${id}`);
-    const localLiked = !this.state.liked;        
-    this.setState({ liked : localLiked });
-};
-
-  getUserId = () => {
-    const member = JSON.parse(localStorage.getItem('myStorage'));
-    if (member)
-        return 1;//member.id;
-    else
-        console.log('로그인 사용자가 없습니다.');
-
-    return 0; // no log-in user.
-  }
 
   render() {
     if (this.state.project === undefined)
@@ -66,7 +51,9 @@ class Detail extends Component {
       
       <div className="full">
         <div className="category">
+          <Box border={1.5} borderColor="#ccc" borderRadius={3} marginLeft={76} marginRight={76}>
           {this.state.categoryText}
+          </Box>
         </div>
 
         <div className="title">{this.state.project.longTitle}</div>
@@ -137,7 +124,7 @@ class Detail extends Component {
               <Box
                 fontSize={12}
                 color="black"
-                paddingBottom={0.5}
+                paddingBottom={3}
               >
                 결제는 <strong>{new Date(this.state.project.fundingEnd).toLocaleString()}</strong>에 다함께 진행됩니다.
               </Box>
@@ -147,21 +134,20 @@ class Detail extends Component {
         </div>
       <hr />
         <div className="community">
-          <text style={{ fontSize: 15, fontWeight: 1000 }}>프로젝트 소개</text>
+          <text style={{ fontSize: 15, fontWeight: 1000}}>프로젝트 소개</text>
         </div>
         <hr />
-        <div class="background">
-          <div class="row">
-            <div style={{ float: "center" }}>
+        <div className="content">
               <Box
+                alignItems="center"
                 textAlign="left"
-                width={1150}
+                width={1180}
                 border={2}
                 borderColor="#ccc"
                 borderRadius={5}
                 paddingTop={2}
-                paddingLeft={3}
-                paddingRight={3}
+                paddingLeft={20}
+                paddingRight={20}
                 paddingBottom={2}
                 margin={5}
                 fontSize={15}
@@ -169,8 +155,6 @@ class Detail extends Component {
                 {this.state.project.content}
               </Box>
             </div>
-          </div>
-          </div>
       </div>
     );
   }
