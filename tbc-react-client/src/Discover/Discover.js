@@ -598,23 +598,20 @@ class Discover extends Component {
 								</li>
 							</ul>
 						</div>
-						상태 분류
-						<div className='btn-group show-on-hover'>
-							<button type='button' className='btn btn-default dropdown-toggle' data-toggle='dropdown'>
-								상태 <span className='caret'></span>
-							</button>
-							<ul className='dropdown-menu' role='menu'>
-								<li className='dropdown-item' onClick={this.viewProjectList}>
-									전체 프로젝트
-								</li>
-								<li className='dropdown-item' onClick={this.viewStateIng}>
-									진행중 프로젝트
-								</li>
-								<li className='dropdown-item' onClick={this.viewStateEnd}>
-									성사된 프로젝트
-								</li>
-							</ul>
-						</div>
+
+						{/* 상태 분류 */}
+						<div className="btn-group show-on-hover">
+                    <button type="button" className="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        상태 <span className="caret"></span>
+                    </button>
+                    <ul className="dropdown-menu" role="menu">
+                        <li className="dropdown-item" onClick={this.viewProjectList}>전체 프로젝트</li>
+                        <li className="dropdown-item" onClick={this.viewStateIng}>진행중 프로젝트</li>
+                        <li className="dropdown-item" onClick={this.viewStateEnd}>성사된 프로젝트</li>
+                        
+                    </ul>
+                </div>
+					
 						{/* 달성률 분류 */}
 						<div className='btn-group show-on-hover'>
 							<button type='button' className='btn btn-default dropdown-toggle' data-toggle='dropdown'>

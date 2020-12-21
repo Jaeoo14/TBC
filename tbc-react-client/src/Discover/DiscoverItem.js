@@ -2,9 +2,13 @@
 import { Component } from "react";
 import './Discover.css'
 
+import DisplayImage from "../components/DisplayImage";
+import ProjectApiService from "../ProjectApiService";
+import CreatorName from '../member/components/CreatorName';
+import Favorite from '../member/components/Favorite';
+
 import Moment from "react-moment";
 import 'moment/locale/ko';
-
 
 import { Box, Typography } from "@material-ui/core";
 
@@ -15,14 +19,7 @@ import per70 from '../images/70per.png';
 import per90 from '../images/90per.png';
 import per100 from '../images/100per.png';
 
-
 import ScheduleIcon from '@material-ui/icons/Schedule';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import NotFavoriteIcon from '@material-ui/icons/FavoriteBorderOutlined';
-import DisplayImage from "../components/DisplayImage";
-import ProjectApiService from "../ProjectApiService";
-import CreatorName from '../member/components/CreatorName';
-import Favorite from '../member/components/Favorite';
 
 class DiscoverItem extends Component {
     state = {
@@ -117,6 +114,9 @@ class DiscoverItem extends Component {
                     onClick={`location.href='/detail'`}>
                         {this.props.longTitle} 
                 </Box>
+                <Box 
+                    width={300}
+                    height={20}>
                 <Typography
                     variant="body2"
                     color="textSecondary"
@@ -126,6 +126,7 @@ class DiscoverItem extends Component {
                     {this.state.categoryText}&nbsp;
                     | <CreatorName creatorId={this.props.creatorId}/> </Typography>
                 <Box marginTop="0.8rem" marginBottom="0.8rem" />
+                </Box>
                 <Box
                 width="20rem"
                 height="5.5rem">
