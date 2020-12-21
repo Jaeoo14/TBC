@@ -3,8 +3,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {  Card, CardDeck } from 'react-bootstrap';
 import './pagination.css';
 import './Card.css';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import NotFavoriteIcon from '@material-ui/icons/FavoriteBorderOutlined';
 import DisplayImage from '../components/DisplayImage';
 import CreatorName from '../member/components/CreatorName';
 import ProjectApiService from '../ProjectApiService';
@@ -25,7 +23,6 @@ class CardItem extends Component{
 
 
   state = {
-    // liked : false,
     categoryText : "",
     amountPercent : Number(`${this.numberDemical(this.props.fundedAmount * 100 / this.props.fundingGoalAmount)}`),
   };
@@ -52,17 +49,11 @@ class CardItem extends Component{
     ProjectApiService.getCategory(this.props.project.category)
     .then(res => {
         this.setState({ categoryId : res.data.id, categoryText : res.data.text });
-        // console.log('getCategoryId&categoryText 값', this.state.categoryText)
     })
     .catch(err => {
         console.error('CardItem.js의 getCategoryId() 에러!', err);
     })
   }
-  // toggleLike = (id) => {
-  //   console.log(`id = > ${id}`);
-  //   const localLiked = !this.state.liked;        
-  //   this.setState({ liked : localLiked });
-  // };
 
   
   render() {
@@ -71,14 +62,8 @@ class CardItem extends Component{
       <div>
         
         <div className='Card' >
-          <CardDeck  >
-              {/* <Card.Link href={`/detail/${this.props.project.url}`}> */}
-                    {/* <div style={{float:"right"}} onClick={() => this.toggleLike()}>
-                    {this.props.project.liked === false ? <NotFavoriteIcon /> : <FavoriteIcon color="secondary" />} 
-                </div> */}
+          <CardDeck>
               <Card style={{width: 240}}>
-                            {/* //     좋아요기능      */}
-              {/* <Card.Img variant="top" src={list.mainImg} style={{ height: 180}} /> */}
               <DisplayImage pId={this.props.project.id} width="208px" height="180px"  />
               <Card.Body>
                 <Card.Subtitle style={{fontSize: 10, textAlign: 'left'}}>
@@ -88,7 +73,6 @@ class CardItem extends Component{
                 <Card.Title>{this.props.project.shortTitle}</Card.Title>
                 <Card.Text style={{fontSize: 15}}>
                       {this.props.project.content}
-                      
                 </Card.Text>
               </Card.Body>
               <Card.Footer>
@@ -99,7 +83,6 @@ class CardItem extends Component{
               </small>
               </Card.Footer>
             </Card>
-            {/* </Card.Link> */}
       </CardDeck>
         </div>
       </div>

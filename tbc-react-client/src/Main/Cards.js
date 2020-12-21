@@ -1,20 +1,14 @@
-import { Button } from '@material-ui/core';
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Card, CardDeck } from 'react-bootstrap';
 import './pagination.css';
 import './Card.css';
 import jquery from 'jquery';
 import ProjectApiService from '../ProjectApiService';
 import Carousel from 'react-elastic-carousel';
-import ReactDOM from 'react-dom';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import NotFavoriteIcon from '@material-ui/icons/FavoriteBorderOutlined';
 import MoreButton from './MoreButton';
-import DisplayImage from '../components/DisplayImage';
-import CreatorName from '../member/components/CreatorName';
 import CardItem from './CardItem';
 import { withRouter } from 'react-router';
+import { Button } from 'react-bootstrap';
 const breakPoints = [
 	{ width: 1, itemsToShow: 1 },
 	{ width: 550, itemsToShow: 2, itemsToScroll: 2 },
@@ -26,8 +20,8 @@ class Cards extends Component {
 	componentDidMount() {
 		window.$ = window.jQuery = jquery;
 		this.viewProjectList();
-		// this.viewProjectList2();
-		// this.getCategoryId();
+		this.viewStateIng();
+		this.viewStateEnd();
 	}
 
 	constructor(props) {
@@ -35,6 +29,7 @@ class Cards extends Component {
 
 		this.state = {
 			lists: [],
+			list1: [],
 			list2: [],
             category: 0,
 		};
@@ -49,16 +44,7 @@ class Cards extends Component {
 				console.error('Cards.js의 viewProjectList() 에러!', err);
 			});
 	};
-	// viewProjectList2 = () => {
-	// 	ProjectApiService.projectList()
-	// 		.then(res => {
-	// 			this.setState({ list2: res.data });
-	// 			console.log('projectList 값', res.data);
-	// 		})
-	// 		.catch(err => {
-	// 			console.error('Cards.js의 viewProjectList() 에러!', err);
-	// 		});
-	// };
+
 	toggleLike = id => {
 		console.log(`id = > ${id}`);
 		const localLiked = !this.state.liked;
@@ -68,7 +54,7 @@ class Cards extends Component {
   viewStateIng = () => {
     ProjectApiService.stateIng()
       .then((res) => {
-        this.setState({ lists: res.data });
+        this.setState({ list1: res.data });
         console.log("stateIng 값", res.data);
       })
       .catch((err) => {
@@ -102,7 +88,7 @@ gotoEditProject = (_id, _creatorId) => {
 	render() {
 		return (
 			<div style={{ display: 'inline' }}>
-					<h4 style={{textAlign:"center", fontWeight: 'bold'}}>진행중인 프로젝트</h4>
+					<h4 style={{textAlign:"center", fontWeight: 'bold'}}>전체 프로젝트</h4>
 				<div style={{ width: 1500, display: 'inline-flex', verticalAlign: 'center', marginTop: 50 }}>
 					<Carousel breakPoints={breakPoints}>
 						{this.state.lists.map(list => (
@@ -116,6 +102,23 @@ gotoEditProject = (_id, _creatorId) => {
 					</Carousel>
 				</div>
 				<br/><br/><br/>
+						<a href="http://localhost:3000/discover"><Button variant="outline-secondary" style={{borderRadius: 20}}>전체 프로젝트 더보기</Button>{' '}</a>
+				<br/><br/><br/><br/><br/>
+						<h4 style={{textAlign:"center", fontWeight: 'bold'}}>진행중인 프로젝트</h4>
+				<div style={{ width: 1500, display: 'inline-flex', verticalAlign: 'center', marginTop: 50 }}>
+					<Carousel breakPoints={breakPoints}>
+						{this.state.list1.map(list => (
+							<div onClick={() => this.props.history.push({ pathname: '/detail', state:list})}>
+                                <CardItem
+									project={list} 
+									
+									/>
+                            </div>
+						))}
+					</Carousel>
+				</div>
+				<br/><br/><br/><br/><br/>
+				
 						<h4 style={{textAlign:"center", fontWeight: 'bold'}}>성사된 프로젝트</h4>
 				<div style={{ width: 1500, display: 'inline-flex', verticalAlign: 'center', marginTop: 50 }}>
 					<Carousel breakPoints={breakPoints}>
@@ -129,8 +132,7 @@ gotoEditProject = (_id, _creatorId) => {
 						))}
 					</Carousel>
 				</div>
-						<MoreButton />
-				
+				<br/><br/><br/><br/><br/>
 			</div>
 		);
 	}

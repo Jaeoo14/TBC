@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import { Carousel } from 'react-bootstrap';
 import ProjectApiService from '../ProjectApiService';
 import Cards from './Cards';
@@ -11,31 +10,20 @@ class Main extends Component {
 	};
 
 	componentDidMount() {
-		this.viewProjectList();
+		this.viewStateIng();
 	}
 
-	viewProjectList = () => {
-		ProjectApiService.projectList()
-			.then(res => {
-				this.setState({ lists: res.data }, console.log('projectList 값', res.data));
-			})
-			.catch(console.log);
-	};
-
-	// {/* <Carousel.Item>
-	//   <a href="#">
-	//   <img
-	//     className="d-block w-100"
-	//     src="http://ipsumimage.appspot.com/1275x400?text=First slide&bg=373940"
-	//     alt="First slide"
-	//     style={{height:400, width: 1500}}
-	//   />
-	//   </a>
-	//   <Carousel.Caption>
-	//     <h3>First slide label</h3>
-	//     <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-	//   </Carousel.Caption>
-	// </Carousel.Item> */}
+	viewStateIng = () => {
+		ProjectApiService.stateIng()
+		  .then((res) => {
+			this.setState({ lists: res.data });
+			console.log("stateIng 값", res.data);
+		  })
+		  .catch((err) => {
+			console.error("Cards.js의 stateIng() 에러!", err);
+		  });
+	  };
+	
 
 	render() {
 		if (this.state.lists.length === 0) return null;

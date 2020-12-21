@@ -15,10 +15,10 @@ class MoreButton extends Component{
                         paddingRight: 30,
                         border: 10,
                         borderColor:'black',
-                        color:'#6d6d6d',
+                        color:'black',
                         fontWeight:'bold',
                     }} href="#">
-                            @@ 프로젝트 더보기
+                            전체 프로젝트 더보기
                 </Button>
             <br/><br/><br/>
                 
