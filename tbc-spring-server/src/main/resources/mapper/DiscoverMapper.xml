@@ -4,6 +4,7 @@
 <mapper namespace="com.team2.tbcserver.mapper.DiscoverMapper">
 	
 	<select id="projectList" resultType="com.team2.tbcserver.vo.ProjectVO">
+		<![CDATA[ 
 		SELECT	id,
 				creatorId,
 				longTitle,
@@ -24,7 +25,9 @@
 				createdDate,
 				updatedDate
 		FROM 	project
+		WHERE   fundingEnd > sysdate()
 	   ORDER BY fundedAmount DESC
+	 ]]>
 	</select>
 	
 	<select id="countProject" parameterType="Long" resultType="Long">
