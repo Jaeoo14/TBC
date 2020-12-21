@@ -33,8 +33,8 @@ class ProjectDescription extends Component {
 	};
 
 	state = {
-    project: undefined,
-    creator: undefined,
+		project: undefined,
+		creator: undefined,
 
 		categoryName: undefined,
 		...this.clearEditState,
@@ -56,19 +56,19 @@ class ProjectDescription extends Component {
 			.then(res =>
 				this.setState({ project: res.data }, () => {
 					this.props.showTitle(this.state.project.longTitle);
-          this.getCategoryName();
-          this.getUser(cId);
+					this.getCategoryName();
+					this.getUser(cId);
 					console.log('PD.componentDidMount', this.state, this.props);
 				}),
 			)
 			.catch(console.log);
-  };
-  
-  getUser = (id) => {
-    Pas.getUser(id)
-      .then(res=>this.setState({creator:res.data}))
-      .catch(console.log);
-  }
+	};
+
+	getUser = id => {
+		Pas.getUser(id)
+			.then(res => this.setState({ creator: res.data }))
+			.catch(console.log);
+	};
 
 	componentDidUpdate(prevProps, prevState) {
 		console.log('PD.componentDidUpdate', prevState, this.state);
@@ -114,8 +114,8 @@ class ProjectDescription extends Component {
 		Pas.update(this.state.project)
 			.then(res => this.handleClose())
 			.catch(console.log);
-  };
-  
+	};
+
 	handleCreator = (column, value) => {
 		console.log('PD.handleCreator', column, value);
 		let temp = { ...this.state.creator };
@@ -128,7 +128,7 @@ class ProjectDescription extends Component {
 		Pas.updateUser(this.state.creator)
 			.then(res => this.handleClose())
 			.catch(console.log);
-  };
+	};
 
 	getCategoryName = () => {
 		Pas.getCategory(this.state.project.category)
@@ -177,7 +177,9 @@ class ProjectDescription extends Component {
 						{this.state.editMainImg ? (
 							<UploadProjectImage
 								title='프로젝트 대표 이미지'
-								desc='대표 이미지는 프로젝트의 가장 중요한 시각적 요소입니다. 후원자들이 프로젝트의 내용을 쉽게 파악하고 좋은 인상을 받을 수 있게 하기 위해 다음 가이드라인에 따라 디자인해 주세요.'
+								desc='대표 이미지는 프로젝트의 가장 중요한 시각적 요소입니다. 
+                후원자들이 프로젝트의 내용을 쉽게 파악하고 좋은 인상을 받을 수 있게 하기 위해 
+                다음 가이드라인에 따라 디자인해 주세요.'
 								mainImg={this.state.project.mainImg}
 								handleClose={this.handleClose}
 								handleSaveMainImg={this.handleSaveMainImg}
@@ -344,11 +346,7 @@ class ProjectDescription extends Component {
 					</ListGroup.Item>
 					<ListGroup.Item as='div' action>
 						{this.state.editCreatorName ? (
-              <InputCreatorName
-                creatorName={this.state.creator.name}
-                handleClose={this.handleClose}
-                handleCreator={this.handleCreator}                
-              />
+							<InputCreatorName creatorName={this.state.creator.name} handleClose={this.handleClose} handleCreator={this.handleCreator} />
 						) : (
 							<div onClick={e => this.startEdit(e, 'editCreatorName')}>
 								<div>
@@ -362,17 +360,40 @@ class ProjectDescription extends Component {
 							</div>
 						)}
 					</ListGroup.Item>
-					{/*<ListGroup.Item  as='div' action>
-						<CustomTextArea
-							title='창작자 소개'
-							desc='창작자님의 이력과 간단한 소개를 써 주세요.'
-							placeholder='창작자 소개를 입력해주세요.'
-							minlen='10'
-							maxlen='300'
-							columnName='intro'
-							 />
+					<ListGroup.Item as='div' action>
+						{this.state.editCreatorIntro ? (
+							<CustomTextArea
+								title='창작자 소개'
+								desc='창작자님의 이력과 간단한 소개를 써 주세요.'
+								placeholder='창작자 소개를 입력해주세요.'
+								minlen='10'
+								maxlen='300'
+								columnName='intro'
+								handleClose={this.handleClose}
+								handleText={this.handleCreator}
+								value={this.state.creator.intro}
+							/>
+						) : (
+							<div onClick={e => this.startEdit(e, 'editCreatorIntro')}>
+								<div>
+									<h6>창작자 소개</h6>
+									{!this.state.creator ? (
+										<div style={{ color: 'tomato' }}>
+											<ArrowRightIcon fontSize='small' />
+											창작자 소개를 입력해주세요.
+										</div>
+									) : (
+										<h6>{this.state.creator.intro}</h6>
+									)}
+								</div>
+								<div style={{ textAlign: 'right', color: 'tomato' }}>
+									<EditIcon fontSize='small' />
+									{this.state.creator && this.state.creator.intro !== '' ? '수정하기' : '입력하기'}
+								</div>
+							</div>
+						)}
 					</ListGroup.Item>
-					<ListGroup.Item  as='div' action>
+					{/*<ListGroup.Item  as='div' action>
 						<Container>
 							<Row>
 								<Col>
