@@ -13,8 +13,7 @@ const Favorite = ({ userId, projectId }) => {
     Pas.getUser(userId)
       .then((res) => {
         setLike(
-          res.data.likeProjects.split(",").filter((like) => like === projectId)
-            .length !== 0
+          res.data.likeProjects.split(",").filter((like) => like == projectId).length !== 0
         ); // 숫자와 문자열 비교라서 '==' 사용.
       })
       .catch((err) => console.log(err));
