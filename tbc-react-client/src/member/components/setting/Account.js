@@ -88,6 +88,7 @@ class Account extends Component {
       if (this.state.newPwd !== "") {
         console.log("intro 업데이트", this.state.newPwd);
         user.pwd = this.state.newPwd;
+        localStorage.setItem("myStorage", JSON.stringify(user));
 
         Api.updateIntro(user)
           .then()
@@ -108,6 +109,7 @@ class Account extends Component {
     if (this.state.newAddr !== "") {
       console.log("intro 업데이트", this.state.newAddr);
       user.address = this.state.newAddr;
+      localStorage.setItem("myStorage", JSON.stringify(user));
 
       Api.updateIntro(user)
         .then()
@@ -125,6 +127,7 @@ class Account extends Component {
     if (this.state.newTel !== "") {
       console.log("intro 업데이트", this.state.newTel);
       user.tel = this.state.newTel;
+      localStorage.setItem("myStorage", JSON.stringify(user));
 
       Api.updateIntro(user)
         .then()
@@ -142,6 +145,7 @@ class Account extends Component {
     if (this.state.newPay !== "") {
       console.log("intro 업데이트", this.state.newPay);
       user.payment = this.state.newPay;
+      localStorage.setItem("myStorage", JSON.stringify(user));
 
       Api.updateIntro(user)
         .then()

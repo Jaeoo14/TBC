@@ -78,7 +78,7 @@ class Profile extends Component {
     if (this.state.newNick !== "") {
       console.log("intro 업데이트", this.state.newNick);
       user.nickname = this.state.newNick;
-
+      localStorage.setItem("myStorage", JSON.stringify(user));
       Api.updateIntro(user)
         .then()
         .catch((err) => console.log(err));
@@ -96,6 +96,7 @@ class Profile extends Component {
     if (this.state.newIntro !== "") {
       console.log("intro 업데이트", this.state.newIntro);
       user.intro = this.state.newIntro;
+      localStorage.setItem("myStorage", JSON.stringify(user));
 
       Api.updateIntro(user)
         .then()
