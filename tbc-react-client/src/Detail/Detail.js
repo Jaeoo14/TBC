@@ -22,13 +22,14 @@ class Detail extends Component {
   };
 
   componentDidMount = () => {
-    console.log("PD.componentDidMount", this.state, this.props);
+    console.log("Detail.componentDidMount", this.state, this.props);
 
-    const pId  = this.props.location.state.id;
+    this.setState({project:this.props.location.state});
 
-    Pas.fetchBy(pId)
-      .then(res =>this.setState({ project: res.data }))
-      .catch(console.log);
+    // const pId  = this.props.location.state.id;
+    // Pas.fetchBy(pId)
+    //   .then(res =>this.setState({ project: res.data }))
+    //   .catch(console.log);
   };
 
   componentDidUpdate(prevProps, prevState) {
