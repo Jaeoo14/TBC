@@ -6,6 +6,10 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import NotFavoriteIcon from "@material-ui/icons/FavoriteBorder";
 
 const Favorite = ({ userId, projectId }) => {
+  // 변경해야 할 것.
+  // 성능을 위해 Favorite에서 매번 DB에서 사용자 정보를 읽지 않고
+  // Favorite를 호출하는 곳에서 사용자 정보를 props로 넘겨주게 해야 한다.
+
   const [like, setLike] = useState(false);
 
   useEffect(() => {
@@ -19,7 +23,10 @@ const Favorite = ({ userId, projectId }) => {
       .catch((err) => console.log(err));
   });
 
-  const onToggle = () => {
+  const onToggle = (e) => {
+    // 변경되었을 때는 갱신해 주어야 한다.
+    e.stopPropagation();
+
     Pas.getUser(userId)
       .then((res) => {
         let member = res.data;
