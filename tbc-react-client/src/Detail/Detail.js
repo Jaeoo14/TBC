@@ -129,7 +129,7 @@ class Detail extends Component {
               >
                 결제는 <strong>{new Date(this.state.project.fundingEnd).toLocaleString()}</strong>에 다함께 진행됩니다.
               </Box>
-              <PushBtn />
+              <PushBtn projectId={this.state.project.id} />
             </div>
           </div>
         </div>
