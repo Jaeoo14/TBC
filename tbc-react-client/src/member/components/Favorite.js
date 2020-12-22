@@ -27,7 +27,7 @@ const Favorite = ({ userId, projectId }) => {
           // 이미 있으니 지운다.
           member.likeProjects = member.likeProjects
             .split(",")
-            .filter((like) => like !== projectId)
+            .filter((like) => like != projectId)
             .toString();
         else {
           // 없으니 추가한다.
