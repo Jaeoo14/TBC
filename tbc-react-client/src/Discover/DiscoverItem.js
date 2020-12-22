@@ -43,11 +43,11 @@ class DiscoverItem extends Component {
         })
     }
     
-    toggleLike = (id) => {
-        console.log(`id = > ${id}`);
-        const localLiked = !this.state.liked;        
-        this.setState({ liked : localLiked });
-    };
+    // toggleLike = (id) => {
+    //     console.log(`id = > ${id}`);
+    //     const localLiked = !this.state.liked;        
+    //     this.setState({ liked : localLiked });
+    // };
 
     //숫자 세자리마다 콤마 끊어주는 함수
     numberFormatComma(x) {
