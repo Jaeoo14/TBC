@@ -595,7 +595,7 @@ class Discover extends Component {
 					{/* 프로젝트 구성 페이지 */}
 					<div className='row'>
 						{this.state.lists.map(list => (
-							<div onClick={() => this.props.history.push({ pathname: '/detail', state: list })}>
+							<div key={list.id} onClick={() => this.props.history.push({ pathname: '/detail', state: list })}>
 								<Item
 									key={list.id} longTitle={list.longTitle} mainImg={list.mainImg} category={list.category} creatorId={list.creatorId}
 									content={list.content} fundedAmount={list.fundedAmount} fundingGoalAmount={list.fundingGoalAmount}
