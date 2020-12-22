@@ -77,7 +77,7 @@ class DiscoverItem extends Component {
     getUserId = () => {
         const member = JSON.parse(localStorage.getItem('myStorage'));
         if (member)
-            return 1;//member.id;
+            return member.id;
         else
             console.log('로그인 사용자가 없습니다.');
 
